@@ -1,9 +1,15 @@
 @import '~ant-design-vue/es/style/themes/default.less';
+@font-face {
+  font-family: 'MQG8200';
+  src: url(./assets/fonts/MQG8200.ttf);
+}
 
 html,
 body,
 #app, #root {
   height: 100%;
+  font-family: 'MQG8200';
+
 }
 
 .colorWeak {
@@ -74,6 +80,37 @@ ol {
     margin-bottom: 24px;
     white-space: nowrap;
   }
+}
+
+.ant-page-header.has-breadcrumb {
+  writing-mode: vertical-lr;
+}
+
+.ant-card-extra {
+  float: unset;
+  margin-left: unset;
+  writing-mode: vertical-lr;
+}
+
+// .ant-form-item-children {
+//   writing-mode: vertical-lr;
+// }
+
+// .ant-input {
+//   height: 100%;
+//   display: table-cell;
+// }
+
+// .ant-spin-container {
+//   writing-mode: vertical-lr;
+// }
+
+.ant-pro-page-header-wrap-children-content {
+  margin: 5px;
+}
+
+.ant-pro-global-footer {
+  display: none;
 }
 
 @media (max-width: @screen-xs) {
