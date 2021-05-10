@@ -15,6 +15,107 @@ export const asyncRouterMap = [
     meta: { title: 'menu.home' },
     redirect: '/dashboard/workplace',
     children: [
+/*
+      {
+        path: '/Userlist',
+        name: 'Userlist',
+        component: RouteView,
+        redirect: '/list/table-list',
+        meta: { title: 'menu.list', icon: 'table', permission: ['table'] },
+        
+             path: '/userlist/userList',
+             name: 'userList',
+             component: () => import('@/views/userlist/userList'),
+             meta: { title: 'menu.list.basic-list', keepAlive: true, permission: ['table'] }
+        
+        children: [
+          {
+            path: '/list/table-list/:pageNo([1-9]\\d*)?',
+            name: 'TableListWrapper',
+            hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
+            component: () => import('@/views/list/TableList'),
+            meta: { title: 'menu.list.table-list', keepAlive: true, permission: ['table'] }
+          },
+          {
+            path: '/Userlist/basic-list',
+            name: 'userList',
+            component: () => import('@/views/userlist/userList'),
+            meta: { title: 'menu.list.basic-list', keepAlive: true, permission: ['table'] }
+          },
+          {
+            path: '/list/card',
+            name: 'CardList',
+            component: () => import('@/views/list/CardList'),
+            meta: { title: 'menu.list.card-list', keepAlive: true, permission: ['table'] }
+          },
+          {
+            path: '/list/search',
+            name: 'SearchList',
+            component: () => import('@/views/list/search/SearchLayout'),
+            redirect: '/list/search/article',
+            meta: { title: 'menu.list.search-list', keepAlive: true, permission: ['table'] },
+            children: [
+              {
+                path: '/list/search/article',
+                name: 'SearchArticles',
+                component: () => import('../views/list/search/Article'),
+                meta: { title: 'menu.list.search-list.articles', permission: ['table'] }
+              },
+              {
+                path: '/list/search/project',
+                name: 'SearchProjects',
+                component: () => import('../views/list/search/Projects'),
+                meta: { title: 'menu.list.search-list.projects', permission: ['table'] }
+              },
+              {
+                path: '/list/search/application',
+                name: 'SearchApplications',
+                component: () => import('../views/list/search/Applications'),
+                meta: { title: 'menu.list.search-list.applications', permission: ['table'] }
+              }
+            ]
+          }
+        ]
+      },
+*/
+
+      // userlist
+      
+      {
+        path: '/users',
+        component: RouteView,
+        name: 'users',
+        redirect: '/users/userList',
+        meta: { title: 'ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ', keepAlive: true, icon: 'user',permission: ['user'] },
+        hideChildrenInMenu: true,
+        children: [
+      {
+        path: '/users/userList',
+        component: () => import('@/views/users/userList'),
+        name: 'userList',
+        meta: { title: 'ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ', icon: 'user' }
+      },
+      {
+        path: '/users/uEdit/',
+        component: () => import('@/views/users/uEdit'),
+        name: 'userEdit',
+        meta: {
+          title: 'ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠰᠢᠨᠡᠴᠢᠯᠡᠬᠦ'
+        },
+        hidden: true
+      },
+      {
+        path: '/users/uAdd/',
+        component: () => import('@/views/users/uAdd'),
+        name: 'userAdd',
+        meta: {
+          title: 'ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠨᠡᠮᠡᠬᠦ'
+        },
+        hidden: true
+      }
+    ]
+  },
+
       // dashboard
       {
         path: '/dashboard',
@@ -263,63 +364,6 @@ export const asyncRouterMap = [
                   keepAlive: true,
                   permission: ['user']
                 }
-              }
-            ]
-          }
-        ]
-      },
-
-      // userlist
-      {
-        path: '/Userlist',
-        name: 'Userlist',
-        component: RouteView,
-        redirect: '/list/table-list',
-        meta: { title: 'menu.list', icon: 'table', permission: ['table'] },
-        children: [
-          {
-            path: '/list/table-list/:pageNo([1-9]\\d*)?',
-            name: 'TableListWrapper',
-            hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
-            component: () => import('@/views/list/TableList'),
-            meta: { title: 'menu.list.table-list', keepAlive: true, permission: ['table'] }
-          },
-          {
-            path: '/Userlist/basic-list',
-            name: 'userList',
-            component: () => import('@/views/userlist/userList'),
-            meta: { title: 'menu.list.basic-list', keepAlive: true, permission: ['table'] }
-          },
-          {
-            path: '/list/card',
-            name: 'CardList',
-            component: () => import('@/views/list/CardList'),
-            meta: { title: 'menu.list.card-list', keepAlive: true, permission: ['table'] }
-          },
-          {
-            path: '/list/search',
-            name: 'SearchList',
-            component: () => import('@/views/list/search/SearchLayout'),
-            redirect: '/list/search/article',
-            meta: { title: 'menu.list.search-list', keepAlive: true, permission: ['table'] },
-            children: [
-              {
-                path: '/list/search/article',
-                name: 'SearchArticles',
-                component: () => import('../views/list/search/Article'),
-                meta: { title: 'menu.list.search-list.articles', permission: ['table'] }
-              },
-              {
-                path: '/list/search/project',
-                name: 'SearchProjects',
-                component: () => import('../views/list/search/Projects'),
-                meta: { title: 'menu.list.search-list.projects', permission: ['table'] }
-              },
-              {
-                path: '/list/search/application',
-                name: 'SearchApplications',
-                component: () => import('../views/list/search/Applications'),
-                meta: { title: 'menu.list.search-list.applications', permission: ['table'] }
               }
             ]
           }
