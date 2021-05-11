@@ -1,27 +1,23 @@
 <template>
-  <div style="writing-mode: vertical-lr;">
-    <div style="width:80px;height:100%;display:flex">
-      <a-button type="primary" style="transform:rotate(90deg);" class="editable-add-btn" @click="handleAdd">
-      ᠬᠠᠢᠬᠤ
-    </a-button>
-    <a-button style="transform:rotate(90deg);" class="editable-add-btn" @click="handleAdd">
-      ᠠᠷᠢᠯᠭᠠᠬᠤ 
-    </a-button>
-    <a-button style="transform:rotate(90deg);" class="editable-add-btn" @click="handleAdd">
-      ᠨᠡᠮᠡᠬᠦ 
-    </a-button>
+  <div style="writing-mode: vertical-lr;height:90%">
+    <div style="width: 80px; height: 100%; ">
+      <a-space :size="25" direction="vertical" class="l-space">
+        <p style="margin-bottom:-20px">ᠨᠡᠷ᠎ᠡ᠄</p>
+        <input style="width:32px;height:150px;display: table-column;vertical-align: -webkit-baseline-middle;" />
+        <p style="margin-bottom:5px">ᠤᠲᠠᠰᠤᠨ ᠨᠤᠮᠧᠷ᠄</p>
+        <input style="width:32px;height:150px;display: table-column;vertical-align: -webkit-baseline-middle;" />
+        <a-button class="editable-add-btn" @click="handleAdd" type="primary" > ᠬᠠᠢᠬᠤ </a-button>
+        <a-button class="editable-add-btn" @click="handleAdd"> ᠠᠷᠢᠯᠭᠠᠬᠤ </a-button>
+        <a-button class="editable-add-btn" @click="handleAdd"> ᠨᠡᠮᠡᠬᠦ </a-button>
+      </a-space>
     </div>
-    
+
     <a-table bordered :data-source="dataSource" :columns="columns">
       <template slot="name" slot-scope="text, record">
         <editable-cell :text="text" @change="onCellChange(record.key, 'name', $event)" />
       </template>
       <template slot="operation" slot-scope="text, record">
-        <a-popconfirm
-          v-if="dataSource.length"
-          title="Sure to delete?"
-          @confirm="() => onDelete(record.key)"
-        >
+        <a-popconfirm v-if="dataSource.length" title="Sure to delete?" @confirm="() => onDelete(record.key)">
           <a href="javascript:;">Delete</a>
         </a-popconfirm>
       </template>
@@ -52,22 +48,22 @@ const EditableCell = {
     return {
       value: this.text,
       editable: false,
-    };
+    }
   },
   methods: {
     handleChange(e) {
-      const value = e.target.value;
-      this.value = value;
+      const value = e.target.value
+      this.value = value
     },
     check() {
-      this.editable = false;
-      this.$emit('change', this.value);
+      this.editable = false
+      this.$emit('change', this.value)
     },
     edit() {
-      this.editable = true;
+      this.editable = true
     },
   },
-};
+}
 export default {
   components: {
     EditableCell,
@@ -110,39 +106,46 @@ export default {
           scopedSlots: { customRender: 'operation' },
         },
       ],
-    };
+    }
   },
   methods: {
     onCellChange(key, dataIndex, value) {
-      const dataSource = [...this.dataSource];
-      const target = dataSource.find(item => item.key === key);
+      const dataSource = [...this.dataSource]
+      const target = dataSource.find((item) => item.key === key)
       if (target) {
-        target[dataIndex] = value;
-        this.dataSource = dataSource;
+        target[dataIndex] = value
+        this.dataSource = dataSource
       }
     },
     onDelete(key) {
-      const dataSource = [...this.dataSource];
-      this.dataSource = dataSource.filter(item => item.key !== key);
+      const dataSource = [...this.dataSource]
+      this.dataSource = dataSource.filter((item) => item.key !== key)
     },
     handleAdd() {
-      const { count, dataSource } = this;
+      const { count, dataSource } = this
       const newData = {
         key: count,
         name: `Edward King ${count}`,
         age: 32,
         address: `London, Park Lane no. ${count}`,
-      };
-      this.dataSource = [...dataSource, newData];
-      this.count = count + 1;
+      }
+      this.dataSource = [...dataSource, newData]
+      this.count = count + 1
     },
   },
-};
+}
 </script>
 <style>
+.l-space {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 25px;
+  text-align:inherit
+}
 .s {
   writing-mode: vertical-lr;
-  transform:rotate(90deg);
+  transform: rotate(90deg);
 }
 .editable-cell {
   position: relative;
@@ -184,10 +187,12 @@ export default {
 }
 
 .editable-add-btn {
+  transform: rotate(90deg);
   margin: 8px 16px;
 
   padding: 0px 8px;
   width: 50px;
   height: 32px;
+  /* transform: rotate(90deg);transform-origin: top left; */
 }
 </style>
