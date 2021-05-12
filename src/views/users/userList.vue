@@ -1,14 +1,14 @@
 <template>
-  <div style="writing-mode: vertical-lr;height:90%">
-    <div style="width: 80px; height: 100%; ">
+  <div style="writing-mode: vertical-lr; height: 90%;">
+    <div style="width: 80px; height: 100%">
       <a-space :size="25" direction="vertical" class="l-space">
-        <p style="margin-bottom:-20px">ᠨᠡᠷ᠎ᠡ᠄</p>
-        <input style="width:32px;height:150px;display: table-column;vertical-align: -webkit-baseline-middle;" />
-        <p style="margin-bottom:5px">ᠤᠲᠠᠰᠤᠨ ᠨᠤᠮᠧᠷ᠄</p>
-        <input style="width:32px;height:150px;display: table-column;vertical-align: -webkit-baseline-middle;" />
-        <a-button class="editable-add-btn" @click="handleAdd" type="primary" > ᠬᠠᠢᠬᠤ </a-button>
+        <p style="margin-bottom: -20px">ᠨᠡᠷ᠎ᠡ᠄</p>
+        <input style="width: 32px; height: 150px; display: table-column; vertical-align: -webkit-baseline-middle" />
+        <p style="margin-bottom: -20px">ᠤᠲᠠᠰᠤᠨ ᠨᠤᠮᠧᠷ᠄</p>
+        <input style="width: 32px; height: 150px; display: table-column; vertical-align: -webkit-baseline-middle" />
+        <a-button class="editable-add-btn" @click="handleAdd" type="primary"> ᠬᠠᠢᠬᠤ </a-button>
         <a-button class="editable-add-btn" @click="handleAdd"> ᠠᠷᠢᠯᠭᠠᠬᠤ </a-button>
-        <a-button class="editable-add-btn" @click="handleAdd"> ᠨᠡᠮᠡᠬᠦ </a-button>
+        <a-button class="editable-add-btn" @click="handleAdd" icon="plus"> ᠨᠡᠮᠡᠬᠦ </a-button>
       </a-space>
     </div>
 
@@ -87,21 +87,21 @@ export default {
       count: 2,
       columns: [
         {
-          title: 'name',
+          title: 'ᠨᠡᠷ᠎ᠡ',
           dataIndex: 'name',
           width: '30%',
           scopedSlots: { customRender: 'name' },
         },
         {
-          title: 'age',
+          title: 'ᠤᠲᠠᠰᠤᠨ ᠨᠤᠮᠧᠷ',
           dataIndex: 'age',
         },
         {
-          title: 'address',
+          title: 'ᠳᠦᠷᠢ',
           dataIndex: 'address',
         },
         {
-          title: 'operation',
+          title: 'ᠬᠦᠳᠡᠯᠭᠡᠭᠡᠨ',
           dataIndex: 'operation',
           scopedSlots: { customRender: 'operation' },
         },
@@ -141,7 +141,7 @@ export default {
   flex-direction: row;
   align-items: center;
   font-size: 25px;
-  text-align:inherit
+  text-align: inherit;
 }
 .s {
   writing-mode: vertical-lr;
@@ -188,10 +188,10 @@ export default {
 
 .editable-add-btn {
   transform: rotate(90deg);
-  margin: 8px 16px;
-
+  margin: 15px 0px;
+  font-size: 20px;
   padding: 0px 8px;
-  width: 50px;
+  width: 75px;
   height: 32px;
   /* transform: rotate(90deg);transform-origin: top left; */
 }
