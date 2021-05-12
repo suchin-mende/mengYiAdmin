@@ -4,21 +4,22 @@
       <div class="content-left">
         <div class="search-form">
           <div class="fields">
-            <a-input placeholder="请输入药品名称"/>
+            <a-input placeholder="请输入药品名称" v-model="key"/>
           </div>
           <div class="actions">
-            <a-button type="primary">查询</a-button>
-            <a-button type="danger">取消</a-button>
+            <a-button type="primary" @click="handleKeySearch">查询</a-button>
+            <a-button type="danger" @click="handleReset">重置</a-button>
           </div>
         </div>
       </div>
-      <div class="content-right" style="width: 800px;">
+      <div class="content-right">
         <a-table
           row-key="drugid"
           :columns="columns"
           :data-source="data"
           :pagination="pagination"
-          @change="handlePageChange"
+          :loading="isLoading"
+          @change="onSearch"
         >
           <template
             slot="actions"
@@ -51,12 +52,15 @@ const columns = [
 export default {
   data() {
     return {
+      key: '',
       data: [],
       columns,
+      isLoading: false,
       pagination: {
         current: 1,
         total: 0,
-        pageSize: 15
+        current: 1,
+        pageSize: 10
       }
     };
   },
@@ -66,23 +70,40 @@ export default {
 
   methods: {
     onSearch(params) {
+      this.isLoading = true
+      const page = (params && params.current) || this.pagination.current
+      console.log(page)
       dragList({
-        page: this.pagination.current,
+        page: page,
         pageSize: this.pagination.pageSize,
-        drugName: ''
+        drugName: this.key || null
       })
         .then(res => {
+          this.isLoading = false
           const { data } = res
           this.data = data.rows
 
           this.pagination = {
             ...this.pagination,
+            current: page,
             total: data.pageSize * data.totalPage
           }
         })
+        .catch(() => {
+          this.isLoading = false
+        })
+    },
+    handleKeySearch() {
+      this.pagination.current = 1
+      this.pagination.total = 0
+      this.onSearch()
+    },
+    handleReset () {
+      this.key = ''
+      this.handleKeySearch()
     },
     handleTest (id) {
-      console.log(id)
+      alert(id)
     }
   }
 }
@@ -90,4 +111,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.content-right {
+  width: 800px;
+}
 </style>
