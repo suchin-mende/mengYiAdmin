@@ -1,229 +1,386 @@
 <template>
-  <page-header-wrapper>
-    <a-form :form="form">
-      <a-form-item
-        :label-col="formItemLayout.labelCol"
-        :wrapper-col="formItemLayout.wrapperCol"
-        label=" ᠨᠡᠷ᠎ᠡ"
+
+  <div style="writing-mode: vertical-lr; width: 300px"> 
+    
+    <a-form  :form="form" @submit="handleSubmit">
+    
+      <!-- 删除标识 -->
+      <!-- 用户名 -->
+      <!-- 版本号 -->
+
+
+      <!-- 上传头像 -->
+      <div style="writing-mode: horizontal-tb;">
+      <a-upload 
+        name="avatar"
+        list-type="picture-card"
+        class="avatar-uploader"
+        :show-upload-list="false"
+        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+        :before-upload="beforeUpload"
+        @change="handleChange"
       >
+        <img v-if="imageUrl" :src="imageUrl" alt="avatar" />
+        <div v-else style="text-align: -webkit-center;">
+          <a-icon :type="loading ? 'loading' : 'plus'" />
+          <div class="ant-upload-text" style="writing-mode: vertical-lr;text-align: center;">ᠰᠡᠭᠦᠳᠡᠷ ᠢᠡᠨ ᠳᠤᠰᠢᠶᠠᠬᠤ</div>
+        </div>
+      </a-upload>
+      </div>
+
+      <!-- 登录名 -->
+      <a-form-item v-bind="formItemLayout" label="">
         <a-input
+          placeholder="登录名"
+          class="input-itm"
           v-decorator="[
-            'username',
-            { rules: [{ required: true, message: 'Please input your name' }] },
+            'loginname',
+            {
+              rules: [{ required: true, message: 'Please input your loginname number!' }],
+            },
           ]"
-          placeholder="Please input your name"
-        />
+        >
+        </a-input>
       </a-form-item>
 
-      <a-form-item
-        :label-col="formItemLayout.labelCol"
-        :wrapper-col="formItemLayout.wrapperCol"
-        label=" ᠨᠢᠭᠤᠴᠠ ᠳ᠋ᠤᠭᠠᠷ"
-      >
-
-        <a-input-password
+      <!-- 新蒙文名 -->
+      <a-form-item v-bind="formItemLayout" label="">
+        <a-input
+          placeholder="新蒙文名"
+          class="input-itm"
           v-decorator="[
-            'pwd',
-            { rules: [{ required: true, message: 'Please input your name' }] },
+            'namemn',
+            {
+              rules: [{ required: true, message: 'Please input your namemn number!' }],
+            },
           ]"
-          placeholder="Please input your name"
-        />
+        >
+        </a-input>
       </a-form-item>
 
-      <a-form-item
-        :label-col="formItemLayout.labelCol"
-        :wrapper-col="formItemLayout.wrapperCol"
-        label=" ᠤᠲᠠᠰᠤᠨ ᠳ᠋ᠤᠭᠠᠷ"
-      >
+      <!-- 其他名 -->
+      <a-form-item v-bind="formItemLayout" label="">
         <a-input
+          placeholder="其他名"
+          class="input-itm"
+          v-decorator="[
+            'nameother',
+            {
+              rules: [{ required: true, message: 'Please input your nameother number!' }],
+            },
+          ]"
+        >
+        </a-input>
+      </a-form-item>
+
+      <!-- 藏文名 -->
+      <a-form-item v-bind="formItemLayout" label="">
+        <a-input
+          placeholder="藏文名"
+          class="input-itm"
+          v-decorator="[
+            'namez',
+            {
+              rules: [{ required: true, message: 'Please input your namez number!' }],
+            },
+          ]"
+        >
+        </a-input>
+      </a-form-item>
+
+      <!-- 手机号 -->
+      <a-form-item v-bind="formItemLayout" label="">
+        <a-input
+          placeholder="手机号"
+          class="input-itm"
           v-decorator="[
             'phonenum',
-            { rules: [{ required: true, message: 'Please input your name' }] },
+            {
+              rules: [{ required: true, message: 'Please input your phonenum number!' }],
+            },
           ]"
-          placeholder="Please input your name"
+        >
+        </a-input>
+      </a-form-item>
+
+      <!-- 密码 -->
+      <a-form-item v-bind="formItemLayout" label="" has-feedback>
+        <a-input
+          placeholder="密码"
+          class="input-itm"
+          v-decorator="[
+            'password',
+            {
+              rules: [
+                {
+                  required: true,
+                  message: 'Please input your password!',
+                },
+                {
+                  validator: validateToNextPassword,
+                },
+              ],
+            },
+          ]"
+          type="password"
         />
       </a-form-item>
-      <a-form-item
-        :label-col="formItemLayout.labelCol"
-        :wrapper-col="formItemLayout.wrapperCol"
-        label=" ᠦᠨᠡᠮᠯᠡᠯ ᠦᠨ ᠳ᠋ᠤᠭᠠᠷ"
-      >
+      <!-- 验证密码 -->
+      <a-form-item v-bind="formItemLayout" label="" has-feedback>
         <a-input
+          placeholder="验证密码"
+          class="input-itm"
           v-decorator="[
-            'identity',
-            { rules: [{ required: true, message: 'Please input your name' }] },
+            'confirm',
+            {
+              rules: [
+                {
+                  required: true,
+                  message: 'Please confirm your password!',
+                },
+                {
+                  validator: compareToFirstPassword,
+                },
+              ],
+            },
           ]"
-          placeholder="Please input your name"
+          type="password"
+          @blur="handleConfirmBlur"
         />
       </a-form-item>
 
-      <a-form-item
-        :label-col="formItemLayout.labelCol"
-        :wrapper-col="formItemLayout.wrapperCol"
-        label=" ᠢᠮᠸᠯ"
-      >
+      <!-- 邮箱 -->
+      <a-form-item v-bind="formItemLayout" label="">
         <a-input
+          class="input-itm"
+          placeholder="ᠢᠮᠧᠯ"
           v-decorator="[
             'email',
-            { rules: [{ required: true, message: 'Please input your name' }] },
+            {
+              rules: [
+                {
+                  type: 'email',
+                  message: 'The input is not valid E-mail!',
+                },
+                {
+                  required: true,
+                  message: 'Please input your E-mail!',
+                },
+              ],
+            },
           ]"
-          placeholder="Please input your name"
         />
       </a-form-item>
-      <a-form-item
-        :label-col="formItemLayout.labelCol"
-        :wrapper-col="formItemLayout.wrapperCol"
-        label=" ᠬᠦᠢᠰᠦ"
-        >
-        <a-radio-group>
-          <a-radio :value="1">
-            ᠡᠷᠡᠭᠲᠡᠢ
-          </a-radio>
-          <a-radio :value="2">
-            ᠡᠮᠡᠭᠲᠡᠢ
-          </a-radio>
-        </a-radio-group>
-      </a-form-item>
-      <a-form-item
-        :label-col="formItemLayout.labelCol"
-        :wrapper-col="formItemLayout.wrapperCol"
-        label="Nickname"
-      >
+      <!-- 证件号 -->
+      <a-form-item v-bind="formItemLayout" label="">
         <a-input
+          placeholder="证件号"
+          class="input-itm"
           v-decorator="[
-            'nickname',
-            { rules: [{ required: checkNick, message: 'Please input your nickname' }] },
+            'identity',
+            {
+              rules: [{ required: true, message: 'Please input your identity number!' }],
+            },
           ]"
-          placeholder="Please input your nickname"
-        />
+        >
+        </a-input>
       </a-form-item>
-      <a-form-item :label-col="formTailLayout.labelCol" :wrapper-col="formTailLayout.wrapperCol">
-        <a-checkbox :checked="checkNick" @change="handleChange">
-          Nickname is required
-        </a-checkbox>
-      </a-form-item>
-      <a-form-item :label-col="formTailLayout.labelCol" :wrapper-col="formTailLayout.wrapperCol">
-        <a-button type="primary" @click="check">
-          ᠨᠡᠮᠡᠬᠦ
-        </a-button>
 
-        <a-button type="plain" @click="handleBack">
-          ᠪᠤᠴᠠᠬᠤ
-        </a-button>
+      <!-- 中文名 -->
+      <a-form-item v-bind="formItemLayout" label="">
+        <a-input
+          placeholder="中文名"
+          class="input-itm"
+          v-decorator="[
+            'namecn',
+            {
+              rules: [{ required: true, message: 'Please input your namecn number!' }],
+            },
+          ]"
+        >
+        </a-input>
+      </a-form-item>
+      <!-- 性别 -->
+      <a-radio-group style="" name="radioGroup" :default-value="1">
+        <a-radio style="margin: 60px 0px;font-size:20px" :value="1"> ᠡᠷᠡᠭᠲᠡᠢ </a-radio>
+        <a-radio style="font-size:20px" :value="0"> ᠡᠮᠡᠭᠲᠡᠢ </a-radio>
+      </a-radio-group>
+
+      <!-- 提交按钮 -->
+      <a-form-item v-bind="tailFormItemLayout" style="transform: rotate(90deg);" >
+        <a-button style="font-size:20px" type="primary" html-type="submit"> ᠨᠡᠮᠡᠬᠦ </a-button>
       </a-form-item>
     </a-form>
-
-  </page-header-wrapper>
+    
+  </div>
 </template>
 
 <script>
-  import {uSave} from '@/api/accounts'
-
-
-  const formItemLayout = {
-    labelCol: { span: 4 },
-    wrapperCol: { span: 8 },
-  };
-  const formTailLayout = {
-    labelCol: { span: 4 },
-    wrapperCol: { span: 8, offset: 4 },
-  };
-  export default {
-    data() {
-      return {
-        checkNick: false,
-        formItemLayout,
-        formTailLayout,
-        form: this.$form.createForm(this, { name: 'dynamic_rule' }),
-      };
-    },
-    methods: {
-      check() {
-        this.form.validateFields(err => {
-          if (!err) {
-            console.info('success');
-          }
-        });
+const residences = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hangzhou',
+        children: [
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
+        ],
       },
-      handleChange(e) {
-        this.checkNick = e.target.checked;
-        this.$nextTick(() => {
-          this.form.validateFields(['nickname'], { force: true });
-        });
+    ],
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+          },
+        ],
       },
+    ],
+  },
+]
+function getBase64(img, callback) {
+  const reader = new FileReader()
+  reader.addEventListener('load', () => callback(reader.result))
+  reader.readAsDataURL(img)
+}
+export default {
+  data() {
+    return {
+      // 上传头像
+      loading: false,
+      imageUrl: '',
 
-      handleBack() {
-      this.$store.dispatch('tagsView/delView', this.$route)
-      this.$router.go(-1)
+      confirmDirty: false,
+      residences,
+      autoCompleteResult: [],
+      formItemLayout: {
+        labelCol: {
+          xs: { span: 24 },
+          sm: { span: 8 },
+        },
+        wrapperCol: {
+          xs: { span: 24 },
+          sm: { span: 16 },
+        },
+      },
+      tailFormItemLayout: {
+        wrapperCol: {
+          xs: {
+            span: 24,
+            offset: 0,
+          },
+          sm: {
+            span: 16,
+            offset: 8,
+          },
+        },
+      },
     }
+  },
+  beforeCreate() {
+    this.form = this.$form.createForm(this, { name: 'register' })
+  },
+  methods: {
+    // 上传头像--------------
+    handleChange(info) {
+      if (info.file.status === 'uploading') {
+        this.loading = true
+        return
+      }
+      if (info.file.status === 'done') {
+        // Get this url from response in real world.
+        getBase64(info.file.originFileObj, (imageUrl) => {
+          this.imageUrl = imageUrl
+          this.loading = false
+        })
+      }
     },
-  };
-  </script>
+    beforeUpload(file) {
+      const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png'
+      if (!isJpgOrPng) {
+        this.$message.error('You can only upload JPG file!')
+      }
+      const isLt2M = file.size / 1024 / 1024 < 2
+      if (!isLt2M) {
+        this.$message.error('Image must smaller than 2MB!')
+      }
+      return isJpgOrPng && isLt2M
+    },
+    //---------------------
+    handleSubmit(e) {
+      e.preventDefault()
+      this.form.validateFieldsAndScroll((err, values) => {
+        if (!err) {
+          console.log('Received values of form: ', values)
+        }
+      })
+    },
+    handleConfirmBlur(e) {
+      const value = e.target.value
+      this.confirmDirty = this.confirmDirty || !!value
+    },
+    compareToFirstPassword(rule, value, callback) {
+      const form = this.form
+      if (value && value !== form.getFieldValue('password')) {
+        callback('Two passwords that you enter is inconsistent!')
+      } else {
+        callback()
+      }
+    },
+    validateToNextPassword(rule, value, callback) {
+      const form = this.form
+      if (value && this.confirmDirty) {
+        form.validateFields(['confirm'], { force: true })
+      }
+      callback()
+    },
+    handleWebsiteChange(value) {
+      let autoCompleteResult
+      if (!value) {
+        autoCompleteResult = []
+      } else {
+        autoCompleteResult = ['.com', '.org', '.net'].map((domain) => `${value}${domain}`)
+      }
+      this.autoCompleteResult = autoCompleteResult
+    },
+  },
+}
+</script>
+
+<style>
+.input-itm {
+  width: 32px;
+  height: 100%;
+  display: table-column;
+  margin: 20px;
+ 
   
+}
 
-<style lang="less" scoped>
-  .ant-pro-basicLayout-content .ant-pro-page-header-wrap {
-    display: flex;
-  }
+/* 上传头像 */
+avatar-uploader > .ant-upload {
+  width: 128px;
+  height: 128px;
+}
+.ant-upload-select-picture-card i {
+  font-size: 32px;
+  color: #999;
+}
 
-  .ant-page-header {
-    padding: 10px;
-  }
-
-  .ant-card-head {
-    padding: 0;
-    margin-bottom: 0;
-  }
-
-  .ant-card-extra {
-    float: unset;
-    margin-left: unset;
-    writing-mode: vertical-lr;
-  }
-
-  .ant-card {
-    display: flex;
-  }
-
-  .ant-radio-button-wrapper {
-    height: unset;
-  }
-
-  .ant-list-split .ant-list-item {
-    border-bottom: unset;
-    border-right: 1px solid #e8e8e8;
-  }
-
-  .ant-list {
-    display: flex;
-  }
-
-  .ant-list-pagination {
-    writing-mode: vertical-lr;
-
-  }
-
-  .ant-avatar-lg {
-    width: 48px;
-    height: 48px;
-    line-height: 48px;
-  }
-
-  .list-content-item {
-    color: rgba(0, 0, 0, 0.45);
-    display: inline-block;
-    vertical-align: middle;
-    font-size: 14px;
-    margin-left: 40px;
-
-    span {
-      line-height: 20px
-    }
-
-    p {
-      margin-top: 4px;
-      margin-bottom: 0;
-      line-height: 22px;
-    }
-  }
+.ant-upload-select-picture-card .ant-upload-text {
+  margin-top: 8px;
+  color: #666;
+}
 </style>

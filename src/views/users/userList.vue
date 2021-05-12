@@ -1,5 +1,5 @@
 <template>
-  <div style="writing-mode: vertical-lr; height: 90%;">
+  <div style="writing-mode: vertical-lr; height: 90%">
     <div style="width: 80px; height: 100%">
       <a-space :size="25" direction="vertical" class="l-space">
         <p style="margin-bottom: -20px">ᠨᠡᠷ᠎ᠡ᠄</p>
@@ -8,7 +8,7 @@
         <input style="width: 32px; height: 150px; display: table-column; vertical-align: -webkit-baseline-middle" />
         <a-button class="editable-add-btn" @click="handleAdd" type="primary"> ᠬᠠᠢᠬᠤ </a-button>
         <a-button class="editable-add-btn" @click="handleAdd"> ᠠᠷᠢᠯᠭᠠᠬᠤ </a-button>
-        <a-button class="editable-add-btn" @click="handleAdd" icon="plus"> ᠨᠡᠮᠡᠬᠦ </a-button>
+        <a-button class="editable-add-btn" @click="handleUserAdd()" icon="plus"> ᠨᠡᠮᠡᠬᠦ </a-button>
       </a-space>
     </div>
 
@@ -48,7 +48,11 @@ const EditableCell = {
     return {
       value: this.text,
       editable: false,
+      uList: null,
     }
+  },
+  created() {
+    this.getUlist()
   },
   methods: {
     handleChange(e) {
@@ -109,6 +113,9 @@ export default {
     }
   },
   methods: {
+    handleUserAdd() {
+      this.$router.push({ name: 'userAdd' })
+    },
     onCellChange(key, dataIndex, value) {
       const dataSource = [...this.dataSource]
       const target = dataSource.find((item) => item.key === key)
