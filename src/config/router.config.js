@@ -89,32 +89,49 @@ export const asyncRouterMap = [
         meta: { title: 'ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ', keepAlive: true, icon: 'user',permission: ['user'] },
         hideChildrenInMenu: true,
         children: [
-      {
-        path: '/users/userList',
-        component: () => import('@/views/users/userList'),
-        name: 'userList',
-        meta: { title: 'ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ', icon: 'user' }
+          {
+            path: '/users/userList',
+            component: () => import('@/views/users/userList'),
+            name: 'userList',
+            meta: { title: 'ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ', icon: 'user' }
+          },
+          {
+            path: '/users/uEdit/',
+            component: () => import('@/views/users/uEdit'),
+            name: 'userEdit',
+            meta: {
+              title: 'ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠰᠢᠨᠡᠴᠢᠯᠡᠬᠦ'
+            },
+            hidden: true
+          },
+          {
+            path: '/users/uAdd/',
+            component: () => import('@/views/users/uAdd'),
+            name: 'userAdd',
+            meta: {
+              title: 'ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠨᠡᠮᠡᠬᠦ'
+            },
+            hidden: true
+          }
+        ]
       },
+      // 药品
       {
-        path: '/users/uEdit/',
-        component: () => import('@/views/users/uEdit'),
-        name: 'userEdit',
-        meta: {
-          title: 'ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠰᠢᠨᠡᠴᠢᠯᠡᠬᠦ'
-        },
-        hidden: true
+        path: '/drag',
+        component: RouteView,
+        name: 'Drag',
+        redirect: '/drag/list',
+        meta: { title: '药品', keepAlive: true, icon: 'user',permission: ['darg'] },
+        hideChildrenInMenu: true,
+        children: [
+          {
+            path: '/drag/list',
+            component: () => import('@/views/drag/List'),
+            name: 'DragList',
+            meta: { title: '药品列表', icon: 'user' }
+          }
+        ]
       },
-      {
-        path: '/users/uAdd/',
-        component: () => import('@/views/users/uAdd'),
-        name: 'userAdd',
-        meta: {
-          title: 'ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠨᠡᠮᠡᠬᠦ'
-        },
-        hidden: true
-      }
-    ]
-  },
 
       // dashboard
       {
