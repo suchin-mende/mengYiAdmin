@@ -1,6 +1,5 @@
 <template>
   <div style="writing-mode: vertical-lr; height: 90%">
-    
     <div style="width: 80px; height: 100%">
       <a-space :size="25" direction="vertical" class="l-space">
         <p style="margin-bottom: -20px">ᠨᠡᠷ᠎ᠡ᠄</p>
@@ -9,17 +8,62 @@
         <input style="width: 32px; height: 150px; display: table-column; vertical-align: -webkit-baseline-middle" />
         <a-button class="editable-add-btn" @click="handleAdd" type="primary"> ᠬᠠᠢᠬᠤ </a-button>
         <a-button class="editable-add-btn" @click="handleAdd"> ᠠᠷᠢᠯᠭᠠᠬᠤ </a-button>
-
-        <a-button class="editable-add-btn" @click="handleUserAdd()" icon="plus"> ᠨᠡᠮᠡᠬᠦ </a-button>
+        <div>
+          <!-- writing-mode: vertical-lr;
+               transform: rotate(90deg); -->
+          <a-button class="editable-add-btn" @click="showModal" icon="plus"> ᠨᠡᠮᠡᠬᠦ </a-button>
+          <a-modal
+            style="writing-mode: vertical-lr"
+            title="ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠨᠡᠮᠡᠬᠦ"
+            :visible="visible"
+            :confirm-loading="confirmLoading"
+            
+            @cancel="handleCancel"
+            :footer="null"
+            wrapClassName="se-wrapper"
+            height="250px"
+          >
+            <a-form style="width: 250px; display: grid" layout="inline" :form="form" @submit="handleSubmit">
+              <a-form-item :validate-status="userNameError() ? 'error' : ''" :help="userNameError() || ''">
+                <a-input
+                  style="width: 32px; height: 150px; display: table-column;z-index: 999;"
+                  v-decorator="['namecn', { rules: [{ required: true, message: ' ᠤᠪᠤᠭ ᠨᠡᠷ᠎ᠡ ᠪᠡᠨ ᠪᠢᠴᠢᠭᠡᠷᠠᠢ' }] }]"
+                  placeholder=" ᠨᠡᠷ᠎ᠡ "
+                >
+                  <!-- <a-icon slot="prefix" type="user" style="color: rgba(0, 0, 0, 0.25)" /> -->
+                </a-input>
+              </a-form-item>
+              <a-form-item :validate-status="passwordError() ? 'error' : ''" :help="passwordError() || ''">
+                <a-input
+                  style="width: 32px; height: 150px; display: table-column;z-index: 999;"
+                  v-decorator="['phonenum', { rules: [{ required: true, message: 'ᠤᠲᠠᠰᠤᠨ ᠨᠤᠮᠧᠷ ᠢᠡᠨ ᠪᠢᠴᠢᠭᠡᠷᠠᠢ ' }] }]"
+                  placeholder="ᠤᠲᠠᠰᠤᠨ ᠨᠤᠮᠧᠷ"
+                >
+                  <!-- <a-icon slot="prefix" type="lock" style="color: rgba(0, 0, 0, 0.25)" /> -->
+                </a-input>
+              </a-form-item>
+              <a-form-item style="transform: rotate(90deg); transform-origin: top left; z-index: 0">
+                <a-button
+                  style="bottom: 35px"
+                  type="primary"
+                  html-type="submit"
+                  :disabled="hasErrors(form.getFieldsError())"
+                >
+                  ᠨᠡᠮᠡᠬᠦ
+                </a-button>
+              </a-form-item>
+            </a-form>
+          </a-modal>
+        </div>
       </a-space>
     </div>
 
-    <a-table bordered :data-source="data" :columns="columns" row-key="userid">
+    <a-table bordered :data-source="data" :columns="columns" row-key="loginname">
       <template slot="name" slot-scope="text, record">
         <editable-cell :text="text" @change="onCellChange(record.key, 'name', $event)" />
       </template>
       <template slot="operation" slot-scope="text, record">
-        <a-popconfirm v-if="dataSource.length" title="Sure to delete?" @confirm="() => onDelete(record.key)">
+        <a-popconfirm v-if="data.length" title="Sure to delete?" @confirm="() => onDelete(record.key)">
           <a href="javascript:;">Delete</a>
         </a-popconfirm>
       </template>
@@ -27,6 +71,23 @@
   </div>
 </template>
 <script>
+//唯一id
+function uuid() {
+    var d = new Date().getTime();
+    if (window.performance && typeof window.performance.now === "function") {
+        d += performance.now(); //use high-precision timer if available
+    }
+    var uuid = 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = (d + Math.random() * 16) % 16 | 0;    // d是随机种子
+        d = Math.floor(d / 16);
+        return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+    return uuid;
+}
+
+function hasErrors(fieldsError) {
+  return Object.keys(fieldsError).some((field) => fieldsError[field])
+}
 const EditableCell = {
   template: `
       <div class="editable-cell">
@@ -67,14 +128,29 @@ const EditableCell = {
   },
 }
 import { uList } from '@/api/accounts'
-
+import { uSave } from '@/api/accounts'
 export default {
   components: {
     EditableCell,
-    
   },
   data() {
     return {
+      // 弹出表单
+      hasErrors,
+      form: this.$form.createForm(this, { name: 'horizontal_login' }),
+      ModalText: 'Content of the modal',
+      visible: false,
+      confirmLoading: false,
+
+      defData: {
+        deleteFlag: '0',
+        namemn: '',
+        nameother: '',
+        namez: '',
+        pwd: 'qweqwe',
+        username: '1',
+        revision: 1,
+      },
       data: [],
       uList: null,
       username: '',
@@ -95,7 +171,7 @@ export default {
         },
         {
           title: 'ᠤᠲᠠᠰᠤᠨ ᠨᠤᠮᠧᠷ',
-          dataIndex: 'identity',
+          dataIndex: 'phonenum',
         },
         {
           title: 'ᠬᠦᠳᠡᠯᠭᠡᠭᠡᠨ',
@@ -105,14 +181,30 @@ export default {
       ],
     }
   },
+  
+  // 弹出表单
+  mounted() {
+    this.$nextTick(() => {
+      // To disabled submit button at the beginning.
+      this.form.validateFields()
+    })
+  },
+
   created() {
     this.getUlist()
+    
+    
   },
   methods: {
+    saveUser(userData) {
+      uSave(userData).then((res) => {
+        console.log(res)
+      })
+    },
     getUlist() {
       uList({
         page: this.paginiation.current,
-        pageSize: 1,
+        pageSize: 10,
         username: '',
         loginname: '',
       }).then((res) => {
@@ -125,16 +217,12 @@ export default {
           ...this.paginiation,
           total: 100, //data.pageSize * data.totalPage
         }
-        console.log()
+        console.log("data-length:",data.records)
         // this.paginiation.total = data.pageSize * data.totalPage
       })
     },
     handlePageChange(p) {
       console.log(data)
-    },
-
-    handleUserAdd() {
-      this.$router.push({ name: 'userAdd' })
     },
     onCellChange(key, dataIndex, value) {
       const dataSource = [...this.dataSource]
@@ -159,10 +247,64 @@ export default {
       this.dataSource = [...dataSource, newData]
       this.count = count + 1
     },
+    // 弹出表单
+    showModal() {
+      this.visible = true
+    },
+    handleCancel(e) {
+      console.log('Clicked cancel button')
+      this.visible = false
+    },
+    userNameError() {
+      const { getFieldError, isFieldTouched } = this.form
+      return isFieldTouched('namecn') && getFieldError('namecn')
+    },
+    // Only show error after a field is touched.
+    passwordError() {
+      const { getFieldError, isFieldTouched } = this.form
+      return isFieldTouched('phonenum') && getFieldError('phonenum')
+    },
+    handleSubmit(e) {
+      e.preventDefault()
+      this.form.validateFields((err, values) => {
+        if (!err) {
+          console.log('Received values of form: ', values)
+          this.defData.namecn=values.namecn
+          this.defData.phonenum=values.phonenum
+          this.defData.loginname=uuid()
+          
+          
+
+
+          this.saveUser(this.defData)
+          this.form.validateFields()
+          this.visible = false
+          this.getUlist()
+
+          console.log("finsh")
+        }else{
+          console.log("error")
+          
+        }
+      })
+    },
   },
 }
 </script>
 <style>
+.se-wrapper .ant-modal {
+  left: 40vw;
+  top: 20vh;
+}
+.se-wrapper .ant-modal .ant-modal-body {
+  padding-top: 34px;
+}
+
+.se-wrapper .ant-modal .ant-modal-title {
+  font-size: 25px;
+  padding-top: 20px;
+}
+
 .l-space {
   display: flex;
   flex-direction: row;
