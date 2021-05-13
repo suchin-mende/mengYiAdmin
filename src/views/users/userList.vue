@@ -1,5 +1,6 @@
 <template>
   <div style="writing-mode: vertical-lr; height: 90%">
+    
     <div style="width: 80px; height: 100%">
       <a-space :size="25" direction="vertical" class="l-space">
         <p style="margin-bottom: -20px">ᠨᠡᠷ᠎ᠡ᠄</p>
@@ -8,11 +9,12 @@
         <input style="width: 32px; height: 150px; display: table-column; vertical-align: -webkit-baseline-middle" />
         <a-button class="editable-add-btn" @click="handleAdd" type="primary"> ᠬᠠᠢᠬᠤ </a-button>
         <a-button class="editable-add-btn" @click="handleAdd"> ᠠᠷᠢᠯᠭᠠᠬᠤ </a-button>
+
         <a-button class="editable-add-btn" @click="handleUserAdd()" icon="plus"> ᠨᠡᠮᠡᠬᠦ </a-button>
       </a-space>
     </div>
 
-    <a-table bordered :data-source="dataSource" :columns="columns">
+    <a-table bordered :data-source="data" :columns="columns" row-key="userid">
       <template slot="name" slot-scope="text, record">
         <editable-cell :text="text" @change="onCellChange(record.key, 'name', $event)" />
       </template>
@@ -48,11 +50,7 @@ const EditableCell = {
     return {
       value: this.text,
       editable: false,
-      uList: null,
     }
-  },
-  created() {
-    this.getUlist()
   },
   methods: {
     handleChange(e) {
@@ -68,41 +66,36 @@ const EditableCell = {
     },
   },
 }
+import { uList } from '@/api/accounts'
+
 export default {
   components: {
     EditableCell,
+    
   },
   data() {
     return {
-      dataSource: [
-        {
-          key: '0',
-          name: 'Edward King 0',
-          age: '32',
-          address: 'London, Park Lane no. 0',
-        },
-        {
-          key: '1',
-          name: 'Edward King 1',
-          age: '32',
-          address: 'London, Park Lane no. 1',
-        },
-      ],
+      data: [],
+      uList: null,
+      username: '',
+      phonenum: '',
+      longintype: '',
+      deleteFlag: '',
+      paginiation: {
+        current: 1,
+        total: 0,
+      },
       count: 2,
       columns: [
         {
           title: 'ᠨᠡᠷ᠎ᠡ',
-          dataIndex: 'name',
+          dataIndex: 'namecn',
           width: '30%',
-          scopedSlots: { customRender: 'name' },
+          scopedSlots: { customRender: 'namecn' },
         },
         {
           title: 'ᠤᠲᠠᠰᠤᠨ ᠨᠤᠮᠧᠷ',
-          dataIndex: 'age',
-        },
-        {
-          title: 'ᠳᠦᠷᠢ',
-          dataIndex: 'address',
+          dataIndex: 'identity',
         },
         {
           title: 'ᠬᠦᠳᠡᠯᠭᠡᠭᠡᠨ',
@@ -112,7 +105,34 @@ export default {
       ],
     }
   },
+  created() {
+    this.getUlist()
+  },
   methods: {
+    getUlist() {
+      uList({
+        page: this.paginiation.current,
+        pageSize: 1,
+        username: '',
+        loginname: '',
+      }).then((res) => {
+        console.log(res)
+        const { data } = res
+
+        this.data = data.rows
+        console.log(data.pageSize * data.totalPage)
+        this.paginiation = {
+          ...this.paginiation,
+          total: 100, //data.pageSize * data.totalPage
+        }
+        console.log()
+        // this.paginiation.total = data.pageSize * data.totalPage
+      })
+    },
+    handlePageChange(p) {
+      console.log(data)
+    },
+
     handleUserAdd() {
       this.$router.push({ name: 'userAdd' })
     },
