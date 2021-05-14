@@ -23,10 +23,10 @@
               >
                 <div class="add-form">
                   <div class="fields">
-                    <a-input placeholder="ᠨᠡᠷ᠎ᠡ" v-model="key" />
+                    <a-input placeholder="ᠨᠡᠷ᠎ᠡ" v-model="addNamecn" />
                   </div>
                   <div class="fields">
-                    <a-input placeholder="ᠤᠲᠠᠰᠤᠨ ᠨᠤᠮᠧᠷ" v-model="key" />
+                    <a-input placeholder="ᠤᠲᠠᠰᠤᠨ ᠨᠤᠮᠧᠷ" v-model="addPhonenum" />
                   </div>
                 </div>
               </a-modal>
@@ -79,6 +79,8 @@ export default {
       ModalText: 'Content of the modal',
       visible: false,
       confirmLoading: false,
+      addNamecn:'',
+      addPhonenum:'',
       key: '',
       phonenum: '',
       data: [],
