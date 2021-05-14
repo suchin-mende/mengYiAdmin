@@ -121,26 +121,26 @@ export const asyncRouterMap = [
         component: RouteView,
         name: 'Drug',
         redirect: '/drug/list',
-        meta: { title: '药品', keepAlive: true, icon: 'user',permission: ['drug'] },
+        meta: { title: 'ᠡᠮ', keepAlive: true, icon: 'user',permission: ['drug'] },
         hideChildrenInMenu: true,
         children: [
           {
             path: '/drug/list',
             component: () => import('@/views/drug/List'),
             name: 'DrugList',
-            meta: { title: '药品列表' }
+            meta: { title: 'ᠡᠮ ᠢᠨ ᠵᠢᠭᠰᠠᠭᠠᠯ' }
           },
           {
             path: '/drug/detail/:id',
             component: () => import('@/views/drug/Detail'),
             name: 'DrugDetail',
-            meta: { title: '药品详情' }
+            meta: { title: 'ᠡᠮ ᠢᠨ ᠨᠠᠷᠢᠨ ᠪᠠᠢᠳᠠᠯ' }
           },
           {
             path: '/drug/edit/:id?',
             component: () => import('@/views/drug/Edit'),
             name: 'DrugEdit',
-            meta: { title: '编辑药品' }
+            meta: { title: 'ᠡᠮᠳᠤ ᠪᠤᠳᠠᠰ ᠲᠤ ᠵᠠᠰᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ' }
           }          
         ]
       },

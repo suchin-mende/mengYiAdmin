@@ -11,7 +11,9 @@ body,
   font-family: 'MQG8200';
 
 }
-
+.ant-pro-sider-menu-logo svg {
+  display: none;
+}
 .colorWeak {
   filter: invert(80%);
 }
@@ -131,7 +133,7 @@ ol {
 }
 
 :root {
-  --default-column-height-table-mgl: 200px;
+  --default-column-height-table-mgl: 368px;
 }
 
 .ant-pro-basicLayout-content .ant-pro-page-header-wrap {
@@ -204,6 +206,7 @@ html.mgl {
     width: 32px;
     height: auto;
     padding: 15px 0;
+    margin-bottom: 20px;
     span {
       writing-mode: vertical-lr;
       margin: 0 auto;
@@ -229,7 +232,7 @@ html.mgl {
     .ant-table-body {
       overflow-x: auto;
       width: calc(100% - 80px);
-
+      margin-top: 20px;
       table {
         display: flex;
       }
@@ -307,7 +310,7 @@ html.mgl {
       .ant-form-item-label {
         writing-mode: vertical-lr;
         width: 100%;
-        height: 100px;
+        height: 120px;
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -357,7 +360,7 @@ html.mgl {
         writing-mode: vertical-lr;
         .ant-input {
           width: 32px;
-          height: 150px;
+          height: 485px;
           display: table-column;
         }
       }
