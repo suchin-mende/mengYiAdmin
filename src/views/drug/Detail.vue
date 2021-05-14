@@ -2,19 +2,19 @@
   <page-header-wrapper>
     <template v-slot:content>
       <a-descriptions :column="1">
-        <a-descriptions-item label="别名">{{ drug.namem }}</a-descriptions-item>
-        <a-descriptions-item label="来源">{{ drug.source }}</a-descriptions-item>
-        <a-descriptions-item label="五元">{{ drug.five }}</a-descriptions-item>
-        <a-descriptions-item label="六味">{{ drug.sixTaste }}</a-descriptions-item>
-        <a-descriptions-item label="药性">{{ drug.drugProperty }}</a-descriptions-item>
-        <a-descriptions-item label="药力">{{ drug.drugPower }}</a-descriptions-item>
-        <a-descriptions-item label="分解药味">{{ drug.decomposedTaste }}</a-descriptions-item>
-        <a-descriptions-item label="十七功效">{{ drug.seventeenEffect }}</a-descriptions-item>
-        <a-descriptions-item label="分解功效">{{ drug.decomEffect }}</a-descriptions-item>
-        <a-descriptions-item label="本质功效">{{ drug.baseEffect }}</a-descriptions-item>
-        <a-descriptions-item label="主治疾病">{{ drug.baseFix }}</a-descriptions-item>
-        <a-descriptions-item label="功效类别">{{ drug.effectCat }}</a-descriptions-item>
-        <a-descriptions-item label="作用方式">{{ drug.actionMode }}</a-descriptions-item>
+        <a-descriptions-item label="ᠥᠭᠡᠷᠡ ᠨᠡᠷᠡ">{{ drug.namem }}</a-descriptions-item>
+        <a-descriptions-item label="ᠢᠷᠡᠯᠳᠡ">{{ drug.source }}</a-descriptions-item>
+        <a-descriptions-item label="ᠲᠠᠪᠤᠨ ᠮᠠᠬᠠᠪᠤᠳ">{{ drug.five }}</a-descriptions-item>
+        <a-descriptions-item label="ᠵᠢᠷᠭᠤᠭᠠᠨ ᠠᠮᠳᠠ">{{ drug.sixTaste }}</a-descriptions-item>
+        <a-descriptions-item label="ᠡᠮ ᠢᠨ ᠴᠢᠨᠠᠷ">{{ drug.drugProperty }}</a-descriptions-item>
+        <a-descriptions-item label="ᠡᠮ ᠢᠨ ᠴᠢᠳᠠᠯ">{{ drug.drugPower }}</a-descriptions-item>
+        <a-descriptions-item label="ᠡᠮ ᠢᠨ ᠠᠮᠳᠠ ᠢᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ">{{ drug.decomposedTaste }}</a-descriptions-item>
+        <a-descriptions-item label="ᠠᠷᠪᠠᠨ ᠳᠤᠯᠤᠭᠠᠨ ᠴᠢᠳᠠᠯ">{{ drug.seventeenEffect }}</a-descriptions-item>
+        <a-descriptions-item label="ᠡᠮ ᠢᠨ ᠴᠢᠳᠠᠯ ᠢᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ">{{ drug.decomEffect }}</a-descriptions-item>
+        <a-descriptions-item label="ᠡᠮ ᠢᠨ ᠴᠢᠳᠠᠯ ᠢᠨ ᠬᠡᠪ ᠴᠢᠨᠠᠷ">{{ drug.baseEffect }}</a-descriptions-item>
+        <a-descriptions-item label="ᠭᠤᠤᠯᠯᠠᠨ ᠵᠠᠰᠠᠬᠤ ᠡᠪᠡᠳᠴᠢᠨ">{{ drug.baseFix }}</a-descriptions-item>
+        <a-descriptions-item label="ᠴᠢᠳᠠᠯ ᠢᠨ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.effectCat }}</a-descriptions-item>
+        <a-descriptions-item label="ᠦᠢᠯᠡᠳᠦᠯ ᠦᠵᠡᠭᠦᠯᠬᠦ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.actionMode }}</a-descriptions-item>
         <a-descriptions-item>
           <a-button type="primary">修改</a-button>
         </a-descriptions-item>

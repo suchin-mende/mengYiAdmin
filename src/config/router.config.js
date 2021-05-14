@@ -134,13 +134,13 @@ export const asyncRouterMap = [
             path: '/drug/detail/:id',
             component: () => import('@/views/drug/Detail'),
             name: 'DrugDetail',
-            meta: { title: '药品详情' }
+            meta: { title: 'ᠡᠮ ᠢᠨ ᠨᠠᠷᠢᠨ ᠪᠠᠢᠳᠠᠯ' }
           },
           {
             path: '/drug/edit/:id?',
             component: () => import('@/views/drug/Edit'),
             name: 'DrugEdit',
-            meta: { title: '编辑药品' }
+            meta: { title: 'ᠡᠮᠳᠤ ᠪᠤᠳᠠᠰ ᠲᠤ ᠵᠠᠰᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ' }
           }          
         ]
       },
