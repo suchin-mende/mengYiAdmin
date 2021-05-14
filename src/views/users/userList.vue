@@ -1,283 +1,367 @@
 <template>
-  <page-header-wrapper>
-    <!--<a-card :bordered="false">
-      <a-row>
-        <a-col :sm="8" :xs="24">
-          <info title="我的待办" value="8个任务" :bordered="true" />
-        </a-col>
-        <a-col :sm="8" :xs="24">
-          <info title="本周任务平均处理时间" value="32分钟" :bordered="true" />
-        </a-col>
-        <a-col :sm="8" :xs="24">
-          <info title="本周完成任务数" value="24个" />
-        </a-col>
-      </a-row>
-    </a-card>
+  <div style="writing-mode: vertical-lr; height: 90%">
+    <div style="width: 80px; height: 100%">
+      <a-space :size="25" direction="vertical" class="l-space">
+        <p style="margin-bottom: -20px">ᠨᠡᠷ᠎ᠡ᠄</p>
+        <input style="width: 32px; height: 150px; display: table-column; vertical-align: -webkit-baseline-middle" />
+        <p style="margin-bottom: -20px">ᠤᠲᠠᠰᠤᠨ ᠨᠤᠮᠧᠷ᠄</p>
+        <input style="width: 32px; height: 150px; display: table-column; vertical-align: -webkit-baseline-middle" />
+        <a-button class="editable-add-btn" @click="handleAdd" type="primary"> ᠬᠠᠢᠬᠤ </a-button>
+        <a-button class="editable-add-btn" @click="handleAdd"> ᠠᠷᠢᠯᠭᠠᠬᠤ </a-button>
+        <div>
+          <!-- writing-mode: vertical-lr;
+               transform: rotate(90deg); -->
+          <a-button class="editable-add-btn" @click="showModal" icon="plus"> ᠨᠡᠮᠡᠬᠦ </a-button>
+          <a-modal
+            style="writing-mode: vertical-lr"
+            title="ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠨᠡᠮᠡᠬᠦ"
+            :visible="visible"
+            :confirm-loading="confirmLoading"
+            
+            @cancel="handleCancel"
+            :footer="null"
+            wrapClassName="se-wrapper"
+            height="250px"
+          >
+            <a-form style="width: 250px; display: grid" layout="inline" :form="form" @submit="handleSubmit">
+              <a-form-item :validate-status="userNameError() ? 'error' : ''" :help="userNameError() || ''">
+                <a-input
+                  style="width: 32px; height: 150px; display: table-column;z-index: 999;"
+                  v-decorator="['namecn', { rules: [{ required: true, message: ' ᠤᠪᠤᠭ ᠨᠡᠷ᠎ᠡ ᠪᠡᠨ ᠪᠢᠴᠢᠭᠡᠷᠠᠢ' }] }]"
+                  placeholder=" ᠨᠡᠷ᠎ᠡ "
+                >
+                  <!-- <a-icon slot="prefix" type="user" style="color: rgba(0, 0, 0, 0.25)" /> -->
+                </a-input>
+              </a-form-item>
+              <a-form-item :validate-status="passwordError() ? 'error' : ''" :help="passwordError() || ''">
+                <a-input
+                  style="width: 32px; height: 150px; display: table-column;z-index: 999;"
+                  v-decorator="['phonenum', { rules: [{ required: true, message: 'ᠤᠲᠠᠰᠤᠨ ᠨᠤᠮᠧᠷ ᠢᠡᠨ ᠪᠢᠴᠢᠭᠡᠷᠠᠢ ' }] }]"
+                  placeholder="ᠤᠲᠠᠰᠤᠨ ᠨᠤᠮᠧᠷ"
+                >
+                  <!-- <a-icon slot="prefix" type="lock" style="color: rgba(0, 0, 0, 0.25)" /> -->
+                </a-input>
+              </a-form-item>
+              <a-form-item style="transform: rotate(90deg); transform-origin: top left; z-index: 0">
+                <a-button
+                  style="bottom: 35px"
+                  type="primary"
+                  html-type="submit"
+                  :disabled="hasErrors(form.getFieldsError())"
+                >
+                  ᠨᠡᠮᠡᠬᠦ
+                </a-button>
+              </a-form-item>
+            </a-form>
+          </a-modal>
+        </div>
+      </a-space>
+    </div>
 
-    <a-card :bordered="false">
-      <div slot="extra">
-        <a-radio-group v-model="status">
-          <a-radio-button value="all"> ᠨᠢᠭᠡ </a-radio-button>
-          <a-radio-button value="processing"> ᠨᠢᠭᠡ ᠡᠭᠦᠯᠡᠨ ᠨᠠᠢᠷᠠᠭᠤᠯᠤᠭᠴᠢ </a-radio-button>
-          <a-radio-button value="waiting">ᠡᠭᠦᠯᠡᠨ ᠨᠠᠢᠷᠠᠭᠤᠯᠤᠭᠴᠢ</a-radio-button>
-        </a-radio-group>
-        
-      </div>
-
-      <div class="operate">
-        <a-button type="dashed" style="width: 100%" icon="plus" @click="add">添加</a-button>
-      </div>
-
-      <a-list size="large" :pagination="{ showSizeChanger: true, showQuickJumper: true, pageSize: 5, total: 50 }">
-        <a-list-item :key="index" v-for="(item, index) in data">
-          <a-list-item-meta>
-            <a slot="title">{{ item.title }}</a>
-          </a-list-item-meta>
-          <div slot="actions">
-            <a @click="edit(item)">ᠨᠠᠢᠷᠠᠭᠤᠯᠤᠭᠴᠢ</a>
-          </div>
-          <div slot="actions">
-            <a-dropdown>
-              <a-menu slot="overlay">
-                <a-menu-item><a> ᠨᠢᠭᠡ </a></a-menu-item>
-                <a-menu-item><a> ᠨᠢᠭᠡ </a></a-menu-item>
-              </a-menu>
-              <a>
-                ᠨᠢᠭᠡ
-                <a-icon type="down" />
-              </a>
-            </a-dropdown>
-          </div>
-          <div class="list-content">
-            <div class="list-content-item">
-              <p>{{ item.owner }}</p>
-            </div>
-            <div class="list-content-item">
-              <p>{{ item.startAt }}</p>
-            </div>
-            <div class="list-content-item">
-              <a-progress :percent="item.progress.value"
-                :status="!item.progress.status ? null : item.progress.status" />
-            </div>
-          </div>
-        </a-list-item>
-      </a-list>
-    </a-card> -->
-    <a-col :md="8" :sm="24">
-      <a-form-item label=" ᠨᠡᠷ᠎ᠡ">
-        <a-input placeholder=" ᠨᠡᠷ᠎ᠡ"/>
-      </a-form-item>
-    </a-col>
-    <a-col :md="8" :sm="24">
-      <a-form-item label=" ᠤᠲᠠᠰᠤᠨ ᠳ᠋ᠤᠭᠠᠷ">
-        <a-input placeholder=" ᠤᠲᠠᠰᠤᠨ ᠳ᠋ᠤᠭᠠᠷ"/>
-      </a-form-item>
-    </a-col>
-    <a-button type="primary"> ᠬᠠᠢᠬᠤ</a-button>
-    <a-button style="margin-left: 8px"> ᠴᠡᠪᠡᠷᠯᠡᠬᠦ</a-button>
-    <a-button type="primary" icon="plus" @click="handleUserAdd()"> ᠰᠢᠨ᠎ᠡ ᠪᠡᠷ ᠨᠡᠮᠡᠬᠦ</a-button>
-    <a-table
-      row-key="userid"
-      :columns="columns"
-      :data-source="data"
-      :paginiation="paginiation"
-      @change="handlePageChange"
-    >
-      <a slot="name" slot-scope="text">{{ text }}</a>
+    <a-table bordered :data-source="data" :columns="columns" row-key="loginname">
+      <template slot="name" slot-scope="text, record">
+        <editable-cell :text="text" @change="onCellChange(record.key, 'name', $event)" />
+      </template>
+      <template slot="operation" slot-scope="text, record">
+        <a-popconfirm v-if="data.length" title="Sure to delete?" @confirm="() => onDelete(record.key)">
+          <a href="javascript:;">Delete</a>
+        </a-popconfirm>
+      </template>
     </a-table>
-
-
-  </page-header-wrapper>
+  </div>
 </template>
-
 <script>
-  // 演示如何使用 this.$dialog 封装 modal 组件
-  import {uList} from '@/api/accounts'
-
-  const columns = [
-    {
-      title: 'User Name',
-      dataIndex: 'username'
-    },
-    {
-      title: 'Phone Num',
-      dataIndex: 'phonenum'
+//唯一id
+function uuid() {
+    var d = new Date().getTime();
+    if (window.performance && typeof window.performance.now === "function") {
+        d += performance.now(); //use high-precision timer if available
     }
-    ,{
-      title: 'Login Type',
-      dataIndex: 'longintype'
-    },
-    {
-      title: 'operation',
-      dataIndex: 'deleteFlag'
+    var uuid = 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = (d + Math.random() * 16) % 16 | 0;    // d是随机种子
+        d = Math.floor(d / 16);
+        return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+    return uuid;
+}
+
+function hasErrors(fieldsError) {
+  return Object.keys(fieldsError).some((field) => fieldsError[field])
+}
+const EditableCell = {
+  template: `
+      <div class="editable-cell">
+        <div v-if="editable" class="editable-cell-input-wrapper">
+          <a-input :value="value" @change="handleChange" @pressEnter="check" /><a-icon
+            type="check"
+            class="editable-cell-icon-check"
+            @click="check"
+          />
+        </div>
+        <div v-else class="editable-cell-text-wrapper">
+          {{ value || ' ' }}
+          <a-icon type="edit" class="editable-cell-icon" @click="edit" />
+        </div>
+      </div>
+    `,
+  props: {
+    text: String,
+  },
+  data() {
+    return {
+      value: this.text,
+      editable: false,
     }
-  ];
+  },
+  methods: {
+    handleChange(e) {
+      const value = e.target.value
+      this.value = value
+    },
+    check() {
+      this.editable = false
+      this.$emit('change', this.value)
+    },
+    edit() {
+      this.editable = true
+    },
+  },
+}
+import { uList } from '@/api/accounts'
+import { uSave } from '@/api/accounts'
+export default {
+  components: {
+    EditableCell,
+  },
+  data() {
+    return {
+      // 弹出表单
+      hasErrors,
+      form: this.$form.createForm(this, { name: 'horizontal_login' }),
+      ModalText: 'Content of the modal',
+      visible: false,
+      confirmLoading: false,
 
-  export default {
-    data() {
-      return {
-        data: [],
-        columns,
+      defData: {
+        deleteFlag: '0',
+        namemn: '',
+        nameother: '',
+        namez: '',
+        pwd: 'qweqwe',
+        username: '1',
+        revision: 1,
+      },
+      data: [],
+      uList: null,
+      username: '',
+      phonenum: '',
+      longintype: '',
+      deleteFlag: '',
+      paginiation: {
+        current: 1,
+        total: 0,
+      },
+      count: 2,
+      columns: [
+        {
+          title: 'ᠨᠡᠷ᠎ᠡ',
+          dataIndex: 'namecn',
+          width: '30%',
+          scopedSlots: { customRender: 'namecn' },
+        },
+        {
+          title: 'ᠤᠲᠠᠰᠤᠨ ᠨᠤᠮᠧᠷ',
+          dataIndex: 'phonenum',
+        },
+        {
+          title: 'ᠬᠦᠳᠡᠯᠭᠡᠭᠡᠨ',
+          dataIndex: 'operation',
+          scopedSlots: { customRender: 'operation' },
+        },
+      ],
+    }
+  },
+  
+  // 弹出表单
+  mounted() {
+    this.$nextTick(() => {
+      // To disabled submit button at the beginning.
+      this.form.validateFields()
+    })
+  },
 
-        uList: null,
+  created() {
+    this.getUlist()
+    
+    
+  },
+  methods: {
+    saveUser(userData) {
+      uSave(userData).then((res) => {
+        console.log(res)
+      })
+    },
+    getUlist() {
+      uList({
+        page: this.paginiation.current,
+        pageSize: 10,
         username: '',
-        phonenum: '',
-        longintype:'',
-        deleteFlag:'',
-        paginiation: {
-          current: 1,
-          total: 0
-        }
-      };
-    },
-    created() {
-      this.getUlist();
-      // console.log('-------1')
-      // console.log(this.getUlist())
-    },
+        loginname: '',
+      }).then((res) => {
+        console.log(res)
+        const { data } = res
 
-    methods: {
-      getUlist() {
-        uList({
-          page: this.paginiation.current,
-          pageSize: 1,
-          username: '',
-          loginname: ''
-        })
-          .then(res => {
-            console.log('-------2')
-            console.log(res)
-            const { data } = res
-            this.data = data.rows
-            console.log(data.pageSize * data.totalPage)
-            this.paginiation = {
-              ...this.paginiation,
-              total: 100//data.pageSize * data.totalPage
-            }
-            // this.paginiation.total = data.pageSize * data.totalPage
-          })
-      },
-      handlePageChange(p) {
-        console.log(data)
-      },
-
-/*
-      onSearch() {
-      this.$refs.ruleForm.validate(valid => {
-        if (!valid) {
-          return false
+        this.data = data.rows
+        console.log(data.pageSize * data.totalPage)
+        this.paginiation = {
+          ...this.paginiation,
+          total: 100, //data.pageSize * data.totalPage
         }
-        this.pageNo = 1
-        this.findList()
+        console.log("data-length:",data.records)
+        // this.paginiation.total = data.pageSize * data.totalPage
       })
     },
-*/
-    /** 新增目录 */
-
-    handleUserAdd() {
-      this.$router.push({ name: 'userAdd' })
+    handlePageChange(p) {
+      console.log(data)
     },
-
-    /** 编辑目录 */
-/*
-    handleEditBlock(idx, row) {
-      this.$router.push({ name: 'blockEdit', params: {
-        projectId: row.projectId,
-        blockId: row.blockId
+    onCellChange(key, dataIndex, value) {
+      const dataSource = [...this.dataSource]
+      const target = dataSource.find((item) => item.key === key)
+      if (target) {
+        target[dataIndex] = value
+        this.dataSource = dataSource
       }
+    },
+    onDelete(key) {
+      const dataSource = [...this.dataSource]
+      this.dataSource = dataSource.filter((item) => item.key !== key)
+    },
+    handleAdd() {
+      const { count, dataSource } = this
+      const newData = {
+        key: count,
+        name: `Edward King ${count}`,
+        age: 32,
+        address: `London, Park Lane no. ${count}`,
+      }
+      this.dataSource = [...dataSource, newData]
+      this.count = count + 1
+    },
+    // 弹出表单
+    showModal() {
+      this.visible = true
+    },
+    handleCancel(e) {
+      console.log('Clicked cancel button')
+      this.visible = false
+    },
+    userNameError() {
+      const { getFieldError, isFieldTouched } = this.form
+      return isFieldTouched('namecn') && getFieldError('namecn')
+    },
+    // Only show error after a field is touched.
+    passwordError() {
+      const { getFieldError, isFieldTouched } = this.form
+      return isFieldTouched('phonenum') && getFieldError('phonenum')
+    },
+    handleSubmit(e) {
+      e.preventDefault()
+      this.form.validateFields((err, values) => {
+        if (!err) {
+          console.log('Received values of form: ', values)
+          this.defData.namecn=values.namecn
+          this.defData.phonenum=values.phonenum
+          this.defData.loginname=uuid()
+          
+          
+
+
+          this.saveUser(this.defData)
+          this.form.validateFields()
+          this.visible = false
+          this.getUlist()
+
+          console.log("finsh")
+        }else{
+          console.log("error")
+          
+        }
       })
     },
-*/
-    /** 删除目录 */
-/*
-    handleDelBlock(idx, row) {
-      this.$confirm('确定要删除此目录吗?', '警告', {
-        confirmButtonText: '确认',
-        cancelButtonText: '返回',
-        type: 'warning'
-      })
-        .then(async() => {
-          await blockDel(row.blockId)
-          this.findList()
-          this.$message({
-            type: 'success',
-            message: '此目录删除成功!'
-          })
-        })
-        .catch((err) => {
-          console.error(err)
-        })
-    },
-*/
-    }
-
-  }
-
+  },
+}
 </script>
+<style>
+.se-wrapper .ant-modal {
+  left: 40vw;
+  top: 20vh;
+}
+.se-wrapper .ant-modal .ant-modal-body {
+  padding-top: 34px;
+}
 
-<style lang="less" scoped>
-  .ant-pro-basicLayout-content .ant-pro-page-header-wrap {
-    display: flex;
-  }
+.se-wrapper .ant-modal .ant-modal-title {
+  font-size: 25px;
+  padding-top: 20px;
+}
 
-  .ant-page-header {
-    padding: 10px;
-  }
+.l-space {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 25px;
+  text-align: inherit;
+}
+.s {
+  writing-mode: vertical-lr;
+  transform: rotate(90deg);
+}
+.editable-cell {
+  position: relative;
+}
 
-  .ant-card-head {
-    padding: 0;
-    margin-bottom: 0;
-  }
+.editable-cell-input-wrapper,
+.editable-cell-text-wrapper {
+  padding-right: 24px;
+}
 
-  .ant-card-extra {
-    float: unset;
-    margin-left: unset;
-    writing-mode: vertical-lr;
-  }
+.editable-cell-text-wrapper {
+  padding: 5px 24px 5px 5px;
+}
 
-  .ant-card {
-    display: flex;
-  }
+.editable-cell-icon,
+.editable-cell-icon-check {
+  position: absolute;
+  right: 0;
+  width: 20px;
+  cursor: pointer;
+}
 
-  .ant-radio-button-wrapper {
-    height: unset;
-  }
+.editable-cell-icon {
+  line-height: 18px;
+  display: none;
+}
 
-  .ant-list-split .ant-list-item {
-    border-bottom: unset;
-    border-right: 1px solid #e8e8e8;
-  }
+.editable-cell-icon-check {
+  line-height: 28px;
+}
 
-  .ant-list {
-    display: flex;
-  }
+.editable-cell:hover .editable-cell-icon {
+  display: inline-block;
+}
 
-  .ant-list-pagination {
-    writing-mode: vertical-lr;
+.editable-cell-icon:hover,
+.editable-cell-icon-check:hover {
+  color: #108ee9;
+}
 
-  }
-
-  .ant-avatar-lg {
-    width: 48px;
-    height: 48px;
-    line-height: 48px;
-  }
-
-  .list-content-item {
-    color: rgba(0, 0, 0, 0.45);
-    display: inline-block;
-    vertical-align: middle;
-    font-size: 14px;
-    margin-left: 40px;
-
-    span {
-      line-height: 20px
-    }
-
-    p {
-      margin-top: 4px;
-      margin-bottom: 0;
-      line-height: 22px;
-    }
-  }
+.editable-add-btn {
+  transform: rotate(90deg);
+  margin: 15px 0px;
+  font-size: 20px;
+  padding: 0px 8px;
+  width: 75px;
+  height: 32px;
+  /* transform: rotate(90deg);transform-origin: top left; */
+}
 </style>
