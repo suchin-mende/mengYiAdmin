@@ -104,15 +104,6 @@ export const asyncRouterMap = [
             },
             hidden: true
           },
-          {
-            path: '/users/uAdd/',
-            component: () => import('@/views/users/uAdd'),
-            name: 'userAdd',
-            meta: {
-              title: 'ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠨᠡᠮᠡᠬᠦ'
-            },
-            hidden: true
-          }
         ]
       },
       // 药品
