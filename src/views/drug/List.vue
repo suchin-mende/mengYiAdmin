@@ -7,8 +7,9 @@
             <a-input placeholder="请输入药品名称" v-model="key"/>
           </div>
           <div class="actions">
-            <a-button type="primary" @click="handleKeySearch">查询</a-button>
+            <a-button type="danger" @click="handleKeySearch">查询</a-button>
             <a-button type="danger" @click="handleReset">重置</a-button>
+            <a-button type="primary" @click="handleCreate">新建</a-button>
           </div>
         </div>
       </div>
@@ -24,8 +25,10 @@
           <template
             slot="actions"
             slot-scope="text">
-            <a-button type="link" @click="handleTest(text)">xx</a-button>
-          </template>          
+            <a-button type="link" size="small" @click="handleDetail(text)">详情</a-button>
+            <a-button type="link" size="small" @click="handleTest(text)">修改</a-button>
+            <a-button type="link" size="small" @click="handleTest(text)">删除</a-button>
+          </template>
         </a-table>
       </div>
     </div>
@@ -34,8 +37,8 @@
 
 <script>
 import {
-  dragList
-} from '@/api/drag'
+  drugList
+} from '@/api/drug'
 
 const columns = [
   {
@@ -73,7 +76,7 @@ export default {
       this.isLoading = true
       const page = (params && params.current) || this.pagination.current
       console.log(page)
-      dragList({
+      drugList({
         page: page,
         pageSize: this.pagination.pageSize,
         drugName: this.key || null
@@ -102,8 +105,18 @@ export default {
       this.key = ''
       this.handleKeySearch()
     },
-    handleTest (id) {
-      alert(id)
+    handleDetail (id) {
+      this.$router.push({
+        name: 'DrugDetail',
+        params: {
+          id: id
+        }
+      })
+    },
+    handleCreate () {
+      this.$router.push({
+        name: 'DrugEdit'
+      })
     }
   }
 }

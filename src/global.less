@@ -131,7 +131,7 @@ ol {
 }
 
 :root {
-  --default-column-height-table-mgl: 180px;
+  --default-column-height-table-mgl: 200px;
 }
 
 .ant-pro-basicLayout-content .ant-pro-page-header-wrap {
@@ -200,6 +200,16 @@ ol {
 }
 
 html.mgl {
+  .ant-btn {
+    width: 32px;
+    height: auto;
+    padding: 15px 0;
+    span {
+      writing-mode: vertical-lr;
+      margin: 0 auto;
+      display: block;
+    }
+  }
   .ant-pro-basicLayout-children-content-wrap {
     height: 100%;
     .ant-pro-grid-content {
@@ -286,6 +296,52 @@ html.mgl {
     right: -5%;
     transform: rotate(90deg);
   }
+
+  .ant-form {
+    display: flex;
+
+    .ant-form-item {
+      text-align: center;
+      margin: 0 18px 0;
+
+      .ant-form-item-label {
+        writing-mode: vertical-lr;
+        width: 100%;
+        height: 100px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        label {
+          word-break: break-all;
+          white-space: break-spaces;
+          line-height: 14px;
+          &.ant-form-item-required::before {
+            margin-right: 0;
+            margin-bottom: 4px;
+          }
+        }
+      }
+      .ant-form-item-control-wrapper {
+        margin-top: 15px;
+        .ant-form-item-control {
+          .ant-form-item-children {
+            writing-mode: vertical-lr;
+          }
+          .ant-form-explain {
+            writing-mode: vertical-lr;
+            width: 100%;
+            display: flex;
+            align-items: center
+          }
+        }
+        .ant-input {
+          width: 39px;
+          height: 180px;
+          display: table-column;
+        }
+      }
+    }
+  }
 }
 // mgl layout
 .page-inner-mgl {
@@ -321,15 +377,8 @@ html.mgl {
   .content-right {
     width: 100%;
   }
+}
 
-  .ant-btn {
-    width: 32px;
-    height: auto;
-    padding: 15px 0;
-    span {
-      writing-mode: vertical-lr;
-      margin: 0 auto;
-      display: block;
-    }
-  }
+.ant-btn-link:active, .ant-btn-link:focus, .ant-btn-link:hover {
+  border-color: transparent !important;
 }
