@@ -117,19 +117,31 @@ export const asyncRouterMap = [
       },
       // 药品
       {
-        path: '/drag',
+        path: '/drug',
         component: RouteView,
-        name: 'Drag',
-        redirect: '/drag/list',
-        meta: { title: '药品', keepAlive: true, icon: 'user',permission: ['darg'] },
+        name: 'Drug',
+        redirect: '/drug/list',
+        meta: { title: '药品', keepAlive: true, icon: 'user',permission: ['drug'] },
         hideChildrenInMenu: true,
         children: [
           {
-            path: '/drag/list',
-            component: () => import('@/views/drag/List'),
-            name: 'DragList',
-            meta: { title: '药品列表', icon: 'user' }
-          }
+            path: '/drug/list',
+            component: () => import('@/views/drug/List'),
+            name: 'DrugList',
+            meta: { title: '药品列表' }
+          },
+          {
+            path: '/drug/detail/:id',
+            component: () => import('@/views/drug/Detail'),
+            name: 'DrugDetail',
+            meta: { title: '药品详情' }
+          },
+          {
+            path: '/drug/edit/:id?',
+            component: () => import('@/views/drug/Edit'),
+            name: 'DrugEdit',
+            meta: { title: '编辑药品' }
+          }          
         ]
       },
 
