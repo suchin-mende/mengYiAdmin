@@ -121,14 +121,14 @@ export const asyncRouterMap = [
         component: RouteView,
         name: 'Drug',
         redirect: '/drug/list',
-        meta: { title: '药品', keepAlive: true, icon: 'user',permission: ['drug'] },
+        meta: { title: 'ᠡᠮ', keepAlive: true, icon: 'user',permission: ['drug'] },
         hideChildrenInMenu: true,
         children: [
           {
             path: '/drug/list',
             component: () => import('@/views/drug/List'),
             name: 'DrugList',
-            meta: { title: '药品列表' }
+            meta: { title: 'ᠡᠮ ᠢᠨ ᠵᠢᠭᠰᠠᠭᠠᠯ' }
           },
           {
             path: '/drug/detail/:id',

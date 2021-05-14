@@ -4,12 +4,12 @@
       <div class="content-left">
         <div class="search-form">
           <div class="fields">
-            <a-input placeholder="请输入药品名称" v-model="key"/>
+            <a-input placeholder="ᠡᠮ ᠢᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ" v-model="key"/>
           </div>
           <div class="actions">
-            <a-button type="danger" @click="handleKeySearch">查询</a-button>
-            <a-button type="danger" @click="handleReset">重置</a-button>
-            <a-button type="primary" @click="handleCreate">新建</a-button>
+            <a-button type="danger" @click="handleKeySearch">ᠬᠠᠢᠬᠤ</a-button>
+            <a-button type="danger" @click="handleReset">ᠠᠷᠢᠯᠭᠠᠬᠤ</a-button>
+            <a-button type="primary" @click="handleCreate">ᠨᠡᠮᠡᠬᠦ</a-button>
           </div>
         </div>
       </div>
@@ -25,9 +25,9 @@
           <template
             slot="actions"
             slot-scope="text">
-            <a-button type="link" size="small" @click="handleDetail(text)">详情</a-button>
-            <a-button type="link" size="small" @click="handleTest(text)">修改</a-button>
-            <a-button type="link" size="small" @click="handleTest(text)">删除</a-button>
+            <a-button type="link" size="small" @click="handleDetail(text)">ᠨᠠᠷᠢᠨ ᠪᠠᠢᠳᠠᠯ</a-button>
+            <a-button type="link" size="small" @click="handleTest(text)">ᠵᠠᠰᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
+            <a-button type="link" size="small" @click="handleTest(text)">ᠠᠷᠢᠯᠭᠠᠬᠤ</a-button>
           </template>
         </a-table>
       </div>
@@ -42,11 +42,11 @@ import {
 
 const columns = [
   {
-    title: '商品名称',
+    title: 'ᠡᠮ ᠢᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ',
     dataIndex: 'namem'
   },
   {
-    title: '操作',
+    title: 'ᠬᠥᠳᠡᠯᠭᠡᠭᠡᠨ',
     dataIndex: 'drugid',
     scopedSlots: { customRender: 'actions' }
   }
