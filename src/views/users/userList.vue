@@ -56,7 +56,7 @@
 
 <script>
 import { uList } from '@/api/accounts'
-
+import { uSave } from '@/api/accounts'
 const columns = [
   {
     title: 'ᠨᠡᠷ᠎ᠡ',
@@ -79,8 +79,17 @@ export default {
       ModalText: 'Content of the modal',
       visible: false,
       confirmLoading: false,
-      addNamecn:'',
-      addPhonenum:'',
+      addNamecn: '',
+      addPhonenum: '',
+      defData: {
+        deleteFlag: '0',
+        namemn: '',
+        nameother: '',
+        namez: '',
+        pwd: 'qweqwe',
+        username: '1',
+        revision: 1,
+      },
       key: '',
       phonenum: '',
       data: [],
@@ -99,13 +108,33 @@ export default {
   },
 
   methods: {
+    uuid() {
+      var d = new Date().getTime()
+      if (window.performance && typeof window.performance.now === 'function') {
+        d += performance.now() //use high-precision timer if available
+      }
+      var uuid = 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = (d + Math.random() * 16) % 16 | 0 // d是随机种子
+        d = Math.floor(d / 16)
+        return (c == 'x' ? r : (r & 0x3) | 0x8).toString(16)
+      })
+      return uuid
+    },
     showModal() {
       this.visible = true
+    },
+    handleSubmit(){
+      this.defData.namecn=this.addNamecn
+      this.defData.phonenum=this.addPhonenum
+      this.defData.loginname=this.uuid()
+      this.saveUser(this.defData)
     },
     handleOk(e) {
       this.ModalText = 'The modal will be closed after two seconds'
       this.confirmLoading = true
+      this.handleSubmit()
       setTimeout(() => {
+        this.onSearch()
         this.visible = false
         this.confirmLoading = false
       }, 2000)
@@ -113,6 +142,11 @@ export default {
     handleCancel(e) {
       console.log('Clicked cancel button')
       this.visible = false
+    },
+    saveUser(userData) {
+      uSave(userData).then((res) => {
+        console.log(res)
+      })
     },
     onSearch(params) {
       this.isLoading = true
@@ -159,6 +193,7 @@ export default {
 .content-right {
   width: 800px;
 }
+
 .add-form {
   .fields {
     writing-mode: vertical-lr;
@@ -168,6 +203,5 @@ export default {
       display: table-column;
     }
   }
-  
 }
 </style>

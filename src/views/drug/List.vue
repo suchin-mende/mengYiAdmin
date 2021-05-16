@@ -127,4 +127,7 @@ export default {
 .content-right {
   width: 800px;
 }
+.page-inner-mgl .content-left .search-form .fields .ant-input {
+  height: 485px;
+}
 </style>
