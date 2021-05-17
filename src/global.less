@@ -345,6 +345,11 @@ html.mgl {
         .ant-form-item-control {
           .ant-form-item-children {
             writing-mode: vertical-lr;
+            .ant-checkbox-wrapper {
+              > span:last-child {
+                margin: 5px 0 15px 0;
+              }
+            }
           }
           .ant-form-explain {
             writing-mode: vertical-lr;
@@ -353,10 +358,14 @@ html.mgl {
             align-items: center
           }
         }
-        .ant-input {
+        input.ant-input {
           width: 39px;
-          height: 180px;
+          height: 300px;
           display: table-column;
+        }
+        textarea.ant-input {
+          display: table-column;
+          height: 300px;
         }
       }
     }

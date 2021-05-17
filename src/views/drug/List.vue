@@ -26,7 +26,7 @@
             slot="actions"
             slot-scope="text">
             <a-button type="link" size="small" @click="handleDetail(text)">ᠨᠠᠷᠢᠨ ᠪᠠᠢᠳᠠᠯ</a-button>
-            <a-button type="link" size="small" @click="handleTest(text)">ᠵᠠᠰᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
+            <a-button type="link" size="small" @click="handleEdit(text)">ᠵᠠᠰᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
             <a-button type="link" size="small" @click="handleTest(text)">ᠠᠷᠢᠯᠭᠠᠬᠤ</a-button>
           </template>
         </a-table>
@@ -116,6 +116,14 @@ export default {
     handleCreate () {
       this.$router.push({
         name: 'DrugEdit'
+      })
+    },
+    handleEdit (id) {
+      this.$router.push({
+        name: 'DrugEdit',
+        params: {
+          id: id
+        }
       })
     }
   }
