@@ -196,7 +196,9 @@ export default {
           this.$message.error(err.message)
         })
     },
-    handleCancel() {},
+    handleCancel() {
+      this.$router.go(-1)
+    },
   },
 }
 </script>
