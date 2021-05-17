@@ -6,9 +6,6 @@
           <div class="fields">
             <a-input placeholder="ᠨᠡᠷ᠎ᠡ" v-model="key" />
           </div>
-          <div class="fields">
-            <a-input placeholder="ᠤᠲᠠᠰᠤᠨ ᠨᠤᠮᠧᠷ" v-model="phonenum" />
-          </div>
           <div class="actions">
             <div>
               <a-button type="primary" @click="showModal">ᠨᠡᠮᠡᠬᠦ</a-button>
@@ -23,7 +20,7 @@
               >
                 <div class="add-form">
                   <div class="fields">
-                    <a-input placeholder="ᠨᠡᠷ᠎ᠡ" v-model="addNamecn" />
+                    <a-input placeholder="ᠨᠡᠷ᠎ᠡ" v-model="addUsername" />
                   </div>
                   <div class="fields">
                     <a-input placeholder="ᠤᠲᠠᠰᠤᠨ ᠨᠤᠮᠧᠷ" v-model="addPhonenum" />
@@ -45,6 +42,9 @@
           :loading="isLoading"
           @change="onSearch"
         >
+          <template slot="username" slot-scope="unametext, text">
+            <a-button type="link" @click="handleKeyDetail(text.userid)">{{ unametext }}</a-button>
+          </template>
           <template slot="actions" slot-scope="text">
             <a-button type="link" @click="handleTest(text)">xx</a-button>
           </template>
@@ -56,11 +56,15 @@
 
 <script>
 import { uList } from '@/api/accounts'
+import { uSave } from '@/api/accounts'
+import { uDetail } from '@/api/accounts'
 
 const columns = [
   {
     title: 'ᠨᠡᠷ᠎ᠡ',
-    dataIndex: 'namecn',
+    dataIndex: 'username',
+    key: 'username',
+    scopedSlots: { customRender: 'username' },
   },
   {
     title: 'ᠤᠲᠠᠰᠤᠨ ᠨᠤᠮᠧᠷ',
@@ -79,8 +83,16 @@ export default {
       ModalText: 'Content of the modal',
       visible: false,
       confirmLoading: false,
-      addNamecn:'',
-      addPhonenum:'',
+      addUsername: '',
+      addPhonenum: '',
+      defData: {
+        deleteFlag: '0',
+        namemn: '',
+        nameother: '',
+        namez: '',
+        pwd: 'qweqwe',
+        revision: 1,
+      },
       key: '',
       phonenum: '',
       data: [],
@@ -99,13 +111,33 @@ export default {
   },
 
   methods: {
+    uuid() {
+      var d = new Date().getTime()
+      if (window.performance && typeof window.performance.now === 'function') {
+        d += performance.now() //use high-precision timer if available
+      }
+      var uuid = 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = (d + Math.random() * 16) % 16 | 0 // d是随机种子
+        d = Math.floor(d / 16)
+        return (c == 'x' ? r : (r & 0x3) | 0x8).toString(16)
+      })
+      return uuid
+    },
     showModal() {
       this.visible = true
+    },
+    handleSubmit() {
+      this.defData.username = this.addUsername
+      this.defData.phonenum = this.addPhonenum
+      this.defData.loginname = this.uuid()
+      this.saveUser(this.defData)
     },
     handleOk(e) {
       this.ModalText = 'The modal will be closed after two seconds'
       this.confirmLoading = true
+      this.handleSubmit()
       setTimeout(() => {
+        this.onSearch()
         this.visible = false
         this.confirmLoading = false
       }, 2000)
@@ -114,6 +146,11 @@ export default {
       console.log('Clicked cancel button')
       this.visible = false
     },
+    saveUser(userData) {
+      uSave(userData).then((res) => {
+        console.log(res)
+      })
+    },
     onSearch(params) {
       this.isLoading = true
       const page = (params && params.current) || this.pagination.current
@@ -121,7 +158,7 @@ export default {
       uList({
         page: page,
         pageSize: this.pagination.pageSize,
-        username: '',
+        username: this.key || '',
         loginname: '1',
       })
         .then((res) => {
@@ -139,6 +176,15 @@ export default {
           this.isLoading = false
         })
     },
+    getDetail(beanId) {
+      uDetail({
+        beanId: beanId,
+      })
+        .then((res) => {
+          console.log(res)
+        })
+        .catch(() => {})
+    },
     handleKeySearch() {
       this.pagination.current = 1
       this.pagination.total = 0
@@ -148,8 +194,17 @@ export default {
       this.key = ''
       this.handleKeySearch()
     },
-    handleTest(id) {
-      alert(id)
+    handleKeyDetail(uid) {
+      this.$router.push({
+        name: 'UserDetail',
+        params: {
+          uid: uid,
+        },
+      })
+    },
+    handleTest(text) {
+      alert(text)
+      console.log(text)
     },
   },
 }
@@ -159,6 +214,7 @@ export default {
 .content-right {
   width: 800px;
 }
+
 .add-form {
   .fields {
     writing-mode: vertical-lr;
@@ -168,6 +224,5 @@ export default {
       display: table-column;
     }
   }
-  
 }
 </style>
