@@ -96,6 +96,12 @@ export const asyncRouterMap = [
             meta: { title: 'ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ', icon: 'user' }
           },
           {
+            path: '/users/uDetail/:id',
+            component: () => import('@/views/users/uDetail'),
+            name: 'UserDetail',
+            meta: { title: '用户详情' }
+          },
+          {
             path: '/users/uEdit/',
             component: () => import('@/views/users/uEdit'),
             name: 'userEdit',

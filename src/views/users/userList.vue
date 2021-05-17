@@ -6,9 +6,6 @@
           <div class="fields">
             <a-input placeholder="ᠨᠡᠷ᠎ᠡ" v-model="key" />
           </div>
-          <div class="fields">
-            <a-input placeholder="ᠤᠲᠠᠰᠤᠨ ᠨᠤᠮᠧᠷ" v-model="phonenum" />
-          </div>
           <div class="actions">
             <div>
               <a-button type="primary" @click="showModal">ᠨᠡᠮᠡᠬᠦ</a-button>
@@ -23,7 +20,7 @@
               >
                 <div class="add-form">
                   <div class="fields">
-                    <a-input placeholder="ᠨᠡᠷ᠎ᠡ" v-model="addNamecn" />
+                    <a-input placeholder="ᠨᠡᠷ᠎ᠡ" v-model="addUsername" />
                   </div>
                   <div class="fields">
                     <a-input placeholder="ᠤᠲᠠᠰᠤᠨ ᠨᠤᠮᠧᠷ" v-model="addPhonenum" />
@@ -45,6 +42,9 @@
           :loading="isLoading"
           @change="onSearch"
         >
+          <template slot="username" slot-scope="unametext, text">
+            <a-button type="link" @click="handleKeyDetail(text.userid)">{{ unametext }}</a-button>
+          </template>
           <template slot="actions" slot-scope="text">
             <a-button type="link" @click="handleTest(text)">xx</a-button>
           </template>
@@ -57,10 +57,14 @@
 <script>
 import { uList } from '@/api/accounts'
 import { uSave } from '@/api/accounts'
+import { uDetail } from '@/api/accounts'
+
 const columns = [
   {
     title: 'ᠨᠡᠷ᠎ᠡ',
-    dataIndex: 'namecn',
+    dataIndex: 'username',
+    key: 'username',
+    scopedSlots: { customRender: 'username' },
   },
   {
     title: 'ᠤᠲᠠᠰᠤᠨ ᠨᠤᠮᠧᠷ',
@@ -79,7 +83,7 @@ export default {
       ModalText: 'Content of the modal',
       visible: false,
       confirmLoading: false,
-      addNamecn: '',
+      addUsername: '',
       addPhonenum: '',
       defData: {
         deleteFlag: '0',
@@ -87,7 +91,6 @@ export default {
         nameother: '',
         namez: '',
         pwd: 'qweqwe',
-        username: '1',
         revision: 1,
       },
       key: '',
@@ -123,10 +126,10 @@ export default {
     showModal() {
       this.visible = true
     },
-    handleSubmit(){
-      this.defData.namecn=this.addNamecn
-      this.defData.phonenum=this.addPhonenum
-      this.defData.loginname=this.uuid()
+    handleSubmit() {
+      this.defData.username = this.addUsername
+      this.defData.phonenum = this.addPhonenum
+      this.defData.loginname = this.uuid()
       this.saveUser(this.defData)
     },
     handleOk(e) {
@@ -155,7 +158,7 @@ export default {
       uList({
         page: page,
         pageSize: this.pagination.pageSize,
-        username: '',
+        username: this.key || '',
         loginname: '1',
       })
         .then((res) => {
@@ -173,6 +176,15 @@ export default {
           this.isLoading = false
         })
     },
+    getDetail(beanId) {
+      uDetail({
+        beanId: beanId,
+      })
+        .then((res) => {
+          console.log(res)
+        })
+        .catch(() => {})
+    },
     handleKeySearch() {
       this.pagination.current = 1
       this.pagination.total = 0
@@ -182,8 +194,17 @@ export default {
       this.key = ''
       this.handleKeySearch()
     },
-    handleTest(id) {
-      alert(id)
+    handleKeyDetail(uid) {
+      this.$router.push({
+        name: 'UserDetail',
+        params: {
+          uid: uid,
+        },
+      })
+    },
+    handleTest(text) {
+      alert(text)
+      console.log(text)
     },
   },
 }
