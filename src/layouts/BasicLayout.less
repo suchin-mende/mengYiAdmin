@@ -1,5 +1,31 @@
 @import "~ant-design-vue/es/style/themes/default.less";
 
+
+.ant-layout-sider .ant-menu .ant-menu-item {
+  height: 70px;
+  font-size: 20px;
+}
+
+.ant-layout-sider .ant-menu .ant-menu-item a {
+  display: grid;
+  grid-auto-flow: column;
+  height: 70px;
+}
+
+.ant-layout-sider .ant-menu .ant-menu-item i {
+  margin: auto;
+  font-size: 20px;
+}
+
+.ant-layout-sider .ant-menu .ant-menu-item span {
+  // min-width:
+  // width: 80px;
+  // margin: 13px 0;
+  text-align: center;
+  margin: 0px auto;
+  writing-mode: vertical-rl;
+}
+
 .ant-pro-global-header-index-right {
   margin-right: 8px;
 
@@ -15,7 +41,7 @@
 
   .ant-pro-account-avatar {
     .antd-pro-global-header-index-avatar {
-      margin: ~'calc((@{layout-header-height} - 24px) / 2)' 0;
+      margin:~'calc((@{layout-header-height} - 24px) / 2)'0;
       margin-right: 8px;
       color: @primary-color;
       vertical-align: top;
@@ -33,4 +59,3 @@
     }
   }
 }
-

@@ -1,6 +1,7 @@
 // eslint-disable-next-line
 import { UserLayout, BasicLayout, BlankLayout } from '@/layouts'
 import { bxAnaalyse } from '@/core/icons'
+import { drugicon } from '@/core/icons'
 
 const RouteView = {
   name: 'RouteView',
@@ -118,7 +119,7 @@ export const asyncRouterMap = [
         component: RouteView,
         name: 'Drug',
         redirect: '/drug/list',
-        meta: { title: 'ᠡᠮ', keepAlive: true, icon: 'user',permission: ['drug'] },
+        meta: { title: 'ᠡᠮ', keepAlive: true, icon: 'medicine-box',permission: ['drug'] },
         hideChildrenInMenu: true,
         children: [
           {
