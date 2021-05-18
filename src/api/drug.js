@@ -2,7 +2,8 @@ import request from '@/utils/request'
 
 const Api = {
   DrugList: '/drug/list.do',
-  DrugDetail: '/drug/detail.do'
+  DrugDetail: '/drug/detail.do',
+  DurgSave: '/drug/save.do'
 }
 
 /**
@@ -26,6 +27,19 @@ export function drugList (params) {
  export function drugDetail (params) {
   return request({
     url: Api.DrugDetail,
+    method: 'post',
+    data: params
+  })
+}
+
+/**
+ * 药品保存
+ * @param {*} parameter 
+ * @returns 
+ */
+ export function durgSave (params) {
+  return request({
+    url: Api.DurgSave,
     method: 'post',
     data: params
   })

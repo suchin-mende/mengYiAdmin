@@ -25,10 +25,11 @@ const errorHandler = (error) => {
         description: data.message
       })
     }
-    if (error.response.status === 401 && !(data.result && data.result.isLogin)) {
+    // if (error.response.status === 401 && !(data.result && data.result.isLogin)) {
+    if (data.status === 1002) {
       notification.error({
-        message: 'Unauthorized',
-        description: 'Authorization verification failed'
+        message: '提示',
+        description: '认证过期，请重新登录'
       })
       if (token) {
         store.dispatch('Logout').then(() => {
@@ -56,8 +57,11 @@ request.interceptors.request.use(config => {
 
 // response interceptor
 request.interceptors.response.use((response) => {
-  console.log(response)
-  return response.data
+  const { data } = response
+  if (data.status && data.status != 1000) {
+    throw new Error(data)
+  }
+  return data
 }, errorHandler)
 
 const installer = {
