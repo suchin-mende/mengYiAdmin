@@ -16,7 +16,7 @@
         <a-descriptions-item label="ᠴᠢᠳᠠᠯ ᠢᠨ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.effectCat }}</a-descriptions-item>
         <a-descriptions-item label="ᠦᠢᠯᠡᠳᠦᠯ ᠦᠵᠡᠭᠦᠯᠬᠦ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.actionMode }}</a-descriptions-item>
         <a-descriptions-item>
-          <a-button type="primary">修改</a-button>
+          <a-button type="primary" @click="handleEdit">修改</a-button>
         </a-descriptions-item>
       </a-descriptions>
     </template>
@@ -66,6 +66,14 @@ export default {
           }
           this.drug = drug
         })
+    },
+    handleEdit () {
+      this.$router.push({
+        name: 'DrugEdit',
+        params: {
+          id: this.drugId
+        }
+      })
     }
   }
 }
