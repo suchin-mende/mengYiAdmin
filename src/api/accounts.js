@@ -43,10 +43,9 @@ export function uSave (parameter) {
   })
 }
 
-export function getCur (parameter) {
+export function getCur () {
   return request({
     url: accsApi.GetCurUser,
-    method: 'post',
-    data: parameter
+    method: 'post'
   })
 }
