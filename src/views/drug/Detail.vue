@@ -81,8 +81,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+
 /deep/ .ant-pro-page-header-wrap-page-header-warp {
   width: 100%;
+  
   .ant-descriptions-row {
     padding: 0 10px;
     display: block;
@@ -97,5 +99,7 @@ export default {
       justify-content: flex-end;
     }
   }
+  
 }
+
 </style>

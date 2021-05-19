@@ -1,8 +1,13 @@
 @import "~ant-design-vue/es/style/themes/default.less";
 
+.ant-menu.ant-menu-dark .ant-menu-item-selected {
+  
+  border-left: solid 2px #ffff8c;
 
-
-
+}
+.ant-pro-global-header-trigger {
+  display: none !important;
+}
 
 .ant-layout-sider {
   margin: 10px;
@@ -15,8 +20,8 @@
 }
 
 .ant-layout-sider .ant-menu .ant-menu-item { 
-
-  height: 100px;
+  padding: 0 16px !important;
+  height: 150px;
   font-size: 20px;
   background: #5967a4;
 }
@@ -25,8 +30,8 @@
   display: grid;
   grid-auto-flow: row;
   height: 70px;
-  align-content: center;
   justify-content: center;
+  margin-top: 15px;
 }
 
 .ant-layout-sider .ant-menu .ant-menu-item i {

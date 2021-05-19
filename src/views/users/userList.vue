@@ -102,7 +102,7 @@ export default {
         current: 1,
         total: 0,
         current: 1,
-        pageSize: 10,
+        pageSize: 15,
       },
     }
   },
@@ -227,5 +227,9 @@ export default {
     }
   }
 }
-
+/deep/ .ant-table-thead > tr th:last-child,/deep/ .ant-table-tbody .ant-table-row > td:last-child  {
+  height: 200px !important;
+  place-content: center;
+  
+}
 </style>
