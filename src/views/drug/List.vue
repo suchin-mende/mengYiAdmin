@@ -25,9 +25,9 @@
           <template
             slot="actions"
             slot-scope="text">
-            <a-button type="link" size="small" @click="handleDetail(text)">ᠨᠠᠷᠢᠨ ᠪᠠᠢᠳᠠᠯ</a-button>
-            <a-button type="link" size="small" @click="handleEdit(text)">ᠵᠠᠰᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
-            <a-button type="link" size="small" @click="handleTest(text)">ᠠᠷᠢᠯᠭᠠᠬᠤ</a-button>
+            <a-button type="link" size="small" @click="handleDetail(text)">ᠦᠵᠡᠬᠦ</a-button>
+            <a-button type="link" size="small" @click="handleEdit(text)">ᠵᠠᠰᠠᠬᠤ</a-button>
+            <a-button type="link" size="small" @click="handleTest(text)">ᠤᠰᠤᠳᠤᠭᠠᠬᠤ</a-button>
           </template>
         </a-table>
       </div>
@@ -46,7 +46,7 @@ const columns = [
     dataIndex: 'namem'
   },
   {
-    title: 'ᠬᠥᠳᠡᠯᠭᠡᠭᠡᠨ',
+    title: 'ᠳᠤᠬᠢᠷᠠᠭᠤᠯᠬᠤ',
     dataIndex: 'drugid',
     scopedSlots: { customRender: 'actions' }
   }
@@ -63,7 +63,7 @@ export default {
         current: 1,
         total: 0,
         current: 1,
-        pageSize: 10
+        pageSize: 15
       }
     };
   },
@@ -133,7 +133,7 @@ export default {
 
 <style lang="less" scoped>
 .content-right {
-  width: 800px;
+  width: 1200px;;
 }
 .page-inner-mgl .content-left .search-form .fields .ant-input {
   height: 485px;

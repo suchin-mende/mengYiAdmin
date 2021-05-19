@@ -46,7 +46,7 @@
             <a-button type="link" @click="handleKeyDetail(text.userid)">{{ unametext }}</a-button>
           </template>
           <template slot="actions" slot-scope="text">
-            <a-button type="link" @click="handleTest(text)">xx</a-button>
+            <a-button type="link" @click="handleTest(text)">ᠤᠰᠤᠳᠤᠭᠠᠬᠤ</a-button>
           </template>
         </a-table>
       </div>
@@ -71,7 +71,7 @@ const columns = [
     dataIndex: 'phonenum',
   },
   {
-    title: 'ᠬᠦᠳᠡᠯᠭᠡᠭᠡᠨ',
+    title: 'ᠳᠤᠬᠢᠷᠠᠭᠤᠯᠬᠤ',
     dataIndex: 'loginname',
     scopedSlots: { customRender: 'actions' },
   },
@@ -211,8 +211,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+
+
 .content-right {
-  width: 800px;
+  width: 1200px;
 }
 
 .add-form {
@@ -225,4 +227,5 @@ export default {
     }
   }
 }
+
 </style>
