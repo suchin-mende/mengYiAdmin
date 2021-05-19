@@ -220,7 +220,7 @@ export default {
   position: relative;
 }
 .ant-card {
-  width: 80%;
+  width: 100%;
   height: 100%;
   position: absolute;
   /deep/ .ant-card-body {
