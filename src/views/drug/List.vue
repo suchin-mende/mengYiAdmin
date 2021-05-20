@@ -147,6 +147,13 @@ export default {
 </script>
 
 <style lang="less" scoped>
+/deep/ .ant-table-body .ant-table-thead > tr > th:first-child{
+   height: 480px !important;
+}
+/deep/ .ant-table-body .ant-table-tbody > tr > td:first-child{
+   height: 480px !important;
+}
+
 .content-right {
   width: 1200px;;
 }
