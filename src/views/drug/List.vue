@@ -49,7 +49,7 @@ const columns = [
     dataIndex: 'namem'
   },
   {
-    title: 'ᠬᠥᠳᠡᠯᠭᠡᠭᠡᠨ',
+    title: 'ᠳᠤᠬᠢᠷᠠᠭᠤᠯᠬᠤ',
     dataIndex: 'drugid',
     scopedSlots: { customRender: 'actions' }
   }
@@ -66,7 +66,7 @@ export default {
         current: 1,
         total: 0,
         current: 1,
-        pageSize: 10
+        pageSize: 15
       }
     };
   },
@@ -148,7 +148,7 @@ export default {
 
 <style lang="less" scoped>
 .content-right {
-  width: 800px;
+  width: 1200px;;
 }
 .page-inner-mgl .content-left .search-form .fields .ant-input {
   height: 485px;

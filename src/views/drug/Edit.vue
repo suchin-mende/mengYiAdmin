@@ -204,6 +204,14 @@ export default {
 </script>
 
 <style lang="less" scoped>
+
+/deep/ .ant-form label {
+  font-size: 20px;
+}
+//vertical-align: middle;
+/deep/ .ant-form-item-children .ant-checkbox-group label span {
+  vertical-align: middle;
+}
 .ss .ant-checkbox{
   vertical-align: baseline;
 }
@@ -213,6 +221,7 @@ export default {
 }
 .ant-card {
   width: 100%;
+  height: 100%;
   position: absolute;
   /deep/ .ant-card-body {
     width: 100%;

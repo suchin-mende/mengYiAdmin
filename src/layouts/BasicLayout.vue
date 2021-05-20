@@ -22,7 +22,7 @@
     <template v-slot:menuHeaderRender>
       <div>
         <logo-svg />
-        <h1>ᠡᠮ</h1>
+        <h1></h1>
       </div>
     </template>
     <!-- 1.0.0+ 版本 pro-layout 提供 API,
@@ -30,8 +30,8 @@
     -->
     <template v-slot:headerContentRender>
       <div>
-        <a-tooltip title="刷新页面">
-          <a-icon type="reload" style="font-size: 18px;cursor: pointer;" @click="() => { $message.info('只是一个DEMO') }" />
+        <a-tooltip style="margin-left: 20px;" title="刷新页面">
+          <a-icon type="reload" style="font-size: 18px;cursor: pointer;" @click="reload()" />
         </a-tooltip>
       </div>
     </template>
@@ -142,6 +142,9 @@ export default {
     }
   },
   methods: {
+    reload() {
+      location.reload()
+    },
     i18nRender,
     handleMediaQuery (val) {
       this.query = val
