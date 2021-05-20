@@ -1,5 +1,6 @@
 import storage from 'store'
 import { login } from '@/api/login'
+import { getCur } from '@/api/accounts'
 import { ACCESS_TOKEN } from '@/store/mutation-types'
 // import { welcome } from '@/utils/util'
 
@@ -57,6 +58,21 @@ const user = {
     // 获取用户信息
     GetInfo ({ commit }) {
       return new Promise((resolve, reject) => {
+        getCur()
+          .then(() => {
+            const roles = [
+              'admin'
+            ]
+            commit('SET_ROLES', roles)
+            resolve({
+              result: {
+                role: roles
+              }
+            })
+          })
+          .catch(err => {
+            reject(err)
+          })
         /*
         getInfo().then(response => {
           const result = response.result
@@ -97,15 +113,6 @@ const user = {
         //     ]
         //   }
         // }
-        const roles = [
-          'admin'
-        ]
-        commit('SET_ROLES', roles)
-        resolve({
-          result: {
-            role: roles
-          }
-        })
       })
     },
 
