@@ -24,10 +24,12 @@
         >
           <template
             slot="actions"
-            slot-scope="text">
-            <a-button type="link" size="small" @click="handleDetail(text)">ᠦᠵᠡᠬᠦ</a-button>
-            <a-button type="link" size="small" @click="handleEdit(text)">ᠵᠠᠰᠠᠬᠤ</a-button>
-            <a-button type="link" size="small" @click="handleTest(text)">ᠤᠰᠤᠳᠤᠭᠠᠬᠤ</a-button>
+            slot-scope="text, record">
+            <a-button type="link" size="small" @click="handleDetail(text)">ᠨᠠᠷᠢᠨ ᠪᠠᠢᠳᠠᠯ</a-button>
+            <a-button type="link" size="small" @click="handleEdit(text)">ᠵᠠᠰᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
+            <a-popconfirm @confirm="handleRemove(record)" title="确定要删除该药品吗？">
+              <a-button type="link" size="small">ᠠᠷᠢᠯᠭᠠᠬᠤ</a-button>
+            </a-popconfirm>
           </template>
         </a-table>
       </div>
@@ -37,7 +39,8 @@
 
 <script>
 import {
-  drugList
+  drugList,
+  drugRemove
 } from '@/api/drug'
 
 const columns = [
@@ -125,6 +128,18 @@ export default {
           id: id
         }
       })
+    },
+    handleRemove (record) {
+      drugRemove({
+        beanId: record.drugid
+      })
+        .then(res => {
+          this.$message.success('Success')
+          this.onSearch()
+        })
+        .catch(err => {
+          this.$message.error(err.message)
+        })
     }
   }
 }

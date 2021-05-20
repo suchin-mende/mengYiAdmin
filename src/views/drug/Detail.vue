@@ -2,6 +2,28 @@
   <page-header-wrapper>
     <template v-slot:content>
       <a-descriptions :column="1">
+        <a-descriptions-item label="药品图片">
+          <div class="images-wrapper">
+            <div v-for="(img, index) in images" :key="img.imgid" class="image">
+              <img
+                :src="img.thumb"
+                @click="handlePreview(index)"
+              />
+              <a-popconfirm @confirm="handleImageRemove(index)" title="确定要删除该图片吗？">
+                <span class="remove">x</span>
+              </a-popconfirm>
+              
+            </div>
+            <a-upload
+              :multiple="false"
+              :show-upload-list="false"
+              :before-upload="beforeUpload"
+              :custom-request="customUploadRequest"          
+            >
+              <a-button><a-icon type="upload" block/>上传</a-button>
+            </a-upload>
+          </div>
+        </a-descriptions-item>
         <a-descriptions-item label="ᠥᠭᠡᠷᠡ ᠨᠡᠷᠡ">{{ drug.namem }}</a-descriptions-item>
         <a-descriptions-item label="ᠢᠷᠡᠯᠳᠡ">{{ drug.source }}</a-descriptions-item>
         <a-descriptions-item label="ᠲᠠᠪᠤᠨ ᠮᠠᠬᠠᠪᠤᠳ">{{ drug.five }}</a-descriptions-item>
@@ -20,13 +42,20 @@
         </a-descriptions-item>
       </a-descriptions>
     </template>
+    <a-modal class="image-preview" :visible="previewVisible" :footer="null" @cancel="handlePreviewCancel">
+      <img style="width: 100%" :src="previewImage" />
+    </a-modal>
   </page-header-wrapper>
 </template>
 
 <script>
 
 import {
-  drugDetail
+  drugDetail,
+  uploadImage,
+  drugImageList,
+  drugImagePreview,
+  drugImageRemove
 } from '@/api/drug'
 
 export default {
@@ -35,12 +64,16 @@ export default {
   data() {
     return {
       drugId: null,
-      drug: {}
+      drug: {},
+      images: [],
+      previewVisible: false,
+      previewImage: ''
     };
   },
   created() {
     this.drugId = this.$route.params.id
     this.getDrug()
+    this.getImageList()
   },
   methods: {
     getDrug () {
@@ -67,6 +100,40 @@ export default {
           this.drug = drug
         })
     },
+    getImageList () {
+      drugImageList({
+        beanId: this.drugId
+      })
+        .then(res => {
+          const tmp = res.data
+          tmp.forEach(t => {
+            t.thumb = ''
+          })
+          this.images = tmp
+          this.refreshImages()
+        })
+        .catch(err => {
+        })
+    },
+    refreshImages () {
+      const { images } = this
+      images.forEach((img, index) => {
+        drugImagePreview({
+          beanId: img.imgidthumb
+        })
+          .then(res => {
+            const src = 'data:image/png;base64,' +
+              btoa(
+                new Uint8Array(res).reduce(
+                  (data, byte) => data + String.fromCharCode(byte),
+                  ''
+                )
+              )
+            images[index].thumb = src
+          })
+          .catch(err => {})
+      })
+    },
     handleEdit () {
       this.$router.push({
         name: 'DrugEdit',
@@ -74,6 +141,64 @@ export default {
           id: this.drugId
         }
       })
+    },
+    /**
+     * 上传之前检测文件是否标准
+     */
+    beforeUpload (file) {
+      if (['image/png'].indexOf(file.type) === -1) {
+        this.$message.error('图片格式错误')
+        return false
+      }
+      return true
+    },
+    customUploadRequest (info) {
+      const formData = new FormData()
+      formData.append('beanId', this.drugId)
+      formData.append('drugimg', info.file)
+      uploadImage(formData)
+        .then(res => {
+          this.$message.success('Success')
+          this.getImageList()
+        })
+        .catch(err => {
+          this.$message.error(err.message)
+        }) 
+    },
+    handleImageRemove (idx) {
+      const { images } = this
+      drugImageRemove({
+        beanId: images[idx].imgid
+      })
+        .then(res => {
+          this.$message.success('Success')
+          this.getImageList()
+        })
+        .catch(err => {
+          this.$message.error(err.message)
+        })
+    },
+    handlePreview (idx) {
+      const { images } = this
+      this.previewImage = images[idx].thumb
+      drugImagePreview({
+        beanId: images[idx].imgid
+      })
+        .then(res => {
+          const src = 'data:image/png;base64,' +
+            btoa(
+              new Uint8Array(res).reduce(
+                (data, byte) => data + String.fromCharCode(byte),
+                ''
+              )
+            )
+          this.previewImage = src
+        })
+        .catch(err => {})
+      this.previewVisible = true
+    },
+    handlePreviewCancel () {
+      this.previewVisible = false
     }
   }
 }
@@ -100,6 +225,28 @@ export default {
     }
   }
   
+}
+.images-wrapper {
+  display: flex;
+  align-items: center;
+
+  .image {
+    margin-bottom: 15px;
+
+    img {
+      width:60px;
+      height: 60px;
+    }
+    .remove {
+      font-size: 14px;
+      padding: 5px;
+    }
+  }
+}
+.image-preview {
+  /deep/ .ant-modal-content {
+    writing-mode: initial;
+  }
 }
 
 </style>
