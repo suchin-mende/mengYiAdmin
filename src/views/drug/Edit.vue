@@ -23,7 +23,7 @@
             />
           </a-form-item>
           <a-form-item label="ᠲᠠᠪᠤᠨ ᠮᠠᠬᠠᠪᠤᠳ">
-            <a-checkbox-group class="ss" :options="fiveElement" v-decorator="['fiveElement']" />
+            <a-checkbox-group :options="fiveElement" v-decorator="['fiveElement']" />
           </a-form-item>
           <a-form-item label="ᠵᠢᠷᠭᠤᠭᠠᠨ ᠠᠮᠳᠠ">
             <a-checkbox-group :options="sixTaste" v-decorator="['sixTaste']"/>
@@ -209,13 +209,15 @@ export default {
   font-size: 20px;
 }
 //vertical-align: middle;
+
+/deep/ .ant-form-item-children .ant-checkbox-group-item {
+  display: table;
+}
 /deep/ .ant-form-item-children .ant-checkbox-group label span {
   vertical-align: middle;
+  
 }
-.ss .ant-checkbox{
-  vertical-align: baseline;
-}
-// vertical-align: baseline;
+
 /deep/ .ant-pro-page-header-wrap-children-content {
   position: relative;
 }
@@ -228,6 +230,7 @@ export default {
     overflow-x: auto;
     .content-hor {
       width: 100%;
+      height: 100%;
       overflow-x: auto;
       display: flex;
 
