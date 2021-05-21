@@ -17,6 +17,20 @@
               placeholder=""
             />
           </a-form-item>
+          <a-form-item label="新蒙名">
+            <a-input
+              :maxLength="50"
+              v-decorator="['namemn']"
+              placeholder=""
+            />
+          </a-form-item>
+          <a-form-item label="中文名">
+            <a-input
+              :maxLength="50"
+              v-decorator="['namecn']"
+              placeholder=""
+            />
+          </a-form-item>          
           <a-form-item label="ᠢᠷᠡᠯᠲᠡ">
             <a-checkbox-group class="checkbox" :options="drugSource"
               v-decorator="['drugSource']"
@@ -136,6 +150,8 @@ export default {
           this.form.setFieldsValue({
             namem: drug.namem,
             nameother: drug.nameother,
+            namemn: drug.namemn,
+            namecn: drug.namecn,
             decomEffect: drug.decomEffect,
             baseEffect: drug.baseEffect,
             baseFix: drug.baseFix,
