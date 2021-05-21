@@ -25,10 +25,10 @@
           <template
             slot="actions"
             slot-scope="text, record">
-            <a-button type="link" size="small" @click="handleDetail(text)">ᠨᠠᠷᠢᠨ ᠪᠠᠢᠳᠠᠯ</a-button>
-            <a-button type="link" size="small" @click="handleEdit(text)">ᠵᠠᠰᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
+            <a-button type="link" size="small" @click="handleDetail(text)">ᠦᠵᠡᠬᠦ</a-button>
+            <a-button type="link" size="small" @click="handleEdit(text)">ᠵᠠᠰᠠᠬᠤ</a-button>
             <a-popconfirm @confirm="handleRemove(record)" title="确定要删除该药品吗？">
-              <a-button type="link" size="small">ᠠᠷᠢᠯᠭᠠᠬᠤ</a-button>
+              <a-button type="link" size="small">ᠤᠰᠤᠳᠤᠭᠠᠬᠤ</a-button>
             </a-popconfirm>
           </template>
         </a-table>
@@ -66,7 +66,7 @@ export default {
         current: 1,
         total: 0,
         current: 1,
-        pageSize: 15
+        pageSize: 23
       }
     };
   },
@@ -148,14 +148,14 @@ export default {
 
 <style lang="less" scoped>
 /deep/ .ant-table-body .ant-table-thead > tr > th:first-child{
-   height: 480px !important;
+   height: 534px !important;
 }
 /deep/ .ant-table-body .ant-table-tbody > tr > td:first-child{
-   height: 480px !important;
+   height: 534px !important;
 }
 
 .content-right {
-  width: 1200px;;
+  width: 94%;
 }
 .page-inner-mgl .content-left .search-form .fields .ant-input {
   height: 485px;
