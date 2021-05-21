@@ -1,6 +1,7 @@
 <template>
   <page-header-wrapper>
-    <template v-slot:content>
+    <a-card :body-style="{ padding: '24px 32px' }" :bordered="false">
+
       <a-descriptions :column="1">
         <a-descriptions-item label="ᠡᠮ ᠊ᠤᠨ ᠵᠢᠷᠤᠭ">
           <div class="images-wrapper">
@@ -9,7 +10,7 @@
                 :src="img.thumb"
                 @click="handlePreview(index)"
               />
-              <a-popconfirm @confirm="handleImageRemove(index)" title="ᠡᠨᠡ ᠵᠢᠷᠤᠭ ᠊ᠢ ᠪᠠᠯᠠᠯᠠᠵᠤ ᠪᠤᠯᠬᠤ ᠊ᠤᠤ?">
+              <a-popconfirm @confirm="handleImageRemove(index)" title="ᠡᠨᠡ ᠵᠢᠷᠤᠭ ᠊ᠢ ᠠᠷᠢᠯᠭᠠᠬᠤ ᠊ᠤᠤ?">
                 <span class="remove">x</span>
               </a-popconfirm>
 
@@ -20,7 +21,7 @@
               :before-upload="beforeUpload"
               :custom-request="customUploadRequest"
             >
-              <a-button><a-icon type="upload" block/>ᠲᠡᠪᠰᠢᠭᠦᠯᠬᠦ</a-button>
+              <a-button class="upup"><a-icon type="upload" block/>ᠵᠢᠷᠤᠭ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
             </a-upload>
           </div>
         </a-descriptions-item>
@@ -41,10 +42,11 @@
           <a-button type="primary" @click="handleEdit">ᠵᠠᠰᠠᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
         </a-descriptions-item>
       </a-descriptions>
-    </template>
-    <a-modal class="image-preview" :visible="previewVisible" :footer="null" @cancel="handlePreviewCancel">
-      <img style="width: 100%" :src="previewImage" />
-    </a-modal>
+
+      <a-modal class="image-preview" :visible="previewVisible" :footer="null" @cancel="handlePreviewCancel">
+        <img style="width: 100%" :src="previewImage" />
+      </a-modal>
+    </a-card>
   </page-header-wrapper>
 </template>
 
@@ -207,8 +209,41 @@ export default {
 
 <style lang="less" scoped>
 
-/deep/ .ant-pro-page-header-wrap-page-header-warp {
+.upup {
+  position: absolute;
+  right: -30px;
+  top: 10px;
+}
+
+/deep/ .ant-pro-page-header-wrap-children-content {
+  position: relative;
+}
+.ant-card {
+  writing-mode: vertical-lr;;
   width: 100%;
+  height: 100%;
+  position: absolute;
+  /deep/ .ant-card-body {
+    width: 100%;
+    // overflow-x: auto;
+    tbody {
+
+      display: grid;
+      grid-row-gap:30px
+    }
+    tbody > tr > td {
+      display: grid;
+    }
+    tbody > tr > td > span {
+      font-size: 20px;
+    }
+  }
+}
+/deep/ .ant-page-header-content {
+  height: 90vh;
+}
+
+/deep/ .ant-pro-page-header-wrap-page-header-warp {
 
   .ant-descriptions-item > span {
     font-size: 20px;
@@ -230,18 +265,24 @@ export default {
 
 }
 .images-wrapper {
-  display: flex;
-  align-items: center;
 
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
   .image {
-    margin-bottom: 15px;
+    margin: 10px;
+    background: #d9d9d9;
 
     img {
+      display: flex;
       width:60px;
-      height: 60px;
+      height: 60px;;
     }
+
     .remove {
-      font-size: 14px;
+      color:#ff4d4f;
+      font-size: 17px;
       padding: 5px;
     }
   }
