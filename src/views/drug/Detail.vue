@@ -28,6 +28,7 @@
         <a-descriptions-item label="ᠥᠭᠡᠷᠡ ᠨᠡᠷᠡ">{{ drug.nameother }}</a-descriptions-item>
         <a-descriptions-item label="新蒙文名">{{ drug.namemn }}</a-descriptions-item>
         <a-descriptions-item label="中文名">{{ drug.namecn }}</a-descriptions-item>
+        <a-descriptions-item label="藏文名">{{ drug.namez }}</a-descriptions-item>
         <a-descriptions-item label="ᠢᠷᠡᠯᠳᠡ">{{ drug.source }}</a-descriptions-item>
         <a-descriptions-item label="ᠲᠠᠪᠤᠨ ᠮᠠᠬᠠᠪᠤᠳ">{{ drug.five }}</a-descriptions-item>
         <a-descriptions-item label="ᠵᠢᠷᠭᠤᠭᠠᠨ ᠠᠮᠳᠠ">{{ drug.sixTaste }}</a-descriptions-item>

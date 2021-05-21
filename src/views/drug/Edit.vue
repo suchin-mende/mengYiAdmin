@@ -30,6 +30,13 @@
               v-decorator="['namecn']"
               placeholder=""
             />
+          </a-form-item>
+          <a-form-item label="藏文名">
+            <a-input
+              :maxLength="50"
+              v-decorator="['namez']"
+              placeholder=""
+            />
           </a-form-item>          
           <a-form-item label="ᠢᠷᠡᠯᠲᠡ">
             <a-checkbox-group class="checkbox" :options="drugSource"
@@ -152,6 +159,7 @@ export default {
             nameother: drug.nameother,
             namemn: drug.namemn,
             namecn: drug.namecn,
+            namez: drug.namez,
             decomEffect: drug.decomEffect,
             baseEffect: drug.baseEffect,
             baseFix: drug.baseFix,
