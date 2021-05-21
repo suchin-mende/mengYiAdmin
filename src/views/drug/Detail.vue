@@ -210,6 +210,9 @@ export default {
 /deep/ .ant-pro-page-header-wrap-page-header-warp {
   width: 100%;
   
+  .ant-descriptions-item > span {
+    font-size: 20px;
+  }
   .ant-descriptions-row {
     padding: 0 10px;
     display: block;

@@ -2,7 +2,8 @@
   <page-header-wrapper>
     <a-card :body-style="{ padding: '24px 32px' }" :bordered="false">
       <div class="content-hor">
-        <a-form :form="form">
+        <a-form :form="form" id="myform"
+                :rowClassName = "rowClassName">
           <a-form-item label="ᠡᠮ ᠢᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ">
             <a-input
               :maxLength="50"
@@ -23,7 +24,7 @@
             />
           </a-form-item>
           <a-form-item label="ᠲᠠᠪᠤᠨ ᠮᠠᠬᠠᠪᠤᠳ">
-            <a-checkbox-group class="ss" :options="fiveElement" v-decorator="['fiveElement']" />
+            <a-checkbox-group :options="fiveElement" v-decorator="['fiveElement']" />
           </a-form-item>
           <a-form-item label="ᠵᠢᠷᠭᠤᠭᠠᠨ ᠠᠮᠳᠠ">
             <a-checkbox-group :options="sixTaste" v-decorator="['sixTaste']"/>
@@ -80,6 +81,7 @@ export default {
   components: {},
   data() {
     return {
+      tep:0,
       isSubmit: false,
       drugSource: [],
       fiveElement: [],
@@ -90,12 +92,15 @@ export default {
       seventeenEffect: [],
       effectCat: [],
       actionMode: [],
-
       form: this.$form.createForm(this),
       drugId: null,
       drug: {},
     }
   },
+  mounted(){
+     document.getElementById("myform").addEventListener('mousewheel',this.handleScroll);
+     
+ },
   created() {
     this.drugId = this.$route.params.id
     this.initDicts()
@@ -104,6 +109,22 @@ export default {
     }
   },
   methods: {
+    handleScroll(e){
+      let direction = e.deltaY > 0 ? 'down':'up';  //deltaY为正则滚轮向下，为负滚轮向上
+            if(direction=='down'){ //125为用户一次滚动鼠标的wheelDelta的值
+                // console.log(e.path[1].scrollLeft)
+                this.tep = e.path[1].scrollLeft
+                this.tep +=50
+                e.path[1].scrollLeft=this.tep
+                console.log('nono',e)
+            }
+            if(direction=='up'){
+                // alert('ss')
+                this.tep = e.path[1].scrollLeft
+                this.tep -=50
+                e.path[1].scrollLeft=this.tep
+            }
+    },
     initDicts () {
       this.setDict('M011', 'drugSource')
       this.setDict('M021', 'fiveElement')
@@ -209,13 +230,15 @@ export default {
   font-size: 20px;
 }
 //vertical-align: middle;
+
+/deep/ .ant-form-item-children .ant-checkbox-group-item {
+  display: table;
+}
 /deep/ .ant-form-item-children .ant-checkbox-group label span {
   vertical-align: middle;
+  
 }
-.ss .ant-checkbox{
-  vertical-align: baseline;
-}
-// vertical-align: baseline;
+
 /deep/ .ant-pro-page-header-wrap-children-content {
   position: relative;
 }
@@ -225,15 +248,20 @@ export default {
   position: absolute;
   /deep/ .ant-card-body {
     width: 100%;
-    overflow-x: auto;
+    // overflow-x: auto;
     .content-hor {
       width: 100%;
-      overflow-x: auto;
+      height: 100%;
+      // overflow-x: auto;
       display: flex;
 
       .ant-form {
         width: 85%;
         overflow-x: auto;
+        .ant-form-item {
+          padding: 0px 0px 0px 38px;
+          border-left: solid 1px #f0f2f5 ;
+        }
       }
       .actions {
         width: 15%;
