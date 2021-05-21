@@ -71,7 +71,7 @@
       </a-form-item>
 
       <div class="user-login-other">
-        <span>{{ $t('user.login.sign-in-with') }}</span>
+        <!-- <span>{{ $t('user.login.sign-in-with') }}</span>
         <a>
           <a-icon class="item-icon" type="alipay-circle"></a-icon>
         </a>
@@ -80,7 +80,7 @@
         </a>
         <a>
           <a-icon class="item-icon" type="weibo-circle"></a-icon>
-        </a>
+        </a> -->
         <router-link class="register" :to="{ name: 'register' }">{{ $t('user.login.signup') }}</router-link>
       </div>
     </a-form>
@@ -288,8 +288,8 @@ export default {
   button.login-button {
     padding: 0 15px;
     font-size: 16px;
-    height: 40px;
-    width: 100%;
+    width: 40px;
+    height: 100%;
   }
 
   .user-login-other {

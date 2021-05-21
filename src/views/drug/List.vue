@@ -4,7 +4,7 @@
       <div class="content-left">
         <div class="search-form">
           <div class="fields">
-            <a-input placeholder="ᠡᠮ ᠢᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ" v-model="key"/>
+            <a-input placeholder="ᠡᠮ ᠊ᠤᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ" v-model="key"/>
           </div>
           <div class="actions">
             <a-button type="danger" @click="handleKeySearch">ᠬᠠᠢᠬᠤ</a-button>
@@ -27,7 +27,7 @@
             slot-scope="text, record">
             <a-button type="link" size="small" @click="handleDetail(text)">ᠨᠠᠷᠢᠨ ᠪᠠᠢᠳᠠᠯ</a-button>
             <a-button type="link" size="small" @click="handleEdit(text)">ᠵᠠᠰᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
-            <a-popconfirm @confirm="handleRemove(record)" title="确定要删除该药品吗？">
+            <a-popconfirm @confirm="handleRemove(record)" title="ᠡᠨᠡ ᠡᠮ ᠊ᠢ ᠠᠷᠢᠯᠭᠠᠵᠤ ᠪᠤᠯᠬᠤ ᠊ᠤᠤ?">
               <a-button type="link" size="small">ᠠᠷᠢᠯᠭᠠᠬᠤ</a-button>
             </a-popconfirm>
           </template>
@@ -45,7 +45,7 @@ import {
 
 const columns = [
   {
-    title: 'ᠡᠮ ᠢᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ',
+    title: 'ᠡᠮ ᠊ᠤᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ',
     dataIndex: 'namem'
   },
   {
@@ -53,10 +53,10 @@ const columns = [
     dataIndex: 'drugid',
     scopedSlots: { customRender: 'actions' }
   }
-];
+]
 
 export default {
-  data() {
+  data () {
     return {
       key: '',
       data: [],
@@ -68,14 +68,14 @@ export default {
         current: 1,
         pageSize: 15
       }
-    };
+    }
   },
-  created() {
+  created () {
     this.onSearch()
   },
 
   methods: {
-    onSearch(params) {
+    onSearch (params) {
       this.isLoading = true
       const page = (params && params.current) || this.pagination.current
       console.log(page)
@@ -99,7 +99,7 @@ export default {
           this.isLoading = false
         })
     },
-    handleKeySearch() {
+    handleKeySearch () {
       this.pagination.current = 1
       this.pagination.total = 0
       this.onSearch()

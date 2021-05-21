@@ -2,43 +2,43 @@
   <page-header-wrapper>
     <template v-slot:content>
       <a-descriptions :column="1">
-        <a-descriptions-item label="药品图片">
+        <a-descriptions-item label="ᠡᠮ ᠊ᠤᠨ ᠵᠢᠷᠤᠭ">
           <div class="images-wrapper">
             <div v-for="(img, index) in images" :key="img.imgid" class="image">
               <img
                 :src="img.thumb"
                 @click="handlePreview(index)"
               />
-              <a-popconfirm @confirm="handleImageRemove(index)" title="确定要删除该图片吗？">
+              <a-popconfirm @confirm="handleImageRemove(index)" title="ᠡᠨᠡ ᠵᠢᠷᠤᠭ ᠊ᠢ ᠪᠠᠯᠠᠯᠠᠵᠤ ᠪᠤᠯᠬᠤ ᠊ᠤᠤ?">
                 <span class="remove">x</span>
               </a-popconfirm>
-              
+
             </div>
             <a-upload
               :multiple="false"
               :show-upload-list="false"
               :before-upload="beforeUpload"
-              :custom-request="customUploadRequest"          
+              :custom-request="customUploadRequest"
             >
-              <a-button><a-icon type="upload" block/>上传</a-button>
+              <a-button><a-icon type="upload" block/>ᠲᠡᠪᠰᠢᠭᠦᠯᠬᠦ</a-button>
             </a-upload>
           </div>
         </a-descriptions-item>
-        <a-descriptions-item label="ᠥᠭᠡᠷᠡ ᠨᠡᠷᠡ">{{ drug.namem }}</a-descriptions-item>
+        <a-descriptions-item label="ᠥᠭᠡᠷ᠎ᠡ ᠨᠡᠷ᠎ᠡ">{{ drug.namem }}</a-descriptions-item>
         <a-descriptions-item label="ᠢᠷᠡᠯᠳᠡ">{{ drug.source }}</a-descriptions-item>
         <a-descriptions-item label="ᠲᠠᠪᠤᠨ ᠮᠠᠬᠠᠪᠤᠳ">{{ drug.five }}</a-descriptions-item>
         <a-descriptions-item label="ᠵᠢᠷᠭᠤᠭᠠᠨ ᠠᠮᠳᠠ">{{ drug.sixTaste }}</a-descriptions-item>
-        <a-descriptions-item label="ᠡᠮ ᠢᠨ ᠴᠢᠨᠠᠷ">{{ drug.drugProperty }}</a-descriptions-item>
-        <a-descriptions-item label="ᠡᠮ ᠢᠨ ᠴᠢᠳᠠᠯ">{{ drug.drugPower }}</a-descriptions-item>
-        <a-descriptions-item label="ᠡᠮ ᠢᠨ ᠠᠮᠳᠠ ᠢᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ">{{ drug.decomposedTaste }}</a-descriptions-item>
+        <a-descriptions-item label="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠨᠠᠷ">{{ drug.drugProperty }}</a-descriptions-item>
+        <a-descriptions-item label="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ">{{ drug.drugPower }}</a-descriptions-item>
+        <a-descriptions-item label="ᠡᠮ ᠊ᠤᠨ ᠠᠮᠳᠠ ᠪᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ">{{ drug.decomposedTaste }}</a-descriptions-item>
         <a-descriptions-item label="ᠠᠷᠪᠠᠨ ᠳᠤᠯᠤᠭᠠᠨ ᠴᠢᠳᠠᠯ">{{ drug.seventeenEffect }}</a-descriptions-item>
-        <a-descriptions-item label="ᠡᠮ ᠢᠨ ᠴᠢᠳᠠᠯ ᠢᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ">{{ drug.decomEffect }}</a-descriptions-item>
-        <a-descriptions-item label="ᠡᠮ ᠢᠨ ᠴᠢᠳᠠᠯ ᠢᠨ ᠬᠡᠪ ᠴᠢᠨᠠᠷ">{{ drug.baseEffect }}</a-descriptions-item>
+        <a-descriptions-item label="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ ᠢᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ">{{ drug.decomEffect }}</a-descriptions-item>
+        <a-descriptions-item label="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ ᠊ᠤᠨ ᠬᠡᠪ ᠴᠢᠨᠠᠷ">{{ drug.baseEffect }}</a-descriptions-item>
         <a-descriptions-item label="ᠭᠤᠤᠯᠯᠠᠨ ᠵᠠᠰᠠᠬᠤ ᠡᠪᠡᠳᠴᠢᠨ">{{ drug.baseFix }}</a-descriptions-item>
-        <a-descriptions-item label="ᠴᠢᠳᠠᠯ ᠢᠨ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.effectCat }}</a-descriptions-item>
+        <a-descriptions-item label="ᠴᠢᠳᠠᠯ ᠊ᠤᠨ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.effectCat }}</a-descriptions-item>
         <a-descriptions-item label="ᠦᠢᠯᠡᠳᠦᠯ ᠦᠵᠡᠭᠦᠯᠬᠦ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.actionMode }}</a-descriptions-item>
         <a-descriptions-item>
-          <a-button type="primary" @click="handleEdit">修改</a-button>
+          <a-button type="primary" @click="handleEdit">ᠵᠠᠰᠠᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
         </a-descriptions-item>
       </a-descriptions>
     </template>
@@ -61,16 +61,16 @@ import {
 export default {
   components: {
   },
-  data() {
+  data () {
     return {
       drugId: null,
       drug: {},
       images: [],
       previewVisible: false,
       previewImage: ''
-    };
+    }
   },
-  created() {
+  created () {
     this.drugId = this.$route.params.id
     this.getDrug()
     this.getImageList()
@@ -95,7 +95,7 @@ export default {
             baseEffect: data.drug.baseEffect,
             baseFix: data.drug.baseFix,
             effectCat: data.effectCat.filter(d => d.checkflag === '1').map(d => d.namem).join(', '),
-            actionMode: data.actionMode.filter(d => d.checkflag === '1').map(d => d.namem).join(', '),
+            actionMode: data.actionMode.filter(d => d.checkflag === '1').map(d => d.namem).join(', ')
           }
           this.drug = drug
         })
@@ -163,7 +163,7 @@ export default {
         })
         .catch(err => {
           this.$message.error(err.message)
-        }) 
+        })
     },
     handleImageRemove (idx) {
       const { images } = this
@@ -209,7 +209,7 @@ export default {
 
 /deep/ .ant-pro-page-header-wrap-page-header-warp {
   width: 100%;
-  
+
   .ant-descriptions-item > span {
     font-size: 20px;
   }
@@ -227,7 +227,7 @@ export default {
       justify-content: flex-end;
     }
   }
-  
+
 }
 .images-wrapper {
   display: flex;
