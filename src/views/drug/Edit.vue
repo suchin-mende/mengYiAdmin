@@ -2,8 +2,7 @@
   <page-header-wrapper>
     <a-card :body-style="{ padding: '24px 32px' }" :bordered="false">
       <div class="content-hor">
-        <a-form :form="form" id="myform"
-                :rowClassName = "rowClassName">
+        <a-form :form="form" id="myform">
           <a-form-item label="ᠡᠮ ᠢᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ">
             <a-input
               :maxLength="50"
