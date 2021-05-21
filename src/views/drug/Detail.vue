@@ -11,7 +11,7 @@
                 :src="img.thumb"
                 @click="handlePreview(index)"
               />
-              <a-popconfirm @confirm="handleImageRemove(index)" title="确定要删除该图片吗？">
+              <a-popconfirm @confirm="handleImageRemove(index)" title="ᠲᠤᠰ ᠰᠡᠭᠦᠳᠡᠷ ᠢ ᠠᠷᠢᠯᠭᠠᠬᠤ ᠦ?">
                 <span class="remove">ᠤᠰᠤᠳᠤᠭᠠᠬᠤ</span>
               </a-popconfirm>
               
@@ -22,7 +22,7 @@
               :before-upload="beforeUpload"
               :custom-request="customUploadRequest"          
             >
-              <a-button class="upup"><a-icon type="upload" block/>上传</a-button>
+              <a-button class="upup"><a-icon type="upload" block/>ᠵᠢᠷᠤᠭ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
             </a-upload>
           </div>
         </a-descriptions-item>
@@ -40,7 +40,7 @@
         <a-descriptions-item label="ᠴᠢᠳᠠᠯ ᠢᠨ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.effectCat }}</a-descriptions-item>
         <a-descriptions-item label="ᠦᠢᠯᠡᠳᠦᠯ ᠦᠵᠡᠭᠦᠯᠬᠦ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.actionMode }}</a-descriptions-item>
         <a-descriptions-item>
-          <a-button class="edit" type="primary" @click="handleEdit">修改</a-button>
+          <a-button type="primary" @click="handleEdit">ᠵᠠᠰᠠᠬᠤ</a-button>
         </a-descriptions-item>
       </a-descriptions>
     
@@ -214,10 +214,6 @@ export default {
   position: absolute;
   right: -30px;
   top: 10px;
-}
-
-.edit {
-  // top: 10px;
 }
 
 /deep/ .ant-pro-page-header-wrap-children-content {

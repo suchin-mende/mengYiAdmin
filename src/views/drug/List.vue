@@ -25,10 +25,10 @@
           <template
             slot="actions"
             slot-scope="text, record">
-            <a-button type="link" size="small" @click="handleDetail(text)">ᠨᠠᠷᠢᠨ ᠪᠠᠢᠳᠠᠯ</a-button>
-            <a-button type="link" size="small" @click="handleEdit(text)">ᠵᠠᠰᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
+            <a-button type="link" size="small" @click="handleDetail(text)">ᠦᠵᠡᠬᠦ</a-button>
+            <a-button type="link" size="small" @click="handleEdit(text)">ᠵᠠᠰᠠᠬᠤ</a-button>
             <a-popconfirm @confirm="handleRemove(record)" title="确定要删除该药品吗？">
-              <a-button type="link" size="small">ᠠᠷᠢᠯᠭᠠᠬᠤ</a-button>
+              <a-button type="link" size="small">ᠤᠰᠤᠳᠤᠭᠠᠬᠤ</a-button>
             </a-popconfirm>
           </template>
         </a-table>
