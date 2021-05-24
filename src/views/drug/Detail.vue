@@ -25,7 +25,12 @@
             </a-upload>
           </div>
         </a-descriptions-item>
+
+        <a-descriptions-item label="ᠡᠮ ᠊ᠤᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ">{{ drug.namem }}</a-descriptions-item>
         <a-descriptions-item label="ᠥᠭᠡᠷ᠎ᠡ ᠨᠡᠷ᠎ᠡ">{{ drug.namem }}</a-descriptions-item>
+        <a-descriptions-item label="ᠰᠢᠨ᠎ᠡ ᠮᠤᠩᠭᠤᠯ ᠨᠡᠷ᠎ᠡ">{{ drug.namemn }}</a-descriptions-item>
+        <a-descriptions-item label="ᠬᠢᠲᠠᠳ ᠨᠡᠷ᠎ᠡ">{{ drug.namecn }}</a-descriptions-item>
+        <a-descriptions-item label="ᠲᠦᠪᠡᠳ ᠨᠡᠷ᠎ᠡ">{{ drug.namez }}</a-descriptions-item>
         <a-descriptions-item label="ᠢᠷᠡᠯᠳᠡ">{{ drug.source }}</a-descriptions-item>
         <a-descriptions-item label="ᠲᠠᠪᠤᠨ ᠮᠠᠬᠠᠪᠤᠳ">{{ drug.five }}</a-descriptions-item>
         <a-descriptions-item label="ᠵᠢᠷᠭᠤᠭᠠᠨ ᠠᠮᠳᠠ">{{ drug.sixTaste }}</a-descriptions-item>
@@ -40,6 +45,7 @@
         <a-descriptions-item label="ᠦᠢᠯᠡᠳᠦᠯ ᠦᠵᠡᠭᠦᠯᠬᠦ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.actionMode }}</a-descriptions-item>
         <a-descriptions-item>
           <a-button type="primary" @click="handleEdit">ᠵᠠᠰᠠᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
+          <a-button type="primary" @click="handleCancel">ᠪᠤᠴᠠᠬᠤ</a-button>
         </a-descriptions-item>
       </a-descriptions>
 
@@ -86,6 +92,7 @@ export default {
           const { data } = res
           const drug = {
             namem: data.drug.namem,
+            nameother: data.drug.nameother,
             source: data.drugSource.filter(d => d.checkflag === '1').map(d => d.namem).join(', '),
             five: data.fiveElement.filter(d => d.checkflag === '1').map(d => d.namem).join(', '),
             sixTaste: data.sixTaste.filter(d => d.checkflag === '1').map(d => d.namem).join(', '),
@@ -201,6 +208,9 @@ export default {
     },
     handlePreviewCancel () {
       this.previewVisible = false
+    },
+    handleCancel () {
+      this.$router.go(-1)
     }
   }
 }
