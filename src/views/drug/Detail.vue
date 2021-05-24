@@ -225,17 +225,22 @@ export default {
   position: absolute;
   /deep/ .ant-card-body {
     width: 100%;
-    // overflow-x: auto;
+    height: 100%;
+    overflow-x: scroll;
     tbody {
 
       display: grid;
-      grid-row-gap:30px
+      grid-row-gap:30px;
+      height: 100%;;
     }
     tbody > tr > td {
       display: grid;
+      height: 100%;
     }
     tbody > tr > td > span {
       font-size: 20px;
+      height: 800px;
+      overflow-wrap: break-word;
     }
   }
 }

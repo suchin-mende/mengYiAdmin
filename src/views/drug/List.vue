@@ -148,10 +148,10 @@ export default {
 
 <style lang="less" scoped>
 /deep/ .ant-table-body .ant-table-thead > tr > th:first-child{
-   height: 534px !important;
+   height: 504px !important;
 }
 /deep/ .ant-table-body .ant-table-tbody > tr > td:first-child{
-   height: 534px !important;
+   height: 504px !important;
 }
 
 .content-right {
