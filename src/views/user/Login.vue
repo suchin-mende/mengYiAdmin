@@ -35,7 +35,7 @@
         </a-input-password>
       </a-form-item>
 
-      <a-row :gutter="16">
+      <a-row style="display:flex" :gutter="16">
         <a-col class="gutter-row" :span="16">
           <a-form-item>
             <a-input size="large" type="text" :placeholder="$t('user.login.mobile.verification-code.placeholder')" v-decorator="['imgcode', {rules: [{ required: true, message: $t('user.verification-code.required') }], validateTrigger: 'blur'}]">
