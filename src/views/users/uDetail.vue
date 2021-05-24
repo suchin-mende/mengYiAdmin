@@ -26,20 +26,20 @@ import { uDetail } from '@/api/accounts'
 
 export default {
   components: {},
-  data () {
+  data() {
     return {
       userID: null,
-      user: {}
+      user: {},
     }
   },
-  created () {
+  created() {
     this.userID = this.$route.params.uid
     this.getUser()
   },
   methods: {
-    getUser () {
+    getUser() {
       uDetail({
-        beanId: this.userID
+        beanId: this.userID,
       }).then((res) => {
         const { data } = res
         console.log('sssssssss', res)
@@ -54,12 +54,12 @@ export default {
           phonenum: data.phonenum,
           pwd: data.pwd,
           sex: data.sex,
-          username: data.username
+          username: data.username,
         }
         this.user = user
       })
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -79,5 +79,10 @@ export default {
       justify-content: flex-end;
     }
   }
+}
+
+/deep/ tbody > tr > td > span {
+  font-size: 20px;
+  overflow-wrap: break-word;
 }
 </style>

@@ -209,6 +209,40 @@ export default {
 </script>
 
 <style lang="less" scoped>
+/deep/ .add-form {
+  display: grid;
+  grid-row-gap: 20px;
+}
+
+.ant-table-wrapper{
+  height: 100%;
+  /deep/ .ant-spin-nested-loading{
+    height: 100% ;
+    .ant-spin-container{
+      height: 100%;
+      .ant-table{
+        height: 100%;
+        .ant-table-content{
+          height: 100%;
+          .ant-table-body table{
+            height: 100%;
+            .ant-table-thead > tr{
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/deep/ .ant-table-body .ant-table-thead > tr > th{
+   height: 30.3vh !important;
+}
+/deep/ .ant-table-body .ant-table-tbody > tr > td{
+   height: 30.3vh !important;
+}
+
 
 .content-right {
   width: 1200px;
@@ -225,8 +259,11 @@ export default {
   }
 }
 /deep/ .ant-table-thead > tr th:last-child,/deep/ .ant-table-tbody .ant-table-row > td:last-child  {
-  height: 200px !important;
+  // height: 36vh !important;
   place-content: center;
 
+}
+/deep/ .ant-modal-title {
+  font-size: 20px;
 }
 </style>
