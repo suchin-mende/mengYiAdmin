@@ -209,6 +209,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+/deep/ .add-form {
+  display: grid;
+  grid-row-gap: 20px;
+}
 
 .ant-table-wrapper{
   height: 100%;
