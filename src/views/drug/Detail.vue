@@ -239,7 +239,7 @@ export default {
     }
     tbody > tr > td > span {
       font-size: 20px;
-      height: 800px;
+      height: 86vh;
       overflow-wrap: break-word;
     }
   }
