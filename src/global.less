@@ -320,10 +320,10 @@ html.mgl {
     transform: rotate(90deg);
   }
 
-  .ant-form {
+  .ant-form, a-form-model {
     display: flex;
 
-    .ant-form-item {
+    .ant-form-item, a-form-model-item {
       text-align: center;
       margin: 0 18px 0;
 
@@ -361,8 +361,8 @@ html.mgl {
             display: flex;
             align-items: center
           }
-        }
-        input.ant-input {
+        }        
+        input.ant-input, input.ant-select-search__field {
           width: 39px;
           height: 300px;
           display: table-column;
@@ -371,6 +371,26 @@ html.mgl {
           display: table-column;
           height: 300px;
         }
+        .ant-select, .ant-select-selection--single {
+          width: 39px !important;
+          height: 300px;
+
+          .ant-select-selection__rendered {
+            line-height: 39px;
+            margin: 0px;
+          }
+        }
+      }
+    }
+  }
+
+  .ant-select-dropdown {
+    width: 250px !important;
+    .ant-select-dropdown-menu {
+      display: flex;
+      .ant-select-dropdown-menu-item {
+        writing-mode: vertical-lr;
+        overflow: unset;
       }
     }
   }
