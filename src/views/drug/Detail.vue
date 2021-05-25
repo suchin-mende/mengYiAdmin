@@ -10,7 +10,7 @@
                 :src="img.thumb"
                 @click="handlePreview(index)"
               />
-              <a-popconfirm @confirm="handleImageRemove(index)" title="ᠡᠨᠡ ᠵᠢᠷᠤᠭ ᠊ᠢ ᠠᠷᠢᠯᠭᠠᠬᠤ ᠊ᠤᠤ?">
+              <a-popconfirm okText="ᠲᠡᠢᠮᠦ ᠡ" cancelText="ᠦᠭᠡᠢ" @confirm="handleImageRemove(index)" title="ᠡᠨᠡ ᠵᠢᠷᠤᠭ ᠊ᠢ ᠠᠷᠢᠯᠭᠠᠬᠤ ᠊ᠤᠤ?">
                 <span class="remove">x</span>
               </a-popconfirm>
 

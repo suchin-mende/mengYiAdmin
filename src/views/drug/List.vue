@@ -27,7 +27,7 @@
             slot-scope="text, record">
             <a-button type="link" size="small" @click="handleDetail(text)">ᠨᠠᠷᠢᠨ ᠪᠠᠢᠳᠠᠯ</a-button>
             <a-button type="link" size="small" @click="handleEdit(text)">ᠵᠠᠰᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
-            <a-popconfirm @confirm="handleRemove(record)" title="ᠡᠨᠡ ᠡᠮ ᠊ᠢ ᠠᠷᠢᠯᠭᠠᠵᠤ ᠪᠤᠯᠬᠤ ᠊ᠤᠤ?">
+            <a-popconfirm style="" cancelText="ᠦᠭᠡᠢ" okText="ᠲᠡᠢᠮᠦ ᠡ" @confirm="handleRemove(record)" title="ᠡᠨᠡ ᠡᠮ ᠊ᠢ ᠠᠷᠢᠯᠭᠠᠵᠤ ᠪᠤᠯᠬᠤ ᠊ᠤᠤ?">
               <a-button type="link" size="small">ᠠᠷᠢᠯᠭᠠᠬᠤ</a-button>
             </a-popconfirm>
           </template>
