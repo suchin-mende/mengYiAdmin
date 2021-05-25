@@ -25,11 +25,12 @@
             </a-upload>
           </div>
         </a-descriptions-item>
-        <a-descriptions-item label="ᠡᠮ ᠢᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ">{{ drug.namem }}</a-descriptions-item>
-        <a-descriptions-item label="ᠥᠭᠡᠷᠡ ᠨᠡᠷᠡ">{{ drug.nameother }}</a-descriptions-item>
-        <a-descriptions-item label="新蒙文名">{{ drug.namemn }}</a-descriptions-item>
-        <a-descriptions-item label="中文名">{{ drug.namecn }}</a-descriptions-item>
-        <a-descriptions-item label="藏文名">{{ drug.namez }}</a-descriptions-item>
+
+        <a-descriptions-item label="ᠡᠮ ᠊ᠤᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ">{{ drug.namem }}</a-descriptions-item>
+        <a-descriptions-item label="ᠥᠭᠡᠷ᠎ᠡ ᠨᠡᠷ᠎ᠡ">{{ drug.namem }}</a-descriptions-item>
+        <a-descriptions-item label="ᠰᠢᠨ᠎ᠡ ᠮᠤᠩᠭᠤᠯ ᠨᠡᠷ᠎ᠡ">{{ drug.namemn }}</a-descriptions-item>
+        <a-descriptions-item label="ᠬᠢᠲᠠᠳ ᠨᠡᠷ᠎ᠡ">{{ drug.namecn }}</a-descriptions-item>
+        <a-descriptions-item label="ᠲᠦᠪᠡᠳ ᠨᠡᠷ᠎ᠡ">{{ drug.namez }}</a-descriptions-item>
         <a-descriptions-item label="ᠢᠷᠡᠯᠳᠡ">{{ drug.source }}</a-descriptions-item>
         <a-descriptions-item label="ᠲᠠᠪᠤᠨ ᠮᠠᠬᠠᠪᠤᠳ">{{ drug.five }}</a-descriptions-item>
         <a-descriptions-item label="ᠵᠢᠷᠭᠤᠭᠠᠨ ᠠᠮᠳᠠ">{{ drug.sixTaste }}</a-descriptions-item>
@@ -43,7 +44,7 @@
         <a-descriptions-item label="ᠴᠢᠳᠠᠯ ᠊ᠤᠨ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.effectCat }}</a-descriptions-item>
         <a-descriptions-item label="ᠦᠢᠯᠡᠳᠦᠯ ᠦᠵᠡᠭᠦᠯᠬᠦ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.actionMode }}</a-descriptions-item>
         <a-descriptions-item>
-          <a-button type="primary" @click="handleEdit">修改</a-button>
+          <a-button type="primary" @click="handleEdit">ᠵᠠᠰᠠᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
           <a-button type="primary" @click="handleCancel">ᠪᠤᠴᠠᠬᠤ</a-button>
         </a-descriptions-item>
       </a-descriptions>
@@ -208,9 +209,9 @@ export default {
     handlePreviewCancel () {
       this.previewVisible = false
     },
-    handleCancel() {
+    handleCancel () {
       this.$router.go(-1)
-    }    
+    }
   }
 }
 

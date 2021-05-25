@@ -20,27 +20,27 @@
               placeholder=""
             />
           </a-form-item>
-          <a-form-item label="新蒙名">
+          <a-form-item label="ᠺᠢᠷᠢᠯ ᠮᠤᠩᠭᠤᠯ ᠨᠡᠷ᠎ᠡ">
             <a-input
               :maxLength="50"
               v-decorator="['namemn']"
               placeholder=""
             />
           </a-form-item>
-          <a-form-item label="中文名">
+          <a-form-item label="ᠬᠢᠳᠠᠳ ᠨᠡᠷ᠎ᠡ">
             <a-input
               :maxLength="50"
               v-decorator="['namecn']"
               placeholder=""
             />
           </a-form-item>
-          <a-form-item label="藏文名">
+          <a-form-item label="ᠲᠦᠪᠡᠳ ᠨᠡᠷ᠎ᠡ">
             <a-input
               :maxLength="50"
               v-decorator="['namez']"
               placeholder=""
             />
-          </a-form-item>          
+          </a-form-item>
           <a-form-item label="ᠢᠷᠡᠯᠲᠡ">
             <a-checkbox-group
               class="checkbox"
