@@ -305,7 +305,7 @@ export default {
     }
 
     .register-button {
-      width: 50%;
+      // width: 50%;
     }
 
     .login {

@@ -2,15 +2,18 @@
   <page-header-wrapper>
     <a-card :body-style="{ padding: '24px 32px' }" :bordered="false">
       <div class="content-hor">
-        <a-form :form="form">
-          <a-form-item label="ᠡᠮ ᠢᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ">
+        <a-form
+          :form="form"
+          id="myform"
+          :rowClassName="rowClassName">
+          <a-form-item label="ᠡᠮ ᠊ᠤᠨ ᠨᠡᠷᠡᠢᠳᠤᠯ">
             <a-input
               :maxLength="50"
               v-decorator="['namem', { rules: [{ required: true, message: 'error' }] }]"
               placeholder=""
             />
           </a-form-item>
-          <a-form-item label="ᠥᠬᠡᠷᠡ ᠨᠡᠷ᠎ᠡ">
+          <a-form-item label="ᠥᠬᠡᠷ᠎ᠡ ᠨᠡᠷ᠎ᠡ">
             <a-input
               :maxLength="50"
               v-decorator="['nameother']"
@@ -39,38 +42,40 @@
             />
           </a-form-item>          
           <a-form-item label="ᠢᠷᠡᠯᠲᠡ">
-            <a-checkbox-group class="checkbox" :options="drugSource"
+            <a-checkbox-group
+              class="checkbox"
+              :options="drugSource"
               v-decorator="['drugSource']"
             />
           </a-form-item>
           <a-form-item label="ᠲᠠᠪᠤᠨ ᠮᠠᠬᠠᠪᠤᠳ">
-            <a-checkbox-group class="ss" :options="fiveElement" v-decorator="['fiveElement']" />
+            <a-checkbox-group :options="fiveElement" v-decorator="['fiveElement']" />
           </a-form-item>
           <a-form-item label="ᠵᠢᠷᠭᠤᠭᠠᠨ ᠠᠮᠳᠠ">
             <a-checkbox-group :options="sixTaste" v-decorator="['sixTaste']"/>
           </a-form-item>
-          <a-form-item label="ᠡᠮ ᠢᠨ ᠴᠢᠨᠠᠷ">
+          <a-form-item label="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠨᠠᠷ">
             <a-checkbox-group :options="drugProperty" v-decorator="['drugProperty']"/>
           </a-form-item>
-          <a-form-item label="ᠡᠮ ᠢᠨ ᠴᠢᠳᠠᠯ">
+          <a-form-item label="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ">
             <a-checkbox-group :options="drugPower" v-decorator="['drugPower']"/>
           </a-form-item>
-          <a-form-item label="ᠡᠮ ᠢᠨ ᠠᠮᠳᠠ ᠢᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ">
+          <a-form-item label="ᠡᠮ ᠊ᠤᠨ ᠠᠮᠳᠠ ᠪᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ">
             <a-checkbox-group :options="decomposedTaste" v-decorator="['decomposedTaste']"/>
           </a-form-item>
           <a-form-item label="ᠠᠷᠪᠠᠨ ᠳᠤᠯᠤᠭᠠᠨ ᠴᠢᠳᠠᠯ">
             <a-checkbox-group :options="seventeenEffect" v-decorator="['seventeenEffect']"/>
           </a-form-item>
-          <a-form-item label="ᠡᠮ ᠢᠨ ᠴᠢᠳᠠᠯ ᠢᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ">
-            <a-textarea placeholder="ᠡᠮ ᠢᠨ ᠴᠢᠳᠠᠯ ᠢᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ" :rows="3" :maxLength="300" v-decorator="['decomEffect']"/>
+          <a-form-item label="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ ᠢᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ">
+            <a-textarea placeholder="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ ᠢᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ" :rows="3" :maxLength="300" v-decorator="['decomEffect']"/>
           </a-form-item>
-          <a-form-item label="ᠡᠮ ᠢᠨ ᠴᠢᠳᠠᠯ ᠢᠨ ᠬᠡᠪ ᠴᠢᠨᠠᠷ">
-            <a-textarea placeholder="ᠡᠮ ᠢᠨ ᠴᠢᠳᠠᠯ ᠢᠨ ᠬᠡᠪ ᠴᠢᠨᠠᠷ" :rows="3" :maxLength="300" v-decorator="['baseEffect']"/>
+          <a-form-item label="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ ᠊ᠤᠨ ᠬᠡᠪ ᠴᠢᠨᠠᠷ">
+            <a-textarea placeholder="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ ᠊ᠤᠨ ᠬᠡᠪ ᠴᠢᠨᠠᠷ" :rows="3" :maxLength="300" v-decorator="['baseEffect']"/>
           </a-form-item>
           <a-form-item label="ᠭᠤᠤᠯᠯᠠᠨ ᠵᠠᠰᠠᠬᠤ ᠡᠪᠡᠳᠴᠢᠨ">
             <a-textarea placeholder="ᠭᠤᠤᠯᠯᠠᠨ ᠵᠠᠰᠠᠬᠤ ᠡᠪᠡᠳᠴᠢᠨ" :rows="3" :maxLength="300" v-decorator="['baseFix']"/>
           </a-form-item>
-          <a-form-item label="ᠴᠢᠳᠠᠯ ᠢᠨ ᠬᠡᠯᠪᠡᠷᠢ">
+          <a-form-item label="ᠴᠢᠳᠠᠯ ᠊ᠤᠨ ᠬᠡᠯᠪᠡᠷᠢ">
             <a-checkbox-group :options="effectCat" v-decorator="['effectCat']"/>
           </a-form-item>
           <a-form-item label="ᠦᠢᠯᠡᠳᠦᠯ ᠦᠵᠡᠭᠦᠯᠬᠦ ᠬᠡᠯᠪᠡᠷᠢ">
@@ -99,8 +104,9 @@ import {
 
 export default {
   components: {},
-  data() {
+  data () {
     return {
+      tep: 0,
       isSubmit: false,
       drugSource: [],
       fiveElement: [],
@@ -111,13 +117,15 @@ export default {
       seventeenEffect: [],
       effectCat: [],
       actionMode: [],
-
       form: this.$form.createForm(this),
       drugId: null,
-      drug: {},
+      drug: {}
     }
   },
-  created() {
+  mounted () {
+     document.getElementById('myform').addEventListener('mousewheel', this.handleScroll)
+ },
+  created () {
     this.drugId = this.$route.params.id
     this.initDicts()
     if (this.drugId) {
@@ -125,6 +133,22 @@ export default {
     }
   },
   methods: {
+    handleScroll (e) {
+      const direction = e.deltaY > 0 ? 'down' : 'up' // deltaY为正则滚轮向下，为负滚轮向上
+            if (direction == 'down') { // 125为用户一次滚动鼠标的wheelDelta的值
+                // console.log(e.path[1].scrollLeft)
+                this.tep = e.path[1].scrollLeft
+                this.tep += 50
+                e.path[1].scrollLeft = this.tep
+                console.log('nono', e)
+            }
+            if (direction == 'up') {
+                // alert('ss')
+                this.tep = e.path[1].scrollLeft
+                this.tep -= 50
+                e.path[1].scrollLeft = this.tep
+            }
+    },
     initDicts () {
       this.setDict('M011', 'drugSource')
       this.setDict('M021', 'fiveElement')
@@ -145,7 +169,7 @@ export default {
         }
       })
     },
-    getDrug() {
+    getDrug () {
       drugDetail({
         beanId: this.drugId
       })
@@ -171,11 +195,11 @@ export default {
             decomposedTaste: decomposedTaste.filter(d => d.checkflag === '1').map(d => d.dictid),
             seventeenEffect: seventeenEffect.filter(d => d.checkflag === '1').map(d => d.dictid),
             effectCat: effectCat.filter(d => d.checkflag === '1').map(d => d.dictid),
-            actionMode: actionMode.filter(d => d.checkflag === '1').map(d => d.dictid),
+            actionMode: actionMode.filter(d => d.checkflag === '1').map(d => d.dictid)
           })
         })
     },
-    handleSave() {
+    handleSave () {
       const { form: { validateFields } } = this
       validateFields((err, values) => {
         if (!err) {
@@ -220,10 +244,10 @@ export default {
           this.$message.error(err.message)
         })
     },
-    handleCancel() {
+    handleCancel () {
       this.$router.go(-1)
-    },
-  },
+    }
+  }
 }
 </script>
 
@@ -233,13 +257,15 @@ export default {
   font-size: 20px;
 }
 //vertical-align: middle;
+
+/deep/ .ant-form-item-children .ant-checkbox-group-item {
+  display: table;
+}
 /deep/ .ant-form-item-children .ant-checkbox-group label span {
   vertical-align: middle;
+
 }
-.ss .ant-checkbox{
-  vertical-align: baseline;
-}
-// vertical-align: baseline;
+
 /deep/ .ant-pro-page-header-wrap-children-content {
   position: relative;
 }
@@ -249,15 +275,20 @@ export default {
   position: absolute;
   /deep/ .ant-card-body {
     width: 100%;
-    overflow-x: auto;
+    // overflow-x: auto;
     .content-hor {
       width: 100%;
-      overflow-x: auto;
+      height: 100%;
+      // overflow-x: auto;
       display: flex;
 
       .ant-form {
         width: 85%;
         overflow-x: auto;
+        .ant-form-item {
+          padding: 0px 0px 0px 38px;
+          border-left: solid 1px #f0f2f5 ;
+        }
       }
       .actions {
         width: 15%;

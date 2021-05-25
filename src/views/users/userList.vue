@@ -46,7 +46,7 @@
             <a-button type="link" @click="handleKeyDetail(text.userid)">{{ unametext }}</a-button>
           </template>
           <template slot="actions" slot-scope="text">
-            <a-button type="link" @click="handleTest(text)">ᠤᠰᠤᠳᠤᠭᠠᠬᠤ</a-button>
+            <a-button type="link" @click="handleTest(text)">ᠠᠷᠢᠯᠭᠠᠬᠤ</a-button>
           </template>
         </a-table>
       </div>
@@ -55,30 +55,28 @@
 </template>
 
 <script>
-import { uList } from '@/api/accounts'
-import { uSave } from '@/api/accounts'
-import { uDetail } from '@/api/accounts'
+import { uList, uSave, uDetail } from '@/api/accounts'
 
 const columns = [
   {
     title: 'ᠨᠡᠷ᠎ᠡ',
     dataIndex: 'username',
     key: 'username',
-    scopedSlots: { customRender: 'username' },
+    scopedSlots: { customRender: 'username' }
   },
   {
     title: 'ᠤᠲᠠᠰᠤᠨ ᠨᠤᠮᠧᠷ',
-    dataIndex: 'phonenum',
+    dataIndex: 'phonenum'
   },
   {
     title: 'ᠳᠤᠬᠢᠷᠠᠭᠤᠯᠬᠤ',
     dataIndex: 'loginname',
-    scopedSlots: { customRender: 'actions' },
-  },
+    scopedSlots: { customRender: 'actions' }
+  }
 ]
 
 export default {
-  data() {
+  data () {
     return {
       ModalText: 'Content of the modal',
       visible: false,
@@ -91,7 +89,7 @@ export default {
         nameother: '',
         namez: '',
         pwd: 'qweqwe',
-        revision: 1,
+        revision: 1
       },
       key: '',
       phonenum: '',
@@ -102,19 +100,19 @@ export default {
         current: 1,
         total: 0,
         current: 1,
-        pageSize: 15,
-      },
+        pageSize: 15
+      }
     }
   },
-  created() {
+  created () {
     this.onSearch()
   },
 
   methods: {
-    uuid() {
+    uuid () {
       var d = new Date().getTime()
       if (window.performance && typeof window.performance.now === 'function') {
-        d += performance.now() //use high-precision timer if available
+        d += performance.now() // use high-precision timer if available
       }
       var uuid = 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
         var r = (d + Math.random() * 16) % 16 | 0 // d是随机种子
@@ -123,16 +121,16 @@ export default {
       })
       return uuid
     },
-    showModal() {
+    showModal () {
       this.visible = true
     },
-    handleSubmit() {
+    handleSubmit () {
       this.defData.username = this.addUsername
       this.defData.phonenum = this.addPhonenum
       this.defData.loginname = this.uuid()
       this.saveUser(this.defData)
     },
-    handleOk(e) {
+    handleOk (e) {
       this.ModalText = 'The modal will be closed after two seconds'
       this.confirmLoading = true
       this.handleSubmit()
@@ -142,16 +140,16 @@ export default {
         this.confirmLoading = false
       }, 2000)
     },
-    handleCancel(e) {
+    handleCancel (e) {
       console.log('Clicked cancel button')
       this.visible = false
     },
-    saveUser(userData) {
+    saveUser (userData) {
       uSave(userData).then((res) => {
         console.log(res)
       })
     },
-    onSearch(params) {
+    onSearch (params) {
       this.isLoading = true
       const page = (params && params.current) || this.pagination.current
       console.log(page)
@@ -159,7 +157,7 @@ export default {
         page: page,
         pageSize: this.pagination.pageSize,
         username: this.key || '',
-        loginname: '1',
+        loginname: '1'
       })
         .then((res) => {
           this.isLoading = false
@@ -169,48 +167,81 @@ export default {
           this.pagination = {
             ...this.pagination,
             current: page,
-            total: data.pageSize * data.totalPage,
+            total: data.pageSize * data.totalPage
           }
         })
         .catch(() => {
           this.isLoading = false
         })
     },
-    getDetail(beanId) {
+    getDetail (beanId) {
       uDetail({
-        beanId: beanId,
+        beanId: beanId
       })
         .then((res) => {
           console.log(res)
         })
         .catch(() => {})
     },
-    handleKeySearch() {
+    handleKeySearch () {
       this.pagination.current = 1
       this.pagination.total = 0
       this.onSearch()
     },
-    handleReset() {
+    handleReset () {
       this.key = ''
       this.handleKeySearch()
     },
-    handleKeyDetail(uid) {
+    handleKeyDetail (uid) {
       this.$router.push({
         name: 'UserDetail',
         params: {
-          uid: uid,
-        },
+          uid: uid
+        }
       })
     },
-    handleTest(text) {
+    handleTest (text) {
       alert(text)
       console.log(text)
-    },
-  },
+    }
+  }
 }
 </script>
 
 <style lang="less" scoped>
+/deep/ .add-form {
+  display: grid;
+  grid-row-gap: 20px;
+}
+
+.ant-table-wrapper{
+  height: 100%;
+  /deep/ .ant-spin-nested-loading{
+    height: 100% ;
+    .ant-spin-container{
+      height: 100%;
+      .ant-table{
+        height: 100%;
+        .ant-table-content{
+          height: 100%;
+          .ant-table-body table{
+            height: 100%;
+            .ant-table-thead > tr{
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/deep/ .ant-table-body .ant-table-thead > tr > th{
+   height: 30.3vh !important;
+}
+/deep/ .ant-table-body .ant-table-tbody > tr > td{
+   height: 30.3vh !important;
+}
 
 
 .content-right {
@@ -228,8 +259,11 @@ export default {
   }
 }
 /deep/ .ant-table-thead > tr th:last-child,/deep/ .ant-table-tbody .ant-table-row > td:last-child  {
-  height: 200px !important;
+  // height: 36vh !important;
   place-content: center;
-  
+
+}
+/deep/ .ant-modal-title {
+  font-size: 20px;
 }
 </style>

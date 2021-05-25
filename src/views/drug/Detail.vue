@@ -1,26 +1,27 @@
 <template>
   <page-header-wrapper>
-    <template v-slot:content>
+    <a-card :body-style="{ padding: '24px 32px' }" :bordered="false">
+
       <a-descriptions :column="1">
-        <a-descriptions-item label="药品图片">
+        <a-descriptions-item label="ᠡᠮ ᠊ᠤᠨ ᠵᠢᠷᠤᠭ">
           <div class="images-wrapper">
             <div v-for="(img, index) in images" :key="img.imgid" class="image">
               <img
                 :src="img.thumb"
                 @click="handlePreview(index)"
               />
-              <a-popconfirm @confirm="handleImageRemove(index)" title="确定要删除该图片吗？">
+              <a-popconfirm @confirm="handleImageRemove(index)" title="ᠡᠨᠡ ᠵᠢᠷᠤᠭ ᠊ᠢ ᠠᠷᠢᠯᠭᠠᠬᠤ ᠊ᠤᠤ?">
                 <span class="remove">x</span>
               </a-popconfirm>
-              
+
             </div>
             <a-upload
               :multiple="false"
               :show-upload-list="false"
               :before-upload="beforeUpload"
-              :custom-request="customUploadRequest"          
+              :custom-request="customUploadRequest"
             >
-              <a-button><a-icon type="upload" block/>上传</a-button>
+              <a-button class="upup"><a-icon type="upload" block/>ᠵᠢᠷᠤᠭ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
             </a-upload>
           </div>
         </a-descriptions-item>
@@ -32,24 +33,25 @@
         <a-descriptions-item label="ᠢᠷᠡᠯᠳᠡ">{{ drug.source }}</a-descriptions-item>
         <a-descriptions-item label="ᠲᠠᠪᠤᠨ ᠮᠠᠬᠠᠪᠤᠳ">{{ drug.five }}</a-descriptions-item>
         <a-descriptions-item label="ᠵᠢᠷᠭᠤᠭᠠᠨ ᠠᠮᠳᠠ">{{ drug.sixTaste }}</a-descriptions-item>
-        <a-descriptions-item label="ᠡᠮ ᠢᠨ ᠴᠢᠨᠠᠷ">{{ drug.drugProperty }}</a-descriptions-item>
-        <a-descriptions-item label="ᠡᠮ ᠢᠨ ᠴᠢᠳᠠᠯ">{{ drug.drugPower }}</a-descriptions-item>
-        <a-descriptions-item label="ᠡᠮ ᠢᠨ ᠠᠮᠳᠠ ᠢᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ">{{ drug.decomposedTaste }}</a-descriptions-item>
+        <a-descriptions-item label="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠨᠠᠷ">{{ drug.drugProperty }}</a-descriptions-item>
+        <a-descriptions-item label="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ">{{ drug.drugPower }}</a-descriptions-item>
+        <a-descriptions-item label="ᠡᠮ ᠊ᠤᠨ ᠠᠮᠳᠠ ᠪᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ">{{ drug.decomposedTaste }}</a-descriptions-item>
         <a-descriptions-item label="ᠠᠷᠪᠠᠨ ᠳᠤᠯᠤᠭᠠᠨ ᠴᠢᠳᠠᠯ">{{ drug.seventeenEffect }}</a-descriptions-item>
-        <a-descriptions-item label="ᠡᠮ ᠢᠨ ᠴᠢᠳᠠᠯ ᠢᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ">{{ drug.decomEffect }}</a-descriptions-item>
-        <a-descriptions-item label="ᠡᠮ ᠢᠨ ᠴᠢᠳᠠᠯ ᠢᠨ ᠬᠡᠪ ᠴᠢᠨᠠᠷ">{{ drug.baseEffect }}</a-descriptions-item>
+        <a-descriptions-item label="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ ᠢᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ">{{ drug.decomEffect }}</a-descriptions-item>
+        <a-descriptions-item label="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ ᠊ᠤᠨ ᠬᠡᠪ ᠴᠢᠨᠠᠷ">{{ drug.baseEffect }}</a-descriptions-item>
         <a-descriptions-item label="ᠭᠤᠤᠯᠯᠠᠨ ᠵᠠᠰᠠᠬᠤ ᠡᠪᠡᠳᠴᠢᠨ">{{ drug.baseFix }}</a-descriptions-item>
-        <a-descriptions-item label="ᠴᠢᠳᠠᠯ ᠢᠨ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.effectCat }}</a-descriptions-item>
+        <a-descriptions-item label="ᠴᠢᠳᠠᠯ ᠊ᠤᠨ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.effectCat }}</a-descriptions-item>
         <a-descriptions-item label="ᠦᠢᠯᠡᠳᠦᠯ ᠦᠵᠡᠭᠦᠯᠬᠦ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.actionMode }}</a-descriptions-item>
         <a-descriptions-item>
           <a-button type="primary" @click="handleEdit">修改</a-button>
           <a-button type="primary" @click="handleCancel">ᠪᠤᠴᠠᠬᠤ</a-button>
         </a-descriptions-item>
       </a-descriptions>
-    </template>
-    <a-modal class="image-preview" :visible="previewVisible" :footer="null" @cancel="handlePreviewCancel">
-      <img style="width: 100%" :src="previewImage" />
-    </a-modal>
+
+      <a-modal class="image-preview" :visible="previewVisible" :footer="null" @cancel="handlePreviewCancel">
+        <img style="width: 100%" :src="previewImage" />
+      </a-modal>
+    </a-card>
   </page-header-wrapper>
 </template>
 
@@ -66,16 +68,16 @@ import {
 export default {
   components: {
   },
-  data() {
+  data () {
     return {
       drugId: null,
       drug: {},
       images: [],
       previewVisible: false,
       previewImage: ''
-    };
+    }
   },
-  created() {
+  created () {
     this.drugId = this.$route.params.id
     this.getDrug()
     this.getImageList()
@@ -101,7 +103,7 @@ export default {
             baseEffect: data.drug.baseEffect,
             baseFix: data.drug.baseFix,
             effectCat: data.effectCat.filter(d => d.checkflag === '1').map(d => d.namem).join(', '),
-            actionMode: data.actionMode.filter(d => d.checkflag === '1').map(d => d.namem).join(', '),
+            actionMode: data.actionMode.filter(d => d.checkflag === '1').map(d => d.namem).join(', ')
           }
           this.drug = drug
         })
@@ -169,7 +171,7 @@ export default {
         })
         .catch(err => {
           this.$message.error(err.message)
-        }) 
+        })
     },
     handleImageRemove (idx) {
       const { images } = this
@@ -216,9 +218,50 @@ export default {
 
 <style lang="less" scoped>
 
-/deep/ .ant-pro-page-header-wrap-page-header-warp {
+.upup {
+  position: absolute;
+  right: -30px;
+  top: 10px;
+}
+
+/deep/ .ant-pro-page-header-wrap-children-content {
+  position: relative;
+}
+.ant-card {
+  writing-mode: vertical-lr;;
   width: 100%;
-  
+  height: 100%;
+  position: absolute;
+  /deep/ .ant-card-body {
+    width: 100%;
+    height: 100%;
+    overflow-x: scroll;
+    tbody {
+
+      display: grid;
+      grid-row-gap:30px;
+      height: 100%;;
+    }
+    tbody > tr > td {
+      display: grid;
+      height: 100%;
+    }
+    tbody > tr > td > span {
+      font-size: 20px;
+      height: 86vh;
+      overflow-wrap: break-word;
+    }
+  }
+}
+/deep/ .ant-page-header-content {
+  height: 90vh;
+}
+
+/deep/ .ant-pro-page-header-wrap-page-header-warp {
+
+  .ant-descriptions-item > span {
+    font-size: 20px;
+  }
   .ant-descriptions-row {
     padding: 0 10px;
     display: block;
@@ -233,21 +276,27 @@ export default {
       justify-content: flex-end;
     }
   }
-  
+
 }
 .images-wrapper {
-  display: flex;
-  align-items: center;
 
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
   .image {
-    margin-bottom: 15px;
+    margin: 10px;
+    background: #d9d9d9;
 
     img {
+      display: flex;
       width:60px;
-      height: 60px;
+      height: 60px;;
     }
+
     .remove {
-      font-size: 14px;
+      color:#ff4d4f;
+      font-size: 17px;
       padding: 5px;
     }
   }

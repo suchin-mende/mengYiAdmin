@@ -8,74 +8,94 @@
         >
           <a-form-model-item
             label="处方名称"
-            :rules="['namem', { rules: [{ required: true, message: 'error' }] }]">
+            prop="namem"
+            :rules="[{required: true, message: 'error', trigger: 'change'}]">
             <a-input
               :maxLength="50"
+              v-model="form.namem"
             />
           </a-form-model-item>
           <a-form-model-item
             label="ᠥᠬᠡᠷᠡ ᠨᠡᠷ᠎ᠡ"
-            :rules="['nameother', { rules: [{ required: true, message: 'error' }] }]">
+            prop="nameother"
+            >
             <a-input
               :maxLength="50"
+              v-model="form.nameother"
             />
           </a-form-model-item>
           <a-form-model-item
             label="新蒙名"
-            :rules="['namemn', { rules: [{ required: true, message: 'error' }] }]">
+            prop="namemn"
+            >
             <a-input
               :maxLength="50"
+              v-model="form.namemn"
             />
           </a-form-model-item>
           <a-form-model-item
             label="中文名"
-            :rules="['namecn', { rules: [{ required: true, message: 'error' }] }]">
+            prop="namecn"
+            >
             <a-input
               :maxLength="50"
+              v-model="form.namecn"
             />
           </a-form-model-item>
           <a-form-model-item
             label="藏文名"
-            :rules="['namez', { rules: [{ required: true, message: 'error' }] }]">
+            prop="namez"
+          >
             <a-input
               :maxLength="50"
+              v-model="form.namez"
             />
           </a-form-model-item>
 
           <div class="drugs">
             <div
               class="drug"
-              v-for="(d, idx) in formDrugList"
+              v-for="(d, idx) in form.resipeDrugList"
               :key="d.drugid">
               <a-form-model-item
                 label="药品名称">
-                <span>{{ d.drugName }}</span>
+                <span>{{ d.namem }}</span>
               </a-form-model-item>
-              <a-form-item
+              <a-form-model-item
                 label="数量"
+                :prop="`resipeDrugList[${idx}].unitnum`"
+                :rules="[{required: true, message: 'error', trigger: 'change'}]"
               >
                 <a-input
-                  :maxLength="50"
+                  :maxLength="10"
+                  v-model="d.unitnum"
                   placeholder=""
                 />
-              </a-form-item>
-              <a-form-item
+              </a-form-model-item>
+              <a-form-model-item
                 label="药品单位"
+                :prop="`resipeDrugList[${idx}].unit`"
+                :rules="[{required: true, message: 'error', trigger: 'change'}]"
               >
-                <a-input
-                  :maxLength="50"
-                  placeholder=""
-                />
-              </a-form-item>
-              <a-form-item
+                <a-radio-group
+                  v-model="d.unit">
+                  <a-radio
+                    v-for="(unit, unitIdx) in drugUnits"
+                    :key="unitIdx"
+                    :value="unit.value"
+                  >
+                    {{ unit.label }}
+                  </a-radio>
+                </a-radio-group>
+              </a-form-model-item>
+              <a-form-model-item
                 label=""
               >
                 <a-button type="danger" @click="handleRemoveDrug(idx)">删除</a-button>
-              </a-form-item>
-              
+              </a-form-model-item>
             </div>
           </div>
-          <a-form-item label="添加药品">
+          <a-form-model-item label="添加药品">
             <a-select
               show-search
               :value="drugKey"
@@ -91,27 +111,36 @@
                 {{ d.namem }}
               </a-select-option>
             </a-select>
-          </a-form-item>
-          <a-form-item label="剂型">
-            <a-checkbox-group class="checkbox" :options="drugCategory"
-              v-decorator="['drugcat']"
-            />
-          </a-form-item>
-          <a-form-item label="功效">
-            <a-textarea placeholder="请输入" :rows="3" :maxLength="300" v-decorator="['effect']"/>
-          </a-form-item>
-          <a-form-item label="治法">
-            <a-textarea placeholder="请输入" :rows="3" :maxLength="300" v-decorator="['therapymemo']"/>
-          </a-form-item>
-          <a-form-item label="功能主治">
-            <a-textarea placeholder="请输入" :rows="3" :maxLength="300" v-decorator="['mainEffect']"/>
-          </a-form-item>
-          <a-form-item label="禁忌">
-            <a-textarea placeholder="请输入" :rows="3" :maxLength="300" v-decorator="['taboo']"/>
-          </a-form-item>
-          <a-form-item label="备注">
-            <a-textarea placeholder="请输入" :rows="3" :maxLength="300" v-decorator="['remark']"/>
-          </a-form-item>
+          </a-form-model-item>
+          <a-form-model-item label="剂型" prop="drugcat"
+            :rules="[{required: true, message: 'error', trigger: 'change'}]"
+          >
+            <a-radio-group
+              v-model="form.drugcat">
+              <a-radio
+                v-for="(cat, catIdx) in drugCategory"
+                :key="catIdx"
+                :value="cat.value"
+              >
+                {{ cat.label }}
+              </a-radio>
+            </a-radio-group>
+          </a-form-model-item>
+          <a-form-model-item label="功效" prop="effect">
+            <a-textarea placeholder="请输入" :rows="3" :maxLength="300" v-model="form.effect"/>
+          </a-form-model-item>
+          <a-form-model-item label="治法" prop="therapymemo">
+            <a-textarea placeholder="请输入" :rows="3" :maxLength="300" v-model="form.therapymemo"/>
+          </a-form-model-item>
+          <a-form-model-item label="功能主治" prop="mainEffect">
+            <a-textarea placeholder="请输入" :rows="3" :maxLength="300" v-model="form.mainEffect"/>
+          </a-form-model-item>
+          <a-form-model-item label="禁忌" prop="taboo">
+            <a-textarea placeholder="请输入" :rows="3" :maxLength="300" v-model="form.taboo"/>
+          </a-form-model-item>
+          <a-form-model-item label="备注" prop="remark">
+            <a-textarea placeholder="请输入" :rows="3" :maxLength="300" v-model="form.remark"/>
+          </a-form-model-item>
         </a-form-model>
         <div class="actions">
           <div class="actions-inner">
@@ -126,10 +155,15 @@
 
 <script>
 import {
-  drugDetail,
   durgSave,
   drugList
 } from '@/api/drug'
+
+import {
+  resipeDetail,
+  resipeSave
+} from '@/api/resipe'
+
 import {
   getDict
 } from '@/api/dict'
@@ -140,13 +174,27 @@ export default {
     return {
       isSubmit: false,
 
-      form: this.$form.createForm(this),
+      form: {
+        namem: '',
+        nameother: '',
+        namemn: '',
+        namecn: '',
+        namez: '',
+        resipeDrugList: [],
+        drugcat: '',
+        effect: '',
+        therapymemo: '',
+        mainEffect: '',
+        taboo: '',
+        remark: ''
+      },
       drugId: null,
       drug: {},
       drugCategory: [],
       drugKey: undefined,
       drugSearchResult: [],
-      formDrugList: []
+      formDrugList: [],
+      drugUnits: []
     }
   },
   created() {
@@ -159,6 +207,7 @@ export default {
   methods: {
     initDicts () {
       this.setDict('M101', 'drugCategory')
+      this.setDict('UNI', 'drugUnits')
     },
     async setDict (key, prop) {
       const result = await getDict(key)
@@ -170,73 +219,82 @@ export default {
       })
     },
     getDrug() {
-      drugDetail({
+      resipeDetail({
         beanId: this.drugId
       })
         .then(res => {
+          console.log(res)
           const result = res.data
           this.drug = result
-          const { drug, drugSource, fiveElement, sixTaste, drugProperty, drugPower, decomposedTaste,
-              seventeenEffect, effectCat, actionMode } = result
-          this.form.setFieldsValue({
-            namem: drug.namem,
-            nameother: drug.nameother,
-            namemn: drug.namemn,
-            namecn: drug.namecn,
-            namez: drug.namez,
-            decomEffect: drug.decomEffect,
-            baseEffect: drug.baseEffect,
-            baseFix: drug.baseFix,
-            drugSource: drugSource.filter(d => d.checkflag === '1').map(d => d.dictid),
-            fiveElement: fiveElement.filter(d => d.checkflag === '1').map(d => d.dictid),
-            sixTaste: sixTaste.filter(d => d.checkflag === '1').map(d => d.dictid),
-            drugProperty: drugProperty.filter(d => d.checkflag === '1').map(d => d.dictid),
-            drugPower: drugPower.filter(d => d.checkflag === '1').map(d => d.dictid),
-            decomposedTaste: decomposedTaste.filter(d => d.checkflag === '1').map(d => d.dictid),
-            seventeenEffect: seventeenEffect.filter(d => d.checkflag === '1').map(d => d.dictid),
-            effectCat: effectCat.filter(d => d.checkflag === '1').map(d => d.dictid),
-            actionMode: actionMode.filter(d => d.checkflag === '1').map(d => d.dictid),
-          })
+          const { resipe, resipeDrugList } = result
+          console.log(resipe)
+          this.form = {
+            ...this.form,
+            namem: resipe.namem,
+            nameother: resipe.nameother,
+            namemn: resipe.namemn,
+            namecn: resipe.namecn,
+            namez: resipe.namez,
+            drugcat: resipe.drugcat,
+            effect: resipe.effect,
+            therapymemo: resipe.therapymemo,
+            mainEffect: resipe.mainEffect,
+            taboo: resipe.taboo,
+            remark: resipe.remark,
+            resipeDrugList: resipeDrugList 
+          }
         })
     },
     handleSave() {
-      const { form: { validateFields } } = this
-      validateFields((err, values) => {
-        if (!err) {
-          this.saveDrug(values)
+      const { $refs: { form } } = this
+      form.validate(valid => {
+        if (valid) {
+          console.log('--- valid')
+          if (this.form.resipeDrugList.length === 0) {
+            this.$message.error('请添加药品')
+            return
+          }
+          this.saveDrug()
         }
       })
     },
-    saveDrug (values) {
+    saveDrug () {
       this.isSubmit = true
-      const params = {
-        ...values
-      }
-      delete params.namem
-      delete params.nameother
-      delete params.baseEffect
-      delete params.baseFix
-      delete params.decomEffect
 
-      params.drug = {
-        namem: values.namem,
-        nameother: values.nameother,
-        baseEffect: values.baseEffect,
-        baseFix: values.baseFix,
-        decomEffect: values.decomEffect
+      const { form } = this
+      console.log(form)
+      const params = {
+        resipeDrugList: form.resipeDrugList,
+        resipe: {
+          drugcat: form.drugcat,
+          effect: form.effect,
+          mainEffect: form.mainEffect,
+          namecn: form.namecn,
+          namem: form.namem,
+          namemn: form.namemn,
+          nameother: form.nameother,
+          namez: form.namez,
+          remark: form.remark,
+          therapymemo: form.therapymemo,
+          taboo: form.taboo
+        }
       }
+
       if (this.drugId) {
-        params.drug.drugid = this.drugId
-        params.drug.revision = this.drug.drug.revision
+        params.resipe.tid = this.drugId
+        params.resipe.revision = this.drug.resipe.revision
       }
-      durgSave(params)
+      console.log(params)
+      
+      resipeSave(params)
         .then(res => {
           this.isSubmit = false
           this.$message.success('Success')
           if (this.drugId) {
-            this.getDrug()
+            // this.getDrug()
           } else {
-            this.form.resetFields()
+            this.$refs.form.resetFields()
+            this.form.resipeDrugList = []
           }
         })
         .catch(err => {
@@ -273,19 +331,19 @@ export default {
         })
     },
     addDrug (id) {
-      const { drugSearchResult, formDrugList } = this
-      if (formDrugList.filter(d => d.drugid === id).length > 0) {
+      const { drugSearchResult, form: { resipeDrugList } } = this
+      if (resipeDrugList.filter(d => d.drugid === id).length > 0) {
         return
       }
-      formDrugList.push({
+      resipeDrugList.push({
         unit: '',
         drugid: id,
-        drugName: drugSearchResult.filter(d => d.drugid === id)[0].namem, 
-        unitnum: 0
+        namem: drugSearchResult.filter(d => d.drugid === id)[0].namem, 
+        unitnum: ''
       })
     },
     handleRemoveDrug (idx) {
-      this.formDrugList.splice(idx, 1)
+      this.form.resipeDrugList.splice(idx, 1)
     }
   },
 }

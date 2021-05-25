@@ -1,7 +1,6 @@
 // eslint-disable-next-line
 import { UserLayout, BasicLayout, BlankLayout } from '@/layouts'
-import { bxAnaalyse } from '@/core/icons'
-import { drugicon } from '@/core/icons'
+import { bxAnaalyse, drugicon } from '@/core/icons'
 
 const RouteView = {
   name: 'RouteView',
@@ -23,12 +22,12 @@ export const asyncRouterMap = [
         component: RouteView,
         redirect: '/list/table-list',
         meta: { title: 'menu.list', icon: 'table', permission: ['table'] },
-        
+
              path: '/userlist/userList',
              name: 'userList',
              component: () => import('@/views/userlist/userList'),
              meta: { title: 'menu.list.basic-list', keepAlive: true, permission: ['table'] }
-        
+
         children: [
           {
             path: '/list/table-list/:pageNo([1-9]\\d*)?',
@@ -81,13 +80,13 @@ export const asyncRouterMap = [
 */
 
       // userlist
-      
+
       {
         path: '/users',
         component: RouteView,
         name: 'users',
         redirect: '/users/userList',
-        meta: { title: 'ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ', keepAlive: true, icon: 'user',permission: ['user'] },
+        meta: { title: 'ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ', keepAlive: true, icon: 'user', permission: ['user'] },
         hideChildrenInMenu: true,
         children: [
           {
@@ -100,7 +99,7 @@ export const asyncRouterMap = [
             path: '/users/uDetail/:id',
             component: () => import('@/views/users/uDetail'),
             name: 'UserDetail',
-            meta: { title: '用户详情' }
+            meta: { title: 'ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠶᠢᠨ ᠨᠠᠷᠢᠨ ᠪᠠᠢᠳᠠᠯ' }
           },
           {
             path: '/users/uEdit/',
@@ -110,7 +109,7 @@ export const asyncRouterMap = [
               title: 'ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠰᠢᠨᠡᠴᠢᠯᠡᠬᠦ'
             },
             hidden: true
-          },
+          }
         ]
       },
       // 药品
@@ -119,27 +118,27 @@ export const asyncRouterMap = [
         component: RouteView,
         name: 'Drug',
         redirect: '/drug/list',
-        meta: { title: 'ᠡᠮ', keepAlive: true, icon: 'medicine-box',permission: ['drug'] },
+        meta: { title: 'ᠡᠮ', keepAlive: true, icon: 'medicine-box', permission: ['drug'] },
         hideChildrenInMenu: true,
         children: [
           {
             path: '/drug/list',
             component: () => import('@/views/drug/List'),
             name: 'DrugList',
-            meta: { title: 'ᠡᠮ ᠢᠨ ᠵᠢᠭᠰᠠᠭᠠᠯ' }
+            meta: { title: 'ᠡᠮ ᠊ᠤᠨ ᠵᠢᠭᠰᠠᠭᠠᠯᠳᠠ' }
           },
           {
             path: '/drug/detail/:id',
             component: () => import('@/views/drug/Detail'),
             name: 'DrugDetail',
-            meta: { title: 'ᠡᠮ ᠢᠨ ᠨᠠᠷᠢᠨ ᠪᠠᠢᠳᠠᠯ' }
+            meta: { title: 'ᠡᠮ ᠊ᠤᠨ ᠨᠠᠷᠢᠨ ᠪᠠᠢᠳᠠᠯ' }
           },
           {
             path: '/drug/edit/:id?',
             component: () => import('@/views/drug/Edit'),
             name: 'DrugEdit',
-            meta: { title: 'ᠡᠮᠳᠤ ᠪᠤᠳᠠᠰ ᠲᠤ ᠵᠠᠰᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ' }
-          }          
+            meta: { title: 'ᠡᠮ ᠊ᠳᠤ ᠵᠠᠰᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ ᠪᠤᠶᠤ ᠨᠡᠮᠡᠬᠦ' }
+          }
         ]
       },
 

@@ -2,10 +2,10 @@
   <page-header-wrapper>
     <template v-slot:content>
       <a-descriptions :column="1">
-        <a-descriptions-item label="中文名">{{ drug.namecn }}</a-descriptions-item>
         <a-descriptions-item label="蒙文名">{{ drug.namem }}</a-descriptions-item>
-        <a-descriptions-item label="新蒙文名">{{ drug.namemn }}</a-descriptions-item>
         <a-descriptions-item label="其他名">{{ drug.nameother }}</a-descriptions-item>
+        <a-descriptions-item label="新蒙文名">{{ drug.namemn }}</a-descriptions-item>
+        <a-descriptions-item label="中文名">{{ drug.namecn }}</a-descriptions-item>
         <a-descriptions-item label="藏文名">{{ drug.namez }}</a-descriptions-item>
 
         <a-descriptions-item label="功效">{{ drug.effect }}</a-descriptions-item>
@@ -18,11 +18,12 @@
         <a-descriptions-item label="药引子"></a-descriptions-item>
         <a-descriptions-item label="剂型">{{ drug.drugcat }}</a-descriptions-item>
         <a-descriptions-item label="疗法"></a-descriptions-item>
-        <a-descriptions-item label="禁忌症"></a-descriptions-item>
+        <a-descriptions-item label="禁忌症">{{ drug.taboo }}</a-descriptions-item>
         <a-descriptions-item label="药物疗法"></a-descriptions-item>
         <a-descriptions-item label="处方药品">{{ drug.drugs }}</a-descriptions-item>
         <a-descriptions-item label="三根影响">{{ drug.effectCat }}</a-descriptions-item>
         <a-descriptions-item label="十七功效">{{ drug.actionMode }}</a-descriptions-item>
+        <a-descriptions-item label="备注">{{ drug.remark }}</a-descriptions-item>
         <a-descriptions-item>
           <a-button type="primary" @click="handleEdit">修改</a-button>
           <a-button type="primary" @click="handleCancel">ᠪᠤᠴᠠᠬᠤ</a-button>
@@ -46,7 +47,6 @@ import {
 } from '@/api/drug'
 
 import {
-  resipeList,
   resipeDetail
 } from '@/api/resipe'
 
@@ -101,22 +101,9 @@ export default {
             effect: resipe.effect,
             mainEffect: resipe.mainEffect,
             drugs: resipeDrugList.map(d => d.namem).join(', '),
-            therapymemo: resipe.therapymemo
-            /*
-            nameother: data.drug.nameother,
-            source: data.drugSource.filter(d => d.checkflag === '1').map(d => d.namem).join(', '),
-            five: data.fiveElement.filter(d => d.checkflag === '1').map(d => d.namem).join(', '),
-            sixTaste: data.sixTaste.filter(d => d.checkflag === '1').map(d => d.namem).join(', '),
-            drugProperty: data.drugProperty.filter(d => d.checkflag === '1').map(d => d.namem).join(', '),
-            drugPower: data.drugPower.filter(d => d.checkflag === '1').map(d => d.namem).join(', '),
-            decomposedTaste: data.decomposedTaste.filter(d => d.checkflag === '1').map(d => d.namem).join(', '),
-            seventeenEffect: data.seventeenEffect.filter(d => d.checkflag === '1').map(d => d.namem).join(', '),
-            decomEffect: data.drug.decomEffect,
-            baseEffect: data.drug.baseEffect,
-            baseFix: data.drug.baseFix,
-            effectCat: data.effectCat.filter(d => d.checkflag === '1').map(d => d.namem).join(', '),
-            actionMode: data.actionMode.filter(d => d.checkflag === '1').map(d => d.namem).join(', '),
-            */
+            therapymemo: resipe.therapymemo,
+            taboo: resipe.taboo,
+            remark: resipe.remark
           }
           this.drug = drug
         })
@@ -157,7 +144,7 @@ export default {
     },
     handleEdit () {
       this.$router.push({
-        name: 'DrugEdit',
+        name: 'ResipeEdit',
         params: {
           id: this.drugId
         }

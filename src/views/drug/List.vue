@@ -4,7 +4,7 @@
       <div class="content-left">
         <div class="search-form">
           <div class="fields">
-            <a-input placeholder="ᠡᠮ ᠢᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ" v-model="key"/>
+            <a-input placeholder="ᠡᠮ ᠊ᠤᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ" v-model="key"/>
           </div>
           <div class="actions">
             <a-button type="danger" @click="handleKeySearch">ᠬᠠᠢᠬᠤ</a-button>
@@ -27,7 +27,7 @@
             slot-scope="text, record">
             <a-button type="link" size="small" @click="handleDetail(text)">ᠨᠠᠷᠢᠨ ᠪᠠᠢᠳᠠᠯ</a-button>
             <a-button type="link" size="small" @click="handleEdit(text)">ᠵᠠᠰᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
-            <a-popconfirm @confirm="handleRemove(record)" title="确定要删除该药品吗？">
+            <a-popconfirm @confirm="handleRemove(record)" title="ᠡᠨᠡ ᠡᠮ ᠊ᠢ ᠠᠷᠢᠯᠭᠠᠵᠤ ᠪᠤᠯᠬᠤ ᠊ᠤᠤ?">
               <a-button type="link" size="small">ᠠᠷᠢᠯᠭᠠᠬᠤ</a-button>
             </a-popconfirm>
           </template>
@@ -45,18 +45,18 @@ import {
 
 const columns = [
   {
-    title: 'ᠡᠮ ᠢᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ',
-    dataIndex: 'namem'
+    title: 'ᠡᠮ ᠊ᠤᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ',
+    dataIndex: 'namem',
   },
   {
     title: 'ᠳᠤᠬᠢᠷᠠᠭᠤᠯᠬᠤ',
     dataIndex: 'drugid',
     scopedSlots: { customRender: 'actions' }
   }
-];
+]
 
 export default {
-  data() {
+  data () {
     return {
       key: '',
       data: [],
@@ -66,16 +66,16 @@ export default {
         current: 1,
         total: 0,
         current: 1,
-        pageSize: 15
+        pageSize: 23
       }
-    };
+    }
   },
-  created() {
+  created () {
     this.onSearch()
   },
 
   methods: {
-    onSearch(params) {
+    onSearch (params) {
       this.isLoading = true
       const page = (params && params.current) || this.pagination.current
       console.log(page)
@@ -99,7 +99,7 @@ export default {
           this.isLoading = false
         })
     },
-    handleKeySearch() {
+    handleKeySearch () {
       this.pagination.current = 1
       this.pagination.total = 0
       this.onSearch()
@@ -147,8 +147,42 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.ant-table-wrapper{
+  height: 100%;
+  /deep/ .ant-spin-nested-loading{
+    height: 100% ;
+    .ant-spin-container{
+      height: 100%;
+      .ant-table{
+        height: 100%;
+        .ant-table-content{
+          height: 100%;
+          .ant-table-body table{
+            height: 100%;
+            .ant-table-thead > tr{
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/deep/ .ant-table-body .ant-table-thead > tr > th:first-child{
+   height: 45vh !important;
+}
+/deep/ .ant-table-body .ant-table-tbody > tr > td:first-child{
+   height: 45vh !important;
+}
+
+/deep/ .ant-table-thead > tr th:last-child,/deep/ .ant-table-tbody .ant-table-row > td:last-child  {
+  height: 45.8vh !important;
+  place-content: center;
+
+}
 .content-right {
-  width: 1200px;;
+  width: 94%;
 }
 .page-inner-mgl .content-left .search-form .fields .ant-input {
   height: 485px;

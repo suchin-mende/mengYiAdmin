@@ -41,12 +41,10 @@
 </template>
 
 <script>
-import {
-  drugRemove
-} from '@/api/drug'
 
 import {
-  resipeList
+  resipeList,
+  resipeRemove
 } from '@/api/resipe'
 
 import {
@@ -54,11 +52,6 @@ import {
 } from '@/api/dict'
 
 const columns = [
-  {
-    title: '处方类型',
-    dataIndex: 'drugcat',
-    scopedSlots: { customRender: 'cat' }
-  },
   {
     title: '处方名称',
     dataIndex: 'namem'
@@ -161,8 +154,8 @@ export default {
       })
     },
     handleRemove (record) {
-      drugRemove({
-        beanId: record.drugid
+      resipeRemove({
+        beanId: record.tid
       })
         .then(res => {
           this.$message.success('Success')
