@@ -271,6 +271,7 @@ export default {
         display: flex;
         align-items: baseline;
         justify-content: center;
+        border-left: solid 1px #eff1f4;
         .actions-inner {
           display: inline-grid;
         }
