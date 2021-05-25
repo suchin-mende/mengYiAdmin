@@ -16,7 +16,7 @@
           v-decorator="[
             'loginname',
             {
-              rules: [{ required: true, message: $t('ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠵᠢᠨ ᠨᠡᠷ ᠡ ᠬᠤᠭᠤᠰᠤᠨ ᠪᠠᠢᠵᠤ ᠪᠤᠯᠬᠤ ᠦᠭᠡᠢ') }, { validator: handleUsernameOrEmail }],
+              rules: [{ required: true, message: $t('ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠵᠢᠨ ᠨᠡᠷ᠎ᠡ ᠬᠤᠭᠤᠰᠤᠨ ᠪᠠᠢᠵᠤ ᠪᠤᠯᠬᠤ ᠦᠭᠡᠢ') }, { validator: handleUsernameOrEmail }],
               validateTrigger: 'change',
             },
           ]"
@@ -31,7 +31,7 @@
           placeholder="ᠨᠢᠭᠤᠴᠠ ᠨᠤᠮᠧᠷ ᠢᠡᠨ ᠤᠷᠤᠭᠤᠯᠤᠭᠠᠷᠠᠢ"
           v-decorator="[
             'password',
-            { rules: [{ required: true, message: $t('ᠨᠢᠭᠤᠴᠠ ᠨᠥᠮᠧᠷ ᠬᠤᠭᠤᠰᠤᠨ ᠪᠠᠢᠵᠤ ᠬᠤᠯᠬᠤ ᠦᠭᠡᠢ') }], validateTrigger: 'blur' },
+            { rules: [{ required: true, message: $t('ᠨᠢᠭᠤᠴᠠ ᠨᠤᠮᠧᠷ ᠬᠤᠭᠤᠰᠤᠨ ᠪᠠᠢᠵᠤ ᠪᠤᠯᠬᠤ ᠦᠭᠡᠢ') }], validateTrigger: 'blur' },
           ]"
         >
           <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }" />
@@ -48,7 +48,7 @@
               v-decorator="[
                 'imgcode',
                 {
-                  rules: [{ required: true, message: $t('ᠰᠢᠯᠭᠠᠬᠤ ᠺᠤᠳᠧ ᠬᠤᠭᠤᠰᠤᠨ ᠪᠠᠢᠵᠤ ᠪᠤᠯᠬᠤ ᠦᠭᠡᠢ') }],
+                  rules: [{ required: true, message: $t('ᠰᠢᠯᠭᠠᠬᠤ ᠺᠤᠲ ᠬᠤᠭᠤᠰᠤᠨ ᠪᠠᠢᠵᠤ ᠪᠤᠯᠬᠤ ᠦᠭᠡᠢ') }],
                   validateTrigger: 'blur',
                 },
               ]"
@@ -56,11 +56,11 @@
               <a-icon slot="prefix" type="mail" :style="{ color: 'rgba(0,0,0,.25)' }" />
             </a-input>
             <a-col class="gutter-row" :span="8">
-          <img class="capacha" :src="captchaImage" @click="refreshCapache" />
-        </a-col>
+              <img class="capacha" :src="captchaImage" @click="refreshCapache" />
+            </a-col>
           </a-form-item>
         </a-col>
-        
+
       </a-row>
 
       <a-form-item style="margin-top: 24px">
@@ -71,7 +71,7 @@
           class="login-button"
           :loading="state.loginBtn"
           :disabled="state.loginBtn"
-          >{{ $t('ᠨᠡᠪᠲᠡᠷᠵᠤ ᠤᠷᠤᠬᠤ') }}</a-button
+        >{{ $t('ᠨᠡᠪᠲᠡᠷᠵᠤ ᠤᠷᠤᠬᠤ') }}</a-button
         >
       </a-form-item>
     </a-form>
@@ -94,9 +94,9 @@ import { getSmsCaptcha, getCaptchaImage } from '@/api/login'
 
 export default {
   components: {
-    TwoStepCaptcha,
+    TwoStepCaptcha
   },
-  data() {
+  data () {
     return {
       customActiveKey: 'tab1',
       loginBtn: false,
@@ -111,17 +111,17 @@ export default {
         loginBtn: false,
         // login type: 0 email, 1 username, 2 telephone
         loginType: 0,
-        smsSendBtn: false,
+        smsSendBtn: false
       },
-      captchaImage: null,
+      captchaImage: null
     }
   },
-  created() {
+  created () {
     this.refreshCapache()
   },
   methods: {
     ...mapActions(['Login', 'Logout']),
-    refreshCapache() {
+    refreshCapache () {
       getCaptchaImage().then((res) => {
         const src =
           'data:image/png;base64,' +
@@ -130,7 +130,7 @@ export default {
       })
     },
     // handler
-    handleUsernameOrEmail(rule, value, callback) {
+    handleUsernameOrEmail (rule, value, callback) {
       const { state } = this
       const regex = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/
       if (regex.test(value)) {
@@ -140,17 +140,17 @@ export default {
       }
       callback()
     },
-    handleTabClick(key) {
+    handleTabClick (key) {
       this.customActiveKey = key
       // this.form.resetFields()
     },
-    handleSubmit(e) {
+    handleSubmit (e) {
       e.preventDefault()
       const {
         form: { validateFields },
         state,
         customActiveKey,
-        Login,
+        Login
       } = this
 
       state.loginBtn = true
@@ -178,11 +178,11 @@ export default {
         }
       })
     },
-    getCaptcha(e) {
+    getCaptcha (e) {
       e.preventDefault()
       const {
         form: { validateFields },
-        state,
+        state
       } = this
 
       validateFields(['mobile'], { force: true }, (err, values) => {
@@ -204,7 +204,7 @@ export default {
               this.$notification['success']({
                 message: '提示',
                 description: '验证码获取成功，您的验证码为：' + res.result.captcha,
-                duration: 8,
+                duration: 8
               })
             })
             .catch((err) => {
@@ -217,16 +217,16 @@ export default {
         }
       })
     },
-    stepCaptchaSuccess() {
+    stepCaptchaSuccess () {
       this.loginSuccess()
     },
-    stepCaptchaCancel() {
+    stepCaptchaCancel () {
       this.Logout().then(() => {
         this.loginBtn = false
         this.stepCaptchaVisible = false
       })
     },
-    loginSuccess(res) {
+    loginSuccess (res) {
       console.log(res)
       // check res.homePage define, set $router.push name res.homePage
       // Why not enter onComplete
@@ -244,20 +244,20 @@ export default {
       setTimeout(() => {
         this.$notification.success({
           message: '欢迎',
-          description: `${timeFix()}，欢迎回来`,
+          description: `${timeFix()}，欢迎回来`
         })
       }, 1000)
       this.isLoginError = false
     },
-    requestFailed(err) {
+    requestFailed (err) {
       this.isLoginError = true
       this.$notification['error']({
         message: '错误',
         description: ((err.response || {}).data || {}).message || '请求出现错误，请稍后再试',
-        duration: 4,
+        duration: 4
       })
-    },
-  },
+    }
+  }
 }
 </script>
 
@@ -272,7 +272,6 @@ export default {
   display: grid !important;
   grid-auto-flow: column;
   grid-template-columns: repeat(2, 25%);
-
 
   .ant-form-explain {
     margin-top: 5px;
@@ -292,7 +291,7 @@ export default {
   .ant-row {
     margin: 0 18px 0 !important;
   }
-  
+
   .ant-form-item-control.has-error {
     display: flex !important;
   }
