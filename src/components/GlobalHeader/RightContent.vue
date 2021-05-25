@@ -1,13 +1,18 @@
 <template>
   <div :class="wrpCls">
-    <avatar-dropdown :menu="showMenu" :current-user="currentUser" :class="prefixCls" />
-    <select-lang :class="prefixCls" />
+    
+    <a-button class="logout" type="danger" icon="poweroff" :loading="iconLoading" @click="enterIconLoading">
+    
+    </a-button>
+    <!-- <avatar-dropdown :menu="showMenu" :current-user="currentUser" :class="prefixCls" /> -->
+    <!-- <select-lang :class="prefixCls" /> -->
   </div>
 </template>
 
 <script>
 import AvatarDropdown from './AvatarDropdown'
 import SelectLang from '@/components/SelectLang'
+import { Modal } from 'ant-design-vue'
 
 export default {
   name: 'RightContent',
@@ -36,7 +41,8 @@ export default {
   data () {
     return {
       showMenu: true,
-      currentUser: {}
+      currentUser: {},
+      iconLoading: false,
     }
   },
   computed: {
@@ -53,6 +59,25 @@ export default {
         name: 'Serati Ma'
       }
     }, 1500)
+  },
+  methods:{
+    enterIconLoading() {
+      this.handleLogout();
+    },
+    handleLogout (e) {
+      Modal.confirm({
+        okText:"ᠲᠡᠢᠮᠦ ᠡ",
+        cancelText:"ᠦᠭᠡᠢ",
+        title: "ᠠᠩᠬᠠᠷᠤᠭᠠᠷᠠᠢ！",
+        content: "ᠲᠠ ᠦᠨᠡᠨᠬᠦ ᠰᠢᠰᠲᠧᠮ ᠡᠴᠡ ᠭᠠᠷᠬᠤ ᠦ?",
+        onOk: () => {
+          return this.$store.dispatch('Logout').then(() => {
+            this.$router.push({ name: 'login' })
+          })
+        },
+        onCancel () {}
+      })
+    }
   }
 }
 </script>
