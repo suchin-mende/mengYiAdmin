@@ -140,7 +140,36 @@ export const asyncRouterMap = [
             meta: { title: 'ᠡᠮ ᠊ᠳᠤ ᠵᠠᠰᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ ᠪᠤᠶᠤ ᠨᠡᠮᠡᠬᠦ' }
           }
         ]
-      }
+      },
+
+      {
+        path: '/resipe',
+        component: RouteView,
+        name: 'Resipe',
+        redirect: '/resipe/list',
+        meta: { title: '处方', keepAlive: true, icon: 'medicine-box',permission: ['resipe'] },
+        hideChildrenInMenu: true,
+        children: [
+          {
+            path: '/resipe/list',
+            component: () => import('@/views/resipe/List'),
+            name: 'ResipeList',
+            meta: { title: '处方管理' }
+          },
+          {
+            path: '/resipe/detail/:id',
+            component: () => import('@/views/resipe/Detail'),
+            name: 'ResipeDetail',
+            meta: { title: '处方详情' }
+          },
+          {
+            path: '/resipe/edit/:id?',
+            component: () => import('@/views/resipe/Edit'),
+            name: 'ResipeEdit',
+            meta: { title: '处方编辑' }
+          }
+        ]
+      },
 
       // dashboard
       // {
