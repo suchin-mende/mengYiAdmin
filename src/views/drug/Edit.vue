@@ -221,9 +221,13 @@ export default {
       params.drug = {
         namem: values.namem,
         nameother: values.nameother,
+        namecn: values.namecn,
+        namemn: values.namemn,
+        namez: values.namez,
         baseEffect: values.baseEffect,
         baseFix: values.baseFix,
-        decomEffect: values.decomEffect
+        decomEffect: values.decomEffect,
+        remark: values.remark
       }
       if (this.drugId) {
         params.drug.drugid = this.drugId
