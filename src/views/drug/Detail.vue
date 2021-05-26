@@ -27,7 +27,7 @@
         </a-descriptions-item>
 
         <a-descriptions-item label="ᠡᠮ ᠊ᠤᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ">{{ drug.namem }}</a-descriptions-item>
-        <a-descriptions-item label="ᠥᠭᠡᠷ᠎ᠡ ᠨᠡᠷ᠎ᠡ">{{ drug.namem }}</a-descriptions-item>
+        <a-descriptions-item label="ᠥᠭᠡᠷ᠎ᠡ ᠨᠡᠷ᠎ᠡ">{{ drug.nameother }}</a-descriptions-item>
         <a-descriptions-item label="ᠰᠢᠨ᠎ᠡ ᠮᠤᠩᠭᠤᠯ ᠨᠡᠷ᠎ᠡ">{{ drug.namemn }}</a-descriptions-item>
         <a-descriptions-item label="ᠬᠢᠲᠠᠳ ᠨᠡᠷ᠎ᠡ">{{ drug.namecn }}</a-descriptions-item>
         <a-descriptions-item label="ᠲᠦᠪᠡᠳ ᠨᠡᠷ᠎ᠡ">{{ drug.namez }}</a-descriptions-item>
@@ -93,6 +93,9 @@ export default {
           const drug = {
             namem: data.drug.namem,
             nameother: data.drug.nameother,
+            namemn: data.drug.namemn,
+            namecn: data.drug.namecn,
+            namez: data.drug.namez,
             source: data.drugSource.filter(d => d.checkflag === '1').map(d => d.namem).join(', '),
             five: data.fiveElement.filter(d => d.checkflag === '1').map(d => d.namem).join(', '),
             sixTaste: data.sixTaste.filter(d => d.checkflag === '1').map(d => d.namem).join(', '),
