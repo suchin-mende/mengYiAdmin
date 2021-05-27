@@ -19,7 +19,7 @@
               placeholder=""
             />
           </a-form-item>
-          <a-form-item label="ᠺᠢᠷᠢᠯ ᠮᠤᠩᠭᠤᠯ ᠨᠡᠷ᠎ᠡ">
+          <a-form-item label="ᠺᠢᠷᠢᠯ ᠨᠡᠷ᠎ᠡ">
             <a-input
               :maxLength="50"
               v-decorator="['namemn']"

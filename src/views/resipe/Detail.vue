@@ -2,8 +2,8 @@
   <page-header-wrapper>
     <template v-slot:content>
       <a-descriptions :column="1">
-        <a-descriptions-item label="ᠮᠤᠨᠭᠭᠤᠯ ᠨᠡᠷ ᠡ">{{ drug.namem }}</a-descriptions-item>
-        <a-descriptions-item label="ᠪᠤᠰᠤᠳ ᠨᠡᠷ ᠡ">{{ drug.nameother }}</a-descriptions-item>
+        <a-descriptions-item label="ᠵᠤᠷ ᠎ᠤᠨ ᠨᠡᠷ᠎ᠠ">{{ drug.namem }}</a-descriptions-item>
+        <a-descriptions-item label="ᠦᠭᠡᠷ᠎ᠠ ᠨᠡᠷ᠎ᠠ">{{ drug.nameother }}</a-descriptions-item>
         <a-descriptions-item label="ᠺᠢᠷᠢᠯ ᠨᠡᠷ᠎ᠠ">{{ drug.namemn }}</a-descriptions-item>
         <a-descriptions-item label="ᠭᠢᠲᠠᠳ ᠨᠡᠷ᠎ᠠ">{{ drug.namecn }}</a-descriptions-item>
         <a-descriptions-item label="ᠲᠦᠪᠡᠳ ᠨᠡᠷ᠎ᠠ">{{ drug.namez }}</a-descriptions-item>
@@ -217,6 +217,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
+
+/deep/ tbody > tr > td > span {
+  font-size: 20px;
+  overflow-wrap: break-word;
+}
 
 /deep/ .ant-pro-page-header-wrap-page-header-warp {
   width: 100%;
