@@ -4,8 +4,7 @@
       <div class="content-hor">
         <a-form
           :form="form"
-          id="myform"
-          :rowClassName="rowClassName">
+          id="myform">
           <a-form-item label="ᠡᠮ ᠊ᠤᠨ ᠨᠡᠷᠡᠢᠳᠤᠯ">
             <a-input
               :maxLength="50"
@@ -221,9 +220,13 @@ export default {
       params.drug = {
         namem: values.namem,
         nameother: values.nameother,
+        namecn: values.namecn,
+        namemn: values.namemn,
+        namez: values.namez,
         baseEffect: values.baseEffect,
         baseFix: values.baseFix,
-        decomEffect: values.decomEffect
+        decomEffect: values.decomEffect,
+        remark: values.remark
       }
       if (this.drugId) {
         params.drug.drugid = this.drugId

@@ -5,9 +5,10 @@
         <a-form-model
           ref="form"
           :model="form"
+          id="myform"
         >
           <a-form-model-item
-            label="处方名称"
+            label="ᠵᠤᠷ ᠵᠢᠨ ᠨᠡᠷ ᠡ"
             prop="namem"
             :rules="[{required: true, message: 'error', trigger: 'change'}]">
             <a-input
@@ -25,7 +26,7 @@
             />
           </a-form-model-item>
           <a-form-model-item
-            label="新蒙名"
+            label="ᠺᠢᠷᠢᠯ ᠨᠡᠷ ᠡ"
             prop="namemn"
             >
             <a-input
@@ -34,7 +35,7 @@
             />
           </a-form-model-item>
           <a-form-model-item
-            label="中文名"
+            label="ᠬᠢᠲᠠᠳ ᠨᠡᠷ ᠡ"
             prop="namecn"
             >
             <a-input
@@ -43,7 +44,7 @@
             />
           </a-form-model-item>
           <a-form-model-item
-            label="藏文名"
+            label="ᠲᠦᠪᠡᠳ ᠨᠡᠷ ᠡ"
             prop="namez"
           >
             <a-input
@@ -58,11 +59,11 @@
               v-for="(d, idx) in form.resipeDrugList"
               :key="d.drugid">
               <a-form-model-item
-                label="药品名称">
+                label="ᠡᠮ ᠵᠢᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ">
                 <span>{{ d.namem }}</span>
               </a-form-model-item>
               <a-form-model-item
-                label="数量"
+                label="ᠲᠣᠭ᠎ᠠ ᠬᠡᠮᠵᠢᠶ᠎ᠡ"
                 :prop="`resipeDrugList[${idx}].unitnum`"
                 :rules="[{required: true, message: 'error', trigger: 'change'}]"
               >
@@ -73,7 +74,7 @@
                 />
               </a-form-model-item>
               <a-form-model-item
-                label="药品单位"
+                label="ᠡᠮ ᠦᠨ ᠨᠢᠭᠡᠴᠢ"
                 :prop="`resipeDrugList[${idx}].unit`"
                 :rules="[{required: true, message: 'error', trigger: 'change'}]"
               >
@@ -91,11 +92,11 @@
               <a-form-model-item
                 label=""
               >
-                <a-button type="danger" @click="handleRemoveDrug(idx)">删除</a-button>
+                <a-button type="danger" @click="handleRemoveDrug(idx)">ᠠᠷᠢᠯᠭᠠᠬᠤ</a-button>
               </a-form-model-item>
             </div>
           </div>
-          <a-form-model-item label="添加药品">
+          <a-form-model-item label="ᠡᠮ ᠨᠡᠮᠡᠬᠦ">
             <a-select
               show-search
               :value="drugKey"
@@ -112,7 +113,7 @@
               </a-select-option>
             </a-select>
           </a-form-model-item>
-          <a-form-model-item label="剂型" prop="drugcat"
+          <a-form-model-item label="ᠨᠠᠶᠢᠷᠠᠯᠭ᠎ᠠ ᠶᠢᠨ ᠬᠡᠯᠪᠡᠷᠢ" prop="drugcat"
             :rules="[{required: true, message: 'error', trigger: 'change'}]"
           >
             <a-radio-group
@@ -126,20 +127,20 @@
               </a-radio>
             </a-radio-group>
           </a-form-model-item>
-          <a-form-model-item label="功效" prop="effect">
-            <a-textarea placeholder="请输入" :rows="3" :maxLength="300" v-model="form.effect"/>
+          <a-form-model-item label="ᠦᠢᠯᠡᠳᠦᠯ" prop="effect">
+            <a-textarea placeholder="ᠣᠷᠣᠭᠤᠯᠤᠭᠠᠷᠠᠢ" :rows="3" :maxLength="300" v-model="form.effect"/>
           </a-form-model-item>
-          <a-form-model-item label="治法" prop="therapymemo">
-            <a-textarea placeholder="请输入" :rows="3" :maxLength="300" v-model="form.therapymemo"/>
+          <a-form-model-item label="ᠵᠠᠰᠠᠬᠤ ᠠᠷᠭ᠎ᠠ" prop="therapymemo">
+            <a-textarea placeholder="ᠣᠷᠣᠭᠤᠯᠤᠭᠠᠷᠠᠢ" :rows="3" :maxLength="300" v-model="form.therapymemo"/>
           </a-form-model-item>
-          <a-form-model-item label="功能主治" prop="mainEffect">
-            <a-textarea placeholder="请输入" :rows="3" :maxLength="300" v-model="form.mainEffect"/>
+          <a-form-model-item label="ᠴᠢᠳᠠᠮᠵᠢ ᠪᠡᠷ ᠵᠠᠰᠠᠬᠤ" prop="mainEffect">
+            <a-textarea placeholder="ᠣᠷᠣᠭᠤᠯᠤᠭᠠᠷᠠᠢ" :rows="3" :maxLength="300" v-model="form.mainEffect"/>
           </a-form-model-item>
-          <a-form-model-item label="禁忌" prop="taboo">
-            <a-textarea placeholder="请输入" :rows="3" :maxLength="300" v-model="form.taboo"/>
+          <a-form-model-item label="ᠴᠡᠭᠡᠷᠯᠡᠬᠦ" prop="taboo">
+            <a-textarea placeholder="ᠣᠷᠣᠭᠤᠯᠤᠭᠠᠷᠠᠢ" :rows="3" :maxLength="300" v-model="form.taboo"/>
           </a-form-model-item>
-          <a-form-model-item label="备注" prop="remark">
-            <a-textarea placeholder="请输入" :rows="3" :maxLength="300" v-model="form.remark"/>
+          <a-form-model-item label="ᠲᠠᠶᠢᠯᠪᠤᠷᠢ" prop="remark">
+            <a-textarea placeholder="ᠣᠷᠣᠭᠤᠯᠤᠭᠠᠷᠠᠢ" :rows="3" :maxLength="300" v-model="form.remark"/>
           </a-form-model-item>
         </a-form-model>
         <div class="actions">
@@ -173,6 +174,7 @@ export default {
   data() {
     return {
       isSubmit: false,
+      tep: 0,
 
       form: {
         namem: '',
@@ -197,6 +199,9 @@ export default {
       drugUnits: []
     }
   },
+  mounted () {
+     document.getElementById('myform').addEventListener('mousewheel', this.handleScroll)
+ },
   created() {
     this.drugId = this.$route.params.id
     this.initDicts()
@@ -205,6 +210,22 @@ export default {
     }
   },
   methods: {
+    handleScroll (e) {
+      const direction = e.deltaY > 0 ? 'down' : 'up' // deltaY为正则滚轮向下，为负滚轮向上
+            if (direction == 'down') { // 125为用户一次滚动鼠标的wheelDelta的值
+                // console.log(e.path[1].scrollLeft)
+                this.tep = e.path[1].scrollLeft
+                this.tep += 50
+                e.path[1].scrollLeft = this.tep
+                console.log('nono', e)
+            }
+            if (direction == 'up') {
+                // alert('ss')
+                this.tep = e.path[1].scrollLeft
+                this.tep -= 50
+                e.path[1].scrollLeft = this.tep
+            }
+    },
     initDicts () {
       this.setDict('M101', 'drugCategory')
       this.setDict('UNI', 'drugUnits')
@@ -251,7 +272,7 @@ export default {
         if (valid) {
           console.log('--- valid')
           if (this.form.resipeDrugList.length === 0) {
-            this.$message.error('请添加药品')
+            this.$message.error('ᠡᠮ ᠨᠡᠮᠡᠭᠡᠷᠡᠢ')
             return
           }
           this.saveDrug()
@@ -373,13 +394,23 @@ export default {
     width: 100%;
     overflow-x: auto;
     .content-hor {
+      
       width: 100%;
+      height: 100%;
       overflow-x: auto;
       display: flex;
 
       .ant-form {
         width: 85%;
         overflow-x: auto;
+        label {
+          display: table;
+        }
+
+        .ant-radio {
+          vertical-align:baseline;
+          margin-top: 10px;
+        }
 
         .drugs {
           border-left: 1px dashed #d9d9d9;
@@ -395,6 +426,7 @@ export default {
         }
       }
       .actions {
+        border-left: solid 1px #d9d9d9;
         width: 15%;
         display: flex;
         align-items: baseline;

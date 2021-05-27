@@ -147,26 +147,26 @@ export const asyncRouterMap = [
         component: RouteView,
         name: 'Resipe',
         redirect: '/resipe/list',
-        meta: { title: '处方', keepAlive: true, icon: 'medicine-box',permission: ['resipe'] },
+        meta: { title: 'ᠵᠤᠷ', keepAlive: true, icon: 'medicine-box',permission: ['resipe'] },
         hideChildrenInMenu: true,
         children: [
           {
             path: '/resipe/list',
             component: () => import('@/views/resipe/List'),
             name: 'ResipeList',
-            meta: { title: '处方管理' }
+            meta: { title: 'ᠵᠤᠷ ᠵᠢᠨ ᠬᠠᠮᠢᠶᠠᠷᠤᠯᠲᠠ' }
           },
           {
             path: '/resipe/detail/:id',
             component: () => import('@/views/resipe/Detail'),
             name: 'ResipeDetail',
-            meta: { title: '处方详情' }
+            meta: { title: 'ᠵᠤᠷ ᠵᠢᠨ ᠨᠠᠷᠢᠨ ᠪᠠᠢᠳᠠᠯ' }
           },
           {
             path: '/resipe/edit/:id?',
             component: () => import('@/views/resipe/Edit'),
             name: 'ResipeEdit',
-            meta: { title: '处方编辑' }
+            meta: { title: 'ᠵᠤᠷ ᠨᠠᠢᠷᠠᠭᠤᠯᠬᠤ' }
           }
         ]
       },
