@@ -2,30 +2,30 @@
   <page-header-wrapper>
     <template v-slot:content>
       <a-descriptions :column="1">
-        <a-descriptions-item label="蒙文名">{{ drug.namem }}</a-descriptions-item>
-        <a-descriptions-item label="其他名">{{ drug.nameother }}</a-descriptions-item>
-        <a-descriptions-item label="新蒙文名">{{ drug.namemn }}</a-descriptions-item>
-        <a-descriptions-item label="中文名">{{ drug.namecn }}</a-descriptions-item>
-        <a-descriptions-item label="藏文名">{{ drug.namez }}</a-descriptions-item>
+        <a-descriptions-item label="ᠮᠤᠨᠭᠭᠤᠯ ᠨᠡᠷ ᠡ">{{ drug.namem }}</a-descriptions-item>
+        <a-descriptions-item label="ᠪᠤᠰᠤᠳ ᠨᠡᠷ ᠡ">{{ drug.nameother }}</a-descriptions-item>
+        <a-descriptions-item label="ᠺᠢᠷᠢᠯ ᠨᠡᠷ ᠡ">{{ drug.namemn }}</a-descriptions-item>
+        <a-descriptions-item label="ᠬᠢᠲᠠᠳ ᠨᠡᠷ ᠡ">{{ drug.namecn }}</a-descriptions-item>
+        <a-descriptions-item label="ᠲᠦᠪᠡᠳ ᠨᠡᠷ ᠡ">{{ drug.namez }}</a-descriptions-item>
 
-        <a-descriptions-item label="功效">{{ drug.effect }}</a-descriptions-item>
-        <a-descriptions-item label="治法">{{ drug.therapymemo }}</a-descriptions-item>
+        <a-descriptions-item label="ᠴᠢᠳᠠᠯ">{{ drug.effect }}</a-descriptions-item>
+        <a-descriptions-item label="ᠵᠠᠰᠠᠬᠤ ᠠᠷᠭᠠ">{{ drug.therapymemo }}</a-descriptions-item>
         
-        <a-descriptions-item label="功能主治">{{ drug.mainEffect }}</a-descriptions-item>
-        <a-descriptions-item label="用法"></a-descriptions-item>
-        <a-descriptions-item label="用量"></a-descriptions-item>
-        <a-descriptions-item label="规格"></a-descriptions-item>
-        <a-descriptions-item label="药引子"></a-descriptions-item>
-        <a-descriptions-item label="剂型">{{ drug.drugcat }}</a-descriptions-item>
-        <a-descriptions-item label="疗法"></a-descriptions-item>
-        <a-descriptions-item label="禁忌症">{{ drug.taboo }}</a-descriptions-item>
-        <a-descriptions-item label="药物疗法"></a-descriptions-item>
-        <a-descriptions-item label="处方药品">{{ drug.drugs }}</a-descriptions-item>
-        <a-descriptions-item label="三根影响">{{ drug.effectCat }}</a-descriptions-item>
-        <a-descriptions-item label="十七功效">{{ drug.actionMode }}</a-descriptions-item>
-        <a-descriptions-item label="备注">{{ drug.remark }}</a-descriptions-item>
+        <a-descriptions-item label="ᠭᠤᠤᠯᠯᠠᠨ ᠵᠠᠰᠠᠬᠤ ᠴᠢᠲᠠᠪᠦᠷᠢ">{{ drug.mainEffect }}</a-descriptions-item>
+        <a-descriptions-item label="ᠬᠡᠷᠡᠭᠯᠡᠬᠦ ᠠᠷᠭᠠ"></a-descriptions-item>
+        <a-descriptions-item label="ᠬᠡᠷᠡᠭᠯᠡᠬᠦ ᠬᠡᠮᠵᠢᠶᠡ"></a-descriptions-item>
+        <a-descriptions-item label="ᠬᠢᠷᠢ ᠬᠡᠮᠵᠢᠶᠡ"></a-descriptions-item>
+        <a-descriptions-item label="ᠡᠮ ᠵᠢᠨ ᠬᠦᠯᠭᠡ"></a-descriptions-item>
+        <a-descriptions-item label="ᠨᠠᠶᠢᠷᠠᠯᠭ᠎ᠠ ᠶᠢᠨ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.drugcat }}</a-descriptions-item>
+        <a-descriptions-item label="ᠡᠮᠨᠡᠬᠦ ᠠᠷᠭ᠎ᠠ"></a-descriptions-item>
+        <a-descriptions-item label="ᠴᠡᠭᠡᠷᠯᠡᠬᠦ">{{ drug.taboo }}</a-descriptions-item>
+        <a-descriptions-item label="ᠡᠮᠲᠦ ᠵᠠᠰᠠᠯᠭ᠎ᠠ"></a-descriptions-item>
+        <a-descriptions-item label="ᠵᠣᠷ ᠤᠨ ᠡᠮ">{{ drug.drugs }}</a-descriptions-item>
+        <a-descriptions-item label="ᠭᠤᠷᠪᠠᠨ ᠦᠨᠳᠦᠰᠦᠨ ᠨᠦᠯᠦᠭᠡ">{{ drug.effectCat }}</a-descriptions-item>
+        <a-descriptions-item label="ᠠᠷᠪᠠᠨ ᠳᠤᠯᠤᠭᠠᠨ ᠴᠢᠳᠠᠯ">{{ drug.actionMode }}</a-descriptions-item>
+        <a-descriptions-item label="ᠲᠠᠶᠢᠯᠪᠤᠷᠢ">{{ drug.remark }}</a-descriptions-item>
         <a-descriptions-item>
-          <a-button type="primary" @click="handleEdit">修改</a-button>
+          <a-button type="primary" @click="handleEdit">ᠵᠠᠰᠠᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
           <a-button type="primary" @click="handleCancel">ᠪᠤᠴᠠᠬᠤ</a-button>
         </a-descriptions-item>
       </a-descriptions>

@@ -4,8 +4,7 @@
       <div class="content-hor">
         <a-form
           :form="form"
-          id="myform"
-          :rowClassName="rowClassName">
+          id="myform">
           <a-form-item label="ᠡᠮ ᠊ᠤᠨ ᠨᠡᠷᠡᠢᠳᠤᠯ">
             <a-input
               :maxLength="50"
