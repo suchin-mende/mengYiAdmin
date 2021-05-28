@@ -59,3 +59,16 @@ export function resipeList (params) {
     data: params
   })
 }
+
+/**
+ * 处方图表
+ * @param {*} parameter 
+ * @returns 
+ */
+ export function resipeCharts (params) {
+  return request({
+    url: Api.ResipeCharts,
+    method: 'post',
+    data: params
+  })
+}
