@@ -7,35 +7,35 @@
           id="myform">
           <a-form-item label="ᠡᠮ ᠊ᠤᠨ ᠨᠡᠷᠡᠢᠳᠤᠯ">
             <a-input
-              :maxLength="50"
+              :maxLength="200"
               v-decorator="['namem', { rules: [{ required: true, message: 'error' }] }]"
               placeholder=""
             />
           </a-form-item>
           <a-form-item label="ᠥᠬᠡᠷ᠎ᠡ ᠨᠡᠷ᠎ᠡ">
             <a-input
-              :maxLength="50"
+              :maxLength="200"
               v-decorator="['nameother']"
               placeholder=""
             />
           </a-form-item>
           <a-form-item label="ᠺᠢᠷᠢᠯ ᠨᠡᠷ᠎ᠡ">
             <a-input
-              :maxLength="50"
+              :maxLength="200"
               v-decorator="['namemn']"
               placeholder=""
             />
           </a-form-item>
           <a-form-item label="ᠬᠢᠳᠠᠳ ᠨᠡᠷ᠎ᠡ">
             <a-input
-              :maxLength="50"
+              :maxLength="200"
               v-decorator="['namecn']"
               placeholder=""
             />
           </a-form-item>
           <a-form-item label="ᠲᠦᠪᠡᠳ ᠨᠡᠷ᠎ᠡ">
             <a-input
-              :maxLength="50"
+              :maxLength="200"
               v-decorator="['namez']"
               placeholder=""
             />
