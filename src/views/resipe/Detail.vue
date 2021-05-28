@@ -2,11 +2,11 @@
   <page-header-wrapper>
     <template v-slot:content>
       <a-descriptions :column="1">
-        <a-descriptions-item label="ᠮᠤᠨᠭᠭᠤᠯ ᠨᠡᠷ ᠡ">{{ drug.namem }}</a-descriptions-item>
-        <a-descriptions-item label="ᠪᠤᠰᠤᠳ ᠨᠡᠷ ᠡ">{{ drug.nameother }}</a-descriptions-item>
-        <a-descriptions-item label="ᠺᠢᠷᠢᠯ ᠨᠡᠷ ᠡ">{{ drug.namemn }}</a-descriptions-item>
-        <a-descriptions-item label="ᠬᠢᠲᠠᠳ ᠨᠡᠷ ᠡ">{{ drug.namecn }}</a-descriptions-item>
-        <a-descriptions-item label="ᠲᠦᠪᠡᠳ ᠨᠡᠷ ᠡ">{{ drug.namez }}</a-descriptions-item>
+        <a-descriptions-item label="ᠵᠤᠷ ᠎ᠤᠨ ᠨᠡᠷ᠎ᠠ">{{ drug.namem }}</a-descriptions-item>
+        <a-descriptions-item label="ᠦᠭᠡᠷ᠎ᠠ ᠨᠡᠷ᠎ᠠ">{{ drug.nameother }}</a-descriptions-item>
+        <a-descriptions-item label="ᠺᠢᠷᠢᠯ ᠨᠡᠷ᠎ᠠ">{{ drug.namemn }}</a-descriptions-item>
+        <a-descriptions-item label="ᠭᠢᠲᠠᠳ ᠨᠡᠷ᠎ᠠ">{{ drug.namecn }}</a-descriptions-item>
+        <a-descriptions-item label="ᠲᠦᠪᠡᠳ ᠨᠡᠷ᠎ᠠ">{{ drug.namez }}</a-descriptions-item>
 
         <a-descriptions-item label="ᠴᠢᠳᠠᠯ">{{ drug.effect }}</a-descriptions-item>
         <a-descriptions-item label="ᠵᠠᠰᠠᠬᠤ ᠠᠷᠭᠠ">{{ drug.therapymemo }}</a-descriptions-item>
@@ -16,14 +16,14 @@
         <a-descriptions-item label="ᠬᠡᠷᠡᠭᠯᠡᠬᠦ ᠬᠡᠮᠵᠢᠶᠡ"></a-descriptions-item>
         <a-descriptions-item label="ᠬᠢᠷᠢ ᠬᠡᠮᠵᠢᠶᠡ"></a-descriptions-item>
         <a-descriptions-item label="ᠡᠮ ᠵᠢᠨ ᠬᠦᠯᠭᠡ"></a-descriptions-item>
-        <a-descriptions-item label="ᠨᠠᠶᠢᠷᠠᠯᠭ᠎ᠠ ᠶᠢᠨ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.drugcat }}</a-descriptions-item>
+        <a-descriptions-item label="ᠨᠠᠢᠷᠠᠯᠭ᠎ᠠ ᠢᠨ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.drugcat }}</a-descriptions-item>
         <a-descriptions-item label="ᠡᠮᠨᠡᠬᠦ ᠠᠷᠭ᠎ᠠ"></a-descriptions-item>
         <a-descriptions-item label="ᠴᠡᠭᠡᠷᠯᠡᠬᠦ">{{ drug.taboo }}</a-descriptions-item>
         <a-descriptions-item label="ᠡᠮᠲᠦ ᠵᠠᠰᠠᠯᠭ᠎ᠠ"></a-descriptions-item>
         <a-descriptions-item label="ᠵᠣᠷ ᠤᠨ ᠡᠮ">{{ drug.drugs }}</a-descriptions-item>
         <a-descriptions-item label="ᠭᠤᠷᠪᠠᠨ ᠦᠨᠳᠦᠰᠦᠨ ᠨᠦᠯᠦᠭᠡ">{{ drug.effectCat }}</a-descriptions-item>
         <a-descriptions-item label="ᠠᠷᠪᠠᠨ ᠳᠤᠯᠤᠭᠠᠨ ᠴᠢᠳᠠᠯ">{{ drug.actionMode }}</a-descriptions-item>
-        <a-descriptions-item label="ᠲᠠᠶᠢᠯᠪᠤᠷᠢ">{{ drug.remark }}</a-descriptions-item>
+        <a-descriptions-item label="ᠲᠠᠢᠯᠪᠤᠷᠢ">{{ drug.remark }}</a-descriptions-item>
         <a-descriptions-item>
           <a-button type="primary" @click="handleEdit">ᠵᠠᠰᠠᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
           <a-button type="primary" @click="handleCancel">ᠪᠤᠴᠠᠬᠤ</a-button>
@@ -217,6 +217,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
+
+/deep/ tbody > tr > td > span {
+  font-size: 20px;
+  overflow-wrap: break-word;
+}
 
 /deep/ .ant-pro-page-header-wrap-page-header-warp {
   width: 100%;

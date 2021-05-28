@@ -53,7 +53,7 @@ import {
 
 const columns = [
   {
-    title: 'ᠵᠤᠷ ᠵᠢᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ',
+    title: 'ᠵᠤᠷ ᠎ᠤᠨ ᠨᠡᠷ᠎ᠠ',
     dataIndex: 'namem'
   },
   {

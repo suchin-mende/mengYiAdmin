@@ -187,4 +187,44 @@ export default {
 .page-inner-mgl .content-left .search-form .fields .ant-input {
   height: 485px;
 }
+
+@media (min-width: 1440px) and (max-width:1768px){
+  
+.ant-table-wrapper{
+  height: 100%;
+  /deep/ .ant-spin-nested-loading{
+    height: 100% ;
+    .ant-spin-container{
+      height: 100%;
+      .ant-table{
+        height: 100%;
+        .ant-table-content{
+          height: 100%;
+          .ant-table-body table{
+            height: 100%;
+            .ant-table-thead > tr{
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+	
+/deep/ .ant-table-body .ant-table-thead > tr > th:first-child{
+   height: 42.5vh !important;
+}
+/deep/ .ant-table-body .ant-table-tbody > tr > td:first-child{
+   height: 42.5vh !important;
+}
+
+/deep/ .ant-table-thead > tr th:last-child,/deep/ .ant-table-tbody .ant-table-row > td:last-child  {
+  height: 44.3vh !important;
+  place-content: center;
+
+
+
+}
+}
 </style>

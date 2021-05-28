@@ -243,8 +243,9 @@ export default {
       // 延迟 1 秒显示欢迎信息
       setTimeout(() => {
         this.$notification.success({
-          message: '欢迎',
-          description: `${timeFix()}，欢迎回来`
+          message: 'ᠪᠠᠶᠠᠷᠯᠠᠨ ᠤᠭᠳᠤᠶᠠ',
+          description: `ᠲᠠᠨ ᠨᠤ ᠢᠷᠡᠬᠦ ᠵᠢ ᠪᠠᠶᠠᠷᠯᠠᠨ ᠤᠭᠳᠤᠵᠤ ᠪᠠᠢᠨᠠ`,
+          style:"width: 170px;",
         })
       }, 1000)
       this.isLoginError = false

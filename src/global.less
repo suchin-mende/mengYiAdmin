@@ -11,6 +11,27 @@ body,
   font-family: 'MQG8200';
 
 }
+.ant-empty-description {
+  visibility: hidden;
+    position: relative;
+}
+.ant-empty-description::after{
+  font-size: 20px;
+  visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+  content: "  ᠬᠠᠢᠵᠤ ᠤᠯᠤᠭᠰᠠᠨ ᠦᠭᠡᠢ"
+}
+
+.ant-empty-image{
+  display: none;
+  
+}
+html.mgl .ant-table-content .ant-table-placeholder{
+  margin-top: 20px;
+  writing-mode: vertical-lr;
+}
 .ant-popover-inner-content {
   writing-mode: vertical-lr;
   .ant-popover-message-title{

@@ -28,7 +28,7 @@
 
         <a-descriptions-item label="ᠡᠮ ᠊ᠤᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ">{{ drug.namem }}</a-descriptions-item>
         <a-descriptions-item label="ᠥᠭᠡᠷ᠎ᠡ ᠨᠡᠷ᠎ᠡ">{{ drug.nameother }}</a-descriptions-item>
-        <a-descriptions-item label="ᠰᠢᠨ᠎ᠡ ᠮᠤᠩᠭᠤᠯ ᠨᠡᠷ᠎ᠡ">{{ drug.namemn }}</a-descriptions-item>
+        <a-descriptions-item label="ᠺᠢᠷᠢᠯ ᠨᠡᠷ᠎ᠠ">{{ drug.namemn }}</a-descriptions-item>
         <a-descriptions-item label="ᠬᠢᠲᠠᠳ ᠨᠡᠷ᠎ᠡ">{{ drug.namecn }}</a-descriptions-item>
         <a-descriptions-item label="ᠲᠦᠪᠡᠳ ᠨᠡᠷ᠎ᠡ">{{ drug.namez }}</a-descriptions-item>
         <a-descriptions-item label="ᠢᠷᠡᠯᠳᠡ">{{ drug.source }}</a-descriptions-item>

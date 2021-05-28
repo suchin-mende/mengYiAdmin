@@ -8,7 +8,7 @@
           id="myform"
         >
           <a-form-model-item
-            label="ᠵᠤᠷ ᠵᠢᠨ ᠨᠡᠷ ᠡ"
+            label="ᠵᠤᠷ ᠎ᠤᠨ ᠨᠡᠷ᠎ᠠ"
             prop="namem"
             :rules="[{required: true, message: 'error', trigger: 'change'}]">
             <a-input
@@ -17,7 +17,7 @@
             />
           </a-form-model-item>
           <a-form-model-item
-            label="ᠥᠬᠡᠷᠡ ᠨᠡᠷ᠎ᠡ"
+            label="ᠦᠭᠡᠷ᠎ᠠ ᠨᠡᠷ᠎ᠠ"
             prop="nameother"
             >
             <a-input
@@ -26,7 +26,7 @@
             />
           </a-form-model-item>
           <a-form-model-item
-            label="ᠺᠢᠷᠢᠯ ᠨᠡᠷ ᠡ"
+            label="ᠺᠢᠷᠢᠯ ᠨᠡᠷ᠎ᠠ"
             prop="namemn"
             >
             <a-input
@@ -35,7 +35,7 @@
             />
           </a-form-model-item>
           <a-form-model-item
-            label="ᠬᠢᠲᠠᠳ ᠨᠡᠷ ᠡ"
+            label="ᠭᠢᠲᠠᠳ ᠨᠡᠷ᠎ᠠ"
             prop="namecn"
             >
             <a-input
@@ -44,7 +44,7 @@
             />
           </a-form-model-item>
           <a-form-model-item
-            label="ᠲᠦᠪᠡᠳ ᠨᠡᠷ ᠡ"
+            label="ᠲᠦᠪᠡᠳ ᠨᠡᠷ᠎ᠠ"
             prop="namez"
           >
             <a-input
@@ -59,7 +59,7 @@
               v-for="(d, idx) in form.resipeDrugList"
               :key="d.drugid">
               <a-form-model-item
-                label="ᠡᠮ ᠵᠢᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ">
+                label="ᠡᠮ ᠎ᠤᠨ ᠨᠡᠷᠡᠢᠳᠦᠯ">
                 <span>{{ d.namem }}</span>
               </a-form-model-item>
               <a-form-model-item
@@ -74,7 +74,7 @@
                 />
               </a-form-model-item>
               <a-form-model-item
-                label="ᠡᠮ ᠦᠨ ᠨᠢᠭᠡᠴᠢ"
+                label="ᠡᠮ ᠊ᠤᠨ ᠨᠢᠭᠡᠴᠢ"
                 :prop="`resipeDrugList[${idx}].unit`"
                 :rules="[{required: true, message: 'error', trigger: 'change'}]"
               >
@@ -113,7 +113,7 @@
               </a-select-option>
             </a-select>
           </a-form-model-item>
-          <a-form-model-item label="ᠨᠠᠶᠢᠷᠠᠯᠭ᠎ᠠ ᠶᠢᠨ ᠬᠡᠯᠪᠡᠷᠢ" prop="drugcat"
+          <a-form-model-item label="ᠨᠠᠢᠷᠠᠯᠭ᠎ᠠ ᠢᠨ ᠬᠡᠯᠪᠡᠷᠢ" prop="drugcat"
             :rules="[{required: true, message: 'error', trigger: 'change'}]"
           >
             <a-radio-group
@@ -133,13 +133,13 @@
           <a-form-model-item label="ᠵᠠᠰᠠᠬᠤ ᠠᠷᠭ᠎ᠠ" prop="therapymemo">
             <a-textarea placeholder="ᠣᠷᠣᠭᠤᠯᠤᠭᠠᠷᠠᠢ" :rows="3" :maxLength="300" v-model="form.therapymemo"/>
           </a-form-model-item>
-          <a-form-model-item label="ᠴᠢᠳᠠᠮᠵᠢ ᠪᠡᠷ ᠵᠠᠰᠠᠬᠤ" prop="mainEffect">
+          <a-form-model-item label="ᠴᠢᠳᠠᠮᠵᠢ ᠪᠡᠷ ᠵᠠᠰᠠᠬᠤ " prop="mainEffect">
             <a-textarea placeholder="ᠣᠷᠣᠭᠤᠯᠤᠭᠠᠷᠠᠢ" :rows="3" :maxLength="300" v-model="form.mainEffect"/>
           </a-form-model-item>
           <a-form-model-item label="ᠴᠡᠭᠡᠷᠯᠡᠬᠦ" prop="taboo">
             <a-textarea placeholder="ᠣᠷᠣᠭᠤᠯᠤᠭᠠᠷᠠᠢ" :rows="3" :maxLength="300" v-model="form.taboo"/>
           </a-form-model-item>
-          <a-form-model-item label="ᠲᠠᠶᠢᠯᠪᠤᠷᠢ" prop="remark">
+          <a-form-model-item label="ᠲᠠᠢᠯᠪᠤᠷᠢ" prop="remark">
             <a-textarea placeholder="ᠣᠷᠣᠭᠤᠯᠤᠭᠠᠷᠠᠢ" :rows="3" :maxLength="300" v-model="form.remark"/>
           </a-form-model-item>
         </a-form-model>
