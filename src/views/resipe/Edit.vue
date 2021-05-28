@@ -431,6 +431,7 @@ export default {
         }
       }
       .actions {
+        margin-left: 40px;
         border-left: solid 1px #d9d9d9;
         width: 15%;
         display: flex;

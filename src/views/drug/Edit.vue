@@ -308,6 +308,7 @@ export default {
         }
       }
       .actions {
+        margin-left: 40px;
         width: 15%;
         display: flex;
         align-items: baseline;
