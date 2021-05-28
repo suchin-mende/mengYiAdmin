@@ -2,6 +2,90 @@
   <page-header-wrapper>
     <template v-slot:content>
       <a-descriptions :column="1">
+        <a-descriptions-item label="">
+          <div>
+            <div class="biaotd title">ᠪᠦᠷᠢᠯᠳᠦᠬᠦᠨ</div>
+            <div id="burildugun" class="rotatediv chartclass" ></div>
+          </div>
+          <div class="chart-wrapper">
+            <div>
+              <div>
+                <div class="biaotd title">ᠱᠢᠩᠭᠡᠭᠡᠯᠲᠡ᠎ᠶᠢᠨ ᠡᠮᠦᠨᠡᠬᠢ ᠠᠮᠲᠠ</div>
+                <div id="sixtast" class="rotatediv chartclass" ></div>
+              </div>
+              <div>
+                <div class="biaotd title">ᠲᠠᠪᠤᠨ ᠮᠠᠬᠠᠪᠤᠳ</div>
+                <div id="tastFive" class="rotatediv chartclass" ></div>
+              </div>
+            </div>
+            <div>
+              <div>
+                <div class="biaotd title">ᠱᠢᠩᠭᠡᠭᠡᠯᠲᠡ᠎ᠶᠢᠨ  ᠰᠡᠭᠦᠯ᠎ᠦᠨ ᠠᠮᠲᠠ</div>
+                <div id="threeList" class="rotatediv chartclass" ></div>
+              </div>
+              <div>
+                <div class="biaotd title">ᠲᠠᠪᠤᠨ ᠮᠠᠬᠠᠪᠤᠳ （ ᠱᠢᠩᠭᠡᠭᠡᠯᠲᠡ᠎ᠶᠢᠨ  ᠰᠡᠭᠦᠯ᠎）</div>
+                <div id="threetastFive" class="rotatediv chartclass" ></div>
+              </div>
+            </div>
+          </div>
+          <div class="chart-wrapper">
+            <div>
+              <div>
+                <div class="biaotd title">ᠠᠷᠪᠠᠨ ᠳᠤᠯᠤᠭᠠᠨ ᠡᠷᠳᠡᠮ</div>
+                <div id="seventeenList" class="chartbar" ></div>
+              </div>
+              <div>
+                <div class="biaotd title">ᠦᠯᠡᠳᠡᠬᠦ᠌ ᠠᠷᠪᠠᠨ ᠳᠤᠯᠤᠭᠠᠨ ᠡᠷᠳᠡᠮ</div>
+                <div id="seventeenListEnd" class="chartbar" ></div>
+              </div>
+            </div>
+            <div>
+              <div>
+                <div class="biaotd title">ᠨᠠᠢ᠍ᠮᠠᠨ ᠴᠢᠳᠠᠯ</div>
+                <div id="eightList" class="chartbar" ></div>
+              </div>
+              <div>
+                <div class="biaotd title">ᠦᠯᠡᠳᠡᠬᠦ᠌ ᠨᠠᠢ᠍ᠮᠠᠨ ᠴᠢᠳᠠᠯ</div>
+                <div id="eightListEnd" class="chartbar" ></div>
+              </div>
+            </div>
+          </div>
+          <div class="chart-wrapper">
+            <div>
+              <div>
+                <div class="biaotd title">ᠬᠤᠶᠠᠷ ᠬᠦᠴᠦ᠍</div>
+                <div id="twoPowerList" class="rotatediv chartclass" ></div>
+              </div>
+              <div>
+                <div class="biaotd title">ᠬᠤᠶᠠᠷ ᠬᠦᠴᠦ᠍  ᠰᠡᠭᠦᠯ</div>
+                <div id="twoPowerListEnd" class="rotatediv chartclass" ></div>
+              </div>
+            </div>
+            <div>
+              <div>
+                <div class="biaotd title">ᠭᠤᠷᠪᠠᠨ ᠭᠡᠮ᠎ᠢ ᠳᠠᠷᠤᠬᠤ ᠬᠡᠮᠵᠢᠶ᠎ᠡ</div>
+                <div id="hxbList" class="rotatediv chartclass" ></div>
+              </div>
+              <div>
+                <div class="biaotd title">ᠭᠤᠷᠪᠠᠨ ᠭᠡᠮ᠎ᠢ ᠳᠠᠷᠤᠬᠤ ᠬᠡᠮᠵᠢᠶ᠎ᠡ</div>
+                <div id="hxbListEnd" class="rotatediv chartclass" ></div>
+              </div>
+            </div>
+          </div>
+          <div class="chart-wrapper">
+            <div>
+              <div>
+                <div class="biaotd title">ᠬᠤᠷᠢᠨ ᠪᠡᠯᠭᠡ ᠴᠢᠨᠠᠷ᠎ᠢ ᠳᠠᠷᠤᠬᠤ ᠬᠡᠮᠵᠢᠶ᠎ᠡ</div>
+                <div id="twentyList" class="chartbar" ></div>
+              </div>
+              <div>
+                <div class="biaotd title">ᠬᠤᠷᠢᠨ ᠪᠡᠯᠭᠡ ᠴᠢᠨᠠᠷ᠎ᠢ ᠳᠠᠷᠤᠬᠤ ᠬᠡᠮᠵᠢᠶ᠎ᠡ</div>
+                <div id="twentyListEnd" class="chartbar" ></div>
+              </div>
+            </div>
+          </div>
+        </a-descriptions-item>
         <a-descriptions-item label="ᠵᠤᠷ ᠎ᠤᠨ ᠨᠡᠷ᠎ᠠ">{{ drug.namem }}</a-descriptions-item>
         <a-descriptions-item label="ᠦᠭᠡᠷ᠎ᠠ ᠨᠡᠷ᠎ᠠ">{{ drug.nameother }}</a-descriptions-item>
         <a-descriptions-item label="ᠺᠢᠷᠢᠯ ᠨᠡᠷ᠎ᠠ">{{ drug.namemn }}</a-descriptions-item>
@@ -37,6 +121,18 @@
 </template>
 
 <script>
+import * as echarts from 'echarts';
+import {
+    TitleComponent,
+    TooltipComponent,
+    LegendComponent
+} from 'echarts/components';
+import {
+    PieChart
+} from 'echarts/charts';
+import {
+    CanvasRenderer
+} from 'echarts/renderers';
 
 import {
   drugDetail,
@@ -47,7 +143,8 @@ import {
 } from '@/api/drug'
 
 import {
-  resipeDetail
+  resipeDetail,
+  resipeCharts
 } from '@/api/resipe'
 
 import {
@@ -71,7 +168,9 @@ export default {
     this.drugId = this.$route.params.id
     this.setDict('M101', 'drugCategory')
     this.getObject()
-    // this.getImageList()
+    this.getResipeCharts()
+  },
+  mounted () {
   },
   methods: {
     async setDict (key, prop) {
@@ -210,7 +309,145 @@ export default {
     },
     handleCancel() {
       this.$router.go(-1)
-    }    
+    },
+    getResipeCharts () {
+      resipeCharts({
+        beanId: this.drugId
+      })
+        .then(res => {
+          this.renderCharts(res)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    renderCharts (res) {
+      const { data } = res
+      this.setPieburildu(data.burildugun, 'burildugun')
+      this.setPieburildu(data.sixtast, 'sixtast')
+      this.setPieburildu(data.tastFive, 'tastFive')
+      this.setPieburildu(data.threeList, 'threeList')
+      this.setPieburildu(data.threetastFive, 'threetastFive')
+      this.bar17(data.seventeenList, 'seventeenList')
+      this.bar17(data.seventeenListEnd, 'seventeenListEnd')
+      this.bar17(data.eightList, 'eightList')
+      this.bar17(data.eightListEnd, 'eightListEnd')
+      this.setPieburildu(data.twoPowerList, 'twoPowerList')
+      this.setPieburildu(data.twoPowerListEnd, 'twoPowerListEnd')
+      this.bar17(data.twentyList, 'twentyList')
+      this.bar17(data.twentyListEnd, 'twentyListEnd')
+      this.setPieburildu(data.hxbList, 'hxbList')
+      this.setPieburildu(data.hxbListEnd, 'hxbListEnd')
+    },
+    setPieburildu (piedata,pieid) {
+      const options = {
+    		title: {
+          text: ''
+    		},
+        tooltip: {
+          trigger: 'item',
+          extraCssText: 'writing-mode: lr-tb;',
+          // extraCssText:'writing-mode: tb-lr; -webkit-writing-mode: vertical-lr;-webkit-text-orientation: sideways-right',
+    	    textStyle:{
+  		      fontSize:16,
+            fontFamily:'MQG8200'
+    		  },
+    		  formatter: '{b0}: {c0}<br />'
+        },
+
+        legend: {
+    		  show:true,
+          right:10,
+    		  top: 'bottom',
+          bottom: 20,
+    		  left:50,
+          textStyle: {
+    		    fontFamily: "MQG8200"
+    		  }
+        },
+        series: [
+          {
+            name: '',
+            type: 'pie',
+            radius: '40%',
+            data: [
+              ...piedata
+            ],
+            label:{
+							align: 'left',
+							rotate:0,
+							fontSize:14,
+							fontFamily:'MQG8200',
+							position:'outside',
+							formatter: '{b} {@name}% '
+						}
+          }
+        ],
+        labelLine: {
+		      smooth: true
+				}
+      }
+      const chart = echarts.init(document.getElementById(pieid))
+      chart.setOption(options)
+    },
+    bar17(seventeenList, domid) {
+      const myChart = echarts.init(document.getElementById(domid))
+    	var xAxisData=[];
+    	var yAxisData=[];
+    	if(seventeenList!=null&&seventeenList.length>0){
+    		for(var i =0 ;i<seventeenList.length;i++){
+    			var obj = seventeenList[i];
+    			xAxisData.push(obj.name);
+    			yAxisData.push(obj.value);
+    		}
+    	}
+    	var color = ["#1A73E8","#FF4500","#FFD700"]
+    	const option = {
+    	    tooltip: {
+		        trigger: 'item',
+    	      extraCssText:'writing-mode: tb-lr; -webkit-writing-mode: vertical-lr;-webkit-text-orientation: sideways-right',
+    		    textStyle:{
+              fontSize:18,
+    		        fontFamily:'mongolian'
+    	      },
+  	        formatter: '{b0}: {c0} %<br />'
+    		  },
+    		  xAxis: {
+            axisLabel :{
+    		      interval:0,
+    	        rotate :'-90',
+              fontSize:'18',
+    		      margin:2,
+    		      fontFamily:'mongolian'
+    		      },
+    		      type: 'category',
+    		      data: xAxisData
+    		  },
+    		  yAxis: {
+            type: 'value'
+    		  },
+    		  series: [{
+    		    data: yAxisData,
+    	      type: 'bar',
+    		    itemStyle:{
+              color:function(p){
+    		        var colorindex = 0;
+    		        var curindex =   p.dataIndex;
+    		        if(curindex<5){
+    		          colorindex=0;
+    		        }else if(curindex>=5&&curindex<11){
+    		          colorindex=1;
+    		        }else{
+    		          colorindex=2;
+    		        }
+//     		                console.log(p)
+    		        return color[colorindex]
+    		      }
+    		    }
+    		  }]
+    	};
+    	myChart.setOption(option);
+    }
   }
 }
 
@@ -264,5 +501,42 @@ export default {
     writing-mode: initial;
   }
 }
+/deep/ .ant-pro-page-header-wrap-page-header-warp .ant-descriptions-row .ant-descriptions-item-no-label + .ant-descriptions-item-content{
+  margin-top: 0px;
+}
 
+.rotatediv{
+	transform:rotate(90deg);
+	-ms-transform:rotate(90deg); 	/* IE 9 */
+	-moz-transform:rotate(90deg); 	/* Firefox */
+	-webkit-transform:rotate(90deg); /* Safari 和 Chrome */
+	-o-transform:rotate(90deg); 	/* Opera */
+}
+
+.biaotd{
+	-moz-writing-mode: vertical-lr;
+	writing-mode: vertical-lr;
+	-webkit-writing-mode: vertical-lr;
+	-o-writing-mode: vertical-lr;
+	-ms-writing-mode: tb-lr;
+	writing-mode: tb-lr;
+	-webkit-text-orientation: sideways-right;
+	text-orientation: sideways-right;
+	height: 300px;
+}
+.title{
+	text-align: center;
+	font-size: 20px;
+}
+.chartclass{
+	width: 500px;
+	height:500px;
+}
+.chartbar{
+	width: 600px;
+	height:400px;
+}
+.chart-wrapper {
+  display: flex;
+}
 </style>
