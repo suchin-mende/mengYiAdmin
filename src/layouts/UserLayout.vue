@@ -15,11 +15,17 @@
             <!-- {{ $t('layouts.userLayout.title') }} -->
           </div>
         </div>
-
+        
         <router-view />
       </div>
+      <div class="user-layout-right-footer">
+         <a style="color:#bfbfbf;" href="https://halgai.com/" target="_blank">奥谷达  ᠤᠲᠠᠴᠢ</a>
+         <a href="https://github.com/vueComponent" target="_blank">Copyright  2021 蒙ICP备2XXXXXX号</a>
+      </div>
     </div>
+    
   </div>
+  
 </template>
 
 <script>
@@ -42,9 +48,21 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
+#userLayout {
+  // display: flex;
+  position: relative;
+}
+.user-layout-right-footer {
+  display: grid;
+    text-align: center;
+  position: absolute;
+  right: 5px;
+  top:32vh;
+  writing-mode: vertical-lr;
+}
 #userLayout.user-layout-wrapper {
   height: 100%;
+  
 
   &.mobile {
     .container {
