@@ -258,14 +258,28 @@ export default {
 
 /deep/ .ant-form label {
   font-size: 20px;
+
 }
 //vertical-align: middle;
 
-/deep/ .ant-form-item-children .ant-checkbox-group-item {
+/deep/ .ant-checkbox-group {
+  text-align: justify;
+  height: 650px;
   display: table;
 }
-/deep/ .ant-form-item-children .ant-checkbox-group label span {
+
+
+/deep/ .ant-form-item-children .ant-checkbox-group-item {
+  // display: table;
+ 
+  
+}
+/deep/ .ant-form-item-children .ant-checkbox-group label  {
+  margin-bottom: 10px;
+  
+  span {
   vertical-align: middle;
+  }
 
 }
 

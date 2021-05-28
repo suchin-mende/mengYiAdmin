@@ -371,6 +371,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
+/deep/ .ant-radio-group {
+  text-align: justify;
+  height: 600px;
+  display: table;
+}
 
 /deep/ .ant-form label {
   font-size: 20px;
@@ -404,7 +409,7 @@ export default {
         width: 85%;
         overflow-x: auto;
         label {
-          display: table;
+          // display: table;
         }
 
         .ant-radio {
