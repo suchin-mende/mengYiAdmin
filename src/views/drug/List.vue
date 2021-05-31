@@ -22,9 +22,14 @@
           :loading="isLoading"
           @change="onSearch"
         >
-          <a-tooltip placement="topLeft" title="Prompt Text" arrow-point-at-center>
-          <td></td>
-           </a-tooltip>
+          <template slot="namem" slot-scope="text">
+            <a-tooltip placement="rightTop">
+              <template slot="title">
+               {{ text }}
+             </template>
+            <span>{{ text }}</span>
+            </a-tooltip>
+          </template>
           <template
             slot="actions"
             slot-scope="text, record">
@@ -51,7 +56,7 @@ const columns = [
     title:'ᠡᠮ ᠊ᠤᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ',
     dataIndex: 'namem',
     ellipsis: true,
-    
+    scopedSlots: { customRender: 'namem' }
   },
   {
     title: 'ᠳᠤᠬᠢᠷᠠᠭᠤᠯᠬᠤ',
