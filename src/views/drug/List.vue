@@ -22,6 +22,9 @@
           :loading="isLoading"
           @change="onSearch"
         >
+          <a-tooltip placement="topLeft" title="Prompt Text" arrow-point-at-center>
+          <td></td>
+           </a-tooltip>
           <template
             slot="actions"
             slot-scope="text, record">
@@ -45,8 +48,10 @@ import {
 
 const columns = [
   {
-    title: 'ᠡᠮ ᠊ᠤᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ',
+    title:'ᠡᠮ ᠊ᠤᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ',
     dataIndex: 'namem',
+    ellipsis: true,
+    
   },
   {
     title: 'ᠳᠤᠬᠢᠷᠠᠭᠤᠯᠬᠤ',
@@ -158,6 +163,7 @@ export default {
         .ant-table-content{
           height: 100%;
           .ant-table-body table{
+            overflow-y: hidden;
             height: 100%;
             .ant-table-thead > tr{
               height: 100%;
@@ -170,10 +176,12 @@ export default {
 }
 
 /deep/ .ant-table-body .ant-table-thead > tr > th:first-child{
-   height: 45vh !important;
+   height: 46.6vh !important;
 }
 /deep/ .ant-table-body .ant-table-tbody > tr > td:first-child{
-   height: 45vh !important;
+   height: 46.6vh !important;
+   display:block !important;
+   
 }
 
 /deep/ .ant-table-thead > tr th:last-child,/deep/ .ant-table-tbody .ant-table-row > td:last-child  {
