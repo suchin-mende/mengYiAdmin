@@ -22,6 +22,9 @@
           :loading="isLoading"
           @change="onSearch"
         >
+        <span slot="serial" slot-scope="text, record, index">
+        {{ index + 1 }}
+        </span>
           <template slot="namem" slot-scope="text">
             <a-tooltip placement="rightTop">
               <template slot="title">
@@ -50,6 +53,10 @@
 import { drugList, drugRemove } from '@/api/drug'
 
 const columns = [
+  {  
+    title: 'ᠳ᠋ᠤᠭᠠᠷ',
+    scopedSlots: { customRender: 'serial' }
+  },
   {
     title: 'ᠡᠮ ᠊ᠤᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ',
     dataIndex: 'namem',
@@ -179,10 +186,20 @@ export default {
   }
 }
 
+
 /deep/ .ant-table-body .ant-table-thead > tr > th:first-child {
-  height: 46.6vh !important;
+  height: 6vh !important;
 }
 /deep/ .ant-table-body .ant-table-tbody > tr > td:first-child {
+  writing-mode: unset !important;
+  height: 6vh !important;
+  display: block !important;
+  text-align: center;
+}
+/deep/ .ant-table-body .ant-table-thead > tr > th {
+  height: 46.6vh !important;
+}
+/deep/ .ant-table-body .ant-table-tbody > tr > td {
   height: 46.6vh !important;
   display: block !important;
 }
@@ -222,17 +239,5 @@ export default {
     }
   }
 
-  /deep/ .ant-table-body .ant-table-thead > tr > th:first-child {
-    height: 42.5vh !important;
-  }
-  /deep/ .ant-table-body .ant-table-tbody > tr > td:first-child {
-    height: 42.5vh !important;
-  }
-
-  /deep/ .ant-table-thead > tr th:last-child,
-  /deep/ .ant-table-tbody .ant-table-row > td:last-child {
-    height: 44.3vh !important;
-    place-content: center;
-  }
 }
 </style>
