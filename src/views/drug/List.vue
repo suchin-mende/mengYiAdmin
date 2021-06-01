@@ -18,7 +18,7 @@
           row-key="drugid"
           :columns="columns"
           :data-source="data"
-          :pagination="pagination"
+          :pagination=false
           :loading="isLoading"
           @change="onSearch"
         >
@@ -43,7 +43,14 @@
             </a-popconfirm>
           </template>
         </a-table>
-        
+        <a-pagination
+          show-size-changer
+          :total="total"
+          :current="current"
+          :pageSizeOptions="ps"
+          @change="onSearch"
+          @showSizeChange="onShowSizeChange"
+        />
       </div>
     </div>
   </page-header-wrapper>
@@ -73,18 +80,14 @@ const columns = [
 export default {
   data() {
     return {
+      ps:['10','15','20','50','100'],
       key: '',
       data: [],
       columns,
       isLoading: false,
-      pagination: {
-        current: 1,
-        total: 0,
-        current: 1,
-        pageSize: 23,
-        
-
-      },
+      current:1,
+      total:0,
+      pageSize:10,
     }
   },
   created() {
@@ -92,33 +95,35 @@ export default {
   },
 
   methods: {
+     onShowSizeChange(current, pageSize) {
+      this.current=1
+      this.pageSize=pageSize
+      this.onSearch()
+    },
     onSearch(params) {
+      console.log("param",params)
       this.isLoading = true
-      const page = (params && params.current) || this.pagination.current
-      console.log(page)
+      const page = (params) || this.current
       drugList({
         page: page,
-        pageSize: this.pagination.pageSize,
+        pageSize: this.pageSize,
         drugName: this.key || null,
       })
         .then((res) => {
           this.isLoading = false
           const { data } = res
           this.data = data.rows
+          this.current=page
+          this.total=data.pageSize * data.totalPage
 
-          this.pagination = {
-            ...this.pagination,
-            current: page,
-            total: data.pageSize * data.totalPage,
-          }
         })
         .catch(() => {
           this.isLoading = false
         })
     },
     handleKeySearch() {
-      this.pagination.current = 1
-      this.pagination.total = 0
+      this.current = 1
+      this.total = 0
       this.onSearch()
     },
     handleReset() {
@@ -165,6 +170,7 @@ export default {
 <style lang="less" scoped>
 .ant-table-wrapper {
   height: 100%;
+  max-width: 90%;
   /deep/ .ant-spin-nested-loading {
     height: 100%;
     .ant-spin-container {
@@ -184,6 +190,46 @@ export default {
       }
     }
   }
+}
+
+.ant-pagination {
+  writing-mode: vertical-lr;
+  margin-top: 20px;
+  margin-left: 10px;
+  /deep/ .ant-pagination-prev {
+    margin-right: 0px;
+  }
+  /deep/ .ant-pagination-item {
+    margin-right: 0px;
+  }
+  /deep/ .ant-pagination-item a {
+   padding: 0px;
+  }
+  /deep/ .ant-pagination-options-size-changer.ant-select {
+    margin: 0px;
+  }
+  /deep/ .ant-select-selection--single {  
+    // width:34px;
+    height: 90px;
+    width: 34px;
+  }
+  /deep/ .ant-select-selection__rendered{
+    margin: 0px;
+  }
+  /deep/ .ant-select-arrow {
+    top: 85%;
+    left: 32%;
+  }
+  /deep/ .ant-select-selection-selected-value {
+    margin-top: 4px;
+  }
+  /deep/ .ant-select-dropdown{
+    width: unset !important;
+  }
+}
+
+.ant-pagination /deep/ li{
+  margin: 2px 0px;
 }
 
 
@@ -211,6 +257,7 @@ export default {
 }
 .content-right {
   width: 94%;
+  display: flex;
 }
 .page-inner-mgl .content-left .search-form .fields .ant-input {
   height: 485px;
@@ -219,6 +266,7 @@ export default {
 @media (min-width: 1440px) and (max-width: 1768px) {
   .ant-table-wrapper {
     height: 100%;
+    max-width: 90%;
     /deep/ .ant-spin-nested-loading {
       height: 100%;
       .ant-spin-container {
