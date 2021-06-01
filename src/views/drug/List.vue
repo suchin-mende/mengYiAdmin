@@ -45,6 +45,7 @@
         </a-table>
         <a-pagination
           show-size-changer
+          defaultPageSize=20
           :total="total"
           :current="current"
           :pageSizeOptions="ps"
@@ -87,7 +88,7 @@ export default {
       isLoading: false,
       current:1,
       total:0,
-      pageSize:10,
+      pageSize:20,
     }
   },
   created() {
