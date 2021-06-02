@@ -52,6 +52,7 @@
             <a-button type="link" @click="handleTest(text)">ᠠᠷᠢᠯᠭᠠᠬᠤ</a-button>
           </template>
         </a-table>
+        <div><div class="totalnum">ᠨᠡᠢᠲᠡ {{total}} ᠵᠤᠷᠪᠤᠰ</div>
         <a-pagination
           show-size-changer
           defaultPageSize=20
@@ -61,6 +62,7 @@
           @change="onSearch"
           @showSizeChange="onShowSizeChange"
         />
+        </div>
       </div>
     </div>
   </page-header-wrapper>
