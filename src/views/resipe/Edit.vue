@@ -431,9 +431,6 @@ export default {
       .ant-form {
         width: 85%;
         overflow-x: auto;
-        label {
-          // display: table;
-        }
 
         .ant-radio {
           vertical-align:baseline;

@@ -284,6 +284,7 @@ export default {
 
 /deep/ .ant-table-body .ant-table-thead > tr > th,/deep/ .ant-table-body .ant-table-tbody > tr > td{
    height: 42.4vh !important;
+   display: block !important;
 }
 
 .content-right {
