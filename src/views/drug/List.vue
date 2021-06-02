@@ -22,6 +22,14 @@
           :loading="isLoading"
           @change="onSearch"
         >
+          <template slot="namem" slot-scope="text">
+            <a-tooltip placement="rightTop">
+              <template slot="title">
+               {{ text }}
+             </template>
+            <span>{{ text }}</span>
+            </a-tooltip>
+          </template>
           <template
             slot="actions"
             slot-scope="text, record">
@@ -32,31 +40,31 @@
             </a-popconfirm>
           </template>
         </a-table>
+        
       </div>
     </div>
   </page-header-wrapper>
 </template>
 
 <script>
-import {
-  drugList,
-  drugRemove
-} from '@/api/drug'
+import { drugList, drugRemove } from '@/api/drug'
 
 const columns = [
   {
     title: 'ᠡᠮ ᠊ᠤᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ',
     dataIndex: 'namem',
+    ellipsis: true,
+    scopedSlots: { customRender: 'namem' },
   },
   {
     title: 'ᠳᠤᠬᠢᠷᠠᠭᠤᠯᠬᠤ',
     dataIndex: 'drugid',
-    scopedSlots: { customRender: 'actions' }
-  }
+    scopedSlots: { customRender: 'actions' },
+  },
 ]
 
 export default {
-  data () {
+  data() {
     return {
       key: '',
       data: [],
@@ -66,25 +74,27 @@ export default {
         current: 1,
         total: 0,
         current: 1,
-        pageSize: 23
-      }
+        pageSize: 23,
+        
+
+      },
     }
   },
-  created () {
+  created() {
     this.onSearch()
   },
 
   methods: {
-    onSearch (params) {
+    onSearch(params) {
       this.isLoading = true
       const page = (params && params.current) || this.pagination.current
       console.log(page)
       drugList({
         page: page,
         pageSize: this.pagination.pageSize,
-        drugName: this.key || null
+        drugName: this.key || null,
       })
-        .then(res => {
+        .then((res) => {
           this.isLoading = false
           const { data } = res
           this.data = data.rows
@@ -92,74 +102,74 @@ export default {
           this.pagination = {
             ...this.pagination,
             current: page,
-            total: data.pageSize * data.totalPage
+            total: data.pageSize * data.totalPage,
           }
         })
         .catch(() => {
           this.isLoading = false
         })
     },
-    handleKeySearch () {
+    handleKeySearch() {
       this.pagination.current = 1
       this.pagination.total = 0
       this.onSearch()
     },
-    handleReset () {
+    handleReset() {
       this.key = ''
       this.handleKeySearch()
     },
-    handleDetail (id) {
+    handleDetail(id) {
       this.$router.push({
         name: 'DrugDetail',
         params: {
-          id: id
-        }
+          id: id,
+        },
       })
     },
-    handleCreate () {
+    handleCreate() {
       this.$router.push({
-        name: 'DrugEdit'
+        name: 'DrugEdit',
       })
     },
-    handleEdit (id) {
+    handleEdit(id) {
       this.$router.push({
         name: 'DrugEdit',
         params: {
-          id: id
-        }
+          id: id,
+        },
       })
     },
-    handleRemove (record) {
+    handleRemove(record) {
       drugRemove({
-        beanId: record.drugid
+        beanId: record.drugid,
       })
-        .then(res => {
+        .then((res) => {
           this.$message.success('Success')
           this.onSearch()
         })
-        .catch(err => {
+        .catch((err) => {
           this.$message.error(err.message)
         })
-    }
-  }
+    },
+  },
 }
-
 </script>
 
 <style lang="less" scoped>
-.ant-table-wrapper{
+.ant-table-wrapper {
   height: 100%;
-  /deep/ .ant-spin-nested-loading{
-    height: 100% ;
-    .ant-spin-container{
+  /deep/ .ant-spin-nested-loading {
+    height: 100%;
+    .ant-spin-container {
       height: 100%;
-      .ant-table{
+      .ant-table {
         height: 100%;
-        .ant-table-content{
+        .ant-table-content {
           height: 100%;
-          .ant-table-body table{
+          .ant-table-body table {
+            overflow-y: hidden;
             height: 100%;
-            .ant-table-thead > tr{
+            .ant-table-thead > tr {
               height: 100%;
             }
           }
@@ -169,17 +179,18 @@ export default {
   }
 }
 
-/deep/ .ant-table-body .ant-table-thead > tr > th:first-child{
-   height: 45vh !important;
+/deep/ .ant-table-body .ant-table-thead > tr > th:first-child {
+  height: 46.6vh !important;
 }
-/deep/ .ant-table-body .ant-table-tbody > tr > td:first-child{
-   height: 45vh !important;
+/deep/ .ant-table-body .ant-table-tbody > tr > td:first-child {
+  height: 46.6vh !important;
+  display: block !important;
 }
 
-/deep/ .ant-table-thead > tr th:last-child,/deep/ .ant-table-tbody .ant-table-row > td:last-child  {
+/deep/ .ant-table-thead > tr th:last-child,
+/deep/ .ant-table-tbody .ant-table-row > td:last-child {
   height: 44.2vh !important;
   place-content: center;
-
 }
 .content-right {
   width: 94%;
@@ -188,43 +199,40 @@ export default {
   height: 485px;
 }
 
-@media (min-width: 1440px) and (max-width:1768px){
-  
-.ant-table-wrapper{
-  height: 100%;
-  /deep/ .ant-spin-nested-loading{
-    height: 100% ;
-    .ant-spin-container{
+@media (min-width: 1440px) and (max-width: 1768px) {
+  .ant-table-wrapper {
+    height: 100%;
+    /deep/ .ant-spin-nested-loading {
       height: 100%;
-      .ant-table{
+      .ant-spin-container {
         height: 100%;
-        .ant-table-content{
+        .ant-table {
           height: 100%;
-          .ant-table-body table{
+          .ant-table-content {
             height: 100%;
-            .ant-table-thead > tr{
+            .ant-table-body table {
               height: 100%;
+              .ant-table-thead > tr {
+                height: 100%;
+              }
             }
           }
         }
       }
     }
   }
-}
-	
-/deep/ .ant-table-body .ant-table-thead > tr > th:first-child{
-   height: 42.5vh !important;
-}
-/deep/ .ant-table-body .ant-table-tbody > tr > td:first-child{
-   height: 42.5vh !important;
-}
 
-/deep/ .ant-table-thead > tr th:last-child,/deep/ .ant-table-tbody .ant-table-row > td:last-child  {
-  height: 44.3vh !important;
-  place-content: center;
+  /deep/ .ant-table-body .ant-table-thead > tr > th:first-child {
+    height: 42.5vh !important;
+  }
+  /deep/ .ant-table-body .ant-table-tbody > tr > td:first-child {
+    height: 42.5vh !important;
+  }
 
-
-
-}
+  /deep/ .ant-table-thead > tr th:last-child,
+  /deep/ .ant-table-tbody .ant-table-row > td:last-child {
+    height: 44.3vh !important;
+    place-content: center;
+  }
 }
 </style>

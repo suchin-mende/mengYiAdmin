@@ -455,6 +455,21 @@ export default {
 
 <style lang="less" scoped>
 
+/deep/ .ant-pro-grid-content {
+  overflow: auto;
+}
+
+.ant-pro-page-header-wrap-content {
+  height: 100%;
+}
+
+.ant-page-header-heading {
+  width: 32px;
+}
+/deep/ .ant-page-header.has-breadcrumb {
+  height: 100%;
+}
+
 /deep/ tbody > tr > td > span {
   font-size: 20px;
   overflow-wrap: break-word;

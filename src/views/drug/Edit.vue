@@ -268,12 +268,6 @@ export default {
   display: table;
 }
 
-
-/deep/ .ant-form-item-children .ant-checkbox-group-item {
-  // display: table;
- 
-  
-}
 /deep/ .ant-form-item-children .ant-checkbox-group label  {
   margin-bottom: 10px;
   
