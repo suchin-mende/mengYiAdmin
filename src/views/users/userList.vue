@@ -42,6 +42,9 @@
           :loading="isLoading"
           @change="onSearch"
         >
+        <span slot="serial" slot-scope="text, record, index">
+        {{ index + 1 }}
+        </span>
           <template slot="username" slot-scope="unametext, text">
             <a-button type="link" @click="handleKeyDetail(text.userid)">{{ unametext }}</a-button>
           </template>
@@ -58,6 +61,10 @@
 import { uList, uSave, uDetail } from '@/api/accounts'
 
 const columns = [
+  {  
+    title: 'ᠳ᠋ᠤᠭᠠᠷ',
+    scopedSlots: { customRender: 'serial' }
+  },
   {
     title: 'ᠨᠡᠷ᠎ᠡ',
     dataIndex: 'username',
@@ -236,6 +243,16 @@ export default {
   }
 }
 
+/deep/ .ant-table-body .ant-table-thead > tr > th:first-child {
+  height: 6vh !important;
+}
+/deep/ .ant-table-body .ant-table-tbody > tr > td:first-child {
+  writing-mode: unset !important;
+  height: 6vh !important;
+  display: block !important;
+  text-align: center;
+}
+
 /deep/ .ant-table-body .ant-table-thead > tr > th{
    height: 30.3vh !important;
 }
@@ -259,7 +276,7 @@ export default {
   }
 }
 /deep/ .ant-table-thead > tr th:last-child,/deep/ .ant-table-tbody .ant-table-row > td:last-child  {
-  // height: 36vh !important;
+  height: 24vh !important;
   place-content: center;
 
 }
