@@ -84,6 +84,7 @@ const columns = [
 export default {
   data() {
     return {
+      ps:['10','15','20','50','100'],
       key: '',
       data: [],
       columns,
