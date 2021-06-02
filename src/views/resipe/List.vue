@@ -25,9 +25,17 @@
         <span slot="serial" slot-scope="text, record, index">
         {{ index + 1 }}
         </span>
-          <div slot="cat" slot-scope="text">
+          <!-- <div slot="cat" slot-scope="text">
             {{ getCat(text).label }}
-          </div>
+          </div> -->
+          <template slot="namem" slot-scope="text">
+            <a-tooltip placement="rightTop">
+              <template slot="title">
+               {{ text }}
+             </template>
+            <span>{{ text }}</span>
+            </a-tooltip>
+          </template>
           <template
             slot="actions"
             slot-scope="text, record">
@@ -72,7 +80,9 @@ const columns = [
   },
   {
     title: 'ᠵᠤᠷ ᠎ᠤᠨ ᠨᠡᠷ᠎ᠠ',
-    dataIndex: 'namem'
+    dataIndex: 'namem',
+    ellipsis: true,
+    scopedSlots: { customRender: 'namem' },
   },
   {
     title: 'ᠳᠤᠬᠢᠷᠠᠭᠤᠯᠬᠤ',

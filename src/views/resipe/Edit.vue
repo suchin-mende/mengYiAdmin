@@ -288,17 +288,40 @@ export default {
         resipeDrugList: form.resipeDrugList,
         resipe: {
           drugcat: form.drugcat,
-          effect: form.effect.replace(/\\n/g, '<br>'),
-          mainEffect: form.mainEffect.replace(/\\n/g, '<br>'),
           namecn: form.namecn,
           namem: form.namem,
           namemn: form.namemn,
           nameother: form.nameother,
           namez: form.namez,
-          remark: form.remark.replace(/\\n/g, '<br>'),
-          therapymemo: form.therapymemo.replace(/\\n/g, '<br>'),
-          taboo: form.taboo.replace(/\\n/g, '<br>'),
         }
+      }
+      if (this.effect){
+         params.resipe.effect=form.effect.replace(/\\n/g, '<br>')
+      }else{
+         params.resipe.effect=form.effect
+      }
+      if (this.mainEffect){
+         params.resipe.mainEffect=form.mainEffect.replace(/\\n/g, '<br>')
+      }else{
+         params.resipe.mainEffect=form.mainEffect
+      }
+      
+      if (this.remark){
+         params.resipe.remark=form.remark.replace(/\\n/g, '<br>')
+      }else{
+         params.resipe.remark=form.remark
+      }
+      
+      if (this.therapymemo){
+         params.resipe.therapymemo=form.therapymemo.replace(/\\n/g, '<br>')
+      }else{
+         params.resipe.therapymemo=form.therapymemo
+      }
+      
+      if (this.taboo){
+         params.resipe.taboo=form.taboo.replace(/\\n/g, '<br>')
+      }else{
+         params.resipe.taboo=form.taboo
       }
 
       if (this.drugId) {
