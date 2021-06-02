@@ -420,7 +420,7 @@ export default {
   position: absolute;
   /deep/ .ant-card-body {
     width: 100%;
-    overflow-x: auto;
+    overflow-x: overlay;
     .content-hor {
       
       width: 100%;
