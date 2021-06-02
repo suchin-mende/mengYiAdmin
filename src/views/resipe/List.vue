@@ -38,10 +38,10 @@
             </a-popconfirm>
           </template>
         </a-table>
-        <div><div class="totalnum">ᠨᠡᠢᠲᠡ {{total}} ᠵᠤᠷᠪᠤᠰ</div>
+        <div><div class="totalnum">ᠨᠡᠢᠲᠡ {{totalrecord}} ᠵᠤᠷᠪᠤᠰ</div>
         <a-pagination
           show-size-changer
-          defaultPageSize=20
+          :defaultPageSize="defaultPageSize"
           :total="total"
           :current="current"
           :pageSizeOptions="ps"
@@ -91,7 +91,9 @@ export default {
       current:1,
       total:0,
       pageSize:20,
-      drugCategory: []
+      drugCategory: [],
+      totalrecord:0,
+      defaultPageSize:20,
     };
   },
   created() {
@@ -131,6 +133,7 @@ export default {
         .then((res) => {
           this.isLoading = false
           const { data } = res
+          this.totalrecord = data.records
           this.data = data.rows
           this.current=page
           this.total=data.pageSize * data.totalPage
