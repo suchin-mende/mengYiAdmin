@@ -288,16 +288,16 @@ export default {
         resipeDrugList: form.resipeDrugList,
         resipe: {
           drugcat: form.drugcat,
-          effect: form.effect,
-          mainEffect: form.mainEffect,
+          effect: form.effect.replace(/\\n/g, '<br>'),
+          mainEffect: form.mainEffect.replace(/\\n/g, '<br>'),
           namecn: form.namecn,
           namem: form.namem,
           namemn: form.namemn,
           nameother: form.nameother,
           namez: form.namez,
-          remark: form.remark,
-          therapymemo: form.therapymemo,
-          taboo: form.taboo
+          remark: form.remark.replace(/\\n/g, '<br>'),
+          therapymemo: form.therapymemo.replace(/\\n/g, '<br>'),
+          taboo: form.taboo.replace(/\\n/g, '<br>'),
         }
       }
 

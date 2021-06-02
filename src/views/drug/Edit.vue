@@ -66,7 +66,7 @@
             <a-checkbox-group :options="seventeenEffect" v-decorator="['seventeenEffect']"/>
           </a-form-item>
           <a-form-item label="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ ᠢᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ">
-            <a-textarea placeholder="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ ᠢᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ" :rows="3" :maxLength="300" v-decorator="['decomEffect']"/>
+            <a-textarea v-html="text" placeholder="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ ᠢᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ" :rows="3" :maxLength="300" v-decorator="['decomEffect']"/>
           </a-form-item>
           <a-form-item label="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ ᠊ᠤᠨ ᠬᠡᠪ ᠴᠢᠨᠠᠷ">
             <a-textarea placeholder="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ ᠊ᠤᠨ ᠬᠡᠪ ᠴᠢᠨᠠᠷ" :rows="3" :maxLength="300" v-decorator="['baseEffect']"/>
@@ -223,9 +223,9 @@ export default {
         namecn: values.namecn,
         namemn: values.namemn,
         namez: values.namez,
-        baseEffect: values.baseEffect,
-        baseFix: values.baseFix,
-        decomEffect: values.decomEffect,
+        baseEffect: values.baseEffect.replace(/\\n/g, '<br>'),
+        baseFix: values.baseFix.replace(/\\n/g, '<br>'),
+        decomEffect: values.decomEffect.replace(/\\n/g, '<br>'),
         remark: values.remark
       }
       if (this.drugId) {
