@@ -487,9 +487,8 @@ export default {
     }
   }
   .ant-descriptions-row {
-    &:last-child {
-      display: flex;
-      justify-content: flex-end;
+    &:last-child td{
+      display: table-cell;
     }
   }
   
