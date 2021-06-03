@@ -288,17 +288,40 @@ export default {
         resipeDrugList: form.resipeDrugList,
         resipe: {
           drugcat: form.drugcat,
-          effect: form.effect,
-          mainEffect: form.mainEffect,
           namecn: form.namecn,
           namem: form.namem,
           namemn: form.namemn,
           nameother: form.nameother,
           namez: form.namez,
-          remark: form.remark,
-          therapymemo: form.therapymemo,
-          taboo: form.taboo
         }
+      }
+      if (this.effect){
+         params.resipe.effect=form.effect.replace(/\\n/g, '<br>')
+      }else{
+         params.resipe.effect=form.effect
+      }
+      if (this.mainEffect){
+         params.resipe.mainEffect=form.mainEffect.replace(/\\n/g, '<br>')
+      }else{
+         params.resipe.mainEffect=form.mainEffect
+      }
+      
+      if (this.remark){
+         params.resipe.remark=form.remark.replace(/\\n/g, '<br>')
+      }else{
+         params.resipe.remark=form.remark
+      }
+      
+      if (this.therapymemo){
+         params.resipe.therapymemo=form.therapymemo.replace(/\\n/g, '<br>')
+      }else{
+         params.resipe.therapymemo=form.therapymemo
+      }
+      
+      if (this.taboo){
+         params.resipe.taboo=form.taboo.replace(/\\n/g, '<br>')
+      }else{
+         params.resipe.taboo=form.taboo
       }
 
       if (this.drugId) {
@@ -397,7 +420,7 @@ export default {
   position: absolute;
   /deep/ .ant-card-body {
     width: 100%;
-    overflow-x: auto;
+    overflow-x: overlay;
     .content-hor {
       
       width: 100%;
@@ -408,9 +431,6 @@ export default {
       .ant-form {
         width: 85%;
         overflow-x: auto;
-        label {
-          // display: table;
-        }
 
         .ant-radio {
           vertical-align:baseline;

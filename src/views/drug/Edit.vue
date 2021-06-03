@@ -216,17 +216,30 @@ export default {
       delete params.baseEffect
       delete params.baseFix
       delete params.decomEffect
-
       params.drug = {
         namem: values.namem,
         nameother: values.nameother,
         namecn: values.namecn,
         namemn: values.namemn,
         namez: values.namez,
-        baseEffect: values.baseEffect,
-        baseFix: values.baseFix,
-        decomEffect: values.decomEffect,
-        remark: values.remark
+        remark: values.remark,
+      }
+      if (this.baseEffect){
+         params.drug.baseEffect=values.baseEffect.replace(/\\n/g, '<br>')
+      }else{
+         params.drug.baseEffect=values.baseEffect
+      }
+      
+      if (this.baseFix){
+         params.drug.baseFix=values.baseFix.replace(/\\n/g, '<br>')
+      }else{
+         params.drug.baseFix=values.baseFix
+      }
+      
+      if (this.decomEffect){
+         params.drug.decomEffect=values.decomEffect.replace(/\\n/g, '<br>')
+      }else{
+         params.drug.decomEffect=values.decomEffect
       }
       if (this.drugId) {
         params.drug.drugid = this.drugId
@@ -286,7 +299,7 @@ export default {
   position: absolute;
   /deep/ .ant-card-body {
     width: 100%;
-    // overflow-x: auto;
+    overflow-x: overlay;
     .content-hor {
       width: 100%;
       height: 100%;

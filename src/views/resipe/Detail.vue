@@ -456,7 +456,7 @@ export default {
 <style lang="less" scoped>
 
 /deep/ .ant-pro-grid-content {
-  overflow: auto;
+  overflow: overlay;
 }
 
 .ant-pro-page-header-wrap-content {
