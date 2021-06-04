@@ -251,7 +251,7 @@ export default {
       height: 100%;
     }
     tbody > tr > td > span {
-      font-size: 20px;
+      font-size: 2vh;
       height: 86vh;
       overflow-wrap: break-word;
     }
@@ -264,7 +264,7 @@ export default {
 /deep/ .ant-pro-page-header-wrap-page-header-warp {
 
   .ant-descriptions-item > span {
-    font-size: 20px;
+    font-size: 2vh;
   }
   .ant-descriptions-row {
     padding: 0 10px;

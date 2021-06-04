@@ -401,7 +401,7 @@ export default {
 }
 
 /deep/ .ant-form label {
-  font-size: 20px;
+  font-size: 2vh;
 }
 //vertical-align: middle;
 /deep/ .ant-form-item-children .ant-checkbox-group label span {

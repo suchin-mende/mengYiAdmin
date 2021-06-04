@@ -265,7 +265,7 @@ export default {
 <style lang="less" scoped>
 
 .user-layout-login button.login-button{
-  font-size: 20px !important;
+  font-size: 2vh !important;
   padding: 0px !important;
 }
 
@@ -307,7 +307,7 @@ export default {
   }
   input.ant-input {
     width: auto !important;
-    font-size: 20px;
+    font-size: 2vh;
     padding-top: 25px;
     padding-left: 0px;
     padding-right: 0px;

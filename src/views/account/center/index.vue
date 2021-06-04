@@ -213,7 +213,7 @@ export default {
 
     .username {
       color: rgba(0, 0, 0, 0.85);
-      font-size: 20px;
+      font-size: 2vh;
       line-height: 28px;
       font-weight: 500;
       margin-bottom: 4px;

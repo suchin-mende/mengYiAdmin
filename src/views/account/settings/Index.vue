@@ -140,7 +140,7 @@ export default {
 
       .account-settings-info-title {
         color: rgba(0,0,0,.85);
-        font-size: 20px;
+        font-size: 2vh;
         font-weight: 500;
         line-height: 28px;
         margin-bottom: 12px;

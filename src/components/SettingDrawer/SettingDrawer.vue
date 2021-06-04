@@ -337,7 +337,7 @@ export default {
 
     i {
       color: rgb(255, 255, 255);
-      font-size: 20px;
+      font-size: 2vh;
     }
   }
 </style>

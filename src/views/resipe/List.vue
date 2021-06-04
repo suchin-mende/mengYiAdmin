@@ -214,6 +214,7 @@ export default {
         .ant-table-content{
           height: 100%;
           .ant-table-body table{
+            overflow-y: hidden;
             height: 100%;
             .ant-table-thead > tr{
               height: 100%;
@@ -278,8 +279,9 @@ export default {
 /deep/ .ant-table-body .ant-table-tbody > tr > td:first-child {
   writing-mode: unset !important;
   height: 6vh !important;
-  display: block !important;
-  text-align: center;
+  display: grid !important;
+  align-content: center;
+  justify-content: center;
 }
 
 /deep/ .ant-table-body .ant-table-thead > tr > th,/deep/ .ant-table-body .ant-table-tbody > tr > td{
@@ -293,6 +295,6 @@ export default {
   width: 1200px;;
 }
 .page-inner-mgl .content-left .search-form .fields .ant-input {
-  height: 485px;
+  height: 50vh;
 }
 </style>

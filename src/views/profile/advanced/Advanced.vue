@@ -342,7 +342,7 @@ export default {
 
   .heading {
     color: rgba(0, 0, 0, .85);
-    font-size: 20px;
+    font-size: 2vh;
   }
 
   .no-data {
