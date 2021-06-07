@@ -13,7 +13,7 @@ body,
 }
 .totalnum {
   writing-mode: vertical-lr;
-  font-size: 18px;
+  font-size: 2vh;
   text-align: center;
   background-color: #fff;
   border: 1px solid #d9d9d9;
@@ -30,14 +30,14 @@ body,
 }
 .ant-tooltip-inner {
   writing-mode: vertical-lr;
-  font-size: 20px;
+  font-size: 2vh;
 }
 .ant-empty-description {
   visibility: hidden;
     position: relative;
 }
 .ant-empty-description::after{
-  font-size: 20px;
+  font-size: 2vh;
   visibility: visible;
     position: absolute;
     top: 0;
@@ -56,7 +56,7 @@ html.mgl .ant-table-content .ant-table-placeholder{
 .ant-popover-inner-content {
   writing-mode: vertical-lr;
   .ant-popover-message-title{
-    font-size: 20px;
+    font-size: 2vh;
   }
 }
 
@@ -210,7 +210,7 @@ ol {
 }
 
 .ant-page-header {
-  padding: 10px;
+  padding: 0px;
 }
 
 .ant-card-head {
@@ -272,11 +272,11 @@ ol {
 
 html.mgl {
   .ant-btn {
-    width: 32px;
+    width:  3vh;
     height: auto;
-    padding: 15px 0;
-    margin-bottom: 20px;
-    font-size: 20px;
+    padding: 2vh 0;
+    // margin-bottom: 20px;
+    font-size: 2vh;
     span {
       writing-mode: vertical-lr;
       margin: 0 auto;
@@ -298,7 +298,7 @@ html.mgl {
   }
 
   .ant-table-content {
-    font-size: 20px;
+    font-size: 2vh;
     display: flex;
     .ant-table-body {
       overflow-x: auto;
@@ -312,7 +312,7 @@ html.mgl {
           display: inline-grid;
 
           th {
-            padding: 16px 16px;
+            padding: 2vh;
             display: flex;
             align-items: center;
             height: var(--default-column-height-table-mgl);
@@ -454,14 +454,16 @@ html.mgl {
   display: flex;
   .content-left {
     .search-form {
+      display: flex;
+      justify-content: center;
       height: 100%;
       position: relative;
-      padding: 20px;
+      padding: 20px 1.5vh;
 
       .fields {
         writing-mode: vertical-lr;
         .ant-input {
-          width: 32px;
+          width: 3vh;
           height: 180px;
           display: table-column;
         }
@@ -469,6 +471,7 @@ html.mgl {
 
       .actions {
         position: absolute;
+        display: grid;
         bottom: 0;
         > * {
           margin-bottom: 8px;

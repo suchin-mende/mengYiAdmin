@@ -82,7 +82,7 @@ export default {
 }
 
 /deep/ tbody > tr > td > span {
-  font-size: 20px;
+  font-size: 2vh;
   overflow-wrap: break-word;
 }
 </style>

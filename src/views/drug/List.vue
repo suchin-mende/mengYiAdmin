@@ -245,8 +245,9 @@ export default {
 /deep/ .ant-table-body .ant-table-tbody > tr > td:first-child {
   writing-mode: unset !important;
   height: 6vh !important;
-  display: block !important;
-  text-align: center;
+  display: grid !important;
+  align-content: center;
+  justify-content: center;
 }
 /deep/ .ant-table-body .ant-table-thead > tr > th {
   height: 46.6vh !important;
@@ -266,7 +267,7 @@ export default {
   display: flex;
 }
 .page-inner-mgl .content-left .search-form .fields .ant-input {
-  height: 485px;
+  height: 50vh;
 }
 
 @media (min-width: 1440px) and (max-width: 1768px) {

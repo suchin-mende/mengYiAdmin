@@ -247,6 +247,7 @@ export default {
         .ant-table-content{
           height: 100%;
           .ant-table-body table{
+            overflow-y: hidden;
             height: 100%;
             .ant-table-thead > tr{
               height: 100%;
@@ -304,8 +305,9 @@ export default {
 /deep/ .ant-table-body .ant-table-tbody > tr > td:first-child {
   writing-mode: unset !important;
   height: 6vh !important;
-  display: block !important;
-  text-align: center;
+  display: grid !important;
+  align-content: center;
+  justify-content: center;
 }
 
 /deep/ .ant-table-body .ant-table-thead > tr > th{
@@ -337,7 +339,7 @@ export default {
 
 }
 /deep/ .ant-modal-title {
-  font-size: 20px;
+  font-size: 2vh;
 }
 @media (min-width: 1440px) and (max-width:1768px){
 	/deep/ .ant-table-body .ant-table-thead > tr > th{

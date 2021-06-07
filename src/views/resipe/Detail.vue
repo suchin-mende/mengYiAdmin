@@ -471,7 +471,7 @@ export default {
 }
 
 /deep/ tbody > tr > td > span {
-  font-size: 20px;
+  font-size: 2vh;
   overflow-wrap: break-word;
 }
 
@@ -540,7 +540,7 @@ export default {
 }
 .title{
 	text-align: center;
-	font-size: 20px;
+	font-size: 2vh;
 }
 .chartclass{
 	width: 500px;

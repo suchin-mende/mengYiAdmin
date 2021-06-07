@@ -270,7 +270,7 @@ export default {
 <style lang="less" scoped>
 
 /deep/ .ant-form label {
-  font-size: 20px;
+  font-size: 2vh;
 
 }
 //vertical-align: middle;
