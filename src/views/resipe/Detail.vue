@@ -454,6 +454,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.ant-btn {
+  margin-bottom: 20px;
+  
+}
+
 /deep/ .chart-wrapper {
   flex-direction: column;
 }
