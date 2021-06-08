@@ -86,11 +86,6 @@ const columns = [
     title: 'ᠤᠲᠠᠰᠤᠨ ᠨᠤᠮᠧᠷ',
     dataIndex: 'phonenum'
   },
-  {
-    title: 'ᠳᠤᠬᠢᠷᠠᠭᠤᠯᠬᠤ',
-    dataIndex: 'loginname',
-    scopedSlots: { customRender: 'actions' }
-  }
 ]
 
 export default {
@@ -311,10 +306,10 @@ export default {
 }
 
 /deep/ .ant-table-body .ant-table-thead > tr > th{
-   height: 30.3vh !important;
+   height: 61vh !important;
 }
 /deep/ .ant-table-body .ant-table-tbody > tr > td{
-   height: 30.3vh !important;
+   height: 61vh !important;
 }
 
 
