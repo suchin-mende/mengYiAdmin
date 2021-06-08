@@ -91,22 +91,22 @@
         <a-descriptions-item label="ᠺᠢᠷᠢᠯ ᠨᠡᠷ᠎ᠠ">{{ drug.namemn }}</a-descriptions-item>
         <a-descriptions-item label="ᠭᠢᠲᠠᠳ ᠨᠡᠷ᠎ᠠ">{{ drug.namecn }}</a-descriptions-item>
         <a-descriptions-item label="ᠲᠦᠪᠡᠳ ᠨᠡᠷ᠎ᠠ">{{ drug.namez }}</a-descriptions-item>
-
-        <a-descriptions-item label="ᠴᠢᠳᠠᠯ">{{ drug.effect }}</a-descriptions-item>
-        <a-descriptions-item label="ᠵᠠᠰᠠᠬᠤ ᠠᠷᠭᠠ">{{ drug.therapymemo }}</a-descriptions-item>
         
-        <a-descriptions-item label="ᠭᠤᠤᠯᠯᠠᠨ ᠵᠠᠰᠠᠬᠤ ᠴᠢᠲᠠᠪᠦᠷᠢ">{{ drug.mainEffect }}</a-descriptions-item>
-        <a-descriptions-item label="ᠬᠡᠷᠡᠭᠯᠡᠬᠦ ᠠᠷᠭᠠ"></a-descriptions-item>
+        <a-descriptions-item label="ᠵᠤᠷ ᠎ᠤᠨ ᠡᠮ">{{ drug.drugs }}</a-descriptions-item>
+        <a-descriptions-item label="ᠨᠠᠢᠷᠠᠯᠭ᠎ᠠ ᠢᠨ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.drugcat }}</a-descriptions-item>
+        <a-descriptions-item label="ᠦᠢᠯᠡᠳᠦᠯ">{{ drug.effect }}</a-descriptions-item>
+        <a-descriptions-item label="ᠵᠠᠰᠠᠬᠤ ᠠᠷᠭ᠎ᠠ">{{ drug.therapymemo }}</a-descriptions-item>
+        
+        <a-descriptions-item label="ᠴᠢᠳᠠᠮᠵᠢ ᠪᠡᠷ ᠵᠠᠰᠠᠬᠤ">{{ drug.mainEffect }}</a-descriptions-item>
+        <!-- <a-descriptions-item label="ᠬᠡᠷᠡᠭᠯᠡᠬᠦ ᠠᠷᠭᠠ"></a-descriptions-item>
         <a-descriptions-item label="ᠬᠡᠷᠡᠭᠯᠡᠬᠦ ᠬᠡᠮᠵᠢᠶᠡ"></a-descriptions-item>
         <a-descriptions-item label="ᠬᠢᠷᠢ ᠬᠡᠮᠵᠢᠶᠡ"></a-descriptions-item>
-        <a-descriptions-item label="ᠡᠮ ᠵᠢᠨ ᠬᠦᠯᠭᠡ"></a-descriptions-item>
-        <a-descriptions-item label="ᠨᠠᠢᠷᠠᠯᠭ᠎ᠠ ᠢᠨ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.drugcat }}</a-descriptions-item>
-        <a-descriptions-item label="ᠡᠮᠨᠡᠬᠦ ᠠᠷᠭ᠎ᠠ"></a-descriptions-item>
+        <a-descriptions-item label="ᠡᠮ ᠵᠢᠨ ᠬᠦᠯᠭᠡ"></a-descriptions-item> -->
+        <!-- <a-descriptions-item label="ᠡᠮᠨᠡᠬᠦ ᠠᠷᠭ᠎ᠠ"></a-descriptions-item> -->
         <a-descriptions-item label="ᠴᠡᠭᠡᠷᠯᠡᠬᠦ">{{ drug.taboo }}</a-descriptions-item>
-        <a-descriptions-item label="ᠡᠮᠲᠦ ᠵᠠᠰᠠᠯᠭ᠎ᠠ"></a-descriptions-item>
-        <a-descriptions-item label="ᠵᠣᠷ ᠤᠨ ᠡᠮ">{{ drug.drugs }}</a-descriptions-item>
-        <a-descriptions-item label="ᠭᠤᠷᠪᠠᠨ ᠦᠨᠳᠦᠰᠦᠨ ᠨᠦᠯᠦᠭᠡ">{{ drug.effectCat }}</a-descriptions-item>
-        <a-descriptions-item label="ᠠᠷᠪᠠᠨ ᠳᠤᠯᠤᠭᠠᠨ ᠴᠢᠳᠠᠯ">{{ drug.actionMode }}</a-descriptions-item>
+        <!-- <a-descriptions-item label="ᠡᠮᠲᠦ ᠵᠠᠰᠠᠯᠭ᠎ᠠ"></a-descriptions-item> -->
+        <!-- <a-descriptions-item label="ᠭᠤᠷᠪᠠᠨ ᠦᠨᠳᠦᠰᠦᠨ ᠨᠦᠯᠦᠭᠡ">{{ drug.effectCat }}</a-descriptions-item> -->
+        <!-- <a-descriptions-item label="ᠠᠷᠪᠠᠨ ᠳᠤᠯᠤᠭᠠᠨ ᠴᠢᠳᠠᠯ">{{ drug.actionMode }}</a-descriptions-item> -->
         <a-descriptions-item label="ᠲᠠᠢᠯᠪᠤᠷᠢ">{{ drug.remark }}</a-descriptions-item>
         <a-descriptions-item>
           <a-button type="primary" @click="handleEdit">ᠵᠠᠰᠠᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
@@ -454,6 +454,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+/deep/ .ant-descriptions-row > td {
+  display: grid;
+}
 .ant-btn {
   margin-bottom: 20px;
   
@@ -492,7 +495,8 @@ export default {
     display: block;
 
   .ant-descriptions-item-content {
-      margin-top: 30px;
+      // margin-top: 30px;
+      white-space: break-spaces;
     }
   }
   .ant-descriptions-row {

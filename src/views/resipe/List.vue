@@ -4,7 +4,7 @@
       <div class="content-left">
         <div class="search-form">
           <div class="fields">
-            <a-input placeholder="ᠡᠮ ᠢᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ" v-model="key"/>
+            <a-input placeholder="ᠡᠮ ᠢᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ" @keyup.enter="handleKeySearch" v-model="key"/>
           </div>
           <div class="actions">
             <a-button type="danger" @click="handleKeySearch">ᠬᠠᠢᠬᠤ</a-button>
@@ -155,8 +155,8 @@ export default {
         })
     },
     handleKeySearch() {
-      this.pagination.current = 1
-      this.pagination.total = 0
+      this.current = 1
+      this.total = 0
       this.onSearch()
     },
     handleReset () {
