@@ -454,6 +454,14 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.ant-btn {
+  margin-bottom: 20px;
+  
+}
+
+/deep/ .chart-wrapper {
+  flex-direction: column;
+}
 
 /deep/ .ant-pro-grid-content {
   overflow: overlay;
@@ -468,6 +476,7 @@ export default {
 }
 /deep/ .ant-page-header.has-breadcrumb {
   height: 100%;
+  padding-right: 12px;
 }
 
 /deep/ tbody > tr > td > span {

@@ -394,6 +394,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.ant-btn {
+  margin-bottom: 20px;
+  
+}
 /deep/ .ant-radio-group {
   text-align: justify;
   height: 600px;
