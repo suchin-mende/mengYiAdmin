@@ -266,7 +266,7 @@ export default {
 
 .user-layout-login button.login-button{
   font-size: 2vh !important;
-  padding: 0px !important;
+  padding: 20px 0px !important;
 }
 
 /deep/ .ant-form {
