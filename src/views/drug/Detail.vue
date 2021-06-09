@@ -25,8 +25,7 @@
             </a-upload>
           </div>
         </a-descriptions-item>
-
-        <a-descriptions-item label="ᠡᠮ ᠊ᠤᠨ ᠨᠡᠷᠡᠢᠳᠡᠯ">{{ drug.namem }}</a-descriptions-item>
+        <a-descriptions-item label="ᠮᠤᠨᠭᠭᠤᠯ ᠨᠡᠷ᠎ᠡ">{{ drug.namem }}</a-descriptions-item>
         <a-descriptions-item label="ᠥᠭᠡᠷ᠎ᠡ ᠨᠡᠷ᠎ᠡ">{{ drug.nameother }}</a-descriptions-item>
         <a-descriptions-item label="ᠺᠢᠷᠢᠯ ᠨᠡᠷ᠎ᠠ">{{ drug.namemn }}</a-descriptions-item>
         <a-descriptions-item label="ᠬᠢᠲᠠᠳ ᠨᠡᠷ᠎ᠡ">{{ drug.namecn }}</a-descriptions-item>
@@ -34,15 +33,16 @@
         <a-descriptions-item label="ᠢᠷᠡᠯᠳᠡ">{{ drug.source }}</a-descriptions-item>
         <a-descriptions-item label="ᠲᠠᠪᠤᠨ ᠮᠠᠬᠠᠪᠤᠳ">{{ drug.five }}</a-descriptions-item>
         <a-descriptions-item label="ᠵᠢᠷᠭᠤᠭᠠᠨ ᠠᠮᠳᠠ">{{ drug.sixTaste }}</a-descriptions-item>
-        <a-descriptions-item label="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠨᠠᠷ">{{ drug.drugProperty }}</a-descriptions-item>
-        <a-descriptions-item label="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ">{{ drug.drugPower }}</a-descriptions-item>
-        <a-descriptions-item label="ᠡᠮ ᠊ᠤᠨ ᠠᠮᠳᠠ ᠪᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ">{{ drug.decomposedTaste }}</a-descriptions-item>
-        <a-descriptions-item label="ᠠᠷᠪᠠᠨ ᠳᠤᠯᠤᠭᠠᠨ ᠴᠢᠳᠠᠯ">{{ drug.seventeenEffect }}</a-descriptions-item>
-        <a-descriptions-item label="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ ᠢᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ">{{ drug.decomEffect }}</a-descriptions-item>
-        <a-descriptions-item label="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ ᠊ᠤᠨ ᠬᠡᠪ ᠴᠢᠨᠠᠷ">{{ drug.baseEffect }}</a-descriptions-item>
-        <a-descriptions-item label="ᠭᠤᠤᠯᠯᠠᠨ ᠵᠠᠰᠠᠬᠤ ᠡᠪᠡᠳᠴᠢᠨ">{{ drug.baseFix }}</a-descriptions-item>
-        <a-descriptions-item label="ᠴᠢᠳᠠᠯ ᠊ᠤᠨ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.effectCat }}</a-descriptions-item>
+        <a-descriptions-item label="ᠴᠢᠨᠠᠷ">{{ drug.drugProperty }}</a-descriptions-item>
+        <a-descriptions-item label="ᠨᠠᠢᠮᠠᠨ ᠴᠢᠳᠠᠯ">{{ drug.drugPower }}</a-descriptions-item>
+        <a-descriptions-item label="ᠰᠢᠨᠭᠭᠡᠯᠲᠡ ᠵᠢᠨ ᠰᠡᠭᠦᠯ ᠊ᠤᠨ ᠠᠮᠲᠠ">{{ drug.decomposedTaste }}</a-descriptions-item>
+        <a-descriptions-item label="ᠠᠷᠪᠠᠨ ᠳᠤᠯᠤᠭᠠᠨ ᠡᠷᠳᠡᠮ">{{ drug.seventeenEffect }}</a-descriptions-item>
+        <a-descriptions-item label="ᠰᠢᠨᠭᠭᠡᠯᠳᠡ ᠵᠢᠨ ᠰᠡᠭᠦᠯ ᠊ᠤᠨ ᠡᠷᠳᠡᠮ">{{ drug.decomEffect }}</a-descriptions-item>
+        <a-descriptions-item label="ᠮᠦᠨ ᠴᠢᠨᠠᠷ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ">{{ drug.baseEffect }}</a-descriptions-item>
+        <a-descriptions-item label="ᠭᠤᠤᠯᠳᠠᠭᠤ ᠵᠠᠰᠠᠬᠤ">{{ drug.baseFix }}</a-descriptions-item>
+        <a-descriptions-item label="ᠢᠯᠭᠠᠯ">{{ drug.effectCat }}</a-descriptions-item>
         <a-descriptions-item label="ᠦᠢᠯᠡᠳᠦᠯ ᠦᠵᠡᠭᠦᠯᠬᠦ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.actionMode }}</a-descriptions-item>
+        <a-descriptions-item label="ᠲᠠᠢᠯᠪᠤᠷᠢ">{{ drug.remark }}</a-descriptions-item>
         <a-descriptions-item>
           <a-button type="primary" @click="handleEdit">ᠵᠠᠰᠠᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
           <a-button type="primary" @click="handleCancel">ᠪᠤᠴᠠᠬᠤ</a-button>
@@ -96,6 +96,7 @@ export default {
             namemn: data.drug.namemn,
             namecn: data.drug.namecn,
             namez: data.drug.namez,
+            remark:data.drug.remark,
             source: data.drugSource.filter(d => d.checkflag === '1').map(d => d.namem).join(', '),
             five: data.fiveElement.filter(d => d.checkflag === '1').map(d => d.namem).join(', '),
             sixTaste: data.sixTaste.filter(d => d.checkflag === '1').map(d => d.namem).join(', '),

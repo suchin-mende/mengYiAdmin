@@ -272,7 +272,7 @@ export default {
 /deep/ .ant-form {
   display: grid !important;
   grid-auto-flow: column;
-  grid-template-columns: repeat(2, 25%);
+  grid-template-columns: repeat(4, 25%);
 
   .ant-form-explain {
     margin-top: 5px;
@@ -294,7 +294,8 @@ export default {
   }
 
   .ant-form-item-control.has-error {
-    display: flex !important;
+    display: grid !important;
+    grid-auto-flow: column;
   }
 
   .ant-input-affix-wrapper .ant-input-prefix {
@@ -360,6 +361,30 @@ export default {
   }
   .capacha {
     width: 90px;
+  }
+}
+
+@media screen and(-ms-high-contrast:active),(-ms-high-contrast:none){
+	/*兼容IE11*/
+  /deep/ .ant-form input.ant-input {
+    writing-mode: tb-rl;
+    width: 39px !important;
+    text-align: left;
+  }
+  /deep/ .ant-form .login-button {
+    width: 39px !important;
+    height: 100px !important;
+    
+  }
+  /deep/ .ant-form .ant-input-affix-wrapper .ant-input-prefix {
+    top: 10px;
+    left: 14px;
+  }
+  /deep/ .ant-form .ant-form-explain {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
   }
 }
 </style>

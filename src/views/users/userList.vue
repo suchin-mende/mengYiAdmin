@@ -4,7 +4,7 @@
       <div class="content-left">
         <div class="search-form">
           <div class="fields">
-            <a-input placeholder="ᠨᠡᠷ᠎ᠡ" v-model="key" />
+            <a-input placeholder="ᠨᠡᠷ᠎ᠡ" @keyup.enter="handleKeySearch" v-model="key" />
           </div>
           <div class="actions">
             <div>
@@ -86,11 +86,6 @@ const columns = [
     title: 'ᠤᠲᠠᠰᠤᠨ ᠨᠤᠮᠧᠷ',
     dataIndex: 'phonenum'
   },
-  {
-    title: 'ᠳᠤᠬᠢᠷᠠᠭᠤᠯᠬᠤ',
-    dataIndex: 'loginname',
-    scopedSlots: { customRender: 'actions' }
-  }
 ]
 
 export default {
@@ -205,8 +200,8 @@ export default {
         .catch(() => {})
     },
     handleKeySearch () {
-      this.pagination.current = 1
-      this.pagination.total = 0
+      this.current = 1
+      this.total = 0
       this.onSearch()
     },
     handleReset () {
@@ -311,10 +306,10 @@ export default {
 }
 
 /deep/ .ant-table-body .ant-table-thead > tr > th{
-   height: 30.3vh !important;
+   height: 61vh !important;
 }
 /deep/ .ant-table-body .ant-table-tbody > tr > td{
-   height: 30.3vh !important;
+   height: 61vh !important;
 }
 
 

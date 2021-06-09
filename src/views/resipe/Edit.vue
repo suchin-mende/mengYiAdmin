@@ -454,7 +454,7 @@ export default {
 }
 /deep/ .ant-radio-group {
   text-align: justify;
-  height: 600px;
+  height: 62vh;
   display: table;
 }
 
@@ -489,7 +489,7 @@ export default {
       .ant-form {
         width: 85%;
         overflow-x: auto;
-
+        overflow-y: hidden;
         .ant-radio {
           vertical-align:baseline;
           margin-top: 10px;
