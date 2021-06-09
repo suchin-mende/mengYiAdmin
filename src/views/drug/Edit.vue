@@ -290,7 +290,7 @@ export default {
 
 /deep/ .ant-checkbox-group {
   text-align: justify;
-  height: 650px;
+  height: 65vh;
   display: table;
 }
 
