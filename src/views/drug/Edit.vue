@@ -5,14 +5,14 @@
         <a-form
           :form="form"
           id="myform">
-          <a-form-item label="ᠡᠮ ᠊ᠤᠨ ᠨᠡᠷᠡᠢᠳᠤᠯ">
+          <a-form-item label="ᠮᠤᠨᠭᠭᠤᠯ ᠨᠡᠷ᠎ᠡ">
             <a-input
               :maxLength="200"
               v-decorator="['namem', { rules: [{ required: true, message: 'error' }] }]"
               placeholder=""
             />
           </a-form-item>
-          <a-form-item label="ᠥᠬᠡᠷ᠎ᠡ ᠨᠡᠷ᠎ᠡ">
+          <a-form-item label="ᠥᠭᠡᠷ᠎ᠡ ᠨᠡᠷ᠎ᠡ">
             <a-input
               :maxLength="200"
               v-decorator="['nameother']"
@@ -26,7 +26,7 @@
               placeholder=""
             />
           </a-form-item>
-          <a-form-item label="ᠬᠢᠳᠠᠳ ᠨᠡᠷ᠎ᠡ">
+          <a-form-item label="ᠬᠢᠲᠠᠳ ᠨᠡᠷ᠎ᠡ">
             <a-input
               :maxLength="200"
               v-decorator="['namecn']"
@@ -40,7 +40,7 @@
               placeholder=""
             />
           </a-form-item>
-          <a-form-item label="ᠢᠷᠡᠯᠲᠡ">
+          <a-form-item label="ᠢᠷᠡᠯᠳᠡ">
             <a-checkbox-group
               class="checkbox"
               :options="drugSource"
@@ -53,23 +53,23 @@
           <a-form-item label="ᠵᠢᠷᠭᠤᠭᠠᠨ ᠠᠮᠳᠠ">
             <a-checkbox-group :options="sixTaste" v-decorator="['sixTaste']"/>
           </a-form-item>
-          <a-form-item label="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠨᠠᠷ">
+          <a-form-item label="ᠴᠢᠨᠠᠷ">
             <a-checkbox-group :options="drugProperty" v-decorator="['drugProperty']"/>
           </a-form-item>
-          <a-form-item label="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ">
+          <a-form-item label="ᠨᠠᠢᠮᠠᠨ ᠴᠢᠳᠠᠯ">
             <a-checkbox-group :options="drugPower" v-decorator="['drugPower']"/>
           </a-form-item>
-          <a-form-item label="ᠡᠮ ᠊ᠤᠨ ᠠᠮᠳᠠ ᠪᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ">
+          <a-form-item label="ᠰᠢᠨᠭᠭᠡᠯᠲᠡ ᠵᠢᠨ ᠰᠡᠭᠦᠯ ᠊ᠤᠨ ᠠᠮᠲᠠ">
             <a-checkbox-group :options="decomposedTaste" v-decorator="['decomposedTaste']"/>
           </a-form-item>
-          <a-form-item label="ᠠᠷᠪᠠᠨ ᠳᠤᠯᠤᠭᠠᠨ ᠴᠢᠳᠠᠯ">
+          <a-form-item label="ᠠᠷᠪᠠᠨ ᠳᠤᠯᠤᠭᠠᠨ ᠡᠷᠳᠡᠮ">
             <a-checkbox-group :options="seventeenEffect" v-decorator="['seventeenEffect']"/>
           </a-form-item>
-          <a-form-item label="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ ᠢᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ">
-            <a-textarea placeholder="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ ᠢᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ" :rows="3" :maxLength="300" v-decorator="['decomEffect']"/>
+          <a-form-item label="ᠰᠢᠨᠭᠭᠡᠯᠳᠡ ᠵᠢᠨ ᠰᠡᠭᠦᠯ ᠊ᠤᠨ ᠡᠷᠳᠡᠮ">
+            <a-textarea placeholder="ᠰᠢᠨᠭᠭᠡᠯᠳᠡ ᠵᠢᠨ ᠰᠡᠭᠦᠯ ᠊ᠤᠨ ᠡᠷᠳᠡᠮ" :rows="3" :maxLength="300" v-decorator="['decomEffect']"/>
           </a-form-item>
           <a-form-item label="ᠮᠦᠨ ᠴᠢᠨᠠᠷ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ">
-            <a-textarea placeholder="ᠮᠦᠨ ᠴᠢᠨᠠᠷ᠊ᠤᠨ ᠴᠢᠳᠠᠯ" :rows="3" :maxLength="300" v-decorator="['baseEffect']"/>
+            <a-textarea placeholder="ᠮᠦᠨ ᠴᠢᠨᠠᠷ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ" :rows="3" :maxLength="300" v-decorator="['baseEffect']"/>
           </a-form-item>
           <a-form-item label="ᠭᠤᠤᠯᠳᠠᠭᠤ ᠵᠠᠰᠠᠬᠤ">
             <a-textarea placeholder="ᠭᠤᠤᠯᠳᠠᠭᠤ ᠵᠠᠰᠠᠬᠤ" :rows="3" :maxLength="300" v-decorator="['baseFix']"/>
@@ -313,6 +313,7 @@ export default {
       .ant-form {
         width: 85%;
         overflow-x: auto;
+        overflow-y: hidden;
         .ant-form-item {
           padding: 0px 0px 0px 38px;
           border-left: solid 1px #f0f2f5 ;
