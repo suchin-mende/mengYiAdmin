@@ -80,6 +80,9 @@
           <a-form-item label="ᠦᠢᠯᠡᠳᠦᠯ ᠦᠵᠡᠭᠦᠯᠬᠦ ᠬᠡᠯᠪᠡᠷᠢ">
             <a-checkbox-group :options="actionMode" v-decorator="['actionMode']"/>
           </a-form-item>
+          <a-form-item label="ᠲᠠᠢᠯᠪᠤᠷᠢ">
+            <a-textarea placeholder="ᠲᠠᠢᠯᠪᠤᠷᠢ" :rows="3" :maxLength="300" v-decorator="['remark']"/>
+          </a-form-item>
         </a-form>
         <div class="actions">
           <div class="actions-inner">
@@ -186,6 +189,7 @@ export default {
             decomEffect: drug.decomEffect,
             baseEffect: drug.baseEffect,
             baseFix: drug.baseFix,
+            remark:drug.remark,
             drugSource: drugSource.filter(d => d.checkflag === '1').map(d => d.dictid),
             fiveElement: fiveElement.filter(d => d.checkflag === '1').map(d => d.dictid),
             sixTaste: sixTaste.filter(d => d.checkflag === '1').map(d => d.dictid),
@@ -215,6 +219,7 @@ export default {
       delete params.nameother
       delete params.baseEffect
       delete params.baseFix
+      delete params.remark
       delete params.decomEffect
       params.drug = {
         namem: values.namem,
@@ -222,7 +227,11 @@ export default {
         namecn: values.namecn,
         namemn: values.namemn,
         namez: values.namez,
-        remark: values.remark,
+      }
+      if (this.remark){
+         params.drug.remark=values.remark.replace(/\\n/g, '<br>')
+      }else{
+         params.drug.remark=values.remark
       }
       if (this.baseEffect){
          params.drug.baseEffect=values.baseEffect.replace(/\\n/g, '<br>')

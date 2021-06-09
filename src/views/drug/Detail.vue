@@ -42,6 +42,7 @@
         <a-descriptions-item label="ᠭᠤᠤᠯᠳᠠᠭᠤ ᠵᠠᠰᠠᠬᠤ">{{ drug.baseFix }}</a-descriptions-item>
         <a-descriptions-item label="ᠢᠯᠭᠠᠯ">{{ drug.effectCat }}</a-descriptions-item>
         <a-descriptions-item label="ᠦᠢᠯᠡᠳᠦᠯ ᠦᠵᠡᠭᠦᠯᠬᠦ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.actionMode }}</a-descriptions-item>
+        <a-descriptions-item label="ᠲᠠᠢᠯᠪᠤᠷᠢ">{{ drug.remark }}</a-descriptions-item>
         <a-descriptions-item>
           <a-button type="primary" @click="handleEdit">ᠵᠠᠰᠠᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
           <a-button type="primary" @click="handleCancel">ᠪᠤᠴᠠᠬᠤ</a-button>
@@ -95,6 +96,7 @@ export default {
             namemn: data.drug.namemn,
             namecn: data.drug.namecn,
             namez: data.drug.namez,
+            remark:data.drug.remark,
             source: data.drugSource.filter(d => d.checkflag === '1').map(d => d.namem).join(', '),
             five: data.fiveElement.filter(d => d.checkflag === '1').map(d => d.namem).join(', '),
             sixTaste: data.sixTaste.filter(d => d.checkflag === '1').map(d => d.namem).join(', '),
