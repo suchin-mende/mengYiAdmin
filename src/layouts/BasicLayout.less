@@ -1,6 +1,61 @@
 @import "~ant-design-vue/es/style/themes/default.less";
 
 
+.ant-menu-vertical .ant-menu-submenu, .ant-menu-vertical-left .ant-menu-submenu, .ant-menu-vertical-right .ant-menu-submenu, .ant-menu-inline .ant-menu-submenu{
+  writing-mode: vertical-lr;
+  width: 100%;
+  .ant-menu-submenu-title {
+    overflow: unset;
+    margin: 0px !important;
+    margin-bottom: 60px !important;
+    padding:0px !important;
+    height: 11vh;
+    font-size: 2vh;
+    background: #5967a4;  
+    align-items: center;
+    display: grid;
+    span {
+      display: grid;
+      grid-auto-flow: column;
+      align-items: center; 
+      justify-items: center;
+      i {
+        font-size: 2vh;
+        margin-right: 0px;
+      }
+    }
+    .ant-menu-submenu-arrow {
+      top: 110%;
+      right: 42%;
+      transform: rotate(90deg);
+    }
+  }
+  .ant-menu-sub {
+    width: unset;
+    background: #5967a4;
+    box-shadow: unset;
+    .ant-menu-item-selected{
+      border-left: unset;
+      border-top: solid 2px #ffff8c;
+    }
+    .ant-menu-item {
+      overflow: unset;
+      margin: 0px;
+      display: grid;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0px !important;
+      a {
+        margin-top: 20px !important;
+        height: 100%;
+        margin:0px;
+        overflow: unset;
+        
+      }
+    }
+  }
+}
+
 .ant-notification {
   top: 0px !important;
   width: auto !important;
