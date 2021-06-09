@@ -144,8 +144,8 @@ export default {
       }
 
       .main {
-        min-width: 260px;
-        width: 368px;
+        
+        width: 40vh;
         margin: 0 auto;
       }
 

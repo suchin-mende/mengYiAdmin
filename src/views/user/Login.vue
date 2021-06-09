@@ -272,7 +272,7 @@ export default {
 /deep/ .ant-form {
   display: grid !important;
   grid-auto-flow: column;
-  grid-template-columns: repeat(2, 25%);
+  grid-template-columns: repeat(4, 25%);
 
   .ant-form-explain {
     margin-top: 5px;
@@ -294,7 +294,8 @@ export default {
   }
 
   .ant-form-item-control.has-error {
-    display: flex !important;
+    display: grid !important;
+    grid-auto-flow: column;
   }
 
   .ant-input-affix-wrapper .ant-input-prefix {

@@ -1,6 +1,68 @@
 @import "~ant-design-vue/es/style/themes/default.less";
 
 
+.ant-menu-vertical .ant-menu-submenu, .ant-menu-vertical-left .ant-menu-submenu, .ant-menu-vertical-right .ant-menu-submenu, .ant-menu-inline .ant-menu-submenu{
+  writing-mode: vertical-lr;
+  width: 100%;
+  height: 16vh;
+  .ant-menu-submenu-title {
+    line-height: unset !important;
+    overflow: unset;
+    margin: 0px !important;
+    margin-bottom: 60px !important;
+    padding:0px !important;
+    height: 11vh;
+    font-size: 2vh;
+    background: #5967a4;  
+    align-items: center;
+    display: grid;
+    grid-auto-flow: column;
+    span {
+      display: grid;
+      grid-auto-flow: column;
+      align-items: center; 
+      justify-items: center;
+      i {
+        font-size: 2vh;
+        margin-right: 0px;
+        display: grid;
+        align-items: center;
+      }
+    }
+    .ant-menu-submenu-arrow {
+      text-align: center;
+      position: unset;
+      transform: rotate(90deg);
+    }
+  }
+  .ant-menu-sub {
+    width: unset;
+    background: #5967a4;
+    box-shadow: unset;
+    
+    height: 15vh;
+    .ant-menu-item-selected{
+      border-left: unset;
+      border-top: solid 2px #ffff8c;
+    }
+    .ant-menu-item {
+      overflow: unset;
+      margin: 0px;
+      display: grid;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0px !important;
+      a {
+        margin-top:1vh !important;
+        height: 100%;
+        margin:0px;
+        overflow: unset;
+        
+      }
+    }
+  }
+}
+
 .ant-notification {
   top: 0px !important;
   width: auto !important;
@@ -120,7 +182,7 @@
 
 .ant-layout-sider .ant-menu .ant-menu-item { 
   padding: 0 16px !important;
-  height: 18vh;
+  height: 12vh;
   font-size: 2vh;
   background: #5967a4;
 }
@@ -128,9 +190,9 @@
 .ant-layout-sider .ant-menu .ant-menu-item a {
   display: grid;
   grid-auto-flow: row;
-  height: 15vh;
+  height: 8vh;
   justify-content: center;
-  margin-top: 15px;
+  // margin-top: 15px;
 }
 
 .ant-layout-sider .ant-menu .ant-menu-item i {
@@ -179,8 +241,12 @@
   }
 }
 
-@media (min-width: 1440px) and (max-width:1768px){
-  .ant-pro-page-header-wrap {
-    height: 91.5vh !important;
+@media (min-width: 1280px) and (max-width:1768px){
+  .ant-layout-sider .ant-menu .ant-menu-item { 
+    height: 15vh;
   }
+  .ant-modal-confirm-body > .anticon {
+    
+    font-size: 9px;
+}
 }

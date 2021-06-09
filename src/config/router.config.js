@@ -147,7 +147,7 @@ export const asyncRouterMap = [
         component: RouteView,
         name: 'Resipe',
         redirect: '/resipe/list',
-        meta: { title: 'ᠵᠤᠷ', keepAlive: true, icon: 'medicine-box',permission: ['resipe'] },
+        meta: { title: 'ᠵᠤᠷ', keepAlive: true, icon: 'read',permission: ['resipe'] },
         hideChildrenInMenu: true,
         children: [
           {
@@ -167,6 +167,62 @@ export const asyncRouterMap = [
             component: () => import('@/views/resipe/Edit'),
             name: 'ResipeEdit',
             meta: { title: 'ᠵᠤᠷ ᠨᠠᠢᠷᠠᠭᠤᠯᠬᠤ' }
+          }
+        ]
+      },
+      //预留
+      {
+        path: '/sys',
+        component: RouteView,
+        name: 'Sys',
+        meta: { title: 'ᠱᠢᠰᠲᠧᠮ', keepAlive: true, icon: 'cloud-sync',permission: ['resipe'] },
+        hideChildrenInMenu: false,
+        children: [
+          {
+            path: '/sys/Control',
+            component: () => import('@/views/sys/Control'),
+            name: 'SysControl',
+            meta: { title: 'ᠡᠵᠡᠮᠱᠢᠭᠦᠷ' }
+          },
+          {
+            path: '/sys/Notice',
+            component: () => import('@/views/sys/Notice'),
+            name: 'SysNotice',
+            meta: { title: 'ᠮᠡᠳᠡᠭᠳᠡᠯ' }
+          },
+          {
+            path: '/sys/Workspace',
+            component: () => import('@/views/sys/Workspace'),
+            name: 'SysWorkspace',
+            meta: { title: 'ᠠᠵᠢᠯᠯᠠᠬᠤ ᠳᠠᠪᠴᠢᠨᠭ' }
+          }
+        ]
+      },
+      
+      {
+        path: '/note',
+        component: RouteView,
+        name: 'Note',
+        meta: { title: 'ᠲᠡᠮᠳᠡᠭᠯᠡᠯ', keepAlive: true, icon: 'solution',permission: ['resipe'] },
+        hideChildrenInMenu: false,
+        children: [
+          {
+            path: '/note/Worknote',
+            component: () => import('@/views/note/Worknote'),
+            name: 'NoteWorknote',
+            meta: { title: 'ᠠᠵᠢᠯᠯᠠᠭᠰᠠᠨ ᠲᠡᠮᠳᠡᠭᠯᠡᠯ' }
+          },
+          {
+            path: '/note/Cheatnote',
+            component: () => import('@/views/note/Cheatnote'),
+            name: 'NoteCheatnote',
+            meta: { title: 'ᠨᠡᠪᠲᠡᠷᠡᠭᠰᠡᠨ ᠲᠡᠮᠳᠡᠭᠯᠡᠯ' }
+          },
+          {
+            path: '/note/Othernote',
+            component: () => import('@/views/note/Othernote'),
+            name: 'NoteOthernote',
+            meta: { title: 'ᠥᠭᠡᠷᠡ ᠳᠡᠮᠳᠡᠭᠯᠡᠯ' }
           }
         ]
       },
