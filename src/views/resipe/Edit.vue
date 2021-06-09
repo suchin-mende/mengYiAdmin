@@ -53,14 +53,35 @@
             />
           </a-form-model-item>
 
-          <div class="drugs">
+          <div class="drugs" ref="drugs">
             <div
               class="drug"
               v-for="(d, idx) in form.resipeDrugList"
-              :key="d.drugid">
+              :key="idx">
               <a-form-model-item
-                label="ᠡᠮ ᠎ᠤᠨ ᠨᠡᠷᠡᠢᠳᠦᠯ">
-                <span>{{ d.namem }}</span>
+                label="ᠡᠮ ᠎ᠤᠨ ᠨᠡᠷᠡᠢᠳᠦᠯ"
+                :prop="`resipeDrugList[${idx}].drugid`"
+                :rules="[{required: true, message: 'error', trigger: 'change'}]">
+                <span>
+                  <a-select
+                    show-search
+                    v-model="d.drugid"
+                    placeholder=""
+                    :default-active-first-option="false"
+                    :show-arrow="false"
+                    :filter-option="false"
+                    :not-found-content="null"
+                    :dropdownMatchSelectWidth="true"
+                    @inputKeydown="handleDrugKeydown(idx)"
+                    @search="handleDrugSearch"
+                    @change="handleDrugChange(idx)"
+                    @focus="handleDrugFocus(idx)"
+                  >
+                    <a-select-option v-for="d1 in drugSearchResult[idx]" :key="d1.drugid">
+                      {{ d1.namem }}
+                    </a-select-option>
+                  </a-select>
+                </span>
               </a-form-model-item>
               <a-form-model-item
                 label="ᠲᠣᠭ᠎ᠠ ᠬᠡᠮᠵᠢᠶ᠎ᠡ"
@@ -96,22 +117,8 @@
               </a-form-model-item>
             </div>
           </div>
-          <a-form-model-item label="ᠡᠮ ᠨᠡᠮᠡᠬᠦ">
-            <a-select
-              show-search
-              :value="drugKey"
-              placeholder=""
-              :default-active-first-option="false"
-              :show-arrow="false"
-              :filter-option="false"
-              :not-found-content="null"
-              @search="handleDrugSearch"
-              @change="handleDrugChange"
-            >
-              <a-select-option v-for="d in drugSearchResult" :key="d.drugid">
-                {{ d.namem }}
-              </a-select-option>
-            </a-select>
+          <a-form-model-item>
+            <a-button type="primary" @click="addDrug2()">添加药品</a-button>
           </a-form-model-item>
           <a-form-model-item label="ᠨᠠᠢᠷᠠᠯᠭ᠎ᠠ ᠢᠨ ᠬᠡᠯᠪᠡᠷᠢ" prop="drugcat"
             :rules="[{required: true, message: 'error', trigger: 'change'}]"
@@ -195,6 +202,7 @@ export default {
       drugCategory: [],
       drugKey: undefined,
       drugSearchResult: [],
+      tmpDrugIndex: -1,
       formDrugList: [],
       drugUnits: []
     }
@@ -244,11 +252,10 @@ export default {
         beanId: this.drugId
       })
         .then(res => {
-          console.log(res)
           const result = res.data
           this.drug = result
           const { resipe, resipeDrugList } = result
-          console.log(resipe)
+
           this.form = {
             ...this.form,
             namem: resipe.namem,
@@ -264,13 +271,16 @@ export default {
             remark: resipe.remark,
             resipeDrugList: resipeDrugList 
           }
+
+          resipeDrugList.forEach((d, idx) => {
+            this.searchDrug(d.namem, idx)
+          })
         })
     },
     handleSave() {
       const { $refs: { form } } = this
       form.validate(valid => {
         if (valid) {
-          console.log('--- valid')
           if (this.form.resipeDrugList.length === 0) {
             this.$message.error('ᠡᠮ ᠨᠡᠮᠡᠭᠡᠷᠡᠢ')
             return
@@ -283,7 +293,6 @@ export default {
       this.isSubmit = true
 
       const { form } = this
-      console.log(form)
       const params = {
         resipeDrugList: form.resipeDrugList,
         resipe: {
@@ -349,19 +358,35 @@ export default {
     handleCancel() {
       this.$router.go(-1)
     },
+    handleDrugKeydown (idx) {
+      this.tmpDrugIndex = idx
+    },
+    handleDrugFocus (idx) {
+      this.calDrugSelectPosition(idx)
+    },
     handleDrugSearch (value) {
-      console.log('----- key search:')
-      console.log(value)
-      this.searchDrug(value)
+      this.searchDrug(value, this.tmpDrugIndex)
     },
-    handleDrugChange (value) {
-      console.log('----- key changed:')
-      console.log(value)
-      // this.searchDrug()
-      this.addDrug(value)
-      this.drugKey = undefined
+    handleDrugChange (idx) {
+      console.log('----- key changed:' + idx)
     },
-    searchDrug (key) {
+    calDrugSelectPosition (idx) {
+      const { drugs } = this.$refs
+      const selects = drugs.querySelectorAll('.ant-select')
+      const drugSelect = selects[idx]
+      const pos = this.getElementPosition(drugSelect)
+
+      const dropdowns = document.querySelectorAll('.ant-select-dropdown')
+      if (dropdowns.length === 0) {
+        return
+      } 
+      const dropdown = dropdowns[idx]     
+      setTimeout(() => {
+        dropdown.style.left = pos.left + drugSelect.offsetWidth + 'px'
+        dropdown.style.top = pos.top + 'px'
+      }, 100)
+    },
+    searchDrug (key, drugIndex) {
       drugList({
         page: 1,
         pageSize: 30,
@@ -369,7 +394,13 @@ export default {
       })
         .then(res => {
           const { data } = res
-          this.drugSearchResult = data.rows
+          this.drugSearchResult[drugIndex] = [
+            ...data.rows
+          ]
+          this.drugSearchResult = [
+            ...this.drugSearchResult
+          ]
+          this.calDrugSelectPosition(drugIndex)
         })
         .catch(() => {
         })
@@ -386,8 +417,31 @@ export default {
         unitnum: ''
       })
     },
+    addDrug2 () {
+      const { form: { resipeDrugList }, drugSearchResult } = this
+      resipeDrugList.push({
+        unit: '',
+        drugid: '',
+        namem: '',
+        unitnum: ''
+      })
+      drugSearchResult[resipeDrugList.length - 1] = []
+    },
     handleRemoveDrug (idx) {
       this.form.resipeDrugList.splice(idx, 1)
+    },
+    getElementPosition(element) {
+      const result = {
+        top: element.offsetTop,
+        left: element.offsetLeft
+      }
+      var current = element.offsetParent
+      while (current !== null) {
+        result.top += current.offsetTop
+        result.left += current.offsetLeft
+        current = current.offsetParent
+      }
+      return result
     }
   },
 }
@@ -442,15 +496,27 @@ export default {
         }
 
         .drugs {
-          border-left: 1px dashed #d9d9d9;
-          border-right: 1px dashed #d9d9d9;
+          border-left: 4px solid #fde617;
+          border-right: 4px solid #fde617;
           display: flex;
+          height: fit-content;
 
           .drug {
-            display: flex;
+            display: block;
             background: #d6d6d6;
             padding: 15px 0;
             margin: 0 15px;
+
+            .ant-form-item {
+              margin-bottom: 20px;
+              .ant-form-item-label {
+                height: auto;
+              }
+
+              .ant-input, .ant-select, .ant-select-selection, .ant-radio-group{
+                height: 150px;
+              }
+            }
           }
         }
       }
