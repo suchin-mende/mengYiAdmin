@@ -514,7 +514,7 @@ export default {
               }
 
               .ant-input, .ant-select, .ant-select-selection, .ant-radio-group{
-                height: 150px;
+                height: 7vh;
               }
             }
           }
