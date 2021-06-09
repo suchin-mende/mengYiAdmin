@@ -68,13 +68,13 @@
           <a-form-item label="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ ᠢᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ">
             <a-textarea placeholder="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ ᠢᠡᠷ ᠵᠠᠳᠠᠯᠬᠤ" :rows="3" :maxLength="300" v-decorator="['decomEffect']"/>
           </a-form-item>
-          <a-form-item label="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ ᠊ᠤᠨ ᠬᠡᠪ ᠴᠢᠨᠠᠷ">
-            <a-textarea placeholder="ᠡᠮ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ ᠊ᠤᠨ ᠬᠡᠪ ᠴᠢᠨᠠᠷ" :rows="3" :maxLength="300" v-decorator="['baseEffect']"/>
+          <a-form-item label="ᠮᠦᠨ ᠴᠢᠨᠠᠷ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ">
+            <a-textarea placeholder="ᠮᠦᠨ ᠴᠢᠨᠠᠷ᠊ᠤᠨ ᠴᠢᠳᠠᠯ" :rows="3" :maxLength="300" v-decorator="['baseEffect']"/>
           </a-form-item>
-          <a-form-item label="ᠭᠤᠤᠯᠯᠠᠨ ᠵᠠᠰᠠᠬᠤ ᠡᠪᠡᠳᠴᠢᠨ">
-            <a-textarea placeholder="ᠭᠤᠤᠯᠯᠠᠨ ᠵᠠᠰᠠᠬᠤ ᠡᠪᠡᠳᠴᠢᠨ" :rows="3" :maxLength="300" v-decorator="['baseFix']"/>
+          <a-form-item label="ᠭᠤᠤᠯᠳᠠᠭᠤ ᠵᠠᠰᠠᠬᠤ">
+            <a-textarea placeholder="ᠭᠤᠤᠯᠳᠠᠭᠤ ᠵᠠᠰᠠᠬᠤ" :rows="3" :maxLength="300" v-decorator="['baseFix']"/>
           </a-form-item>
-          <a-form-item label="ᠴᠢᠳᠠᠯ ᠊ᠤᠨ ᠬᠡᠯᠪᠡᠷᠢ">
+          <a-form-item label="ᠢᠯᠭᠠᠯ">
             <a-checkbox-group :options="effectCat" v-decorator="['effectCat']"/>
           </a-form-item>
           <a-form-item label="ᠦᠢᠯᠡᠳᠦᠯ ᠦᠵᠡᠭᠦᠯᠬᠦ ᠬᠡᠯᠪᠡᠷᠢ">

@@ -14,7 +14,7 @@
         <a-descriptions-item label="性别">{{ user.sex }}</a-descriptions-item> -->
         <a-descriptions-item label="ᠮᠤᠩᠭᠤᠯ ᠨᠡᠷ᠎ᠡ">{{ user.username }}</a-descriptions-item>
         <a-descriptions-item>
-          <a-button type="primary">ᠵᠠᠰᠠᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
+          <!-- <a-button type="primary">ᠵᠠᠰᠠᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button> -->
         </a-descriptions-item>
       </a-descriptions>
     </template>
@@ -42,7 +42,6 @@ export default {
         beanId: this.userID,
       }).then((res) => {
         const { data } = res
-        console.log('sssssssss', res)
         const user = {
           email: data.email,
           identity: data.identity,
