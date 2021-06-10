@@ -151,10 +151,13 @@ export default {
     handleOk (e) {
       this.ModalText = 'The modal will be closed after two seconds'
       this.confirmLoading = true
+    
       this.handleSubmit()
       setTimeout(() => {
         this.onSearch()
         this.visible = false
+        this.addUsername = ""
+        this.addPhonenum = ""
         this.confirmLoading = false
       }, 2000)
     },
@@ -225,6 +228,25 @@ export default {
 </script>
 
 <style lang="less" scoped>
+/deep/ .ant-modal-content .ant-btn {
+  height: 9vh !important;
+}
+
+/deep/ .ant-modal-content .ant-modal-footer div {
+  display: grid;
+    grid-auto-columns: min-content;
+    justify-content: end;
+}
+
+/deep/ .ant-btn.ant-btn-loading:not(.ant-btn-circle):not(.ant-btn-circle-outline):not(.ant-btn-icon-only) {
+  padding-left:0px !important;
+}
+
+/deep/ .ant-btn.ant-btn-loading:not(.ant-btn-circle):not(.ant-btn-circle-outline):not(.ant-btn-icon-only) .anticon:not(:last-child) {
+  margin-left: 0px !important;
+}
+
+
 /deep/ .add-form {
   display: grid;
   grid-row-gap: 20px;

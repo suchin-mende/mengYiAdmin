@@ -11,7 +11,7 @@
                 @click="handlePreview(index)"
               />
               <a-popconfirm okText="ᠲᠡᠢᠮᠦ ᠡ" cancelText="ᠦᠭᠡᠢ" @confirm="handleImageRemove(index)" title="ᠡᠨᠡ ᠵᠢᠷᠤᠭ ᠊ᠢ ᠠᠷᠢᠯᠭᠠᠬᠤ ᠊ᠤᠤ?">
-                <span class="remove">x</span>
+                <a class="remove">x</a>
               </a-popconfirm>
 
             </div>
@@ -294,7 +294,7 @@ export default {
   position: relative;
   .image {
     margin: 10px;
-    background: #d9d9d9;
+    background: #ffffff;
 
     img {
       display: flex;
