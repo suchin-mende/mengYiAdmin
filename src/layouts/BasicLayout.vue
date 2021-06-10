@@ -17,7 +17,7 @@
     </template>
     <template v-slot:headerContentRender>
       <div>
-        <a-tooltip style="margin-left: 20px" title="刷新页面">
+        <a-tooltip style="margin-left: 20px;" title="">
           <a-icon type="reload" style="font-size: 18px; cursor: pointer" @click="reload()" />
         </a-tooltip>
       </div>

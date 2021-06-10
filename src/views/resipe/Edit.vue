@@ -10,7 +10,7 @@
           <a-form-model-item
             label="ᠵᠤᠷ ᠎ᠤᠨ ᠨᠡᠷ᠎ᠠ"
             prop="namem"
-            :rules="[{required: true, message: 'error', trigger: 'change'}]">
+            :rules="[{required: true, message: 'ᠬᠤᠭᠤᠰᠤᠨ ᠪᠠᠢᠵᠤ ᠪᠤᠯᠬᠤ ᠦᠭᠡᠢ', trigger: 'change'}]">
             <a-input
               :maxLength="50"
               v-model="form.namem"
@@ -59,10 +59,11 @@
               v-for="(d, idx) in form.resipeDrugList"
               :key="idx">
               <a-form-model-item
-                label="ᠡᠮ ᠎ᠤᠨ ᠨᠡᠷᠡᠢᠳᠦᠯ"
+                label="ᠡᠮ"
                 :prop="`resipeDrugList[${idx}].drugid`"
-                :rules="[{required: true, message: 'error', trigger: 'change'}]">
+                :rules="[{required: true, message: 'ᠬᠤᠭᠤᠰᠤᠨ ᠪᠠᠢᠵᠤ ᠪᠤᠯᠬᠤ ᠦᠭᠡᠢ', trigger: 'change'}]">
                 <span>
+                  
                   <a-select
                     show-search
                     v-model="d.drugid"
@@ -76,28 +77,36 @@
                     @search="handleDrugSearch"
                     @change="handleDrugChange(idx)"
                     @focus="handleDrugFocus(idx)"
-                  >
+                  > 
+                    
+                      
                     <a-select-option v-for="d1 in drugSearchResult[idx]" :key="d1.drugid">
+                      <a-tooltip placement="rightTop">
+                        <template slot="title">
+                           {{ d1.namem }}
+                        </template>
                       {{ d1.namem }}
+                      </a-tooltip>
                     </a-select-option>
+                    
                   </a-select>
                 </span>
               </a-form-model-item>
               <a-form-model-item
-                label="ᠲᠣᠭ᠎ᠠ ᠬᠡᠮᠵᠢᠶ᠎ᠡ"
+                label="ᠬᠡᠮᠵᠢᠶ᠎ᠡ"
                 :prop="`resipeDrugList[${idx}].unitnum`"
-                :rules="[{required: true, message: 'error', trigger: 'change'}]"
+                :rules="[{required: true, message: 'ᠬᠤᠭᠤᠰᠤᠨ ᠪᠠᠢᠵᠤ ᠪᠤᠯᠬᠤ ᠦᠭᠡᠢ', trigger: 'change'}]"
               >
-                <a-input
+                <a-input class="dragsize"
                   :maxLength="10"
                   v-model="d.unitnum"
                   placeholder=""
                 />
               </a-form-model-item>
               <a-form-model-item
-                label="ᠡᠮ ᠊ᠤᠨ ᠨᠢᠭᠡᠴᠢ"
+                label="ᠨᠢᠭᠡᠴᠢ"
                 :prop="`resipeDrugList[${idx}].unit`"
-                :rules="[{required: true, message: 'error', trigger: 'change'}]"
+                :rules="[{required: true, message: 'ᠬᠤᠭᠤᠰᠤᠨ ᠪᠠᠢᠵᠤ ᠪᠤᠯᠬᠤ ᠦᠭᠡᠢ', trigger: 'change'}]"
               >
                 <a-radio-group
                   v-model="d.unit">
@@ -113,15 +122,15 @@
               <a-form-model-item
                 label=""
               >
-                <a-button type="danger" @click="handleRemoveDrug(idx)">ᠠᠷᠢᠯᠭᠠᠬᠤ</a-button>
+                <a-button type="danger" icon="minus-circle" @click="handleRemoveDrug(idx)">ᠠᠷᠢᠯᠭᠠᠬᠤ</a-button>
               </a-form-model-item>
             </div>
           </div>
           <a-form-model-item>
-            <a-button type="primary" @click="addDrug2()">添加药品</a-button>
+            <a-button type="primary" icon="plus" @click="addDrug2()">ᠡᠮ ᠨᠡᠮᠡᠬᠦ</a-button>
           </a-form-model-item>
           <a-form-model-item label="ᠨᠠᠢᠷᠠᠯᠭ᠎ᠠ ᠢᠨ ᠬᠡᠯᠪᠡᠷᠢ" prop="drugcat"
-            :rules="[{required: true, message: 'error', trigger: 'change'}]"
+            :rules="[{required: true, message: 'ᠬᠤᠭᠤᠰᠤᠨ ᠪᠠᠢᠵᠤ ᠪᠤᠯᠬᠤ ᠦᠭᠡᠢ', trigger: 'change'}]"
           >
             <a-radio-group
               v-model="form.drugcat">
@@ -448,9 +457,24 @@ export default {
 </script>
 
 <style lang="less" scoped>
+/deep/ .ant-form-explain {
+  padding-top: 1vh;
+  font-size: 1vh;
+}
+/deep/ .has-error {
+  display: grid;
+  grid-auto-flow: column;
+}
+
+/deep/ .dragsize {
+  height: 7vh !important;
+}
+
 .ant-btn {
   margin-bottom: 20px;
-  
+}
+/deep/ .ant-select-selection-selected-value {
+  float: unset;
 }
 /deep/ .ant-radio-group {
   text-align: justify;
@@ -477,6 +501,7 @@ export default {
   height: 100%;
   position: absolute;
   /deep/ .ant-card-body {
+    padding:20px 32px 0px 32px !important;
     width: 100%;
     overflow-x: overlay;
     .content-hor {
@@ -496,25 +521,25 @@ export default {
         }
 
         .drugs {
-          border-left: 4px solid #fde617;
-          border-right: 4px solid #fde617;
+          border-left: 1px solid #f0f2f5;
+          border-right: 1px solid #f0f2f5;
           display: flex;
           height: fit-content;
 
           .drug {
             display: block;
-            background: #d6d6d6;
+            background: #f0f2f5;
             padding: 15px 0;
             margin: 0 15px;
 
             .ant-form-item {
-              margin-bottom: 20px;
+              
               .ant-form-item-label {
                 height: auto;
               }
 
               .ant-input, .ant-select, .ant-select-selection, .ant-radio-group{
-                height: 7vh;
+                height: 16vh;
               }
             }
           }

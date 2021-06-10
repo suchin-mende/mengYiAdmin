@@ -263,6 +263,14 @@ export default {
 </script>
 
 <style lang="less" scoped>
+/deep/ .ant-alert-error {
+  margin-top: 16px !important;
+  height: 30vh !important;
+}
+/deep/ .ant-alert-message {
+  writing-mode: vertical-lr;
+  font-size: 2vh;
+}
 
 .user-layout-login button.login-button{
   font-size: 2vh !important;
@@ -270,24 +278,25 @@ export default {
 }
 
 /deep/ .ant-form {
+  
   display: grid !important;
   grid-auto-flow: column;
-  grid-template-columns: repeat(4, 25%);
+  grid-template-columns: repeat(2, 25%);
 
   .ant-form-explain {
     margin-top: 5px;
   }
   .capacha {
     position: absolute;
-    top: 166px;
+    top: 17vh;
     transform: rotate(90deg);
     transform-origin: bottom left;
-    height: 30px;
+    height: 3vh;
     margin-top: 10px;
   }
 
   #imgcode {
-    height: 195px;
+    height: 20vh;
   }
   .ant-row {
     margin: 0 18px 0 !important;
@@ -307,7 +316,7 @@ export default {
     top: 93%;
   }
   input.ant-input {
-    width: auto !important;
+    width: 3vh !important;
     font-size: 2vh;
     padding-top: 25px;
     padding-left: 0px;
@@ -333,7 +342,7 @@ export default {
   button.login-button {
     padding: 0 15px;
     font-size: 16px;
-    width: 40px;
+    width: 4vh;
     height: 100%;
   }
 
@@ -360,10 +369,16 @@ export default {
     }
   }
   .capacha {
-    width: 90px;
+    width: 9vh;
   }
 }
-
+@media (min-width: 1280px) and (max-width:1768px){
+/deep/ .ant-form {
+  input.ant-input {
+    width: 5vh !important;
+  }
+}
+}
 @media screen and(-ms-high-contrast:active),(-ms-high-contrast:none){
 	/*兼容IE11*/
   /deep/ .ant-form input.ant-input {
