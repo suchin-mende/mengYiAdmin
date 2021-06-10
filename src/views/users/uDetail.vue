@@ -17,7 +17,7 @@
           <!-- <a-button type="primary">ᠵᠠᠰᠠᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button> -->
         </a-descriptions-item>
       </a-descriptions>
-      <a-button type="danger" @click="handleCancel">ᠪᠤᠴᠠᠬᠤ</a-button>
+      <a-button type="primary" @click="handleCancel">ᠪᠤᠴᠠᠬᠤ</a-button>
     </template>
   </page-header-wrapper>
 </template>
