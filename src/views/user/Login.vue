@@ -287,7 +287,7 @@ export default {
   }
 
   #imgcode {
-    height: 195px;
+    height: 20vh;
   }
   .ant-row {
     margin: 0 18px 0 !important;
@@ -333,7 +333,7 @@ export default {
   button.login-button {
     padding: 0 15px;
     font-size: 16px;
-    width: 40px;
+    width: 4vh;
     height: 100%;
   }
 
