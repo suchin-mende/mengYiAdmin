@@ -69,7 +69,7 @@ export default {
         okText:"ᠲᠡᠢᠮᠦ ᠡ",
         cancelText:"ᠦᠭᠡᠢ",
         title: "ᠠᠩᠬᠠᠷᠤᠭᠠᠷᠠᠢ！",
-        content: "ᠲᠠ ᠦᠨᠡᠨᠬᠦ ᠰᠢᠰᠲᠧᠮ ᠡᠴᠡ ᠭᠠᠷᠬᠤ ᠦ?",
+        content: "ᠲᠠ ᠦᠨᠡᠨᠬᠦ ᠰᠢᠰᠲᠧᠮ ᠡᠴᠡ ᠭᠠᠷᠬᠤ ᠤᠤ ?",
         onOk: () => {
           return this.$store.dispatch('Logout').then(() => {
             this.$router.push({ name: 'login' })
