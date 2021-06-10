@@ -289,6 +289,7 @@ export default {
   .capacha {
     position: absolute;
     top: 17vh;
+    left: -1.2vh;
     transform: rotate(90deg);
     transform-origin: bottom left;
     height: 3vh;
@@ -376,6 +377,12 @@ export default {
 /deep/ .ant-form {
   input.ant-input {
     width: 5vh !important;
+  }
+}
+.user-layout-login {
+  .capacha {
+    width: 6vh;
+    height: 5vh;
   }
 }
 }
