@@ -10,7 +10,7 @@
           <a-form-model-item
             label="ᠵᠤᠷ ᠎ᠤᠨ ᠨᠡᠷ᠎ᠠ"
             prop="namem"
-            :rules="[{required: true, message: 'error', trigger: 'change'}]">
+            :rules="[{required: true, message: 'ᠬᠤᠭᠤᠰᠤᠨ ᠪᠠᠢᠵᠤ ᠪᠤᠯᠬᠤ ᠦᠭᠡᠢ', trigger: 'change'}]">
             <a-input
               :maxLength="50"
               v-model="form.namem"
@@ -61,7 +61,7 @@
               <a-form-model-item
                 label="ᠡᠮ"
                 :prop="`resipeDrugList[${idx}].drugid`"
-                :rules="[{required: true, message: 'error', trigger: 'change'}]">
+                :rules="[{required: true, message: 'ᠬᠤᠭᠤᠰᠤᠨ ᠪᠠᠢᠵᠤ ᠪᠤᠯᠬᠤ ᠦᠭᠡᠢ', trigger: 'change'}]">
                 <span>
                   
                   <a-select
@@ -95,7 +95,7 @@
               <a-form-model-item
                 label="ᠬᠡᠮᠵᠢᠶ᠎ᠡ"
                 :prop="`resipeDrugList[${idx}].unitnum`"
-                :rules="[{required: true, message: 'error', trigger: 'change'}]"
+                :rules="[{required: true, message: 'ᠬᠤᠭᠤᠰᠤᠨ ᠪᠠᠢᠵᠤ ᠪᠤᠯᠬᠤ ᠦᠭᠡᠢ', trigger: 'change'}]"
               >
                 <a-input class="dragsize"
                   :maxLength="10"
@@ -106,7 +106,7 @@
               <a-form-model-item
                 label="ᠨᠢᠭᠡᠴᠢ"
                 :prop="`resipeDrugList[${idx}].unit`"
-                :rules="[{required: true, message: 'error', trigger: 'change'}]"
+                :rules="[{required: true, message: 'ᠬᠤᠭᠤᠰᠤᠨ ᠪᠠᠢᠵᠤ ᠪᠤᠯᠬᠤ ᠦᠭᠡᠢ', trigger: 'change'}]"
               >
                 <a-radio-group
                   v-model="d.unit">
@@ -130,7 +130,7 @@
             <a-button type="primary" icon="plus" @click="addDrug2()">ᠡᠮ ᠨᠡᠮᠡᠬᠦ</a-button>
           </a-form-model-item>
           <a-form-model-item label="ᠨᠠᠢᠷᠠᠯᠭ᠎ᠠ ᠢᠨ ᠬᠡᠯᠪᠡᠷᠢ" prop="drugcat"
-            :rules="[{required: true, message: 'error', trigger: 'change'}]"
+            :rules="[{required: true, message: 'ᠬᠤᠭᠤᠰᠤᠨ ᠪᠠᠢᠵᠤ ᠪᠤᠯᠬᠤ ᠦᠭᠡᠢ', trigger: 'change'}]"
           >
             <a-radio-group
               v-model="form.drugcat">
@@ -457,6 +457,15 @@ export default {
 </script>
 
 <style lang="less" scoped>
+/deep/ .ant-form-explain {
+  padding-top: 1vh;
+  font-size: 1vh;
+}
+/deep/ .has-error {
+  display: grid;
+  grid-auto-flow: column;
+}
+
 /deep/ .dragsize {
   height: 7vh !important;
 }
