@@ -378,6 +378,10 @@ export default {
     },
     handleDrugChange (idx) {
       console.log('----- key changed:' + idx)
+      this.$nextTick(() => {
+        const { $refs: { form } } = this
+        form.validate(() =>{})
+      })
     },
     calDrugSelectPosition (idx) {
       const { drugs } = this.$refs
