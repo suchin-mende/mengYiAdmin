@@ -17,6 +17,7 @@
           <!-- <a-button type="primary">ᠵᠠᠰᠠᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button> -->
         </a-descriptions-item>
       </a-descriptions>
+      <a-button type="danger" @click="handleCancel">ᠪᠤᠴᠠᠬᠤ</a-button>
     </template>
   </page-header-wrapper>
 </template>
@@ -37,6 +38,9 @@ export default {
     this.getUser()
   },
   methods: {
+    handleCancel () {
+      this.$router.go(-1)
+    },
     getUser() {
       uDetail({
         beanId: this.userID,
