@@ -454,7 +454,14 @@ export default {
 
 </script>
 
+
 <style lang="less" scoped>
+/deep/ .ant-page-header-content {
+  overflow: auto;
+}
+// /deep/ .ant-descriptions {
+//   zoom:0.8;
+// }
 /deep/ .ant-descriptions-row > td {
   display: grid;
 }
@@ -462,11 +469,6 @@ export default {
   margin-bottom: 20px;
   
 }
-
-/deep/ .chart-wrapper {
-  flex-direction: column;
-}
-
 /deep/ .ant-pro-grid-content {
   overflow: overlay;
 }
@@ -497,6 +499,7 @@ export default {
 
   .ant-descriptions-item-content {
       // margin-top: 30px;
+      height: 87vh;
       white-space: break-spaces;
     }
   }
@@ -557,14 +560,15 @@ export default {
 	font-size: 2vh;
 }
 .chartclass{
-	width: 500px;
-	height:500px;
+	width: 40vh;
+	height:40vh;
 }
 .chartbar{
-	width: 600px;
-	height:400px;
+	width: 60vh;
+	height:40vh;
 }
 .chart-wrapper {
   display: flex;
+  
 }
 </style>
