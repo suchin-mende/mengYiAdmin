@@ -43,7 +43,7 @@
         <a-descriptions-item label="ᠢᠯᠭᠠᠯ">{{ drug.effectCat }}</a-descriptions-item>
         <a-descriptions-item label="ᠦᠢᠯᠡᠳᠦᠯ ᠦᠵᠡᠭᠦᠯᠬᠦ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.actionMode }}</a-descriptions-item>
         <a-descriptions-item label="ᠲᠠᠢᠯᠪᠤᠷᠢ">{{ drug.remark }}</a-descriptions-item>
-        <a-descriptions-item>
+        <a-descriptions-item class="activebtn">
           <a-button type="primary" @click="handleEdit">ᠵᠠᠰᠠᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
           <a-button type="primary" @click="handleCancel">ᠪᠤᠴᠠᠬᠤ</a-button>
         </a-descriptions-item>
@@ -314,5 +314,11 @@ export default {
     writing-mode: initial;
   }
 }
-
+@-moz-document url-prefix() {
+.ant-descriptions-row:last-child > td > span{
+    display: grid;
+    grid-auto-flow: column;
+    height: 2vh !important;
+}
+}
 </style>

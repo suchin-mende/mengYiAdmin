@@ -254,7 +254,7 @@ export default {
 }
 /deep/ .ant-table-body .ant-table-tbody > tr > td {
   height: 46.6vh !important;
-  display: block !important;
+  // display: block !important;
 }
 
 /deep/ .ant-table-thead > tr th:last-child,

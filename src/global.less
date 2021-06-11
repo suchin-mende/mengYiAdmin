@@ -210,6 +210,9 @@ ol {
 
 .ant-pro-basicLayout-content .ant-pro-page-header-wrap {
   display: flex;
+  // display: grid;
+  // grid-auto-flow: column;
+  // grid-template-columns: 6vh 93%;
 }
 
 .ant-page-header {
@@ -290,6 +293,7 @@ html.mgl {
     height: 100%;
     .ant-pro-grid-content {
       height: 100%;
+      width: 93%;
       .ant-pro-page-header-wrap {
         height: 100%;
         .ant-pro-page-header-wrap-children-content {
@@ -496,4 +500,28 @@ html.mgl {
 
 .ant-btn-link:active, .ant-btn-link:focus, .ant-btn-link:hover {
   border-color: transparent !important;
+}
+.ant-table-row-cell-ellipsis {
+  display: block !important;
+}
+@-moz-document url-prefix() {
+  .content-left {
+      width: 5vh;
+  }
+  html.mgl .ant-table-content .ant-table-body .ant-table-thead > tr th .ant-table-header-column > div {
+    width: 3vh;
+  }
+  .ant-descriptions {
+    width: 100%;
+  }
+  .ant-descriptions-view {
+    overflow:unset;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  html.mgl .ant-btn {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+  }
 }
