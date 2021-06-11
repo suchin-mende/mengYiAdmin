@@ -2,6 +2,29 @@
   <page-header-wrapper>
     <template v-slot:content>
       <a-descriptions :column="1">
+        
+        <a-descriptions-item label="ᠵᠤᠷ ᠎ᠤᠨ ᠨᠡᠷ᠎ᠠ">{{ drug.namem }}</a-descriptions-item>
+        <a-descriptions-item label="ᠦᠭᠡᠷ᠎ᠠ ᠨᠡᠷ᠎ᠠ">{{ drug.nameother }}</a-descriptions-item>
+        <a-descriptions-item label="ᠺᠢᠷᠢᠯ ᠨᠡᠷ᠎ᠠ">{{ drug.namemn }}</a-descriptions-item>
+        <a-descriptions-item label="ᠭᠢᠲᠠᠳ ᠨᠡᠷ᠎ᠠ">{{ drug.namecn }}</a-descriptions-item>
+        <a-descriptions-item label="ᠲᠦᠪᠡᠳ ᠨᠡᠷ᠎ᠠ">{{ drug.namez }}</a-descriptions-item>
+        
+        <a-descriptions-item label="ᠵᠤᠷ ᠎ᠤᠨ ᠡᠮ">{{ drug.drugs }}</a-descriptions-item>
+        <a-descriptions-item label="ᠨᠠᠢᠷᠠᠯᠭ᠎ᠠ ᠢᠨ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.drugcat }}</a-descriptions-item>
+        <a-descriptions-item label="ᠦᠢᠯᠡᠳᠦᠯ">{{ drug.effect }}</a-descriptions-item>
+        <a-descriptions-item label="ᠵᠠᠰᠠᠬᠤ ᠠᠷᠭ᠎ᠠ">{{ drug.therapymemo }}</a-descriptions-item>
+        
+        <a-descriptions-item label="ᠴᠢᠳᠠᠮᠵᠢ ᠪᠡᠷ ᠵᠠᠰᠠᠬᠤ">{{ drug.mainEffect }}</a-descriptions-item>
+        <!-- <a-descriptions-item label="ᠬᠡᠷᠡᠭᠯᠡᠬᠦ ᠠᠷᠭᠠ"></a-descriptions-item>
+        <a-descriptions-item label="ᠬᠡᠷᠡᠭᠯᠡᠬᠦ ᠬᠡᠮᠵᠢᠶᠡ"></a-descriptions-item>
+        <a-descriptions-item label="ᠬᠢᠷᠢ ᠬᠡᠮᠵᠢᠶᠡ"></a-descriptions-item>
+        <a-descriptions-item label="ᠡᠮ ᠵᠢᠨ ᠬᠦᠯᠭᠡ"></a-descriptions-item> -->
+        <!-- <a-descriptions-item label="ᠡᠮᠨᠡᠬᠦ ᠠᠷᠭ᠎ᠠ"></a-descriptions-item> -->
+        <a-descriptions-item label="ᠴᠡᠭᠡᠷᠯᠡᠬᠦ">{{ drug.taboo }}</a-descriptions-item>
+        <!-- <a-descriptions-item label="ᠡᠮᠲᠦ ᠵᠠᠰᠠᠯᠭ᠎ᠠ"></a-descriptions-item> -->
+        <!-- <a-descriptions-item label="ᠭᠤᠷᠪᠠᠨ ᠦᠨᠳᠦᠰᠦᠨ ᠨᠦᠯᠦᠭᠡ">{{ drug.effectCat }}</a-descriptions-item> -->
+        <!-- <a-descriptions-item label="ᠠᠷᠪᠠᠨ ᠳᠤᠯᠤᠭᠠᠨ ᠴᠢᠳᠠᠯ">{{ drug.actionMode }}</a-descriptions-item> -->
+        <a-descriptions-item label="ᠲᠠᠢᠯᠪᠤᠷᠢ">{{ drug.remark }}</a-descriptions-item>
         <a-descriptions-item label="">
           <div>
             <div class="biaotd title">ᠪᠦᠷᠢᠯᠳᠦᠬᠦᠨ</div>
@@ -86,28 +109,6 @@
             </div>
           </div>
         </a-descriptions-item>
-        <a-descriptions-item label="ᠵᠤᠷ ᠎ᠤᠨ ᠨᠡᠷ᠎ᠠ">{{ drug.namem }}</a-descriptions-item>
-        <a-descriptions-item label="ᠦᠭᠡᠷ᠎ᠠ ᠨᠡᠷ᠎ᠠ">{{ drug.nameother }}</a-descriptions-item>
-        <a-descriptions-item label="ᠺᠢᠷᠢᠯ ᠨᠡᠷ᠎ᠠ">{{ drug.namemn }}</a-descriptions-item>
-        <a-descriptions-item label="ᠭᠢᠲᠠᠳ ᠨᠡᠷ᠎ᠠ">{{ drug.namecn }}</a-descriptions-item>
-        <a-descriptions-item label="ᠲᠦᠪᠡᠳ ᠨᠡᠷ᠎ᠠ">{{ drug.namez }}</a-descriptions-item>
-        
-        <a-descriptions-item label="ᠵᠤᠷ ᠎ᠤᠨ ᠡᠮ">{{ drug.drugs }}</a-descriptions-item>
-        <a-descriptions-item label="ᠨᠠᠢᠷᠠᠯᠭ᠎ᠠ ᠢᠨ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.drugcat }}</a-descriptions-item>
-        <a-descriptions-item label="ᠦᠢᠯᠡᠳᠦᠯ">{{ drug.effect }}</a-descriptions-item>
-        <a-descriptions-item label="ᠵᠠᠰᠠᠬᠤ ᠠᠷᠭ᠎ᠠ">{{ drug.therapymemo }}</a-descriptions-item>
-        
-        <a-descriptions-item label="ᠴᠢᠳᠠᠮᠵᠢ ᠪᠡᠷ ᠵᠠᠰᠠᠬᠤ">{{ drug.mainEffect }}</a-descriptions-item>
-        <!-- <a-descriptions-item label="ᠬᠡᠷᠡᠭᠯᠡᠬᠦ ᠠᠷᠭᠠ"></a-descriptions-item>
-        <a-descriptions-item label="ᠬᠡᠷᠡᠭᠯᠡᠬᠦ ᠬᠡᠮᠵᠢᠶᠡ"></a-descriptions-item>
-        <a-descriptions-item label="ᠬᠢᠷᠢ ᠬᠡᠮᠵᠢᠶᠡ"></a-descriptions-item>
-        <a-descriptions-item label="ᠡᠮ ᠵᠢᠨ ᠬᠦᠯᠭᠡ"></a-descriptions-item> -->
-        <!-- <a-descriptions-item label="ᠡᠮᠨᠡᠬᠦ ᠠᠷᠭ᠎ᠠ"></a-descriptions-item> -->
-        <a-descriptions-item label="ᠴᠡᠭᠡᠷᠯᠡᠬᠦ">{{ drug.taboo }}</a-descriptions-item>
-        <!-- <a-descriptions-item label="ᠡᠮᠲᠦ ᠵᠠᠰᠠᠯᠭ᠎ᠠ"></a-descriptions-item> -->
-        <!-- <a-descriptions-item label="ᠭᠤᠷᠪᠠᠨ ᠦᠨᠳᠦᠰᠦᠨ ᠨᠦᠯᠦᠭᠡ">{{ drug.effectCat }}</a-descriptions-item> -->
-        <!-- <a-descriptions-item label="ᠠᠷᠪᠠᠨ ᠳᠤᠯᠤᠭᠠᠨ ᠴᠢᠳᠠᠯ">{{ drug.actionMode }}</a-descriptions-item> -->
-        <a-descriptions-item label="ᠲᠠᠢᠯᠪᠤᠷᠢ">{{ drug.remark }}</a-descriptions-item>
         <a-descriptions-item>
           <a-button type="primary" @click="handleEdit">ᠵᠠᠰᠠᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
           <a-button type="primary" @click="handleCancel">ᠪᠤᠴᠠᠬᠤ</a-button>
@@ -453,7 +454,14 @@ export default {
 
 </script>
 
+
 <style lang="less" scoped>
+/deep/ .ant-page-header-content {
+  overflow: auto;
+}
+// /deep/ .ant-descriptions {
+//   zoom:0.8;
+// }
 /deep/ .ant-descriptions-row > td {
   display: grid;
 }
@@ -461,11 +469,6 @@ export default {
   margin-bottom: 20px;
   
 }
-
-/deep/ .chart-wrapper {
-  flex-direction: column;
-}
-
 /deep/ .ant-pro-grid-content {
   overflow: overlay;
 }
@@ -496,6 +499,7 @@ export default {
 
   .ant-descriptions-item-content {
       // margin-top: 30px;
+      height: 87vh;
       white-space: break-spaces;
     }
   }
@@ -556,14 +560,15 @@ export default {
 	font-size: 2vh;
 }
 .chartclass{
-	width: 500px;
-	height:500px;
+	width: 40vh;
+	height:40vh;
 }
 .chartbar{
-	width: 600px;
-	height:400px;
+	width: 60vh;
+	height:40vh;
 }
 .chart-wrapper {
   display: flex;
+  
 }
 </style>

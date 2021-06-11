@@ -254,12 +254,12 @@ export default {
 }
 /deep/ .ant-table-body .ant-table-tbody > tr > td {
   height: 46.6vh !important;
-  display: block !important;
+  // display: block !important;
 }
 
 /deep/ .ant-table-thead > tr th:last-child,
 /deep/ .ant-table-tbody .ant-table-row > td:last-child {
-  height: 44.2vh !important;
+  height: 42.2vh !important;
   place-content: center;
 }
 .content-right {
@@ -270,7 +270,7 @@ export default {
   height: 50vh;
 }
 
-@media (min-width: 1440px) and (max-width: 1768px) {
+@media (min-width: 1280px) and (max-width: 1768px) {
   .ant-table-wrapper {
     height: 100%;
     max-width: 90%;
@@ -293,6 +293,10 @@ export default {
       }
     }
   }
-
+/deep/ .ant-table-thead > tr th:last-child,
+/deep/ .ant-table-tbody .ant-table-row > td:last-child {
+  height: 35.2vh !important;
+  place-content: center;
+}
 }
 </style>
