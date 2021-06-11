@@ -259,7 +259,7 @@ export default {
 
 /deep/ .ant-table-thead > tr th:last-child,
 /deep/ .ant-table-tbody .ant-table-row > td:last-child {
-  height: 44.2vh !important;
+  height: 42.2vh !important;
   place-content: center;
 }
 .content-right {
