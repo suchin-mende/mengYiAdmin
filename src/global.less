@@ -382,18 +382,18 @@ html.mgl {
     transform: rotate(90deg);
   }
 
-  .ant-form, a-form-model {
+  .ant-form {
     display: flex;
 
-    .ant-form-item, a-form-model-item {
+    .ant-form-item{
       text-align: center;
       margin: 0 18px 0;
 
       .ant-form-item-label {
+        // width: 13vh;
         writing-mode: vertical-lr;
-        width: 100%;
         height: 18vh;
-        display: flex;
+        display: flex;  
         justify-content: flex-start;
         align-items: center;
         label {
@@ -408,7 +408,6 @@ html.mgl {
       }
       .ant-form-item-control-wrapper {
         margin-top: 15px;
-        
         .ant-form-item-control {
           .ant-form-item-children {
             line-height: 0;
@@ -417,6 +416,8 @@ html.mgl {
               > span:last-child {
                 margin: 5px 0 15px 0;
               }
+            }
+            textarea {
             }
           }
           .ant-form-explain {
@@ -520,6 +521,10 @@ html.mgl {
 }
 
 @-moz-document url-prefix() {
+  
+  .ant-form-item-label {
+    width: 13vh;
+  }
   .content-left {
       width: 5vh;
   }
