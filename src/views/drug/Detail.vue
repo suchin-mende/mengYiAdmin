@@ -43,16 +43,20 @@
         <a-descriptions-item label="ᠢᠯᠭᠠᠯ">{{ drug.effectCat }}</a-descriptions-item>
         <a-descriptions-item label="ᠦᠢᠯᠡᠳᠦᠯ ᠦᠵᠡᠭᠦᠯᠬᠦ ᠬᠡᠯᠪᠡᠷᠢ">{{ drug.actionMode }}</a-descriptions-item>
         <a-descriptions-item label="ᠲᠠᠢᠯᠪᠤᠷᠢ">{{ drug.remark }}</a-descriptions-item>
-        <a-descriptions-item class="activebtn">
-          <a-button type="primary" @click="handleEdit">ᠵᠠᠰᠠᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
-          <a-button type="primary" @click="handleCancel">ᠪᠤᠴᠠᠬᠤ</a-button>
-        </a-descriptions-item>
+       
       </a-descriptions>
 
       <a-modal class="image-preview" :visible="previewVisible" :footer="null" @cancel="handlePreviewCancel">
         <img style="width: 100%" :src="previewImage" />
       </a-modal>
+      
     </a-card>
+    <div class="actions">
+      <div class="actions-inner">
+         <a-button type="danger" @click="handleEdit" :loading="isSubmit">ᠵᠠᠰᠠᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
+         <a-button type="danger" @click="handleCancel">ᠪᠤᠴᠠᠬᠤ</a-button>
+      </div>
+    </div>
   </page-header-wrapper>
 </template>
 
