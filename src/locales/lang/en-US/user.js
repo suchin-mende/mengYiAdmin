@@ -1,4 +1,5 @@
 export default {
+  'user.login.someoneEmpty': 'ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠵᠢᠨ ᠨᠡᠷ᠎ᠡ ᠪᠤᠶᠤ ᠨᠤᠮᠧᠷ ᠬᠤᠭᠤᠰᠤᠨ',
   'user.login.userName': 'userName',
   'user.login.password': 'password',
   'user.login.username.placeholder': 'Account: admin',
