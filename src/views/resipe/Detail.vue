@@ -111,16 +111,18 @@
             </div>
           </div>
         </a-descriptions-item>
-        <a-descriptions-item>
-          <a-button type="primary" @click="handleEdit">ᠵᠠᠰᠠᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
-          <a-button type="primary" @click="handleCancel">ᠪᠤᠴᠠᠬᠤ</a-button>
-        </a-descriptions-item>
       </a-descriptions>
     
     <a-modal class="image-preview" :visible="previewVisible" :footer="null" @cancel="handlePreviewCancel">
       <img style="width: 100%" :src="previewImage" />
     </a-modal>
     </a-card>
+    <div class="actions">
+      <div class="actions-inner">
+         <a-button type="primary" @click="handleEdit" :loading="isSubmit">ᠵᠠᠰᠠᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
+         <a-button type="primary" @click="handleCancel">ᠪᠤᠴᠠᠬᠤ</a-button>
+      </div>
+    </div>
   </page-header-wrapper>
 </template>
 
@@ -572,7 +574,7 @@ export default {
 
 .ant-card {
   writing-mode: vertical-lr;;
-  width: 100%;
+  width: 87%;
   height: 93vh;
   position: absolute;
   /deep/ .ant-card-body {
@@ -595,6 +597,11 @@ export default {
       overflow-wrap: break-word;
     }
   }
+}
+/deep/ .actions {
+  margin-top: 20px;
+  float: right;
+  width: 20px;
 }
 /deep/ .ant-page-header-content {
   overflow: auto;

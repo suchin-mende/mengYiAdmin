@@ -53,8 +53,8 @@
     </a-card>
     <div class="actions">
       <div class="actions-inner">
-         <a-button type="danger" @click="handleEdit" :loading="isSubmit">ᠵᠠᠰᠠᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
-         <a-button type="danger" @click="handleCancel">ᠪᠤᠴᠠᠬᠤ</a-button>
+         <a-button type="primary" @click="handleEdit" :loading="isSubmit">ᠵᠠᠰᠠᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
+         <a-button type="primary" @click="handleCancel">ᠪᠤᠴᠠᠬᠤ</a-button>
       </div>
     </div>
   </page-header-wrapper>
@@ -241,7 +241,7 @@ export default {
 }
 .ant-card {
   writing-mode: vertical-lr;;
-  width: 100%;
+  width: 97%;
   height: 100%;
   position: absolute;
   /deep/ .ant-card-body {
@@ -264,6 +264,11 @@ export default {
       overflow-wrap: break-word;
     }
   }
+}
+/deep/ .actions {
+  margin-top: 20px;
+  float: right;
+  width: 20px;
 }
 /deep/ .ant-page-header-content {
   height: 90vh;
