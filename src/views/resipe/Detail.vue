@@ -26,9 +26,11 @@
         <!-- <a-descriptions-item label="ᠠᠷᠪᠠᠨ ᠳᠤᠯᠤᠭᠠᠨ ᠴᠢᠳᠠᠯ">{{ drug.actionMode }}</a-descriptions-item> -->
         <a-descriptions-item label="ᠲᠠᠢᠯᠪᠤᠷᠢ">{{ drug.remark }}</a-descriptions-item>
         <a-descriptions-item label="">
-          <div>
-            <div class="biaotd title">ᠪᠦᠷᠢᠯᠳᠦᠬᠦᠨ</div>
-            <div id="burildugun" class="rotatediv chartclass" ></div>
+          <div class="chart-wrapper">
+            <div>
+              <div class="biaotd title">ᠪᠦᠷᠢᠯᠳᠦᠬᠦᠨ</div>
+              <div id="burildugun" class="rotatediv chartclass" ></div>
+            </div>
           </div>
           <div class="chart-wrapper">
             <div>
@@ -153,6 +155,7 @@ import {
   getDict
 } from '@/api/dict'
 
+const isRotateAxis = navigator.userAgent.indexOf("Firefox") === -1
 export default {
   components: {
   },
@@ -332,12 +335,12 @@ export default {
       this.setPieburildu(data.threetastFive, 'threetastFive')
       this.bar17(data.seventeenList, 'seventeenList')
       this.bar17(data.seventeenListEnd, 'seventeenListEnd')
-      this.bar17(data.eightList, 'eightList')
-      this.bar17(data.eightListEnd, 'eightListEnd')
+      this.bar8(data.eightList, 'eightList')
+      this.bar8(data.eightListEnd, 'eightListEnd')
       this.setPieburildu(data.twoPowerList, 'twoPowerList')
       this.setPieburildu(data.twoPowerListEnd, 'twoPowerListEnd')
-      this.bar17(data.twentyList, 'twentyList')
-      this.bar17(data.twentyListEnd, 'twentyListEnd')
+      this.bar20(data.twentyList, 'twentyList')
+      this.bar20(data.twentyListEnd, 'twentyListEnd')
       this.setPieburildu(data.hxbList, 'hxbList')
       this.setPieburildu(data.hxbListEnd, 'hxbListEnd')
     },
@@ -348,7 +351,6 @@ export default {
     		},
         tooltip: {
           trigger: 'item',
-          extraCssText: 'writing-mode: lr-tb;',
           // extraCssText:'writing-mode: tb-lr; -webkit-writing-mode: vertical-lr;-webkit-text-orientation: sideways-right',
     	    textStyle:{
   		      fontSize:16,
@@ -410,17 +412,18 @@ export default {
     	      extraCssText:'writing-mode: tb-lr; -webkit-writing-mode: vertical-lr;-webkit-text-orientation: sideways-right',
     		    textStyle:{
               fontSize:18,
-    		        fontFamily:'mongolian'
+    		        fontFamily:'MQG8200'
     	      },
   	        formatter: '{b0}: {c0} %<br />'
     		  },
     		  xAxis: {
             axisLabel :{
-    		      interval:0,
-    	        rotate :'-90',
+    		      interval: 0,
+    	        rotate: isRotateAxis ? '-90': 0,
               fontSize:'18',
     		      margin:2,
-    		      fontFamily:'mongolian'
+              padding: [0, 0, 0, isRotateAxis ? 0 : 40],
+    		      fontFamily:'MQG8200'
     		      },
     		      type: 'category',
     		      data: xAxisData
@@ -449,7 +452,116 @@ export default {
     		  }]
     	};
     	myChart.setOption(option);
-    }
+    },
+    bar8(eightList, domid) {
+      const myChart = echarts.init(document.getElementById(domid))
+    		var xAxisData=[];
+    		var yAxisData=[];
+    		if(eightList!=null&&eightList.length>0){
+    			for(var i =0 ;i<eightList.length;i++){
+    				var obj = eightList[i];
+    				xAxisData.push(obj.name);
+    				yAxisData.push(obj.value);
+    			}
+    		}
+    		var color = ["#1A73E8","#1A73E8","#FF4500","#FF4500","#FFD700","#FFD700","#FFD700","#FFD700"]
+    		const option = {
+    		    tooltip: {
+    		        trigger: 'item',
+    		        extraCssText:'writing-mode: tb-lr; -webkit-writing-mode: vertical-lr;-webkit-text-orientation: sideways-right',
+    		        textStyle:{
+    		            fontSize:18,
+    		            fontFamily:'MQG8200'
+    		        },
+    		        formatter: '{b0}: {c0} %<br />'
+    		    },
+    		    xAxis: {
+    		        axisLabel :{
+    		             interval:0,
+    		             rotate: isRotateAxis ? '-90': 0,
+    		             fontSize:'18',
+    		             margin:10,
+                     padding: [0, 0, 0, isRotateAxis ? 0 : 30],
+    		             fontFamily:'MQG8200'
+    		        },
+    		        type: 'category',
+    		        data: xAxisData
+    		    },
+    		    yAxis: {
+    		        type: 'value'
+    		    },
+    		    series: [{
+    		        data: yAxisData,
+    		        type: 'bar',
+    		        itemStyle:{
+    		            color:function(p){
+    		                return color[ p.dataIndex]
+    		            }
+    		        }
+    		    }]
+    		};
+    	myChart.setOption(option);
+    },
+    bar20(datalist,domid){
+    		const myChart = echarts.init(document.getElementById(domid))
+    		var xAxisData=[];
+    		var yAxisData=[];
+    		if(datalist!=null&&datalist.length>0){
+    			for(var i =0 ;i<datalist.length;i++){
+    				var obj = datalist[i];
+    				xAxisData.push(obj.name);
+    				yAxisData.push(obj.value);
+    			}
+    		}
+    		var color = ["#1A73E8","#FF4500","#FFD700"]
+    		const option = {
+    		    tooltip: {
+    		        trigger: 'item',
+    		        extraCssText:'writing-mode: tb-lr; -webkit-writing-mode: vertical-lr;-webkit-text-orientation: sideways-right',
+    		        textStyle:{
+    		            fontSize:18,
+    		            fontFamily:'MQG8200'
+    		        },
+    		        formatter: '{b0}: {c0} %<br />'
+    		    },
+    		    xAxis: {
+    		        axisLabel :{
+    		             interval:0,
+    		             rotate: isRotateAxis ? '-90' : 0,
+    		             fontSize:'18',
+    		             margin:2,
+                     padding: [0, 0, 0, isRotateAxis ? 0 : 40],
+    		             fontFamily:'MQG8200'
+    		        },
+    		        type: 'category',
+    		        data: xAxisData
+    		    },
+    		    yAxis: {
+    		        type: 'value'
+    		    },
+    		    series: [{
+    		        data: yAxisData,
+    		        type: 'bar',
+    		        itemStyle:{
+    		            color:function(p){
+    		                var colorindex = 0;
+    		                var curindex =   p.dataIndex;
+    		                if(curindex<6){
+    		                    colorindex=0;
+    		                }else if(curindex>=6&&curindex<13){
+    		                    colorindex=1;
+    		                }else{
+    		                    colorindex=2;
+    		                }
+//     		                console.log(p)
+    		                return color[colorindex]
+    		            }
+    		        }
+    		    }]
+    		};
+    		
+    		myChart.setOption(option);
+    	}
   }
 }
 
@@ -593,9 +705,12 @@ export default {
 .chartbar{
 	width: 60vh;
 	height:40vh;
+  writing-mode: vertical-lr;
 }
 .chart-wrapper {
   display: flex;
-  
+  .chartclass {
+    writing-mode:horizontal-tb;
+  }
 }
 </style>
