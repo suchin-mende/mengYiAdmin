@@ -1,6 +1,6 @@
 <template>
   <page-header-wrapper>
-    <template v-slot:content>
+    <a-card :body-style="{ padding: '24px 32px' }" :bordered="false">
       <a-descriptions :column="1">
         
         <a-descriptions-item label="ᠵᠤᠷ ᠎ᠤᠨ ᠨᠡᠷ᠎ᠠ">{{ drug.namem }}</a-descriptions-item>
@@ -114,10 +114,11 @@
           <a-button type="primary" @click="handleCancel">ᠪᠤᠴᠠᠬᠤ</a-button>
         </a-descriptions-item>
       </a-descriptions>
-    </template>
+    
     <a-modal class="image-preview" :visible="previewVisible" :footer="null" @cancel="handlePreviewCancel">
       <img style="width: 100%" :src="previewImage" />
     </a-modal>
+    </a-card>
   </page-header-wrapper>
 </template>
 
@@ -456,6 +457,33 @@ export default {
 
 
 <style lang="less" scoped>
+
+.ant-card {
+  writing-mode: vertical-lr;;
+  width: 100%;
+  height: 93vh;
+  position: absolute;
+  /deep/ .ant-card-body {
+    width: 100%;
+    height: 100%;
+    overflow-x: overlay;
+    tbody {
+
+      display: grid;
+      grid-row-gap:30px;
+      height: 100%;;
+    }
+    tbody > tr > td {
+      display: grid;
+      height: 100%;
+    }
+    tbody > tr > td > span {
+      font-size: 2vh;
+      height: 86vh;
+      overflow-wrap: break-word;
+    }
+  }
+}
 /deep/ .ant-page-header-content {
   overflow: auto;
 }
@@ -470,7 +498,6 @@ export default {
   
 }
 /deep/ .ant-pro-grid-content {
-  overflow: overlay;
 }
 
 .ant-pro-page-header-wrap-content {
@@ -491,7 +518,7 @@ export default {
 }
 
 /deep/ .ant-pro-page-header-wrap-page-header-warp {
-  width: 100%;
+  width: 7vh;
   
   .ant-descriptions-row {
     padding: 0 10px;
