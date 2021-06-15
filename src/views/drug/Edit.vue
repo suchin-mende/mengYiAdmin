@@ -8,7 +8,7 @@
           <a-form-item label="ᠮᠤᠨᠭᠭᠤᠯ ᠨᠡᠷ᠎ᠡ">
             <a-input
               :maxLength="200"
-              v-decorator="['namem', { rules: [{ required: true, message: 'error' }] }]"
+              v-decorator="['namem', { rules: [{ required: true, message: 'ᠬᠤᠭᠤᠰᠤᠨ ᠪᠠᠢᠵᠤ ᠪᠤᠯᠬᠤ ᠦᠭᠡᠢ' }] }]"
               placeholder=""
             />
           </a-form-item>
