@@ -395,7 +395,7 @@ export default {
   }
   /deep/ .ant-form .login-button {
     width: 39px !important;
-    
+    height: 100px !important;
   }
   /deep/ .ant-form .ant-input-affix-wrapper .ant-input-prefix {
     top: 10px;

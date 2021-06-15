@@ -18,6 +18,13 @@
                 okText="ᠨᠡᠮᠡᠬᠦ"
                 cancelText="ᠪᠤᠴᠠᠬᠤ"
               >
+              <a-alert
+                  v-if="isLoginError"
+                  type="error"
+                  showIcon
+                  style="margin-bottom: 24px;margin-right: 24px;"
+                  :message="$t('user.login.someoneEmpty')"
+              />
                 <div class="add-form">
                   <div class="fields">
                     <a-input placeholder="ᠨᠡᠷ᠎ᠡ" v-model="addUsername" />
@@ -151,19 +158,41 @@ export default {
     handleOk (e) {
       this.ModalText = 'The modal will be closed after two seconds'
       this.confirmLoading = true
-    
-      this.handleSubmit()
-      setTimeout(() => {
+
+      if(this.addUsername==""||undefined){
+          this.isLoginError = true
+              setTimeout(() => {
+            this.confirmLoading = false
+            this.addUsername = ""
+            this.addPhonenum = ""
+            this.confirmLoading = false
+          }, 1000)
+      }else if(this.addPhonenum==""||undefined){
+          this.isLoginError = true
+            setTimeout(() => {
+            this.confirmLoading = false
+            this.addUsername = ""
+            this.addPhonenum = ""
+            this.confirmLoading = false
+          }, 1000)
+      }else {
+        this.isLoginError = false
+        this.handleSubmit()
+        setTimeout(() => {
         this.onSearch()
         this.visible = false
         this.addUsername = ""
         this.addPhonenum = ""
         this.confirmLoading = false
       }, 2000)
+      }
+      
     },
     handleCancel (e) {
       console.log('Clicked cancel button')
       this.visible = false
+      this.isLoginError = false
+      this.confirmLoading = false
     },
     saveUser (userData) {
       uSave(userData).then((res) => {

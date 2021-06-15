@@ -545,3 +545,27 @@ html.mgl {
     align-items: center;
   }
 }
+
+@media screen and(-ms-high-contrast:active),(-ms-high-contrast:none){
+  .page-inner-mgl .content-left .search-form .fields .ant-input {
+    writing-mode: tb-lr;
+  }
+  html.mgl .ant-btn {
+    height: 8vh;
+  }
+  .page-inner-mgl .content-left .search-form .actions {
+    position: absolute;
+    left: 14px;
+    display: flex;
+    flex-direction: column;
+  }
+  html.mgl .ant-table-content .ant-table-body .ant-table-tbody {
+    display: flex;
+    flex-direction: column;
+    writing-mode: tb-lr;
+  }
+  html.mgl .ant-table-content .ant-table-body .ant-table-tbody .ant-table-row {
+    display: flex;
+    flex-direction: row;
+  }
+}

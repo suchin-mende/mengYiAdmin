@@ -1,6 +1,6 @@
 <template>
   <page-header-wrapper>
-    <template v-slot:content>
+    <a-card :body-style="{ padding: '24px 32px' }" :bordered="false">
       <a-descriptions :column="1">
         
         <a-descriptions-item label="ᠵᠤᠷ ᠎ᠤᠨ ᠨᠡᠷ᠎ᠠ">{{ drug.namem }}</a-descriptions-item>
@@ -26,9 +26,11 @@
         <!-- <a-descriptions-item label="ᠠᠷᠪᠠᠨ ᠳᠤᠯᠤᠭᠠᠨ ᠴᠢᠳᠠᠯ">{{ drug.actionMode }}</a-descriptions-item> -->
         <a-descriptions-item label="ᠲᠠᠢᠯᠪᠤᠷᠢ">{{ drug.remark }}</a-descriptions-item>
         <a-descriptions-item label="">
-          <div>
-            <div class="biaotd title">ᠪᠦᠷᠢᠯᠳᠦᠬᠦᠨ</div>
-            <div id="burildugun" class="rotatediv chartclass" ></div>
+          <div class="chart-wrapper">
+            <div>
+              <div class="biaotd title">ᠪᠦᠷᠢᠯᠳᠦᠬᠦᠨ</div>
+              <div id="burildugun" class="rotatediv chartclass" ></div>
+            </div>
           </div>
           <div class="chart-wrapper">
             <div>
@@ -109,15 +111,18 @@
             </div>
           </div>
         </a-descriptions-item>
-        <a-descriptions-item>
-          <a-button type="primary" @click="handleEdit">ᠵᠠᠰᠠᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
-          <a-button type="primary" @click="handleCancel">ᠪᠤᠴᠠᠬᠤ</a-button>
-        </a-descriptions-item>
       </a-descriptions>
-    </template>
+    
     <a-modal class="image-preview" :visible="previewVisible" :footer="null" @cancel="handlePreviewCancel">
       <img style="width: 100%" :src="previewImage" />
     </a-modal>
+    </a-card>
+    <div class="actions">
+      <div class="actions-inner">
+         <a-button type="primary" @click="handleEdit" :loading="isSubmit">ᠵᠠᠰᠠᠪᠤᠷᠢ ᠤᠷᠤᠭᠤᠯᠬᠤ</a-button>
+         <a-button type="primary" @click="handleCancel">ᠪᠤᠴᠠᠬᠤ</a-button>
+      </div>
+    </div>
   </page-header-wrapper>
 </template>
 
@@ -152,6 +157,7 @@ import {
   getDict
 } from '@/api/dict'
 
+const isRotateAxis = navigator.userAgent.indexOf("Firefox") === -1
 export default {
   components: {
   },
@@ -331,12 +337,12 @@ export default {
       this.setPieburildu(data.threetastFive, 'threetastFive')
       this.bar17(data.seventeenList, 'seventeenList')
       this.bar17(data.seventeenListEnd, 'seventeenListEnd')
-      this.bar17(data.eightList, 'eightList')
-      this.bar17(data.eightListEnd, 'eightListEnd')
+      this.bar8(data.eightList, 'eightList')
+      this.bar8(data.eightListEnd, 'eightListEnd')
       this.setPieburildu(data.twoPowerList, 'twoPowerList')
       this.setPieburildu(data.twoPowerListEnd, 'twoPowerListEnd')
-      this.bar17(data.twentyList, 'twentyList')
-      this.bar17(data.twentyListEnd, 'twentyListEnd')
+      this.bar20(data.twentyList, 'twentyList')
+      this.bar20(data.twentyListEnd, 'twentyListEnd')
       this.setPieburildu(data.hxbList, 'hxbList')
       this.setPieburildu(data.hxbListEnd, 'hxbListEnd')
     },
@@ -347,7 +353,6 @@ export default {
     		},
         tooltip: {
           trigger: 'item',
-          extraCssText: 'writing-mode: lr-tb;',
           // extraCssText:'writing-mode: tb-lr; -webkit-writing-mode: vertical-lr;-webkit-text-orientation: sideways-right',
     	    textStyle:{
   		      fontSize:16,
@@ -409,17 +414,18 @@ export default {
     	      extraCssText:'writing-mode: tb-lr; -webkit-writing-mode: vertical-lr;-webkit-text-orientation: sideways-right',
     		    textStyle:{
               fontSize:18,
-    		        fontFamily:'mongolian'
+    		        fontFamily:'MQG8200'
     	      },
   	        formatter: '{b0}: {c0} %<br />'
     		  },
     		  xAxis: {
             axisLabel :{
-    		      interval:0,
-    	        rotate :'-90',
+    		      interval: 0,
+    	        rotate: isRotateAxis ? '-90': 0,
               fontSize:'18',
     		      margin:2,
-    		      fontFamily:'mongolian'
+              padding: [0, 0, 0, isRotateAxis ? 0 : 40],
+    		      fontFamily:'MQG8200'
     		      },
     		      type: 'category',
     		      data: xAxisData
@@ -448,7 +454,116 @@ export default {
     		  }]
     	};
     	myChart.setOption(option);
-    }
+    },
+    bar8(eightList, domid) {
+      const myChart = echarts.init(document.getElementById(domid))
+    		var xAxisData=[];
+    		var yAxisData=[];
+    		if(eightList!=null&&eightList.length>0){
+    			for(var i =0 ;i<eightList.length;i++){
+    				var obj = eightList[i];
+    				xAxisData.push(obj.name);
+    				yAxisData.push(obj.value);
+    			}
+    		}
+    		var color = ["#1A73E8","#1A73E8","#FF4500","#FF4500","#FFD700","#FFD700","#FFD700","#FFD700"]
+    		const option = {
+    		    tooltip: {
+    		        trigger: 'item',
+    		        extraCssText:'writing-mode: tb-lr; -webkit-writing-mode: vertical-lr;-webkit-text-orientation: sideways-right',
+    		        textStyle:{
+    		            fontSize:18,
+    		            fontFamily:'MQG8200'
+    		        },
+    		        formatter: '{b0}: {c0} %<br />'
+    		    },
+    		    xAxis: {
+    		        axisLabel :{
+    		             interval:0,
+    		             rotate: isRotateAxis ? '-90': 0,
+    		             fontSize:'18',
+    		             margin:10,
+                     padding: [0, 0, 0, isRotateAxis ? 0 : 30],
+    		             fontFamily:'MQG8200'
+    		        },
+    		        type: 'category',
+    		        data: xAxisData
+    		    },
+    		    yAxis: {
+    		        type: 'value'
+    		    },
+    		    series: [{
+    		        data: yAxisData,
+    		        type: 'bar',
+    		        itemStyle:{
+    		            color:function(p){
+    		                return color[ p.dataIndex]
+    		            }
+    		        }
+    		    }]
+    		};
+    	myChart.setOption(option);
+    },
+    bar20(datalist,domid){
+    		const myChart = echarts.init(document.getElementById(domid))
+    		var xAxisData=[];
+    		var yAxisData=[];
+    		if(datalist!=null&&datalist.length>0){
+    			for(var i =0 ;i<datalist.length;i++){
+    				var obj = datalist[i];
+    				xAxisData.push(obj.name);
+    				yAxisData.push(obj.value);
+    			}
+    		}
+    		var color = ["#1A73E8","#FF4500","#FFD700"]
+    		const option = {
+    		    tooltip: {
+    		        trigger: 'item',
+    		        extraCssText:'writing-mode: tb-lr; -webkit-writing-mode: vertical-lr;-webkit-text-orientation: sideways-right',
+    		        textStyle:{
+    		            fontSize:18,
+    		            fontFamily:'MQG8200'
+    		        },
+    		        formatter: '{b0}: {c0} %<br />'
+    		    },
+    		    xAxis: {
+    		        axisLabel :{
+    		             interval:0,
+    		             rotate: isRotateAxis ? '-90' : 0,
+    		             fontSize:'18',
+    		             margin:2,
+                     padding: [0, 0, 0, isRotateAxis ? 0 : 40],
+    		             fontFamily:'MQG8200'
+    		        },
+    		        type: 'category',
+    		        data: xAxisData
+    		    },
+    		    yAxis: {
+    		        type: 'value'
+    		    },
+    		    series: [{
+    		        data: yAxisData,
+    		        type: 'bar',
+    		        itemStyle:{
+    		            color:function(p){
+    		                var colorindex = 0;
+    		                var curindex =   p.dataIndex;
+    		                if(curindex<6){
+    		                    colorindex=0;
+    		                }else if(curindex>=6&&curindex<13){
+    		                    colorindex=1;
+    		                }else{
+    		                    colorindex=2;
+    		                }
+//     		                console.log(p)
+    		                return color[colorindex]
+    		            }
+    		        }
+    		    }]
+    		};
+    		
+    		myChart.setOption(option);
+    	}
   }
 }
 
@@ -456,6 +571,38 @@ export default {
 
 
 <style lang="less" scoped>
+
+.ant-card {
+  writing-mode: vertical-lr;;
+  width: 87%;
+  height: 93vh;
+  position: absolute;
+  /deep/ .ant-card-body {
+    width: 100%;
+    height: 100%;
+    overflow-x: overlay;
+    tbody {
+
+      display: grid;
+      grid-row-gap:30px;
+      height: 100%;;
+    }
+    tbody > tr > td {
+      display: grid;
+      height: 100%;
+    }
+    tbody > tr > td > span {
+      font-size: 2vh;
+      height: 86vh;
+      overflow-wrap: break-word;
+    }
+  }
+}
+/deep/ .actions {
+  margin-top: 20px;
+  float: right;
+  width: 20px;
+}
 /deep/ .ant-page-header-content {
   overflow: auto;
 }
@@ -470,7 +617,6 @@ export default {
   
 }
 /deep/ .ant-pro-grid-content {
-  overflow: overlay;
 }
 
 .ant-pro-page-header-wrap-content {
@@ -491,7 +637,7 @@ export default {
 }
 
 /deep/ .ant-pro-page-header-wrap-page-header-warp {
-  width: 100%;
+  width: 7vh;
   
   .ant-descriptions-row {
     padding: 0 10px;
@@ -566,9 +712,12 @@ export default {
 .chartbar{
 	width: 60vh;
 	height:40vh;
+  writing-mode: vertical-lr;
 }
 .chart-wrapper {
   display: flex;
-  
+  .chartclass {
+    writing-mode:horizontal-tb;
+  }
 }
 </style>
