@@ -54,6 +54,7 @@
           </a-form-model-item>
 
           <div class="drugs" ref="drugs">
+            <div class="drugsdd">
             <div
               class="drug"
               v-for="(d, idx) in form.resipeDrugList"
@@ -124,6 +125,7 @@
               >
                 <a-button type="danger" icon="minus-circle" @click="handleRemoveDrug(idx)">ᠠᠷᠢᠯᠭᠠᠬᠤ</a-button>
               </a-form-model-item>
+            </div>
             </div>
           </div>
           <a-form-model-item>

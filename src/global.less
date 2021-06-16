@@ -388,9 +388,12 @@ html.mgl {
     .ant-form-item{
       text-align: center;
       margin: 0 18px 0;
+      display: flex;
+      flex-direction: column;
 
       .ant-form-item-label {
         // width: 13vh;
+        
         writing-mode: vertical-lr;
         height: 18vh;
         display: flex;  
@@ -520,10 +523,26 @@ html.mgl {
   position: static;
 }
 
+.ant-card {
+  .ant-card-body{
+    .content-hor{
+      .ant-form {
+        .drugs {
+          display: inline-block !important;
+          .drugsdd {
+            display: flex;
+          }
+        }
+      }
+    }
+  }
+}
 @-moz-document url-prefix() {
-  
+  .yilgal {
+    width: 22vh;
+  }
   .ant-form-item-label {
-    width: 13vh;
+    min-width: 13vh;
   }
   .content-left {
       width: 5vh;
@@ -544,9 +563,44 @@ html.mgl {
     grid-auto-flow: column;
     align-items: center;
   }
+  .ant-pro-page-header-wrap-main .ant-pro-page-header-wrap-title, .ant-pro-page-header-wrap-main .ant-pro-page-header-wrap-content {
+    display: flex;
+    flex-direction: column;
+    button {
+      height: 10vh;
+    }
+  }
+  .ant-card {
+    .ant-card-body{
+      .content-hor{
+        .ant-form {
+          .drugs {
+            display: inline-block !important;
+            .drugsdd {
+              display: flex;
+            }
+          }
+        }
+      }
+    }
 }
 
+}
 @media screen and(-ms-high-contrast:active),(-ms-high-contrast:none){
+  .ant-tooltip-placement-rightTop {
+    writing-mode: tb-lr;
+    white-space: nowrap;
+  }
+  // .ant-tooltip-content {
+  //   writing-mode: tb-lr;
+  // }
+  .ant-menu-inline .ant-menu-submenu .ant-menu-sub .ant-menu-item {
+    height: 100%;
+  }
+  .ant-menu-inline .ant-menu-submenu .ant-menu-sub .ant-menu-item span {
+    top: 10px;
+    left: 0px;
+  }
   .ant-form-item-children .ant-checkbox-group label {
     margin: 0px;
   }
@@ -575,6 +629,14 @@ html.mgl {
         }        
       }
       .content-hor{
+        .ant-form {
+          .drugs {
+            display: inline-block !important;
+            .drugsdd {
+              display: flex;
+            }
+          }
+        }
         .actions{
           .actions-inner{
             display: flex;
