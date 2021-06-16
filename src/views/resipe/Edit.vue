@@ -563,4 +563,9 @@ export default {
     }
   }
 }
+@media screen and(-ms-high-contrast:active),(-ms-high-contrast:none){
+  html.mgl .ant-form .ant-form-item .ant-form-item-control-wrapper .ant-form-item-control .ant-form-item-children span button {
+    height: 14vh;
+  }
+}
 </style>

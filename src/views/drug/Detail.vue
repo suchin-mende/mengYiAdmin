@@ -267,7 +267,7 @@ export default {
 }
 /deep/ .actions {
   position: absolute;
-  right: -195px;
+  right: -20vh;
   margin-top: 20px;
   float: right;
   width: 20px;
@@ -330,12 +330,6 @@ export default {
     display: grid;
     grid-auto-flow: column;
     height: 2vh !important;
-}
-}
-
-@media screen and(-ms-high-contrast:active),(-ms-high-contrast:none){
-html.mgl .ant-table-content .ant-table-body .ant-table-tbody .ant-table-row > td:last-child button {
-  height: 12vh;
 }
 }
 </style>

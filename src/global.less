@@ -547,6 +547,86 @@ html.mgl {
 }
 
 @media screen and(-ms-high-contrast:active),(-ms-high-contrast:none){
+  .ant-form-item-children .ant-checkbox-group label {
+    margin: 0px;
+  }
+  
+  html.mgl .ant-form .ant-form-item .ant-form-item-control-wrapper .ant-select .ant-select-selection__rendered, html.mgl .ant-form .ant-form-item .ant-form-item-control-wrapper .ant-select-selection--single .ant-select-selection__rendered {
+    display: inline-flex !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  html.mgl .ant-form .ant-form-item .ant-form-item-label {
+    display: inline-flex;
+  }
+  html.mgl .ant-form .ant-form-item .ant-form-item-control-wrapper .ant-form-item-control .ant-form-item-children button {
+    height: 14vh;
+  }
+  //[data-v-50001f1e].ant-card .ant-card-body .content-hor .actions .actions-inner
+  .ant-card {
+    overflow-x: auto;
+    .ant-card-body{
+      tbody {
+        .images-wrapper > span{
+          width: 100%;
+          height: 100%;
+          position: relative;
+        }        
+      }
+      .content-hor{
+        .actions{
+          .actions-inner{
+            display: flex;
+            flex-direction: column;
+          }
+        }
+      }
+    }
+  }
+  html.mgl .ant-form .ant-form-item .ant-form-item-control-wrapper .ant-form-item-control .ant-form-item-children div {
+    display: block;  
+  }
+  html.mgl .ant-form .ant-form-item .ant-form-item-control-wrapper .ant-form-item-control .ant-form-item-children div label {
+    //  margin-bottom: 0px !important;
+   }
+  html.mgl .ant-form .ant-form-item .ant-form-item-control-wrapper textarea.ant-input {
+    writing-mode: tb-lr;
+  }
+  html.mgl .ant-form .ant-form-item .ant-form-item-control-wrapper .ant-form-item-control .ant-form-item-children input {
+    writing-mode: tb-lr;
+  }
+  .ant-upload.ant-upload-select span button {
+    height: 14vh;
+    right: 0px;
+  }
+  .ant-upload.ant-upload-select span button span {
+    padding-top: 13px;
+  }
+  .ant-card .ant-card-body tbody > tr:first-child > td > span:last-child {
+    // width: 170px;
+  }
+  .images-wrapper {
+    // width: 140px;
+  }
+  .ant-pro-page-header-wrap-children-content .actions .actions-inner button {
+    height: 12vh;
+  }
+  .ant-modal-content .ant-modal-footer div {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50%;
+  }
+  .add-form .fields {
+    margin: 20px;
+    
+  }
+  .add-form .fields .ant-input {
+    writing-mode: tb-lr;
+  }
+  .ant-modal-content {
+    height: 25%;
+  }
   html.mgl .ant-table-content .ant-table-body .ant-table-tbody .ant-table-row > td:last-child button {
     height: 12vh;
   }

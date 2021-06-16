@@ -600,7 +600,7 @@ export default {
 }
 /deep/ .actions {
   position: absolute;
-  right: -50px;
+  right: -5vh;
   margin-top: 20px;
   float: right;
   width: 20px;
