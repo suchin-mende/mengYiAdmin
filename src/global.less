@@ -587,6 +587,9 @@ html.mgl {
 
 }
 @media screen and(-ms-high-contrast:active),(-ms-high-contrast:none){
+  .ant-popover-inner {
+    height: 210px;
+  }
   .ant-tooltip-placement-rightTop {
     writing-mode: tb-lr;
     white-space: nowrap;
@@ -712,5 +715,16 @@ html.mgl {
   html.mgl .ant-table-content .ant-table-body .ant-table-tbody .ant-table-row {
     display: flex;
     flex-direction: row;
+  }
+}
+
+@media (min-width: 1280px) and (max-width:1768px){
+  .ant-pro-basicLayout-children-content-wrap {
+    
+    .ant-pro-grid-content {
+      
+      width: 90% !important;
+      
+    }
   }
 }
