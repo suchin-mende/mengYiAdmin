@@ -722,4 +722,9 @@ export default {
     writing-mode:horizontal-tb;
   }
 }
+@media screen and(-ms-high-contrast:active),(-ms-high-contrast:none){
+  .chart-wrapper .chartclass {
+    -ms-writing-mode:tb-lr !important
+  }
+  }
 </style>
