@@ -241,7 +241,7 @@ export default {
 }
 .ant-card {
   writing-mode: vertical-lr;;
-  width: 97%;
+  width: 110%;
   height: 100%;
   position: absolute;
   /deep/ .ant-card-body {
@@ -266,6 +266,8 @@ export default {
   }
 }
 /deep/ .actions {
+  position: absolute;
+  right: -20vh;
   margin-top: 20px;
   float: right;
   width: 20px;

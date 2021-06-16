@@ -8,7 +8,7 @@
           <a-form-item label="ᠮᠤᠨᠭᠭᠤᠯ ᠨᠡᠷ᠎ᠡ">
             <a-input
               :maxLength="200"
-              v-decorator="['namem', { rules: [{ required: true, message: 'error' }] }]"
+              v-decorator="['namem', { rules: [{ required: true, message: 'ᠬᠤᠭᠤᠰᠤᠨ ᠪᠠᠢᠵᠤ ᠪᠤᠯᠬᠤ ᠦᠭᠡᠢ' }] }]"
               placeholder=""
             />
           </a-form-item>
@@ -75,7 +75,9 @@
             <a-textarea placeholder="ᠭᠤᠤᠯᠳᠠᠭᠤ ᠵᠠᠰᠠᠬᠤ" :rows="3" :maxLength="300" v-decorator="['baseFix']"/>
           </a-form-item>
           <a-form-item label="ᠢᠯᠭᠠᠯ">
+            <div class="yilgal">
             <a-checkbox-group :options="effectCat" v-decorator="['effectCat']"/>
+            </div>
           </a-form-item>
           <a-form-item label="ᠦᠢᠯᠡᠳᠦᠯ ᠦᠵᠡᠭᠦᠯᠬᠦ ᠬᠡᠯᠪᠡᠷᠢ">
             <a-checkbox-group :options="actionMode" v-decorator="['actionMode']"/>

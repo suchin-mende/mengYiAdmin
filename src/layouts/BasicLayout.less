@@ -252,7 +252,12 @@
 }
 }
 @media screen and(-ms-high-contrast:active),(-ms-high-contrast:none){
-
+  .ant-menu-vertical .ant-menu-submenu .ant-menu-sub, .ant-menu-vertical-left .ant-menu-submenu .ant-menu-sub, .ant-menu-vertical-right .ant-menu-submenu .ant-menu-sub, .ant-menu-inline .ant-menu-submenu .ant-menu-sub {
+    display: flex;
+    flex-direction: column;
+    width: 15vh;
+  }
+ 
   body {
     overflow: hidden;
   }
