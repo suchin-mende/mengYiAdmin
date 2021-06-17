@@ -15,7 +15,9 @@ const request = axios.create({
 
 // 异常拦截处理器
 const errorHandler = (error) => {
+  console.log("wowowo",error)
   if (error.response) {
+    
     const data = error.response.data
     // 从 localstorage 获取 token
     const token = storage.get(ACCESS_TOKEN)
@@ -57,9 +59,12 @@ request.interceptors.request.use(config => {
 
 // response interceptor
 request.interceptors.response.use((response) => {
+  console.log("!!!",response)
   const { data } = response
   if (data.status && data.status != 1000) {
-    throw new Error(data)
+    console.log("？？？",data)
+
+    throw new Error(data.message)
   }
   return data
 }, errorHandler)

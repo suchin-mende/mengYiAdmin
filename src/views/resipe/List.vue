@@ -8,7 +8,7 @@
           </div>
           <div class="actions">
             <a-button type="danger" @click="handleKeySearch">ᠬᠠᠢᠬᠤ</a-button>
-            <a-button type="danger" @click="handleReset">ᠠᠷᠢᠯᠭᠠᠬᠤ</a-button>
+            <!-- <a-button type="danger" @click="handleReset">ᠠᠷᠢᠯᠭᠠᠬᠤ</a-button> -->
             <a-button type="primary" @click="handleCreate">ᠨᠡᠮᠡᠬᠦ</a-button>
           </div>
         </div>

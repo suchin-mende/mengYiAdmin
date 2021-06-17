@@ -255,12 +255,12 @@ export default {
       height: 100%;;
     }
     tbody > tr > td {
-      display: grid;
+      display: flex;
       height: 100%;
+      flex-wrap: nowrap;
     }
     tbody > tr > td > span {
       font-size: 2vh;
-      height: 86vh;
       overflow-wrap: break-word;
     }
   }

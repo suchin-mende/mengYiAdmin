@@ -6,7 +6,7 @@
         type="error"
         showIcon
         style="margin-bottom: 24px"
-        :message="$t('user.login.message-invalid-credentials')"
+        :message=errMessage
       />
       <a-form-item>
         <a-input
@@ -38,10 +38,12 @@
         </a-input-password>
       </a-form-item>
 
-      <a-row style="display: flex" :gutter="16">
+      <a-row style="" :gutter="16">
+        
         <a-col class="gutter-row" :span="16">
           <a-form-item>
             <a-input
+              class="msginput"
               size="large"
               type="text"
               placeholder="ᠰᠢᠯᠭᠠᠬᠤ ᠺᠤᠳᠧ ᠵᠢ ᠤᠷᠤᠭᠤᠯᠤᠭᠠᠷᠠᠢ"
@@ -55,13 +57,13 @@
             >
               <a-icon slot="prefix" type="mail" :style="{ color: 'rgba(0,0,0,.25)' }" />
             </a-input>
-            <a-col class="gutter-row" :span="8">
-              <img class="capacha" :src="captchaImage" @click="refreshCapache" />
-            </a-col>
+            
           </a-form-item>
         </a-col>
-
-      </a-row>
+        <a-col class="gutter-row" :span="8">
+              <img class="capacha" :src="captchaImage" @click="refreshCapache" />
+            </a-col>
+       </a-row>
 
       <a-form-item style="margin-top: 24px">
         <a-button
@@ -98,6 +100,7 @@ export default {
   },
   data () {
     return {
+      errMessage:'',
       customActiveKey: 'tab1',
       loginBtn: false,
       // login type: 0 email, 1 username, 2 telephone
@@ -166,7 +169,8 @@ export default {
           loginParams[!state.loginType ? 'email' : 'loginname'] = values.loginname
           loginParams.password = md5(values.password)
           Login(loginParams)
-            .then((res) => this.loginSuccess(res))
+            .then((res) => {
+              this.loginSuccess(res)})
             .catch((err) => this.requestFailed(err))
             .finally(() => {
               state.loginBtn = false
@@ -227,7 +231,6 @@ export default {
       })
     },
     loginSuccess (res) {
-      console.log(res)
       // check res.homePage define, set $router.push name res.homePage
       // Why not enter onComplete
       /*
@@ -251,6 +254,8 @@ export default {
       this.isLoginError = false
     },
     requestFailed (err) {
+      this.errMessage = err.toString()
+      alert(this.errMessage)
       this.isLoginError = true
       this.$notification['error']({
         message: 'ᠪᠤᠷᠤᠭᠤ',
@@ -263,149 +268,58 @@ export default {
 </script>
 
 <style lang="less" scoped>
-/deep/ .ant-alert-error {
-  margin-top: 16px !important;
-  height: 30vh !important;
-}
-/deep/ .ant-alert-message {
-  writing-mode: vertical-lr;
-  font-size: 2vh;
-}
-
-.user-layout-login button.login-button{
-  font-size: 2vh !important;
-  padding: 20px 0px !important;
-}
-
-/deep/ .ant-form {
-  
-  display: grid !important;
-  grid-auto-flow: column;
-  grid-template-columns: repeat(2, 25%);
-
-  .ant-form-explain {
-    margin-top: 5px;
-  }
-  .capacha {
+ /deep/ .ant-form-explain {
+  writing-mode: unset !important;
     position: absolute;
-    top: 17vh;
-    left: -1.2vh;
-    transform: rotate(90deg);
-    transform-origin: bottom left;
-    height: 3vh;
-    margin-top: 10px;
-  }
-
-  #imgcode {
-    height: 20vh;
-  }
-  .ant-row {
-    margin: 0 18px 0 !important;
-  }
-
-  .ant-form-item-control.has-error {
-    display: grid !important;
-    grid-auto-flow: column;
-  }
-
-  .ant-input-affix-wrapper .ant-input-prefix {
-    top: 10px;
-    left: 9px;
-  }
-  .ant-input-affix-wrapper .ant-input-suffix {
-    left: 35%;
-    top: 93%;
-  }
-  input.ant-input {
-    width: 3vh !important;
-    font-size: 2vh;
-    padding-top: 25px;
-    padding-left: 0px;
-    padding-right: 0px;
-  }
+    top: -23px;
+    left: 10px;
+}
+html.mgl .ant-btn {
+  width: auto !important;
+  height: 3vh !important;
+  padding: 0 2vh !important;
 }
 
-.user-layout-login {
-  label {
-    font-size: 14px;
-  }
-
-  .getCaptcha {
-    display: block;
-    width: 100%;
-    height: 40px;
-  }
-
-  .forge-password {
-    font-size: 14px;
-  }
-
-  button.login-button {
-    padding: 0 15px;
-    font-size: 16px;
-    width: 4vh;
-    height: auto;
-  }
-
-  .user-login-other {
-    text-align: left;
-    margin-top: 24px;
-    line-height: 22px;
-
-    .item-icon {
-      font-size: 24px;
-      color: rgba(0, 0, 0, 0.2);
-      margin-left: 16px;
-      vertical-align: middle;
-      cursor: pointer;
-      transition: color 0.3s;
-
-      &:hover {
-        color: #1890ff;
-      }
-    }
-
-    .register {
-      float: right;
-    }
-  }
-  .capacha {
-    width: 9vh;
-  }
+html.mgl  .ant-btn /deep/ span{
+  writing-mode: unset !important;
 }
-@media (min-width: 1280px) and (max-width:1768px){
-/deep/ .ant-form {
-  input.ant-input {
-    width: 5vh !important;
-  }
+.ant-form {
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  transform: rotate(90deg);
 }
-.user-layout-login {
-  .capacha {
-    width: 6vh;
-    height: 5vh;
-  }
+/deep/ .ant-input-affix-wrapper .ant-input{
+  display: unset !important;
+  width: 300px !important;
+  height: 27px !important;
+}
+/deep/ .ant-col-8 {
+  position: absolute !important;
+    top: 16px !important;
+    left: 257px !important;
+}
+/deep/ .anticon svg {
+  transform: rotate(-90deg);
+}
+.ant-alert-error {
+  margin-bottom: 0px !important;
+  margin-left: 18px;
+}
+
+
+
+
+@-moz-document url-prefix(){
+.ant-input-affix-wrapper .ant-input{
+  writing-mode: horizontal-tb !important;
+}
+html.mgl .ant-btn {
+  writing-mode: horizontal-tb !important;
 }
 }
 @media screen and(-ms-high-contrast:active),(-ms-high-contrast:none){
-	/*兼容IE11*/
-  /deep/ .ant-form input.ant-input {
-    writing-mode: tb-rl;
-    width: 39px !important;
-    text-align: left;
-  }
-  /deep/ .ant-form .login-button {
-    width: 39px !important;
-    height: 100px !important;
-  }
-  /deep/ .ant-form .ant-input-affix-wrapper .ant-input-prefix {
-    top: 10px;
-    left: 14px;
-  }
-  /deep/ .ant-form .ant-form-explain {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-
-  }
+.ant-input-affix-wrapper .ant-input{
+  display: none !important;
+}
 }
 </style>
