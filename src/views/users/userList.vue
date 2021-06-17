@@ -388,11 +388,8 @@ export default {
   font-size: 2vh;
 }
 @media (min-width: 1440px) and (max-width:1768px){
-	/deep/ .ant-table-body .ant-table-thead > tr > th{
-   height: 29.6vh !important;
-}
-/deep/ .ant-table-body .ant-table-tbody > tr > td{
-   height: 29.6vh !important;
+	.ant-table-body .ant-table-thead > tr > th,.ant-table-body .ant-table-tbody > tr > td{
+   height: 41.6vh !important;
 }
 
 }

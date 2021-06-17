@@ -8,7 +8,7 @@
           </div>
           <div class="actions">
             <a-button type="danger" @click="handleKeySearch">ᠬᠠᠢᠬᠤ</a-button>
-            <a-button type="danger" @click="handleReset">ᠠᠷᠢᠯᠭᠠᠬᠤ</a-button>
+            <!-- <a-button type="danger" @click="handleReset">ᠠᠷᠢᠯᠭᠠᠬᠤ</a-button> -->
             <a-button type="primary" @click="handleCreate">ᠨᠡᠮᠡᠬᠦ</a-button>
           </div>
         </div>
@@ -296,5 +296,10 @@ export default {
 }
 .page-inner-mgl .content-left .search-form .fields .ant-input {
   height: 50vh;
+}
+@media (min-width: 1440px) and (max-width:1768px){
+  .ant-table-wrapper {
+    max-width: 82% !important;
+  }
 }
 </style>
