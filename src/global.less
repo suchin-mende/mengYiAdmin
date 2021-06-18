@@ -443,7 +443,7 @@ html.mgl {
           width: 3vh !important;
           height: 30vh;
           .ant-select-selection__rendered {
-            line-height: normal;
+            line-height: 1;
             font-size: 2vh;
             margin: 0px;
           }
@@ -587,6 +587,17 @@ html.mgl {
 
 }
 @media screen and(-ms-high-contrast:active),(-ms-high-contrast:none){
+  .input {
+    line-height: 0 !important; 
+  }
+  html.mgl .ant-table-content .ant-table-body .ant-table-tbody {
+    background: none !important;
+  }
+  .ant-card .ant-card-body .content-hor .ant-form-item-control .ant-form-item-children input {
+    writing-mode: tb-lr;
+    // line-height: 0;
+  }
+
   .ant-popover-inner {
     height: 210px;
   }
@@ -659,7 +670,7 @@ html.mgl {
     writing-mode: tb-lr;
   }
   html.mgl .ant-form .ant-form-item .ant-form-item-control-wrapper .ant-form-item-control .ant-form-item-children input {
-    writing-mode: tb-lr;
+    // writing-mode: tb-lr;
   }
   .ant-upload.ant-upload-select span button {
     height: 14vh;
@@ -688,6 +699,7 @@ html.mgl {
   }
   .add-form .fields .ant-input {
     writing-mode: tb-lr;
+    line-height: 0;
   }
   .ant-modal-content {
     height: 25%;
@@ -697,6 +709,7 @@ html.mgl {
   }
   .page-inner-mgl .content-left .search-form .fields .ant-input {
     writing-mode: tb-lr;
+    line-height: 0;
   }
   html.mgl .ant-btn {
     height: 8vh;
@@ -717,7 +730,6 @@ html.mgl {
     flex-direction: row;
   }
 }
-
 @media (min-width: 1280px) and (max-width:1768px){
   .page-inner-mgl .content-left .search-form .fields {
     display: contents;
@@ -729,5 +741,11 @@ html.mgl {
       width: 90% !important;
       
     }
+  }
+  .ant-pagination {
+    font-size: 12px !important;
+  }
+  .totalnum {
+    font-size: 12px !important;
   }
 }

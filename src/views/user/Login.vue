@@ -317,8 +317,24 @@ html.mgl .ant-btn {
 }
 }
 @media screen and(-ms-high-contrast:active),(-ms-high-contrast:none){
-.ant-input-affix-wrapper .ant-input{
-  display: none !important;
-}
+  /deep/ .ant-form-item-control {
+    display: flex;
+    flex-direction: column-reverse;
+    text-align: left;
+  }
+  /deep/ .ant-form-explain {
+    display: ruby-base-container !important;
+    // transform: translate(-43px, -267px);
+  }
+  /deep/ .ant-btn span {
+    display: ruby-base-container !important ;
+  }
+  /deep/ .ant-input-affix-wrapper .ant-input {
+    line-height: 1;
+    text-align: left !important;
+  }
+  /deep/ .anticon svg {
+    transform: rotate(90deg) !important;
+  }
 }
 </style>

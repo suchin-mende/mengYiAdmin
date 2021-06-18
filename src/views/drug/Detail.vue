@@ -326,10 +326,6 @@ export default {
   }
 }
 @-moz-document url-prefix() {
-.ant-descriptions-row:last-child > td > span{
-    display: grid;
-    grid-auto-flow: column;
-    height: 2vh !important;
-}
+
 }
 </style>
