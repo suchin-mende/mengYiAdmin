@@ -271,6 +271,14 @@ export default {
 }
 
 @media (min-width: 1280px) and (max-width: 1768px) {
+  
+/deep/ .ant-table-body .ant-table-thead > tr > th {
+  height: 49.6vh !important;
+}
+/deep/ .ant-table-body .ant-table-tbody > tr > td {
+  height: 49.6vh !important;
+  // display: block !important;
+}
   .ant-table-wrapper {
     height: 100%;
     max-width: 90%;
