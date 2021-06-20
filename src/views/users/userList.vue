@@ -7,6 +7,7 @@
             <a-input placeholder="ᠨᠡᠷ᠎ᠡ" @keyup.enter="handleKeySearch" v-model="key" />
           </div>
           <div class="actions">
+            <a-button type="danger" @click="handleKeySearch">ᠬᠠᠢᠬᠤ</a-button>
             <div>
               <a-button type="primary" @click="showModal">ᠨᠡᠮᠡᠬᠦ</a-button>
               <a-modal
@@ -35,8 +36,8 @@
                 </div>
               </a-modal>
             </div>
-            <a-button type="primary" @click="handleKeySearch">ᠬᠠᠢᠬᠤ</a-button>
-            <a-button type="danger" @click="handleReset">ᠠᠷᠢᠯᠭᠠᠬᠤ</a-button>
+            
+            <!-- <a-button type="danger" @click="handleReset">ᠠᠷᠢᠯᠭᠠᠬᠤ</a-button> -->
           </div>
         </div>
       </div>
