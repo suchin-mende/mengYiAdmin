@@ -59,10 +59,8 @@ request.interceptors.request.use(config => {
 
 // response interceptor
 request.interceptors.response.use((response) => {
-  console.log("!!!",response)
   const { data } = response
   if (data.status && data.status != 1000) {
-    console.log("？？？",data)
 
     throw new Error(data.message)
   }
