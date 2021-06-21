@@ -463,6 +463,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+/deep/ .ant-select-selection__rendered {
+  display: flex;
+}
 /deep/ .anticon {
   margin-bottom: 5px;
 }
