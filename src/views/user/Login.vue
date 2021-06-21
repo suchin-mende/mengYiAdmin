@@ -254,7 +254,7 @@ export default {
       this.isLoginError = false
     },
     requestFailed (err) {
-      this.errMessage = err.toString()
+      this.errMessage = err.toString().substring(6)
       this.isLoginError = true
       this.$notification['error']({
         message: 'ᠪᠤᠷᠤᠭᠤ',
