@@ -5,35 +5,35 @@
         <a-form
           :form="form"
           id="myform">
-          <a-form-item label="ᠮᠤᠨᠭᠭᠤᠯ ᠨᠡᠷ᠎ᠡ">
+          <a-form-item class="widthfix" label="ᠮᠤᠨᠭᠭᠤᠯ ᠨᠡᠷ᠎ᠡ">
             <a-input
               :maxLength="200"
               v-decorator="['namem', { rules: [{ required: true, message: 'ᠬᠤᠭᠤᠰᠤᠨ ᠪᠠᠢᠵᠤ ᠪᠤᠯᠬᠤ ᠦᠭᠡᠢ' }] }]"
               placeholder=""
             />
           </a-form-item>
-          <a-form-item label="ᠥᠭᠡᠷ᠎ᠡ ᠨᠡᠷ᠎ᠡ">
+          <a-form-item class="widthfix" label="ᠥᠭᠡᠷ᠎ᠡ ᠨᠡᠷ᠎ᠡ">
             <a-input
               :maxLength="200"
               v-decorator="['nameother']"
               placeholder=""
             />
           </a-form-item>
-          <a-form-item label="ᠺᠢᠷᠢᠯ ᠨᠡᠷ᠎ᠡ">
+          <a-form-item class="widthfix" label="ᠺᠢᠷᠢᠯ ᠨᠡᠷ᠎ᠡ">
             <a-input
               :maxLength="200"
               v-decorator="['namemn']"
               placeholder=""
             />
           </a-form-item>
-          <a-form-item label="ᠬᠢᠲᠠᠳ ᠨᠡᠷ᠎ᠡ">
+          <a-form-item class="widthfix" label="ᠬᠢᠲᠠᠳ ᠨᠡᠷ᠎ᠡ">
             <a-input
               :maxLength="200"
               v-decorator="['namecn']"
               placeholder=""
             />
           </a-form-item>
-          <a-form-item label="ᠲᠦᠪᠡᠳ ᠨᠡᠷ᠎ᠡ">
+          <a-form-item class="widthfix" label="ᠲᠦᠪᠡᠳ ᠨᠡᠷ᠎ᠡ">
             <a-input
               :maxLength="200"
               v-decorator="['namez']"
@@ -65,13 +65,13 @@
           <a-form-item label="ᠠᠷᠪᠠᠨ ᠳᠤᠯᠤᠭᠠᠨ ᠡᠷᠳᠡᠮ">
             <a-checkbox-group :options="seventeenEffect" v-decorator="['seventeenEffect']"/>
           </a-form-item>
-          <a-form-item label="ᠰᠢᠨᠭᠭᠡᠯᠳᠡ ᠵᠢᠨ ᠰᠡᠭᠦᠯ ᠊ᠤᠨ ᠡᠷᠳᠡᠮ">
+          <a-form-item class="textwidthFix" label="ᠰᠢᠨᠭᠭᠡᠯᠳᠡ ᠵᠢᠨ ᠰᠡᠭᠦᠯ ᠊ᠤᠨ ᠡᠷᠳᠡᠮ">
             <a-textarea placeholder="ᠰᠢᠨᠭᠭᠡᠯᠳᠡ ᠵᠢᠨ ᠰᠡᠭᠦᠯ ᠊ᠤᠨ ᠡᠷᠳᠡᠮ" :rows="3" :maxLength="300" v-decorator="['decomEffect']"/>
           </a-form-item>
-          <a-form-item label="ᠮᠦᠨ ᠴᠢᠨᠠᠷ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ">
+          <a-form-item class="textwidthFix" label="ᠮᠦᠨ ᠴᠢᠨᠠᠷ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ">
             <a-textarea placeholder="ᠮᠦᠨ ᠴᠢᠨᠠᠷ ᠊ᠤᠨ ᠴᠢᠳᠠᠯ" :rows="3" :maxLength="300" v-decorator="['baseEffect']"/>
           </a-form-item>
-          <a-form-item label="ᠭᠤᠤᠯᠳᠠᠭᠤ ᠵᠠᠰᠠᠬᠤ">
+          <a-form-item class="textwidthFix" label="ᠭᠤᠤᠯᠳᠠᠭᠤ ᠵᠠᠰᠠᠬᠤ">
             <a-textarea placeholder="ᠭᠤᠤᠯᠳᠠᠭᠤ ᠵᠠᠰᠠᠬᠤ" :rows="3" :maxLength="300" v-decorator="['baseFix']"/>
           </a-form-item>
           <a-form-item label="ᠢᠯᠭᠠᠯ">
@@ -82,7 +82,7 @@
           <a-form-item label="ᠦᠢᠯᠡᠳᠦᠯ ᠦᠵᠡᠭᠦᠯᠬᠦ ᠬᠡᠯᠪᠡᠷᠢ">
             <a-checkbox-group :options="actionMode" v-decorator="['actionMode']"/>
           </a-form-item>
-          <a-form-item label="ᠲᠠᠢᠯᠪᠤᠷᠢ">
+          <a-form-item class="textwidthFix" label="ᠲᠠᠢᠯᠪᠤᠷᠢ">
             <a-textarea placeholder="ᠲᠠᠢᠯᠪᠤᠷᠢ" :rows="3" :maxLength="300" v-decorator="['remark']"/>
           </a-form-item>
         </a-form>
@@ -279,6 +279,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.textwidthFix /deep/ .ant-form-item-label {
+  min-width: 13vh;
+}
+.widthfix /deep/ .ant-form-item-label{
+  min-width: 3vh;
+}
 .ant-btn {
   margin-bottom: 20px;
   
