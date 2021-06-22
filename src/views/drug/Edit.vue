@@ -40,29 +40,29 @@
               placeholder=""
             />
           </a-form-item>
-          <a-form-item label="ᠢᠷᠡᠯᠳᠡ">
+          <a-form-item class="fix1" label="ᠢᠷᠡᠯᠳᠡ">
             <a-checkbox-group
               class="checkbox"
               :options="drugSource"
               v-decorator="['drugSource']"
             />
           </a-form-item>
-          <a-form-item label="ᠲᠠᠪᠤᠨ ᠮᠠᠬᠠᠪᠤᠳ">
+          <a-form-item class="fix2" label="ᠲᠠᠪᠤᠨ ᠮᠠᠬᠠᠪᠤᠳ">
             <a-checkbox-group :options="fiveElement" v-decorator="['fiveElement']" />
           </a-form-item>
-          <a-form-item label="ᠵᠢᠷᠭᠤᠭᠠᠨ ᠠᠮᠳᠠ">
+          <a-form-item class="fix3" label="ᠵᠢᠷᠭᠤᠭᠠᠨ ᠠᠮᠳᠠ">
             <a-checkbox-group :options="sixTaste" v-decorator="['sixTaste']"/>
           </a-form-item>
-          <a-form-item label="ᠴᠢᠨᠠᠷ">
+          <a-form-item class="fix4" label="ᠴᠢᠨᠠᠷ">
             <a-checkbox-group :options="drugProperty" v-decorator="['drugProperty']"/>
           </a-form-item>
-          <a-form-item label="ᠨᠠᠢᠮᠠᠨ ᠴᠢᠳᠠᠯ">
+          <a-form-item class="fix5" label="ᠨᠠᠢᠮᠠᠨ ᠴᠢᠳᠠᠯ">
             <a-checkbox-group :options="drugPower" v-decorator="['drugPower']"/>
           </a-form-item>
-          <a-form-item label="ᠰᠢᠨᠭᠭᠡᠯᠲᠡ ᠵᠢᠨ ᠰᠡᠭᠦᠯ ᠊ᠤᠨ ᠠᠮᠲᠠ">
+          <a-form-item class="fix6" label="ᠰᠢᠨᠭᠭᠡᠯᠲᠡ ᠵᠢᠨ ᠰᠡᠭᠦᠯ ᠊ᠤᠨ ᠠᠮᠲᠠ">
             <a-checkbox-group :options="decomposedTaste" v-decorator="['decomposedTaste']"/>
           </a-form-item>
-          <a-form-item label="ᠠᠷᠪᠠᠨ ᠳᠤᠯᠤᠭᠠᠨ ᠡᠷᠳᠡᠮ">
+          <a-form-item class="fix7" label="ᠠᠷᠪᠠᠨ ᠳᠤᠯᠤᠭᠠᠨ ᠡᠷᠳᠡᠮ">
             <a-checkbox-group :options="seventeenEffect" v-decorator="['seventeenEffect']"/>
           </a-form-item>
           <a-form-item class="textwidthFix" label="ᠰᠢᠨᠭᠭᠡᠯᠳᠡ ᠵᠢᠨ ᠰᠡᠭᠦᠯ ᠊ᠤᠨ ᠡᠷᠳᠡᠮ">
@@ -79,7 +79,7 @@
             <a-checkbox-group :options="effectCat" v-decorator="['effectCat']"/>
             </div>
           </a-form-item>
-          <a-form-item label="ᠦᠢᠯᠡᠳᠦᠯ ᠦᠵᠡᠭᠦᠯᠬᠦ ᠬᠡᠯᠪᠡᠷᠢ">
+          <a-form-item class="fix8" label="ᠦᠢᠯᠡᠳᠦᠯ ᠦᠵᠡᠭᠦᠯᠬᠦ ᠬᠡᠯᠪᠡᠷᠢ">
             <a-checkbox-group :options="actionMode" v-decorator="['actionMode']"/>
           </a-form-item>
           <a-form-item class="textwidthFix" label="ᠲᠠᠢᠯᠪᠤᠷᠢ">
@@ -279,7 +279,15 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.textwidthFix /deep/ .ant-form-item-label {
+.fix1 /deep/ .ant-form-item-label,.fix5 /deep/ .ant-form-item-label,.fix8 /deep/ .ant-form-item-label {
+  min-width: 7vh;
+
+}
+.fix2 /deep/ .ant-form-item-label,.fix3 /deep/ .ant-form-item-label,.fix4 /deep/ .ant-form-item-label,.fix6 /deep/ .ant-form-item-label {
+  min-width: 5vh;
+
+}
+.textwidthFix /deep/ .ant-form-item-label,.fix7 /deep/ .ant-form-item-label {
   min-width: 13vh;
 }
 .widthfix /deep/ .ant-form-item-label{
