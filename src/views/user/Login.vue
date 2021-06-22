@@ -8,7 +8,7 @@
         style="margin-bottom: 24px"
         :message=errMessage
       />
-      <a-form-item>
+      <a-form-item class="fix">
         <a-input
           size="large"
           type="text"
@@ -25,7 +25,7 @@
         </a-input>
       </a-form-item>
 
-      <a-form-item>
+      <a-form-item class="fix">
         <a-input-password
           size="large"
           placeholder="ᠨᠢᠭᠤᠴᠠ ᠨᠤᠮᠧᠷ ᠢᠡᠨ ᠤᠷᠤᠭᠤᠯᠤᠭᠠᠷᠠᠢ"
@@ -41,7 +41,7 @@
       <a-row style="" :gutter="16">
         
         <a-col class="gutter-row" :span="16">
-          <a-form-item>
+          <a-form-item class="fix">
             <a-input
               class="msginput"
               size="large"
@@ -65,7 +65,7 @@
             </a-col>
        </a-row>
 
-      <a-form-item style="margin-top: 24px">
+      <a-form-item style="margin-top: 24px" class="fix">
         <a-button
           size="large"
           type="primary"
@@ -267,11 +267,15 @@ export default {
 </script>
 
 <style lang="less" scoped>
+/deep/ .ant-form-item-children button {
+    display: flex;
+  }
  /deep/ .ant-form-explain {
   writing-mode: unset !important;
     position: absolute;
     top: -23px;
     left: 10px;
+    width: 200% !important;
 }
 html.mgl .ant-btn {
   width: auto !important;
@@ -317,17 +321,30 @@ html.mgl .ant-btn {
 }
 }
 @media screen and(-ms-high-contrast:active),(-ms-high-contrast:none){
+  /deep/ .ant-form-item-children button {
+    display: flex;
+  }
+  /deep/ .ant-col-8 {
+    top:31px !important ;
+  }
+  /deep/ .fix {
+    margin-top: 15px !important;
+    
+  }
   /deep/ .ant-form-item-control {
     display: flex;
     flex-direction: column-reverse;
     text-align: left;
   }
   /deep/ .ant-form-explain {
-    display: ruby-base-container !important;
+    // display: ruby-base-container !important;
     // transform: translate(-43px, -267px);
+    // writing-mode: vertical-lr !important;
   }
   /deep/ .ant-btn span {
-    display: ruby-base-container !important ;
+    // display: ruby-base-container !important ;
+    writing-mode: lr-tb !important;
+    
   }
   /deep/ .ant-input-affix-wrapper .ant-input {
     line-height: 1;
