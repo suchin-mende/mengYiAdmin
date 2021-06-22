@@ -540,6 +540,9 @@ html.mgl {
   }
 }
 @-moz-document url-prefix() {
+  .ant-form .ant-form-item .ant-form-item-control-wrapper .ant-form-item-control .ant-form-explain {
+    writing-mode: tb-rl !important;
+  }
   .yilgal {
     width: 22vh;
   }
@@ -586,6 +589,9 @@ html.mgl {
 
 }
 @media screen and(-ms-high-contrast:active),(-ms-high-contrast:none){
+   .ant-form-item .ant-form-item-control-wrapper .ant-form-item-control .ant-form-explain {
+    writing-mode: tb-lr !important;
+  }
   html.mgl .ant-table-content .ant-table-body .ant-table-tbody {
     background: none !important;
   }
@@ -665,21 +671,12 @@ html.mgl {
   html.mgl .ant-form .ant-form-item .ant-form-item-control-wrapper textarea.ant-input {
     writing-mode: tb-lr;
   }
-  html.mgl .ant-form .ant-form-item .ant-form-item-control-wrapper .ant-form-item-control .ant-form-item-children input {
-    // writing-mode: tb-lr;
-  }
   .ant-upload.ant-upload-select span button {
     height: 14vh;
     right: 0px;
   }
   .ant-upload.ant-upload-select span button span {
     padding-top: 13px;
-  }
-  .ant-card .ant-card-body tbody > tr:first-child > td > span:last-child {
-    // width: 170px;
-  }
-  .images-wrapper {
-    // width: 140px;
   }
   .ant-pro-page-header-wrap-children-content .actions .actions-inner button {
     height: 12vh;

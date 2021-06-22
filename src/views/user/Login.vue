@@ -321,6 +321,12 @@ html.mgl .ant-btn {
 }
 }
 @media screen and(-ms-high-contrast:active),(-ms-high-contrast:none){
+  /deep/ .ant-form-item .ant-form-item-control-wrapper .ant-form-item-control .ant-form-explain {
+    writing-mode: lr-tb !important;
+  }
+  /deep/ .ant-alert-error {
+    margin-top: 20px;
+  }
   /deep/ .ant-form-item-children button {
     display: flex;
   }
@@ -335,11 +341,6 @@ html.mgl .ant-btn {
     display: flex;
     flex-direction: column-reverse;
     text-align: left;
-  }
-  /deep/ .ant-form-explain {
-    // display: ruby-base-container !important;
-    // transform: translate(-43px, -267px);
-    // writing-mode: vertical-lr !important;
   }
   /deep/ .ant-btn span {
     // display: ruby-base-container !important ;
